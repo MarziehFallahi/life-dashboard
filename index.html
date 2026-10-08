@@ -5,59 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Growth Dashboard</title>
     <style>
-        @font-face {
-            font-family: 'BNazanin';
-            src: local('B Nazanin'), local('BNazanin');
-        }
-        @font-face {
-            font-family: 'Cambridge';
-            src: local('Cambridge'), local('Times New Roman');
-        }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --primary-light: #dbeafe;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --bg: #f1f5f9;
+            --primary: #475569;
+            --primary-dark: #334155;
+            --primary-light: #e2e8f0;
+            --accent: #64748b;
+            --bg: #f8fafc;
             --card: #ffffff;
             --border: #e2e8f0;
             --text: #1e293b;
             --muted: #64748b;
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --success: #64748b;
+            --warning: #94a3b8;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
         }
         
         html, body { direction: rtl; text-align: right; }
         
         body {
-            font-family: 'BNazanin', 'B Nazanin', Tahoma, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Tahoma, Arial, sans-serif;
+            background: var(--bg);
             min-height: 100vh;
             padding: 20px;
             color: var(--text);
+            line-height: 1.6;
         }
         
         body.en {
             direction: ltr;
             text-align: left;
-            font-family: 'Cambridge', 'Times New Roman', serif;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body.en .stat-label,
+        body.en .tab,
+        body.en .btn,
+        body.en .section-title,
+        body.en .item-title,
+        body.en .item-sub,
+        body.en .modal-header h3,
+        body.en .form-label {
+            font-family: 'Times New Roman', Times, serif;
         }
         
         .container { max-width: 1400px; margin: 0 auto; }
         
         /* Header */
         .header {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
-            border-radius: 16px;
-            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
             margin-bottom: 20px;
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
         }
         
         .header-top {
@@ -69,219 +72,194 @@
         }
         
         .header h1 {
-            font-size: 28px;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
         }
-        
-        body.en .header h1 { font-family: 'Cambridge', serif; }
         
         .lang-switch { display: flex; gap: 8px; }
         
         .lang-btn {
-            padding: 10px 20px;
-            border: 2px solid var(--primary);
-            background: white;
+            padding: 8px 18px;
+            border: 1px solid var(--border);
+            background: var(--card);
             color: var(--primary);
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s;
             font-family: inherit;
         }
+        
+        .lang-btn:hover { background: var(--bg); }
         
         .lang-btn.active {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            border-color: var(--primary);
         }
         
         /* Stats */
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
             margin-bottom: 20px;
         }
         
         .stat-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
-            border-radius: 14px;
-            padding: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
             text-align: center;
             box-shadow: var(--shadow);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            transition: all 0.2s;
         }
         
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
         }
         
-        .stat-icon { font-size: 32px; margin-bottom: 8px; }
-        .stat-value { font-size: 32px; font-weight: 900; color: var(--primary); }
-        .stat-label { font-size: 13px; color: var(--muted); margin-top: 5px; font-weight: 600; }
+        .stat-icon { font-size: 24px; margin-bottom: 6px; }
+        .stat-value { font-size: 28px; font-weight: 700; color: var(--primary-dark); }
+        .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 600; }
         
         /* Tabs */
         .tabs {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            background: rgba(255,255,255,0.95);
-            padding: 15px;
-            border-radius: 14px;
+            gap: 8px;
+            background: var(--card);
+            padding: 12px;
+            border-radius: 10px;
             margin-bottom: 20px;
             box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
         
         .tab {
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: none;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: 10px;
+            background: transparent;
+            color: var(--muted);
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s;
             font-family: inherit;
         }
         
-        .tab:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
+        .tab:hover { background: var(--bg); color: var(--primary); }
         
         .tab.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: var(--primary);
             color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
         
         /* Sections */
         .section { display: none; }
-        .section.active { display: block; animation: fadeIn 0.4s; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .section.active { display: block; }
         
         .section-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(10px);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
         }
         
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid;
-            border-image: linear-gradient(90deg, var(--primary), var(--primary-dark)) 1;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
         }
         
         .section-title {
-            font-size: 24px;
-            font-weight: 900;
+            font-size: 20px;
+            font-weight: 700;
             color: var(--primary-dark);
         }
         
         /* Buttons */
         .btn {
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 6px;
             font-family: inherit;
         }
         
-        .btn:hover { transform: translateY(-2px); }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: var(--primary);
             color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
         
-        .btn-danger { background: linear-gradient(135deg, var(--danger), #dc2626); color: white; }
-        .btn-warning { background: linear-gradient(135deg, var(--warning), #d97706); color: white; }
-        .btn-sm { padding: 6px 12px; font-size: 12px; }
+        .btn-danger { background: #94a3b8; color: white; }
+        .btn-warning { background: #cbd5e1; color: var(--text); }
+        .btn-sm { padding: 5px 10px; font-size: 12px; }
         
         /* Items */
         .item {
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 12px;
-            border-right: 4px solid var(--primary);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 10px;
+            border-right: 3px solid var(--primary);
             position: relative;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
         
-        body.en .item { border-right: none; border-left: 4px solid var(--primary); }
+        body.en .item { border-right: none; border-left: 3px solid var(--primary); }
         
         .item:hover {
-            transform: translateX(-5px);
-            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow);
         }
         
-        body.en .item:hover { transform: translateX(5px); }
-        
-        .item-title { font-weight: 700; font-size: 16px; margin-bottom: 6px; color: var(--text); }
-        .item-sub { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
-        .item-desc { font-size: 14px; color: var(--text); line-height: 1.6; margin-top: 8px; }
+        .item-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--text); }
+        .item-sub { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+        .item-desc { font-size: 13px; color: var(--text); line-height: 1.6; margin-top: 6px; }
         
         .item-actions {
             position: absolute;
-            top: 12px;
-            left: 12px;
+            top: 10px;
+            left: 10px;
             display: flex;
             gap: 6px;
         }
         
-        body.en .item-actions { left: auto; right: 12px; }
+        body.en .item-actions { left: auto; right: 10px; }
         
         .badge {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 15px;
+            padding: 3px 10px;
+            border-radius: 12px;
             font-size: 11px;
-            font-weight: 700;
-            margin: 3px;
+            font-weight: 600;
+            margin: 2px;
         }
         
         .badge-blue { background: var(--primary-light); color: var(--primary-dark); }
-        .badge-green { background: #d1fae5; color: #065f46; }
-        .badge-orange { background: #fed7aa; color: #9a3412; }
+        .badge-green { background: #e2e8f0; color: var(--primary-dark); }
+        .badge-orange { background: #f1f5f9; color: var(--accent); }
         
         /* Modal */
         .modal {
@@ -289,73 +267,71 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.5);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
         
-        .modal.active { display: flex; animation: fadeIn 0.3s; }
+        .modal.active { display: flex; }
         
         .modal-content {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 24px;
             max-width: 600px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
         
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--border);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
         }
         
-        .modal-header h3 { font-size: 22px; font-weight: 900; color: var(--primary-dark); }
+        .modal-header h3 { font-size: 18px; font-weight: 700; color: var(--primary-dark); }
         
         .close-btn {
             background: none;
             border: none;
-            font-size: 28px;
+            font-size: 24px;
             cursor: pointer;
             color: var(--muted);
-            transition: all 0.3s;
         }
         
-        .close-btn:hover { color: var(--danger); transform: rotate(90deg); }
+        .close-btn:hover { color: var(--text); }
         
-        .form-group { margin-bottom: 16px; }
+        .form-group { margin-bottom: 14px; }
         
         .form-label {
             display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary-dark);
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
         }
         
         .form-input, .form-textarea, .form-select {
             width: 100%;
-            padding: 12px;
-            border: 2px solid var(--border);
-            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
             font-size: 14px;
             font-family: inherit;
-            transition: all 0.3s;
+            background: var(--bg);
         }
         
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background: var(--card);
         }
         
         .form-textarea { min-height: 80px; resize: vertical; }
@@ -370,22 +346,36 @@
             display: flex;
             gap: 10px;
             justify-content: flex-end;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 2px solid var(--border);
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
         }
         
         .empty {
             text-align: center;
-            padding: 50px;
+            padding: 40px;
             color: var(--muted);
+            font-size: 14px;
+        }
+        
+        .welcome-text {
+            color: var(--muted);
+            margin-top: 12px;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+        
+        .subsection-title {
+            margin: 20px 0 12px;
             font-size: 15px;
-            font-style: italic;
+            font-weight: 700;
+            color: var(--primary);
         }
         
         @media (max-width: 768px) {
             .form-row { grid-template-columns: 1fr; }
             .stats { grid-template-columns: repeat(2, 1fr); }
+            .header h1 { font-size: 20px; }
         }
     </style>
 </head>
@@ -400,7 +390,7 @@
         </div>
         <div id="modalBody"></div>
         <div class="modal-footer">
-            <button class="btn btn-primary" onclick="saveData()">💾 ذخیره</button>
+            <button class="btn btn-primary" onclick="saveData()">ذخیره</button>
             <button class="btn btn-danger" onclick="closeModal()">انصراف</button>
         </div>
     </div>
@@ -411,10 +401,11 @@ const T = {
     fa: {
         title: 'داشبورد رشد فردی',
         add: 'افزودن', edit: 'ویرایش', delete: 'حذف', save: 'ذخیره', cancel: 'انصراف',
-        empty: 'هنوز موردی اضافه نشده است. روی "افزودن" کلیک کنید.',
+        empty: 'هنوز موردی اضافه نشده است.',
         confirm: 'آیا مطمئن هستید؟',
-        tabs: ['نمای کلی','شغلی','تحصیلات','مهارت‌ها','کتاب','پادکست','ورزش','پروژه','گواهینامه','اهداف','برنامه'],
-        stats: ['شغل','تحصیل','مهارت','کتاب','پادکست','ورزش','پروژه','گواهینامه','هدف'],
+        tabs: ['نمای کلی','مشاغل','تحصیلات','مهارت‌ها','کتاب‌ها','پادکست‌ها','ورزش‌ها','پروژه‌ها','گواهینامه‌ها','اهداف','برنامه‌ها'],
+        stats: ['مشاغل','تحصیلات','مهارت‌ها','کتاب‌ها','پادکست‌ها','ورزش‌ها','پروژه‌ها','گواهینامه‌ها','اهداف'],
+        statIcons: ['','🎓','🛠️','📚','🎧','','🔬','📜',''],
         labels: {
             title:'عنوان', company:'شرکت', period:'دوره', duration:'مدت', location:'مکان',
             type:'نوع', desc:'توضیحات', date:'تاریخ', degree:'مقطع', field:'رشته',
@@ -426,27 +417,34 @@ const T = {
         types: { management:'مدیریتی', technical:'فنی' },
         levels: { advanced:'پیشرفته', intermediate:'متوسط', basic:'مقدماتی' },
         priorities: { high:'بالا', medium:'متوسط', low:'پایین' },
-        statuses: { done:'انجام شده', progress:'در حال انجام', planned:'برنامه‌ریزی شده' }
+        statuses: { done:'انجام شده', progress:'در حال انجام', planned:'برنامه‌ریزی شده' },
+        softwareTitle: 'نرم‌افزارها',
+        mgmtTitle: 'مهارت‌های مدیریتی',
+        techTitle: 'مهارت‌های فنی'
     },
     en: {
         title: 'Personal Growth Dashboard',
         add: 'Add', edit: 'Edit', delete: 'Delete', save: 'Save', cancel: 'Cancel',
-        empty: 'No items yet. Click "Add" to start.',
+        empty: 'No items yet.',
         confirm: 'Are you sure?',
-        tabs: ['Overview','Jobs','Education','Skills','Books','Podcasts','Sports','Projects','Certificates','Goals','Plan'],
+        tabs: ['Overview','Jobs','Education','Skills','Books','Podcasts','Sports','Projects','Certificates','Goals','Plans'],
         stats: ['Jobs','Education','Skills','Books','Podcasts','Sports','Projects','Certificates','Goals'],
+        statIcons: ['💼','','🛠️','📚','🎧','🏃','🔬','📜','🎯'],
         labels: {
             title:'Title', company:'Company', period:'Period', duration:'Duration', location:'Location',
             type:'Type', desc:'Description', date:'Date', degree:'Degree', field:'Field',
             university:'University', gpa:'GPA', year:'Year', name:'Name', level:'Level',
             hours:'Hours', author:'Author', rating:'Rating (1-5)', notes:'Notes',
-            episode:'Episode', issuer:'Issuer', category:'Category', target:'Target',
+            episode:'Episode', issuer:'Issuer', category:'Category', target:'Goal',
             deadline:'Deadline', priority:'Priority', progress:'Progress (%)'
         },
         types: { management:'Management', technical:'Technical' },
         levels: { advanced:'Advanced', intermediate:'Intermediate', basic:'Basic' },
         priorities: { high:'High', medium:'Medium', low:'Low' },
-        statuses: { done:'Done', progress:'In Progress', planned:'Planned' }
+        statuses: { done:'Done', progress:'In Progress', planned:'Planned' },
+        softwareTitle: 'Software',
+        mgmtTitle: 'Management Skills',
+        techTitle: 'Technical Skills'
     }
 };
 
@@ -493,10 +491,15 @@ function t(k) {
 function render() {
     const d = data[lang];
     const counts = [
-        d.jobs.length, d.education.length,
-        d.software.length+d.mgmtSkills.length+d.techSkills.length,
-        d.books.length, d.podcasts.length, d.sports.length,
-        d.projects.length, d.certificates.length, d.goals.length
+        d.jobs.length,
+        d.education.length,
+        d.software.length + d.mgmtSkills.length + d.techSkills.length,
+        d.books.length,
+        d.podcasts.length,
+        d.sports.length,
+        d.projects.length,
+        d.certificates.length,
+        d.goals.length
     ];
     
     let html = `
@@ -512,7 +515,7 @@ function render() {
         <div class="stats">
             ${counts.map((c,i)=>`
                 <div class="stat-card">
-                    <div class="stat-icon">${['','🎓','🛠️','📖','🎧','','🔬','📜',''][i]}</div>
+                    <div class="stat-icon">${t('statIcons')[i]}</div>
                     <div class="stat-value">${c}</div>
                     <div class="stat-label">${t('stats')[i]}</div>
                 </div>
@@ -526,50 +529,68 @@ function render() {
         <div class="section active" id="s0">
             <div class="section-card">
                 <div class="section-title">${t('tabs')[0]}</div>
-                <p style="color:var(--muted); margin-top:15px; line-height:1.8; font-size:15px;">
-                    ${lang==='fa'?'به داشبورد رشد فردی خوش آمدید. از تب‌های بالا برای مدیریت حوزه‌های مختلف زندگی حرفه‌ای و شخصی خود استفاده کنید.':'Welcome to your Personal Growth Dashboard. Use tabs above to manage different areas of your professional and personal life.'}
+                <p class="welcome-text">
+                    ${lang==='fa'
+                        ?'به داشبورد رشد فردی خوش آمدید. از تب‌های بالا برای مدیریت حوزه‌های مختلف زندگی حرفه‌ای و شخصی خود استفاده کنید.'
+                        :'Welcome to your Personal Growth Dashboard. Use the tabs above to manage different areas of your professional and personal life.'}
                 </p>
             </div>
         </div>
     `;
     
-    // Jobs
-    html += `<div class="section" id="s1"><div class="section-card">
+    html += renderJobs(d);
+    html += renderEducation(d);
+    html += renderSkills(d);
+    html += renderBooks(d);
+    html += renderPodcasts(d);
+    html += renderSports(d);
+    html += renderProjects(d);
+    html += renderCertificates(d);
+    html += renderGoals(d);
+    html += renderPlan(d);
+    
+    document.getElementById('app').innerHTML = html;
+}
+
+function renderJobs(d) {
+    return `<div class="section" id="s1"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[1]}</div>
-        <button class="btn btn-primary" onclick="openModal('jobs')">➕ ${t('add')}</button></div>
+        <button class="btn btn-primary" onclick="openModal('jobs')">+ ${t('add')}</button></div>
         ${d.jobs.length===0?`<div class="empty">${t('empty')}</div>`:
             d.jobs.map((j,i)=>`<div class="item">
                 <div class="item-actions">
                     <button class="btn btn-warning btn-sm" onclick="openModal('jobs',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('jobs',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${j.title||''}</div>
+                <div class="item-title">💼 ${j.title||''}</div>
                 <div class="item-sub">${j.company||''} | ${j.period||''} | ${j.location||''}</div>
                 <span class="badge badge-${j.type==='management'?'green':'blue'}">${t('types')[j.type]||j.type}</span>
                 ${j.desc?`<div class="item-desc">${j.desc}</div>`:''}
             </div>`).join('')}
     </div></div>`;
-    
-    // Education
-    html += `<div class="section" id="s2"><div class="section-card">
+}
+
+function renderEducation(d) {
+    return `<div class="section" id="s2"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[2]}</div>
-        <button class="btn btn-primary" onclick="openModal('education')"> ${t('add')}</button></div>
+        <button class="btn btn-primary" onclick="openModal('education')">+ ${t('add')}</button></div>
         ${d.education.length===0?`<div class="empty">${t('empty')}</div>`:
             d.education.map((e,i)=>`<div class="item">
                 <div class="item-actions">
                     <button class="btn btn-warning btn-sm" onclick="openModal('education',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('education',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${e.degree||''} - ${e.field||''}</div>
+                <div class="item-title">🎓 ${e.degree||''} - ${e.field||''}</div>
                 <div class="item-sub">${e.university||''} | ${t('labels').gpa}: ${e.gpa||''} | ${e.year||''}</div>
             </div>`).join('')}
     </div></div>`;
-    
-    // Skills
-    html += `<div class="section" id="s3"><div class="section-card">
+}
+
+function renderSkills(d) {
+    return `<div class="section" id="s3"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[3]}</div>
-        <button class="btn btn-primary" onclick="openModal('software')">➕ ${t('add')}</button></div>
-        <h4 style="margin:20px 0 12px; font-size:16px; color:var(--primary);">${lang==='fa'?'نرم‌افزارها':'Software'}</h4>
+        <button class="btn btn-primary" onclick="openModal('software')">+ ${t('add')}</button></div>
+        <h4 class="subsection-title">${t('softwareTitle')}</h4>
         ${d.software.length===0?`<div class="empty">${t('empty')}</div>`:
             d.software.map((s,i)=>`<div class="item">
                 <div class="item-actions">
@@ -579,39 +600,43 @@ function render() {
                 <div class="item-title">${s.name||''}</div>
                 <span class="badge badge-blue">${s.level||''}</span>
             </div>`).join('')}
-        <h4 style="margin:25px 0 12px; font-size:16px; color:var(--primary);">${lang==='fa'?'مهارت‌های مدیریتی':'Management Skills'}</h4>
-        ${d.mgmtSkills.map((s,i)=>`<div class="item">
-            <div class="item-actions"><button class="btn btn-danger btn-sm" onclick="del('mgmtSkills',${i})">${t('delete')}</button></div>
-            <div class="item-title">${s.skill||''}</div>
-        </div>`).join('')}
-        <h4 style="margin:25px 0 12px; font-size:16px; color:var(--primary);">${lang==='fa'?'مهارت‌های فنی':'Technical Skills'}</h4>
-        ${d.techSkills.map((s,i)=>`<div class="item">
-            <div class="item-actions"><button class="btn btn-danger btn-sm" onclick="del('techSkills',${i})">${t('delete')}</button></div>
-            <div class="item-title">${s.skill||''}</div>
-        </div>`).join('')}
+        <h4 class="subsection-title">${t('mgmtTitle')}</h4>
+        ${d.mgmtSkills.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.mgmtSkills.map((s,i)=>`<div class="item">
+                <div class="item-actions"><button class="btn btn-danger btn-sm" onclick="del('mgmtSkills',${i})">${t('delete')}</button></div>
+                <div class="item-title">${s.skill||''}</div>
+            </div>`).join('')}
+        <h4 class="subsection-title">${t('techTitle')}</h4>
+        ${d.techSkills.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.techSkills.map((s,i)=>`<div class="item">
+                <div class="item-actions"><button class="btn btn-danger btn-sm" onclick="del('techSkills',${i})">${t('delete')}</button></div>
+                <div class="item-title">${s.skill||''}</div>
+            </div>`).join('')}
     </div></div>`;
-    
-    // Books
-    html += `<div class="section" id="s4"><div class="section-card">
+}
+
+function renderBooks(d) {
+    return `<div class="section" id="s4"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[4]}</div>
-        <button class="btn btn-primary" onclick="openModal('books')">➕ ${t('add')}</button></div>
+        <button class="btn btn-primary" onclick="openModal('books')">+ ${t('add')}</button></div>
         ${d.books.length===0?`<div class="empty">${t('empty')}</div>`:
             d.books.map((b,i)=>`<div class="item">
                 <div class="item-actions">
                     <button class="btn btn-warning btn-sm" onclick="openModal('books',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('books',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">📖 ${b.title||''}</div>
+                <div class="item-title">📚 ${b.title||''}</div>
                 <div class="item-sub">${b.author||''} | ${b.year||''} | ${t('labels').rating}: ${b.rating||''}/5</div>
                 <span class="badge badge-blue">${b.category||''}</span>
                 ${b.notes?`<div class="item-desc">${b.notes}</div>`:''}
             </div>`).join('')}
     </div></div>`;
-    
-    // Podcasts
-    html += `<div class="section" id="s5"><div class="section-card">
+}
+
+function renderPodcasts(d) {
+    return `<div class="section" id="s5"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[5]}</div>
-        <button class="btn btn-primary" onclick="openModal('podcasts')">➕ ${t('add')}</button></div>
+        <button class="btn btn-primary" onclick="openModal('podcasts')">+ ${t('add')}</button></div>
         ${d.podcasts.length===0?`<div class="empty">${t('empty')}</div>`:
             d.podcasts.map((p,i)=>`<div class="item">
                 <div class="item-actions">
@@ -623,11 +648,12 @@ function render() {
                 ${p.notes?`<div class="item-desc">${p.notes}</div>`:''}
             </div>`).join('')}
     </div></div>`;
-    
-    // Sports
-    html += `<div class="section" id="s6"><div class="section-card">
+}
+
+function renderSports(d) {
+    return `<div class="section" id="s6"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[6]}</div>
-        <button class="btn btn-primary" onclick="openModal('sports')">➕ ${t('add')}</button></div>
+        <button class="btn btn-primary" onclick="openModal('sports')">+ ${t('add')}</button></div>
         ${d.sports.length===0?`<div class="empty">${t('empty')}</div>`:
             d.sports.map((s,i)=>`<div class="item">
                 <div class="item-actions">
@@ -639,28 +665,30 @@ function render() {
                 ${s.notes?`<div class="item-desc">${s.notes}</div>`:''}
             </div>`).join('')}
     </div></div>`;
-    
-    // Projects
-    html += `<div class="section" id="s7"><div class="section-card">
+}
+
+function renderProjects(d) {
+    return `<div class="section" id="s7"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[7]}</div>
-        <button class="btn btn-primary" onclick="openModal('projects')">➕ ${t('add')}</button></div>
+        <button class="btn btn-primary" onclick="openModal('projects')">+ ${t('add')}</button></div>
         ${d.projects.length===0?`<div class="empty">${t('empty')}</div>`:
             d.projects.map((p,i)=>`<div class="item">
                 <div class="item-actions">
                     <button class="btn btn-warning btn-sm" onclick="openModal('projects',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('projects',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${p.title||''}</div>
+                <div class="item-title">🔬 ${p.title||''}</div>
                 <div class="item-sub">${p.year||''} | ${p.category||''}</div>
                 <span class="badge badge-${p.status==='done'?'green':p.status==='progress'?'orange':'blue'}">${t('statuses')[p.status]||p.status}</span>
                 ${p.desc?`<div class="item-desc">${p.desc}</div>`:''}
             </div>`).join('')}
     </div></div>`;
-    
-    // Certificates
-    html += `<div class="section" id="s8"><div class="section-card">
+}
+
+function renderCertificates(d) {
+    return `<div class="section" id="s8"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[8]}</div>
-        <button class="btn btn-primary" onclick="openModal('certificates')">➕ ${t('add')}</button></div>
+        <button class="btn btn-primary" onclick="openModal('certificates')">+ ${t('add')}</button></div>
         ${d.certificates.length===0?`<div class="empty">${t('empty')}</div>`:
             d.certificates.map((c,i)=>`<div class="item">
                 <div class="item-actions">
@@ -671,11 +699,12 @@ function render() {
                 <div class="item-sub">${c.issuer||''} | ${c.year||''}</div>
             </div>`).join('')}
     </div></div>`;
-    
-    // Goals
-    html += `<div class="section" id="s9"><div class="section-card">
+}
+
+function renderGoals(d) {
+    return `<div class="section" id="s9"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[9]}</div>
-        <button class="btn btn-primary" onclick="openModal('goals')">➕ ${t('add')}</button></div>
+        <button class="btn btn-primary" onclick="openModal('goals')">+ ${t('add')}</button></div>
         ${d.goals.length===0?`<div class="empty">${t('empty')}</div>`:
             d.goals.map((g,i)=>`<div class="item">
                 <div class="item-actions">
@@ -687,11 +716,12 @@ function render() {
                 <span class="badge badge-${g.priority==='high'?'orange':g.priority==='medium'?'blue':'green'}">${t('priorities')[g.priority]||g.priority}</span>
             </div>`).join('')}
     </div></div>`;
-    
-    // Plan
-    html += `<div class="section" id="s10"><div class="section-card">
+}
+
+function renderPlan(d) {
+    return `<div class="section" id="s10"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[10]}</div>
-        <button class="btn btn-primary" onclick="openModal('monthlyPlan')">➕ ${t('add')}</button></div>
+        <button class="btn btn-primary" onclick="openModal('monthlyPlan')">+ ${t('add')}</button></div>
         ${d.monthlyPlan.length===0?`<div class="empty">${t('empty')}</div>`:
             d.monthlyPlan.map((p,i)=>`<div class="item">
                 <div class="item-actions">
@@ -704,8 +734,6 @@ function render() {
                 ${p.notes?`<div class="item-desc">${p.notes}</div>`:''}
             </div>`).join('')}
     </div></div>`;
-    
-    document.getElementById('app').innerHTML = html;
 }
 
 function showTab(i, btn) {
@@ -716,7 +744,6 @@ function showTab(i, btn) {
 }
 
 function openModal(type, idx) {
-    console.log('openModal called:', type, idx);
     edit = { type: type, idx: (idx !== undefined ? idx : null) };
     const d = data[lang];
     const L = t('labels');
@@ -810,7 +837,6 @@ function saveData() {
         closeModal();
     } catch(e) { 
         alert('Error: '+e.message); 
-        console.error(e);
     }
 }
 
