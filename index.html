@@ -3,30 +3,596 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تست</title>
+    <title>داشبورد زندگی</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: Tahoma, sans-serif;
-            background: #f0f9ff;
-            padding: 50px;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .header {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 { font-size: 24px; color: #1e293b; }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px;
             text-align: center;
         }
-        h1 {
-            color: #0284c7;
-            font-size: 36px;
+        .stat-label { font-size: 12px; color: #64748b; margin-bottom: 4px; }
+        .stat-value { font-size: 28px; font-weight: 700; color: #3b82f6; }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 20px;
         }
-        p {
-            color: #475569;
-            font-size: 18px;
-            margin-top: 20px;
+        .tab {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.2s;
+        }
+        .tab:hover { background: #f1f5f9; }
+        .tab.active { background: #3b82f6; color: white; }
+        
+        .section { display: none; }
+        .section.active { display: block; }
+        .section-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .section-title { font-size: 18px; font-weight: 700; }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-primary { background: #3b82f6; color: white; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-danger { background: #ef4444; color: white; }
+        .btn-warning { background: #f59e0b; color: white; }
+        .btn-sm { padding: 5px 10px; font-size: 12px; }
+        
+        .item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .item-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+        .item-sub { font-size: 12px; color: #64748b; }
+        .item-desc { font-size: 13px; color: #1e293b; margin-top: 6px; }
+        .item-date {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-top: 6px;
+        }
+        .item-actions { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
+        .badge-green { background: #d1fae5; color: #065f46; }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .modal-header h3 { font-size: 18px; }
+        .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; }
+        
+        .form-group { margin-bottom: 14px; }
+        .form-label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; }
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        .form-input:focus { outline: none; border-color: #3b82f6; }
+        .form-textarea { min-height: 80px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        
+        .empty { text-align: center; padding: 40px; color: #94a3b8; }
+        
+        @media (max-width: 768px) {
+            .form-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <h1>سلام! داشبورد من کار می‌کند ✅</h1>
-    <p>این یک صفحه تست است. اگر این را می‌بینید، GitHub Pages درست کار می‌کند.</p>
-    <p style="margin-top: 30px; font-size: 14px; color: #94a3b8;">
-        ساخته شده با ❤️
-    </p>
+<div class="container" id="app"></div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle"></h3>
+            <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+        <div id="modalBody"></div>
+        <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:20px;">
+            <button class="btn btn-primary" onclick="saveData()">ذخیره</button>
+            <button class="btn btn-danger" onclick="closeModal()">انصراف</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const T = {
+    fa: {
+        title: 'داشبورد زندگی',
+        add: 'افزودن', edit: 'ویرایش', delete: 'حذف', save: 'ذخیره', cancel: 'انصراف',
+        empty: 'هنوز موردی اضافه نشده',
+        confirm: 'آیا مطمئن هستید؟',
+        tabs: ['نمای کلی','شغلی','تحصیلات','مهارت‌ها','کتاب','پادکست','ورزش','پروژه','گواهینامه','اهداف','برنامه','تایم‌لاین'],
+        stats: ['شغل','تحصیل','مهارت','کتاب','پادکست','ورزش','پروژه','گواهینامه','هدف'],
+        labels: {
+            title:'عنوان', company:'شرکت', period:'دوره', duration:'مدت', location:'مکان',
+            type:'نوع', desc:'توضیحات', date:'تاریخ', degree:'مقطع', field:'رشته',
+            university:'دانشگاه', gpa:'معدل', year:'سال', name:'نام', level:'سطح',
+            hours:'ساعت', author:'نویسنده', rating:'امتیاز', notes:'یادداشت',
+            episode:'اپیزود', issuer:'صادرکننده', category:'دسته', target:'هدف',
+            deadline:'مهلت', priority:'اولویت', progress:'پیشرفت (%)'
+        },
+        types: { management:'مدیریتی', technical:'فنی' },
+        levels: { advanced:'پیشرفته', intermediate:'متوسط', basic:'مقدماتی' },
+        priorities: { high:'بالا', medium:'متوسط', low:'پایین' },
+        statuses: { done:'انجام شده', progress:'در حال انجام', planned:'برنامه‌ریزی شده' }
+    },
+    en: {
+        title: 'Life Dashboard',
+        add: 'Add', edit: 'Edit', delete: 'Delete', save: 'Save', cancel: 'Cancel',
+        empty: 'No items yet',
+        confirm: 'Are you sure?',
+        tabs: ['Overview','Jobs','Education','Skills','Books','Podcasts','Sports','Projects','Certificates','Goals','Plan','Timeline'],
+        stats: ['Jobs','Education','Skills','Books','Podcasts','Sports','Projects','Certificates','Goals'],
+        labels: {
+            title:'Title', company:'Company', period:'Period', duration:'Duration', location:'Location',
+            type:'Type', desc:'Description', date:'Date', degree:'Degree', field:'Field',
+            university:'University', gpa:'GPA', year:'Year', name:'Name', level:'Level',
+            hours:'Hours', author:'Author', rating:'Rating', notes:'Notes',
+            episode:'Episode', issuer:'Issuer', category:'Category', target:'Target',
+            deadline:'Deadline', priority:'Priority', progress:'Progress (%)'
+        },
+        types: { management:'Management', technical:'Technical' },
+        levels: { advanced:'Advanced', intermediate:'Intermediate', basic:'Basic' },
+        priorities: { high:'High', medium:'Medium', low:'Low' },
+        statuses: { done:'Done', progress:'In Progress', planned:'Planned' }
+    }
+};
+
+const emptyData = {
+    fa: { jobs:[], education:[], software:[], mgmtSkills:[], techSkills:[],
+        books:[], podcasts:[], sports:[], projects:[], certificates:[],
+        goals:[], monthlyPlan:[], timeline:[] },
+    en: { jobs:[], education:[], software:[], mgmtSkills:[], techSkills:[],
+        books:[], podcasts:[], sports:[], projects:[], certificates:[],
+        goals:[], monthlyPlan:[], timeline:[] }
+};
+
+let lang = 'fa';
+let data = null;
+let edit = { type:null, idx:null };
+
+function init() {
+    try {
+        const s = localStorage.getItem('lifeDash');
+        data = s ? JSON.parse(s) : JSON.parse(JSON.stringify(emptyData));
+    } catch(e) { data = JSON.parse(JSON.stringify(emptyData)); }
+    render();
+}
+
+function switchLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    document.documentElement.dir = l==='fa'?'rtl':'ltr';
+    render();
+}
+
+function save() {
+    try { localStorage.setItem('lifeDash', JSON.stringify(data)); } catch(e){}
+}
+
+function t(k) {
+    const ks = k.split('.');
+    let r = T[lang];
+    for (const k of ks) r = r[k];
+    return r;
+}
+
+function render() {
+    const d = data[lang];
+    const counts = [
+        d.jobs.length, d.education.length,
+        d.software.length+d.mgmtSkills.length+d.techSkills.length,
+        d.books.length, d.podcasts.length, d.sports.length,
+        d.projects.length, d.certificates.length, d.goals.length
+    ];
+    
+    let html = `
+        <div class="header">
+            <h1>${t('title')}</h1>
+            <div>
+                <button class="btn ${lang==='fa'?'btn-primary':''}" onclick="switchLang('fa')" style="margin-left:5px;">فارسی</button>
+                <button class="btn ${lang==='en'?'btn-primary':''}" onclick="switchLang('en')">English</button>
+            </div>
+        </div>
+        <div class="stats">
+            ${counts.map((c,i)=>`
+                <div class="stat-card">
+                    <div class="stat-label">${t('stats')[i]}</div>
+                    <div class="stat-value">${c}</div>
+                </div>
+            `).join('')}
+        </div>
+        <div class="tabs">
+            ${t('tabs').map((n,i)=>`
+                <button class="tab ${i===0?'active':''}" onclick="showTab(${i},this)">${n}</button>
+            `).join('')}
+        </div>
+        <div class="section active" id="s0">
+            <div class="section-card">
+                <div class="section-title">${t('tabs')[0]}</div>
+                <p style="color:#64748b; margin-top:10px;">
+                    ${lang==='fa'?'به داشبورد زندگی خوش آمدید. از تب‌های بالا برای مدیریت حوزه‌های مختلف استفاده کنید.':'Welcome to your Life Dashboard. Use tabs above to manage different areas.'}
+                </p>
+            </div>
+        </div>
+    `;
+    
+    // Jobs
+    html += `<div class="section" id="s1"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[1]}</div>
+        <button class="btn btn-primary" onclick="openModal('jobs')">+ ${t('add')}</button></div>
+        ${d.jobs.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.jobs.map((j,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('jobs',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('jobs',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">${j.title||''}</div>
+                <div class="item-sub">${j.company||''} | ${j.period||''}</div>
+                <span class="badge badge-${j.type==='management'?'green':'blue'}">${t('types')[j.type]||j.type}</span>
+                ${j.desc?`<div class="item-desc">${j.desc}</div>`:''}
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Education
+    html += `<div class="section" id="s2"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[2]}</div>
+        <button class="btn btn-primary" onclick="openModal('education')">+ ${t('add')}</button></div>
+        ${d.education.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.education.map((e,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('education',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('education',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">${e.degree||''} - ${e.field||''}</div>
+                <div class="item-sub">${e.university||''} | ${e.year||''}</div>
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Skills
+    html += `<div class="section" id="s3"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[3]}</div>
+        <button class="btn btn-primary" onclick="openModal('software')">+ ${t('add')}</button></div>
+        <h4 style="margin:15px 0 10px; font-size:14px; color:#3b82f6;">${lang==='fa'?'نرم‌افزارها':'Software'}</h4>
+        ${d.software.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.software.map((s,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('software',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('software',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">${s.name||''}</div>
+                <span class="badge badge-blue">${s.level||''}</span>
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Books
+    html += `<div class="section" id="s4"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[4]}</div>
+        <button class="btn btn-primary" onclick="openModal('books')">+ ${t('add')}</button></div>
+        ${d.books.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.books.map((b,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('books',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('books',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">📖 ${b.title||''}</div>
+                <div class="item-sub">${b.author||''} | ${b.year||''}</div>
+                <span class="badge badge-blue">${b.category||''}</span>
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Podcasts
+    html += `<div class="section" id="s5"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[5]}</div>
+        <button class="btn btn-primary" onclick="openModal('podcasts')">+ ${t('add')}</button></div>
+        ${d.podcasts.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.podcasts.map((p,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('podcasts',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('podcasts',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">🎧 ${p.title||''}</div>
+                <div class="item-sub">${p.episode||''}</div>
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Sports
+    html += `<div class="section" id="s6"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[6]}</div>
+        <button class="btn btn-primary" onclick="openModal('sports')">+ ${t('add')}</button></div>
+        ${d.sports.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.sports.map((s,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('sports',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('sports',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">🏃 ${s.name||''}</div>
+                <div class="item-sub">${s.frequency||''}</div>
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Projects
+    html += `<div class="section" id="s7"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[7]}</div>
+        <button class="btn btn-primary" onclick="openModal('projects')">+ ${t('add')}</button></div>
+        ${d.projects.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.projects.map((p,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('projects',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('projects',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">${p.title||''}</div>
+                <div class="item-sub">${p.year||''} | ${p.category||''}</div>
+                <span class="badge badge-${p.status==='done'?'green':'blue'}">${t('statuses')[p.status]||p.status}</span>
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Certificates
+    html += `<div class="section" id="s8"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[8]}</div>
+        <button class="btn btn-primary" onclick="openModal('certificates')">+ ${t('add')}</button></div>
+        ${d.certificates.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.certificates.map((c,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('certificates',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('certificates',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">📜 ${c.name||''}</div>
+                <div class="item-sub">${c.issuer||''} | ${c.year||''}</div>
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Goals
+    html += `<div class="section" id="s9"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[9]}</div>
+        <button class="btn btn-primary" onclick="openModal('goals')">+ ${t('add')}</button></div>
+        ${d.goals.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.goals.map((g,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('goals',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('goals',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title"> ${g.target||''}</div>
+                <div class="item-sub">${g.category||''} | ${g.deadline||''}</div>
+                <span class="badge badge-${g.priority==='high'?'badge-blue':'badge-green'}">${t('priorities')[g.priority]||g.priority}</span>
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Plan
+    html += `<div class="section" id="s10"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[10]}</div>
+        <button class="btn btn-primary" onclick="openModal('monthlyPlan')">+ ${t('add')}</button></div>
+        ${d.monthlyPlan.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.monthlyPlan.map((p,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('monthlyPlan',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('monthlyPlan',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">📅 ${p.title||''}</div>
+                <div class="item-sub">${p.category||''}</div>
+                <span class="badge badge-${p.status==='done'?'green':'blue'}">${t('statuses')[p.status]||p.status}</span>
+            </div>`).join('')}
+    </div></div>`;
+    
+    // Timeline
+    html += `<div class="section" id="s11"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[11]}</div>
+        <button class="btn btn-primary" onclick="openModal('timeline')">+ ${t('add')}</button></div>
+        ${d.timeline.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.timeline.map((e,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('timeline',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('timeline',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">${e.title||''}</div>
+                <div class="item-sub">${e.category||''} | ${e.date||''}</div>
+            </div>`).join('')}
+    </div></div>`;
+    
+    document.getElementById('app').innerHTML = html;
+}
+
+function showTab(i, btn) {
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    document.getElementById('s'+i).classList.add('active');
+    btn.classList.add('active');
+}
+
+function openModal(type, idx) {
+    edit = { type, idx: idx!==undefined?idx:null };
+    const d = data[lang];
+    const L = t('labels');
+    const item = idx!==null?d[type][idx]:{};
+    let title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[['jobs','education','software','books','podcasts','sports','projects','certificates','goals','monthlyPlan','timeline'].indexOf(type)+1];
+    let body = '';
+    
+    const field = (id, label, type='text', val='') => `<div class="form-group"><label class="form-label">${label}</label><input class="form-input" type="${type}" id="f_${id}" value="${val||''}"></div>`;
+    const select = (id, label, opts, val='') => `<div class="form-group"><label class="form-label">${label}</label><select class="form-select" id="f_${id}">${opts.map(o=>`<option value="${o.v}" ${o.v===val?'selected':''}>${o.l}</option>`).join('')}</select></div>`;
+    const textarea = (id, label, val='') => `<div class="form-group"><label class="form-label">${label}</label><textarea class="form-textarea" id="f_${id}">${val||''}</textarea></div>`;
+    
+    if (type==='jobs') {
+        body = `<div class="form-row">${field('title',L.title,item.title)}${field('company',L.company,item.company)}</div>
+            <div class="form-row">${field('period',L.period,item.period)}${field('duration',L.duration,item.duration)}</div>
+            <div class="form-row">${field('location',L.location,item.location)}${select('type',L.type,[{v:'management',l:t('types').management},{v:'technical',l:t('types').technical}],item.type)}</div>
+            ${textarea('desc',L.desc,item.desc)}`;
+    } else if (type==='education') {
+        body = `<div class="form-row">${field('degree',L.degree,item.degree)}${field('field',L.field,item.field)}</div>
+            <div class="form-row">${field('university',L.university,item.university)}${field('gpa',L.gpa,item.gpa)}</div>
+            ${field('year',L.year,item.year)}`;
+    } else if (type==='software') {
+        body = `<div class="form-row">${field('name',L.name,item.name)}${select('level',L.level,[{v:t('levels').advanced,l:t('levels').advanced},{v:t('levels').intermediate,l:t('levels').intermediate},{v:t('levels').basic,l:t('levels').basic}],item.level)}</div>`;
+    } else if (type==='books') {
+        body = `<div class="form-row">${field('title',L.title,item.title)}${field('author',L.author,item.author)}</div>
+            <div class="form-row">${field('year',L.year,item.year)}${field('rating',L.rating,item.rating)}</div>
+            ${field('category',L.category,item.category)}${textarea('notes',L.notes,item.notes)}`;
+    } else if (type==='podcasts') {
+        body = `${field('title',L.title,item.title)}${field('episode',L.episode,item.episode)}${textarea('notes',L.notes,item.notes)}`;
+    } else if (type==='sports') {
+        body = `<div class="form-row">${field('name',L.name,item.name)}${field('frequency',L.frequency,item.frequency)}</div>${textarea('notes',L.notes,item.notes)}`;
+    } else if (type==='projects') {
+        body = `<div class="form-row">${field('title',L.title,item.title)}${field('year',L.year,item.year)}</div>
+            ${field('category',L.category,item.category)}${select('status',L.status,[{v:'planned',l:t('statuses').planned},{v:'progress',l:t('statuses').progress},{v:'done',l:t('statuses').done}],item.status)}
+            ${textarea('desc',L.desc,item.desc)}`;
+    } else if (type==='certificates') {
+        body = `<div class="form-row">${field('name',L.name,item.name)}${field('issuer',L.issuer,item.issuer)}</div>${field('year',L.year,item.year)}`;
+    } else if (type==='goals') {
+        body = `${field('target',L.target,item.target)}${field('category',L.category,item.category)}
+            <div class="form-row">${field('deadline',L.deadline,'date',item.deadline)}${select('priority',L.priority,[{v:'high',l:t('priorities').high},{v:'medium',l:t('priorities').medium},{v:'low',l:t('priorities').low}],item.priority)}</div>`;
+    } else if (type==='monthlyPlan') {
+        body = `${field('title',L.title,item.title)}${field('category',L.category,item.category)}
+            ${select('status',L.status,[{v:'planned',l:t('statuses').planned},{v:'progress',l:t('statuses').progress},{v:'done',l:t('statuses').done}],item.status)}
+            ${textarea('notes',L.notes,item.notes)}`;
+    } else if (type==='timeline') {
+        body = `${field('title',L.title,item.title)}${field('category',L.category,item.category)}${field('date',L.date,'date',item.date)}${textarea('desc',L.desc,item.desc)}`;
+    }
+    
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalBody').innerHTML = body;
+    document.getElementById('modal').classList.add('active');
+}
+
+function closeModal() { document.getElementById('modal').classList.remove('active'); }
+
+function saveData() {
+    const {type, idx} = edit;
+    const d = data[lang];
+    const get = id => document.getElementById('f_'+id)?.value || '';
+    
+    try {
+        let obj = {};
+        if (type==='jobs') obj = { title:get('title'), company:get('company'), period:get('period'), duration:get('duration'), location:get('location'), type:get('type'), desc:get('desc') };
+        else if (type==='education') obj = { degree:get('degree'), field:get('field'), university:get('university'), gpa:get('gpa'), year:get('year') };
+        else if (type==='software') obj = { name:get('name'), level:get('level') };
+        else if (type==='books') obj = { title:get('title'), author:get('author'), year:get('year'), rating:get('rating'), category:get('category'), notes:get('notes') };
+        else if (type==='podcasts') obj = { title:get('title'), episode:get('episode'), notes:get('notes') };
+        else if (type==='sports') obj = { name:get('name'), frequency:get('frequency'), notes:get('notes') };
+        else if (type==='projects') obj = { title:get('title'), year:get('year'), category:get('category'), status:get('status'), desc:get('desc') };
+        else if (type==='certificates') obj = { name:get('name'), issuer:get('issuer'), year:get('year') };
+        else if (type==='goals') obj = { target:get('target'), category:get('category'), deadline:get('deadline'), priority:get('priority') };
+        else if (type==='monthlyPlan') obj = { title:get('title'), category:get('category'), status:get('status'), notes:get('notes') };
+        else if (type==='timeline') obj = { title:get('title'), category:get('category'), date:get('date'), desc:get('desc') };
+        
+        if (idx!==null) d[type][idx] = obj; else d[type].push(obj);
+        save(); render(); closeModal();
+    } catch(e) { alert('Error: '+e.message); }
+}
+
+function del(type, idx) {
+    if (!confirm(t('confirm'))) return;
+    data[lang][type].splice(idx,1);
+    save(); render();
+}
+
+init();
+</script>
 </body>
 </html>
