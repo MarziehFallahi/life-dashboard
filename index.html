@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Growth Dashboard</title>
+    <title>داشبورد شخصی</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --primary: #475569;
-            --primary-dark: #334155;
-            --primary-light: #e2e8f0;
-            --accent: #64748b;
-            --bg: #f8fafc;
+            --primary: #4a6fa5;
+            --primary-dark: #2d4a73;
+            --primary-light: #c8d8e8;
+            --primary-lighter: #e8f0f8;
+            --accent: #6b8cae;
+            --bg: #f0f4f8;
             --card: #ffffff;
-            --border: #e2e8f0;
-            --text: #1e293b;
-            --muted: #64748b;
-            --success: #64748b;
-            --warning: #94a3b8;
-            --shadow: 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --border: #d4dde6;
+            --text: #2d3748;
+            --muted: #718096;
+            --shadow: 0 2px 8px rgba(74, 111, 165, 0.08);
+            --shadow-md: 0 4px 16px rgba(74, 111, 165, 0.12);
         }
         
         html, body { direction: rtl; text-align: right; }
         
         body {
-            font-family: Tahoma, Arial, sans-serif;
-            background: var(--bg);
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8f0f8 100%);
             min-height: 100vh;
             padding: 20px;
             color: var(--text);
@@ -47,7 +47,9 @@
         body.en .item-title,
         body.en .item-sub,
         body.en .modal-header h3,
-        body.en .form-label {
+        body.en .form-label,
+        body.en .header h1,
+        body.en .subsection-title {
             font-family: 'Times New Roman', Times, serif;
         }
         
@@ -57,10 +59,11 @@
         .header {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 24px;
             margin-bottom: 20px;
             box-shadow: var(--shadow);
+            border-top: 3px solid var(--primary);
         }
         
         .header-top {
@@ -73,7 +76,7 @@
         
         .header h1 {
             font-size: 26px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary-dark);
             letter-spacing: -0.5px;
         }
@@ -93,7 +96,7 @@
             font-family: inherit;
         }
         
-        .lang-btn:hover { background: var(--bg); }
+        .lang-btn:hover { background: var(--primary-lighter); }
         
         .lang-btn.active {
             background: var(--primary);
@@ -112,21 +115,36 @@
         .stat-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 18px;
             text-align: center;
             box-shadow: var(--shadow);
             transition: all 0.2s;
+            border-top: 3px solid var(--primary);
         }
         
         .stat-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-md);
-            border-color: var(--primary-light);
+            border-top-color: var(--primary-dark);
         }
         
-        .stat-icon { font-size: 24px; margin-bottom: 6px; }
-        .stat-value { font-size: 28px; font-weight: 700; color: var(--primary-dark); }
+        .stat-icon { 
+            width: 32px; 
+            height: 32px; 
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .stat-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--primary);
+        }
+        
+        .stat-value { font-size: 26px; font-weight: 800; color: var(--primary-dark); }
         .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 600; }
         
         /* Tabs */
@@ -136,7 +154,7 @@
             gap: 8px;
             background: var(--card);
             padding: 12px;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-bottom: 20px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
@@ -155,7 +173,7 @@
             font-family: inherit;
         }
         
-        .tab:hover { background: var(--bg); color: var(--primary); }
+        .tab:hover { background: var(--primary-lighter); color: var(--primary); }
         
         .tab.active {
             background: var(--primary);
@@ -169,7 +187,7 @@
         .section-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 24px;
             box-shadow: var(--shadow);
         }
@@ -180,12 +198,12 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
+            border-bottom: 2px solid var(--primary-lighter);
         }
         
         .section-title {
             font-size: 20px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary-dark);
         }
         
@@ -204,22 +222,28 @@
             font-family: inherit;
         }
         
-        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn:hover { transform: translateY(-1px); }
         
         .btn-primary {
             background: var(--primary);
             color: white;
         }
         
-        .btn-danger { background: #94a3b8; color: white; }
-        .btn-warning { background: #cbd5e1; color: var(--text); }
+        .btn-primary:hover { background: var(--primary-dark); }
+        
+        .btn-danger { background: #a0aec0; color: white; }
+        .btn-danger:hover { background: #718096; }
+        
+        .btn-warning { background: var(--primary-light); color: var(--primary-dark); }
+        .btn-warning:hover { background: var(--primary); color: white; }
+        
         .btn-sm { padding: 5px 10px; font-size: 12px; }
         
         /* Items */
         .item {
-            background: var(--bg);
+            background: var(--primary-lighter);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 16px;
             margin-bottom: 10px;
             border-right: 3px solid var(--primary);
@@ -230,11 +254,28 @@
         body.en .item { border-right: none; border-left: 3px solid var(--primary); }
         
         .item:hover {
-            border-color: var(--primary-light);
+            border-color: var(--primary);
             box-shadow: var(--shadow);
+            background: white;
         }
         
-        .item-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--text); }
+        .item-title { 
+            font-weight: 700; 
+            font-size: 15px; 
+            margin-bottom: 4px; 
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .item-title svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--primary);
+            flex-shrink: 0;
+        }
+        
         .item-sub { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
         .item-desc { font-size: 13px; color: var(--text); line-height: 1.6; margin-top: 6px; }
         
@@ -257,9 +298,9 @@
             margin: 2px;
         }
         
-        .badge-blue { background: var(--primary-light); color: var(--primary-dark); }
-        .badge-green { background: #e2e8f0; color: var(--primary-dark); }
-        .badge-orange { background: #f1f5f9; color: var(--accent); }
+        .badge-blue { background: var(--primary-lighter); color: var(--primary-dark); }
+        .badge-green { background: #d4e8d4; color: #2d5a2d; }
+        .badge-orange { background: #f0e4d4; color: #8b6f47; }
         
         /* Modal */
         .modal {
@@ -267,7 +308,8 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(45, 74, 115, 0.6);
+            backdrop-filter: blur(4px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -278,13 +320,13 @@
         
         .modal-content {
             background: var(--card);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 24px;
             max-width: 600px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 60px rgba(45, 74, 115, 0.3);
         }
         
         .modal-header {
@@ -293,10 +335,10 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 2px solid var(--primary-lighter);
         }
         
-        .modal-header h3 { font-size: 18px; font-weight: 700; color: var(--primary-dark); }
+        .modal-header h3 { font-size: 18px; font-weight: 800; color: var(--primary-dark); }
         
         .close-btn {
             background: none;
@@ -306,7 +348,7 @@
             color: var(--muted);
         }
         
-        .close-btn:hover { color: var(--text); }
+        .close-btn:hover { color: var(--primary-dark); }
         
         .form-group { margin-bottom: 14px; }
         
@@ -314,8 +356,8 @@
             display: block;
             margin-bottom: 6px;
             font-size: 13px;
-            font-weight: 600;
-            color: var(--primary);
+            font-weight: 700;
+            color: var(--primary-dark);
         }
         
         .form-input, .form-textarea, .form-select {
@@ -325,7 +367,8 @@
             border-radius: 8px;
             font-size: 14px;
             font-family: inherit;
-            background: var(--bg);
+            background: var(--primary-lighter);
+            transition: all 0.2s;
         }
         
         .form-input:focus, .form-textarea:focus, .form-select:focus {
@@ -370,6 +413,15 @@
             font-size: 15px;
             font-weight: 700;
             color: var(--primary);
+            padding-right: 10px;
+            border-right: 3px solid var(--primary);
+        }
+        
+        body.en .subsection-title {
+            padding-right: 0;
+            padding-left: 10px;
+            border-right: none;
+            border-left: 3px solid var(--primary);
         }
         
         @media (max-width: 768px) {
@@ -397,15 +449,41 @@
 </div>
 
 <script>
+// SVG Icons
+const ICONS = {
+    briefcase: '<svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 0h-4V4h4v2z"/></svg>',
+    education: '<svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>',
+    skill: '<svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>',
+    book: '<svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>',
+    podcast: '<svg viewBox="0 0 24 24"><path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/></svg>',
+    sport: '<svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg>',
+    project: '<svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>',
+    certificate: '<svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>',
+    goal: '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>',
+    plan: '<svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>'
+};
+
 const T = {
     fa: {
-        title: 'داشبورد رشد فردی',
+        title: 'داشبورد شخصی',
         add: 'افزودن', edit: 'ویرایش', delete: 'حذف', save: 'ذخیره', cancel: 'انصراف',
         empty: 'هنوز موردی اضافه نشده است.',
         confirm: 'آیا مطمئن هستید؟',
         tabs: ['نمای کلی','مشاغل','تحصیلات','مهارت‌ها','کتاب‌ها','پادکست‌ها','ورزش‌ها','پروژه‌ها','گواهینامه‌ها','اهداف','برنامه‌ها'],
         stats: ['مشاغل','تحصیلات','مهارت‌ها','کتاب‌ها','پادکست‌ها','ورزش‌ها','پروژه‌ها','گواهینامه‌ها','اهداف'],
-        statIcons: ['','🎓','🛠️','📚','🎧','','🔬','📜',''],
+        statIcons: ['briefcase','education','skill','book','podcast','sport','project','certificate','goal'],
+        itemIcons: {
+            jobs: 'briefcase',
+            education: 'education',
+            software: 'skill',
+            books: 'book',
+            podcasts: 'podcast',
+            sports: 'sport',
+            projects: 'project',
+            certificates: 'certificate',
+            goals: 'goal',
+            monthlyPlan: 'plan'
+        },
         labels: {
             title:'عنوان', company:'شرکت', period:'دوره', duration:'مدت', location:'مکان',
             type:'نوع', desc:'توضیحات', date:'تاریخ', degree:'مقطع', field:'رشته',
@@ -423,13 +501,25 @@ const T = {
         techTitle: 'مهارت‌های فنی'
     },
     en: {
-        title: 'Personal Growth Dashboard',
+        title: 'Personal Dashboard',
         add: 'Add', edit: 'Edit', delete: 'Delete', save: 'Save', cancel: 'Cancel',
         empty: 'No items yet.',
         confirm: 'Are you sure?',
         tabs: ['Overview','Jobs','Education','Skills','Books','Podcasts','Sports','Projects','Certificates','Goals','Plans'],
         stats: ['Jobs','Education','Skills','Books','Podcasts','Sports','Projects','Certificates','Goals'],
-        statIcons: ['💼','','🛠️','📚','🎧','🏃','🔬','📜','🎯'],
+        statIcons: ['briefcase','education','skill','book','podcast','sport','project','certificate','goal'],
+        itemIcons: {
+            jobs: 'briefcase',
+            education: 'education',
+            software: 'skill',
+            books: 'book',
+            podcasts: 'podcast',
+            sports: 'sport',
+            projects: 'project',
+            certificates: 'certificate',
+            goals: 'goal',
+            monthlyPlan: 'plan'
+        },
         labels: {
             title:'Title', company:'Company', period:'Period', duration:'Duration', location:'Location',
             type:'Type', desc:'Description', date:'Date', degree:'Degree', field:'Field',
@@ -463,7 +553,7 @@ let edit = { type:null, idx:null };
 
 function init() {
     try {
-        const s = localStorage.getItem('growthDash');
+        const s = localStorage.getItem('personalDash');
         data = s ? JSON.parse(s) : JSON.parse(JSON.stringify(emptyData));
     } catch(e) { data = JSON.parse(JSON.stringify(emptyData)); }
     render();
@@ -478,7 +568,7 @@ function switchLang(l) {
 }
 
 function save() {
-    try { localStorage.setItem('growthDash', JSON.stringify(data)); } catch(e){}
+    try { localStorage.setItem('personalDash', JSON.stringify(data)); } catch(e){}
 }
 
 function t(k) {
@@ -486,6 +576,10 @@ function t(k) {
     let r = T[lang];
     for (const k of ks) r = r[k];
     return r;
+}
+
+function icon(name) {
+    return ICONS[name] || '';
 }
 
 function render() {
@@ -515,7 +609,7 @@ function render() {
         <div class="stats">
             ${counts.map((c,i)=>`
                 <div class="stat-card">
-                    <div class="stat-icon">${t('statIcons')[i]}</div>
+                    <div class="stat-icon">${icon(t('statIcons')[i])}</div>
                     <div class="stat-value">${c}</div>
                     <div class="stat-label">${t('stats')[i]}</div>
                 </div>
@@ -531,8 +625,8 @@ function render() {
                 <div class="section-title">${t('tabs')[0]}</div>
                 <p class="welcome-text">
                     ${lang==='fa'
-                        ?'به داشبورد رشد فردی خوش آمدید. از تب‌های بالا برای مدیریت حوزه‌های مختلف زندگی حرفه‌ای و شخصی خود استفاده کنید.'
-                        :'Welcome to your Personal Growth Dashboard. Use the tabs above to manage different areas of your professional and personal life.'}
+                        ?'به داشبورد شخصی خوش آمدید. از تب‌های بالا برای مدیریت حوزه‌های مختلف زندگی حرفه‌ای و شخصی خود استفاده کنید.'
+                        :'Welcome to your Personal Dashboard. Use the tabs above to manage different areas of your professional and personal life.'}
                 </p>
             </div>
         </div>
@@ -552,6 +646,17 @@ function render() {
     document.getElementById('app').innerHTML = html;
 }
 
+function renderItemCard(item, type, i, extra='') {
+    const iconKey = t('itemIcons')[type] || 'briefcase';
+    return `<div class="item">
+        <div class="item-actions">
+            <button class="btn btn-warning btn-sm" onclick="openModal('${type}',${i})">${t('edit')}</button>
+            <button class="btn btn-danger btn-sm" onclick="del('${type}',${i})">${t('delete')}</button>
+        </div>
+        ${extra}
+    </div>`;
+}
+
 function renderJobs(d) {
     return `<div class="section" id="s1"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[1]}</div>
@@ -562,7 +667,7 @@ function renderJobs(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('jobs',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('jobs',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">💼 ${j.title||''}</div>
+                <div class="item-title">${icon('briefcase')} ${j.title||''}</div>
                 <div class="item-sub">${j.company||''} | ${j.period||''} | ${j.location||''}</div>
                 <span class="badge badge-${j.type==='management'?'green':'blue'}">${t('types')[j.type]||j.type}</span>
                 ${j.desc?`<div class="item-desc">${j.desc}</div>`:''}
@@ -580,7 +685,7 @@ function renderEducation(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('education',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('education',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">🎓 ${e.degree||''} - ${e.field||''}</div>
+                <div class="item-title">${icon('education')} ${e.degree||''} - ${e.field||''}</div>
                 <div class="item-sub">${e.university||''} | ${t('labels').gpa}: ${e.gpa||''} | ${e.year||''}</div>
             </div>`).join('')}
     </div></div>`;
@@ -597,20 +702,20 @@ function renderSkills(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('software',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('software',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${s.name||''}</div>
+                <div class="item-title">${icon('skill')} ${s.name||''}</div>
                 <span class="badge badge-blue">${s.level||''}</span>
             </div>`).join('')}
         <h4 class="subsection-title">${t('mgmtTitle')}</h4>
         ${d.mgmtSkills.length===0?`<div class="empty">${t('empty')}</div>`:
             d.mgmtSkills.map((s,i)=>`<div class="item">
                 <div class="item-actions"><button class="btn btn-danger btn-sm" onclick="del('mgmtSkills',${i})">${t('delete')}</button></div>
-                <div class="item-title">${s.skill||''}</div>
+                <div class="item-title">${icon('skill')} ${s.skill||''}</div>
             </div>`).join('')}
         <h4 class="subsection-title">${t('techTitle')}</h4>
         ${d.techSkills.length===0?`<div class="empty">${t('empty')}</div>`:
             d.techSkills.map((s,i)=>`<div class="item">
                 <div class="item-actions"><button class="btn btn-danger btn-sm" onclick="del('techSkills',${i})">${t('delete')}</button></div>
-                <div class="item-title">${s.skill||''}</div>
+                <div class="item-title">${icon('skill')} ${s.skill||''}</div>
             </div>`).join('')}
     </div></div>`;
 }
@@ -625,7 +730,7 @@ function renderBooks(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('books',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('books',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">📚 ${b.title||''}</div>
+                <div class="item-title">${icon('book')} ${b.title||''}</div>
                 <div class="item-sub">${b.author||''} | ${b.year||''} | ${t('labels').rating}: ${b.rating||''}/5</div>
                 <span class="badge badge-blue">${b.category||''}</span>
                 ${b.notes?`<div class="item-desc">${b.notes}</div>`:''}
@@ -643,7 +748,7 @@ function renderPodcasts(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('podcasts',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('podcasts',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">🎧 ${p.title||''}</div>
+                <div class="item-title">${icon('podcast')} ${p.title||''}</div>
                 <div class="item-sub">${t('labels').episode}: ${p.episode||''}</div>
                 ${p.notes?`<div class="item-desc">${p.notes}</div>`:''}
             </div>`).join('')}
@@ -660,7 +765,7 @@ function renderSports(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('sports',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('sports',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">🏃 ${s.name||''}</div>
+                <div class="item-title">${icon('sport')} ${s.name||''}</div>
                 <div class="item-sub">${s.frequency||''}</div>
                 ${s.notes?`<div class="item-desc">${s.notes}</div>`:''}
             </div>`).join('')}
@@ -677,7 +782,7 @@ function renderProjects(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('projects',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('projects',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">🔬 ${p.title||''}</div>
+                <div class="item-title">${icon('project')} ${p.title||''}</div>
                 <div class="item-sub">${p.year||''} | ${p.category||''}</div>
                 <span class="badge badge-${p.status==='done'?'green':p.status==='progress'?'orange':'blue'}">${t('statuses')[p.status]||p.status}</span>
                 ${p.desc?`<div class="item-desc">${p.desc}</div>`:''}
@@ -695,7 +800,7 @@ function renderCertificates(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('certificates',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('certificates',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">📜 ${c.name||''}</div>
+                <div class="item-title">${icon('certificate')} ${c.name||''}</div>
                 <div class="item-sub">${c.issuer||''} | ${c.year||''}</div>
             </div>`).join('')}
     </div></div>`;
@@ -711,7 +816,7 @@ function renderGoals(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('goals',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('goals',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">🎯 ${g.target||''}</div>
+                <div class="item-title">${icon('goal')} ${g.target||''}</div>
                 <div class="item-sub">${g.category||''} | ${g.deadline||''}</div>
                 <span class="badge badge-${g.priority==='high'?'orange':g.priority==='medium'?'blue':'green'}">${t('priorities')[g.priority]||g.priority}</span>
             </div>`).join('')}
@@ -728,7 +833,7 @@ function renderPlan(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('monthlyPlan',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('monthlyPlan',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">📅 ${p.title||''}</div>
+                <div class="item-title">${icon('plan')} ${p.title||''}</div>
                 <div class="item-sub">${p.category||''}</div>
                 <span class="badge badge-${p.status==='done'?'green':p.status==='progress'?'orange':'blue'}">${t('statuses')[p.status]||p.status}</span>
                 ${p.notes?`<div class="item-desc">${p.notes}</div>`:''}
