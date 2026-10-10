@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>داشبورد شخصی</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -19,6 +20,7 @@
             --border: #d4dde6;
             --text: #2d3748;
             --muted: #718096;
+            --success: #48bb78;
             --shadow: 0 2px 8px rgba(74, 111, 165, 0.08);
             --shadow-md: 0 4px 16px rgba(74, 111, 165, 0.12);
         }
@@ -40,22 +42,14 @@
             font-family: 'Times New Roman', Times, serif;
         }
         
-        body.en .stat-label,
-        body.en .tab,
-        body.en .btn,
-        body.en .section-title,
-        body.en .item-title,
-        body.en .item-sub,
-        body.en .modal-header h3,
-        body.en .form-label,
-        body.en .header h1,
-        body.en .subsection-title {
+        body.en .stat-label, body.en .tab, body.en .btn, body.en .section-title,
+        body.en .item-title, body.en .item-sub, body.en .modal-header h3,
+        body.en .form-label, body.en .header h1, body.en .subsection-title {
             font-family: 'Times New Roman', Times, serif;
         }
         
         .container { max-width: 1400px; margin: 0 auto; }
         
-        /* Header */
         .header {
             background: var(--card);
             border: 1px solid var(--border);
@@ -78,7 +72,6 @@
             font-size: 26px;
             font-weight: 800;
             color: var(--primary-dark);
-            letter-spacing: -0.5px;
         }
         
         .lang-switch { display: flex; gap: 8px; }
@@ -97,14 +90,8 @@
         }
         
         .lang-btn:hover { background: var(--primary-lighter); }
+        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
         
-        .lang-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        /* Stats */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -123,31 +110,13 @@
             border-top: 3px solid var(--primary);
         }
         
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-            border-top-color: var(--primary-dark);
-        }
+        .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
         
-        .stat-icon { 
-            width: 32px; 
-            height: 32px; 
-            margin: 0 auto 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .stat-icon svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--primary);
-        }
-        
+        .stat-icon { width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; }
+        .stat-icon svg { width: 28px; height: 28px; fill: var(--primary); }
         .stat-value { font-size: 26px; font-weight: 800; color: var(--primary-dark); }
         .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 600; }
         
-        /* Tabs */
         .tabs {
             display: flex;
             flex-wrap: wrap;
@@ -174,13 +143,8 @@
         }
         
         .tab:hover { background: var(--primary-lighter); color: var(--primary); }
+        .tab.active { background: var(--primary); color: white; }
         
-        .tab.active {
-            background: var(--primary);
-            color: white;
-        }
-        
-        /* Sections */
         .section { display: none; }
         .section.active { display: block; }
         
@@ -190,6 +154,7 @@
             border-radius: 14px;
             padding: 24px;
             box-shadow: var(--shadow);
+            margin-bottom: 16px;
         }
         
         .section-header {
@@ -201,13 +166,8 @@
             border-bottom: 2px solid var(--primary-lighter);
         }
         
-        .section-title {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--primary-dark);
-        }
+        .section-title { font-size: 20px; font-weight: 800; color: var(--primary-dark); }
         
-        /* Buttons */
         .btn {
             padding: 8px 16px;
             border: none;
@@ -223,23 +183,15 @@
         }
         
         .btn:hover { transform: translateY(-1px); }
-        
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-        
+        .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { background: var(--primary-dark); }
-        
         .btn-danger { background: #a0aec0; color: white; }
         .btn-danger:hover { background: #718096; }
-        
         .btn-warning { background: var(--primary-light); color: var(--primary-dark); }
         .btn-warning:hover { background: var(--primary); color: white; }
-        
+        .btn-success { background: var(--success); color: white; }
         .btn-sm { padding: 5px 10px; font-size: 12px; }
         
-        /* Items */
         .item {
             background: var(--primary-lighter);
             border: 1px solid var(--border);
@@ -252,41 +204,23 @@
         }
         
         body.en .item { border-right: none; border-left: 3px solid var(--primary); }
+        .item:hover { border-color: var(--primary); box-shadow: var(--shadow); background: white; }
         
-        .item:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow);
-            background: white;
-        }
-        
-        .item-title { 
-            font-weight: 700; 
-            font-size: 15px; 
-            margin-bottom: 4px; 
+        .item-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 4px;
             color: var(--text);
             display: flex;
             align-items: center;
             gap: 8px;
         }
         
-        .item-title svg {
-            width: 18px;
-            height: 18px;
-            fill: var(--primary);
-            flex-shrink: 0;
-        }
-        
+        .item-title svg { width: 18px; height: 18px; fill: var(--primary); flex-shrink: 0; }
         .item-sub { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
         .item-desc { font-size: 13px; color: var(--text); line-height: 1.6; margin-top: 6px; }
         
-        .item-actions {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            gap: 6px;
-        }
-        
+        .item-actions { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; }
         body.en .item-actions { left: auto; right: 10px; }
         
         .badge {
@@ -302,7 +236,6 @@
         .badge-green { background: #d4e8d4; color: #2d5a2d; }
         .badge-orange { background: #f0e4d4; color: #8b6f47; }
         
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -339,27 +272,11 @@
         }
         
         .modal-header h3 { font-size: 18px; font-weight: 800; color: var(--primary-dark); }
-        
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--muted);
-        }
-        
+        .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted); }
         .close-btn:hover { color: var(--primary-dark); }
         
         .form-group { margin-bottom: 14px; }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-        
+        .form-label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 700; color: var(--primary-dark); }
         .form-input, .form-textarea, .form-select {
             width: 100%;
             padding: 10px;
@@ -370,20 +287,11 @@
             background: var(--primary-lighter);
             transition: all 0.2s;
         }
-        
         .form-input:focus, .form-textarea:focus, .form-select:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: var(--card);
+            outline: none; border-color: var(--primary); background: var(--card);
         }
-        
         .form-textarea { min-height: 80px; resize: vertical; }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         
         .modal-footer {
             display: flex;
@@ -394,20 +302,8 @@
             border-top: 1px solid var(--border);
         }
         
-        .empty {
-            text-align: center;
-            padding: 40px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-        
-        .welcome-text {
-            color: var(--muted);
-            margin-top: 12px;
-            line-height: 1.8;
-            font-size: 14px;
-        }
-        
+        .empty { text-align: center; padding: 40px; color: var(--muted); font-size: 14px; }
+        .welcome-text { color: var(--muted); margin-top: 12px; line-height: 1.8; font-size: 14px; }
         .subsection-title {
             margin: 20px 0 12px;
             font-size: 15px;
@@ -416,18 +312,144 @@
             padding-right: 10px;
             border-right: 3px solid var(--primary);
         }
+        body.en .subsection-title { padding-right: 0; padding-left: 10px; border-right: none; border-left: 3px solid var(--primary); }
         
-        body.en .subsection-title {
-            padding-right: 0;
-            padding-left: 10px;
-            border-right: none;
-            border-left: 3px solid var(--primary);
+        /* Personal Info Form */
+        .personal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .personal-item {
+            background: var(--primary-lighter);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .personal-item label {
+            font-size: 11px;
+            color: var(--muted);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .personal-item .value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .personal-item .value.empty { color: var(--muted); font-style: italic; }
+        
+        /* Charts */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .chart-card {
+            background: var(--primary-lighter);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .chart-card h4 {
+            font-size: 14px;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .chart-wrap { position: relative; height: 220px; }
+        
+        /* Week Selector */
+        .week-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: var(--primary-lighter);
+            border-radius: 10px;
+        }
+        .week-btn {
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: inherit;
+        }
+        .week-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        /* Plan Table */
+        .plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        .plan-table th, .plan-table td {
+            border: 1px solid var(--border);
+            padding: 8px;
+            text-align: right;
+        }
+        body.en .plan-table th, body.en .plan-table td { text-align: left; }
+        .plan-table th { background: var(--primary); color: white; font-weight: 700; }
+        .plan-table td { background: var(--card); }
+        .plan-table input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 13px;
+            padding: 4px;
+        }
+        .plan-table input:focus { outline: 1px solid var(--primary); background: var(--primary-lighter); }
+        .plan-table .done-check { text-align: center; cursor: pointer; font-size: 18px; }
+        .plan-table .done-check.checked { color: var(--success); }
+        
+        .add-week-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+        }
+        
+        /* PDF Button */
+        .pdf-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+        }
+        body.en .pdf-btn { left: auto; right: 20px; }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .tabs, .btn, .item-actions, .pdf-btn, .modal, .lang-switch, .charts-grid, .week-selector, .add-week-btn { display: none !important; }
+            .section { display: block !important; page-break-inside: avoid; box-shadow: none; }
+            .header { box-shadow: none; }
+            #mealPlanSection, #sportPlanSection { display: none !important; }
         }
         
         @media (max-width: 768px) {
             .form-row { grid-template-columns: 1fr; }
             .stats { grid-template-columns: repeat(2, 1fr); }
             .header h1 { font-size: 20px; }
+            .personal-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -448,8 +470,9 @@
     </div>
 </div>
 
+<button class="btn pdf-btn" onclick="window.print()">📥 خروجی PDF</button>
+
 <script>
-// SVG Icons
 const ICONS = {
     briefcase: '<svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 0h-4V4h4v2z"/></svg>',
     education: '<svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>',
@@ -460,7 +483,8 @@ const ICONS = {
     project: '<svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>',
     certificate: '<svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>',
     goal: '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>',
-    plan: '<svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>'
+    meal: '<svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>',
+    article: '<svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>'
 };
 
 const T = {
@@ -469,92 +493,141 @@ const T = {
         add: 'افزودن', edit: 'ویرایش', delete: 'حذف', save: 'ذخیره', cancel: 'انصراف',
         empty: 'هنوز موردی اضافه نشده است.',
         confirm: 'آیا مطمئن هستید؟',
-        tabs: ['نمای کلی','مشاغل','تحصیلات','مهارت‌ها','کتاب‌ها','پادکست‌ها','ورزش‌ها','پروژه‌ها','گواهینامه‌ها','اهداف','برنامه‌ها'],
-        stats: ['مشاغل','تحصیلات','مهارت‌ها','کتاب‌ها','پادکست‌ها','ورزش‌ها','پروژه‌ها','گواهینامه‌ها','اهداف'],
-        statIcons: ['briefcase','education','skill','book','podcast','sport','project','certificate','goal'],
+        pdf: 'خروجی PDF',
+        tabs: ['نمای کلی','مشاغل','تحصیلات','مقالات و کتاب‌های من','مهارت‌ها','کتاب‌ها','پادکست‌ها','پلن ورزشی','پلن غذایی','پروژه‌ها','گواهینامه‌ها','اهداف'],
+        stats: ['مشاغل','تحصیلات','مقالات','مهارت‌ها','کتاب‌ها','پادکست‌ها','پروژه‌ها','گواهینامه‌ها','اهداف'],
+        statIcons: ['briefcase','education','article','skill','book','podcast','project','certificate','goal'],
         itemIcons: {
-            jobs: 'briefcase',
-            education: 'education',
-            software: 'skill',
-            books: 'book',
-            podcasts: 'podcast',
-            sports: 'sport',
-            projects: 'project',
-            certificates: 'certificate',
-            goals: 'goal',
-            monthlyPlan: 'plan'
+            jobs: 'briefcase', education: 'education', publications: 'article',
+            software: 'skill', books: 'book', podcasts: 'podcast',
+            sports: 'sport', meal: 'meal', projects: 'project',
+            certificates: 'certificate', goals: 'goal'
         },
         labels: {
+            name:'نام و نام خانوادگی', age:'سن', gender:'جنسیت', city:'محل سکونت',
+            phone:'شماره تماس', email:'ایمیل', linkedin:'لینکدین', orcid:'ORCID',
+            university:'آخرین دانشگاه', position:'آخرین پست سازمانی',
             title:'عنوان', company:'شرکت', period:'دوره', duration:'مدت', location:'مکان',
             type:'نوع', desc:'توضیحات', date:'تاریخ', degree:'مقطع', field:'رشته',
-            university:'دانشگاه', gpa:'معدل', year:'سال', name:'نام', level:'سطح',
-            hours:'ساعت', author:'نویسنده', rating:'امتیاز (1-5)', notes:'یادداشت',
+            gpa:'معدل', year:'سال', name2:'نام', level:'سطح', hours:'ساعت',
+            author:'نویسنده', rating:'امتیاز (1-5)', notes:'یادداشت',
             episode:'اپیزود', issuer:'صادرکننده', category:'دسته', target:'هدف',
-            deadline:'مهلت', priority:'اولویت', progress:'پیشرفت (%)'
+            deadline:'مهلت', priority:'اولویت', progress:'پیشرفت (%)',
+            journal:'ژورنال/ناشر', lang:'زبان', submitDate:'تاریخ سابمیت',
+            acceptDate:'تاریخ اکسپت', eduPeriod:'دوره تحصیلی', pubType:'نوع',
+            weekName:'نام هفته', day:'روز', breakfast:'صبحانه', lunch:'ناهار',
+            dinner:'شام', exercise:'ورزش', done:'انجام شد', addWeek:'افزودن هفته جدید',
+            weekLabel:'هفته'
         },
-        types: { management:'مدیریتی', technical:'فنی' },
+        types: { management:'مدیریتی', technical:'فنی و مهندسی' },
         levels: { advanced:'پیشرفته', intermediate:'متوسط', basic:'مقدماتی' },
         priorities: { high:'بالا', medium:'متوسط', low:'پایین' },
         statuses: { done:'انجام شده', progress:'در حال انجام', planned:'برنامه‌ریزی شده' },
+        pubTypes: { article:'مقاله', book:'کتاب', chapter:'فصل کتاب', conference:'کنفرانس' },
+        languages: { fa:'فارسی', en:'انگلیسی', both:'دو زبانه' },
+        days: ['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
         softwareTitle: 'نرم‌افزارها',
         mgmtTitle: 'مهارت‌های مدیریتی',
-        techTitle: 'مهارت‌های فنی'
+        techTitle: 'مهارت‌های فنی و مهندسی',
+        personalTitle: 'مشخصات فردی',
+        chartsTitle: 'نمودارهای وضعیت',
+        weekPlan: 'برنامه هفتگی'
     },
     en: {
         title: 'Personal Dashboard',
         add: 'Add', edit: 'Edit', delete: 'Delete', save: 'Save', cancel: 'Cancel',
         empty: 'No items yet.',
         confirm: 'Are you sure?',
-        tabs: ['Overview','Jobs','Education','Skills','Books','Podcasts','Sports','Projects','Certificates','Goals','Plans'],
-        stats: ['Jobs','Education','Skills','Books','Podcasts','Sports','Projects','Certificates','Goals'],
-        statIcons: ['briefcase','education','skill','book','podcast','sport','project','certificate','goal'],
+        pdf: 'Export PDF',
+        tabs: ['Overview','Jobs','Education','My Publications','Skills','Books','Podcasts','Sport Plan','Meal Plan','Projects','Certificates','Goals'],
+        stats: ['Jobs','Education','Publications','Skills','Books','Podcasts','Projects','Certificates','Goals'],
+        statIcons: ['briefcase','education','article','skill','book','podcast','project','certificate','goal'],
         itemIcons: {
-            jobs: 'briefcase',
-            education: 'education',
-            software: 'skill',
-            books: 'book',
-            podcasts: 'podcast',
-            sports: 'sport',
-            projects: 'project',
-            certificates: 'certificate',
-            goals: 'goal',
-            monthlyPlan: 'plan'
+            jobs: 'briefcase', education: 'education', publications: 'article',
+            software: 'skill', books: 'book', podcasts: 'podcast',
+            sports: 'sport', meal: 'meal', projects: 'project',
+            certificates: 'certificate', goals: 'goal'
         },
         labels: {
+            name:'Full Name', age:'Age', gender:'Gender', city:'City',
+            phone:'Phone', email:'Email', linkedin:'LinkedIn', orcid:'ORCID',
+            university:'Last University', position:'Last Position',
             title:'Title', company:'Company', period:'Period', duration:'Duration', location:'Location',
             type:'Type', desc:'Description', date:'Date', degree:'Degree', field:'Field',
-            university:'University', gpa:'GPA', year:'Year', name:'Name', level:'Level',
-            hours:'Hours', author:'Author', rating:'Rating (1-5)', notes:'Notes',
+            gpa:'GPA', year:'Year', name2:'Name', level:'Level', hours:'Hours',
+            author:'Author', rating:'Rating (1-5)', notes:'Notes',
             episode:'Episode', issuer:'Issuer', category:'Category', target:'Goal',
-            deadline:'Deadline', priority:'Priority', progress:'Progress (%)'
+            deadline:'Deadline', priority:'Priority', progress:'Progress (%)',
+            journal:'Journal/Publisher', lang:'Language', submitDate:'Submit Date',
+            acceptDate:'Accept Date', eduPeriod:'Education Period', pubType:'Type',
+            weekName:'Week Name', day:'Day', breakfast:'Breakfast', lunch:'Lunch',
+            dinner:'Dinner', exercise:'Exercise', done:'Done', addWeek:'Add New Week',
+            weekLabel:'Week'
         },
-        types: { management:'Management', technical:'Technical' },
+        types: { management:'Management', technical:'Technical & Engineering' },
         levels: { advanced:'Advanced', intermediate:'Intermediate', basic:'Basic' },
         priorities: { high:'High', medium:'Medium', low:'Low' },
         statuses: { done:'Done', progress:'In Progress', planned:'Planned' },
+        pubTypes: { article:'Article', book:'Book', chapter:'Book Chapter', conference:'Conference' },
+        languages: { fa:'Persian', en:'English', both:'Bilingual' },
+        days: ['Sat','Sun','Mon','Tue','Wed','Thu','Fri'],
         softwareTitle: 'Software',
         mgmtTitle: 'Management Skills',
-        techTitle: 'Technical Skills'
+        techTitle: 'Technical & Engineering Skills',
+        personalTitle: 'Personal Information',
+        chartsTitle: 'Status Charts',
+        weekPlan: 'Weekly Plan'
     }
 };
 
 const emptyData = {
-    fa: { jobs:[], education:[], software:[], mgmtSkills:[], techSkills:[],
-        books:[], podcasts:[], sports:[], projects:[], certificates:[],
-        goals:[], monthlyPlan:[] },
-    en: { jobs:[], education:[], software:[], mgmtSkills:[], techSkills:[],
-        books:[], podcasts:[], sports:[], projects:[], certificates:[],
-        goals:[], monthlyPlan:[] }
+    fa: {
+        personal: {},
+        jobs: [], education: [], publications: [],
+        software: [], mgmtSkills: [], techSkills: [],
+        books: [], podcasts: [],
+        mealPlan: { weeks: [] },
+        sportPlan: { weeks: [] },
+        projects: [], certificates: [], goals: []
+    },
+    en: {
+        personal: {},
+        jobs: [], education: [], publications: [],
+        software: [], mgmtSkills: [], techSkills: [],
+        books: [], podcasts: [],
+        mealPlan: { weeks: [] },
+        sportPlan: { weeks: [] },
+        projects: [], certificates: [], goals: []
+    }
 };
 
 let lang = 'fa';
 let data = null;
 let edit = { type:null, idx:null };
+let currentWeek = { meal: 0, sport: 0 };
+let charts = {};
 
 function init() {
     try {
-        const s = localStorage.getItem('personalDash');
-        data = s ? JSON.parse(s) : JSON.parse(JSON.stringify(emptyData));
+        const s = localStorage.getItem('personalDashV2');
+        if (s) {
+            const parsed = JSON.parse(s);
+            data = {
+                fa: { ...JSON.parse(JSON.stringify(emptyData.fa)), ...(parsed.fa || {}) },
+                en: { ...JSON.parse(JSON.stringify(emptyData.en)), ...(parsed.en || {}) }
+            };
+            // Ensure new fields exist
+            if (!data.fa.personal) data.fa.personal = {};
+            if (!data.en.personal) data.en.personal = {};
+            if (!data.fa.publications) data.fa.publications = [];
+            if (!data.en.publications) data.en.publications = [];
+            if (!data.fa.mealPlan) data.fa.mealPlan = { weeks: [] };
+            if (!data.en.mealPlan) data.en.mealPlan = { weeks: [] };
+            if (!data.fa.sportPlan) data.fa.sportPlan = { weeks: [] };
+            if (!data.en.sportPlan) data.en.sportPlan = { weeks: [] };
+        } else {
+            data = JSON.parse(JSON.stringify(emptyData));
+        }
     } catch(e) { data = JSON.parse(JSON.stringify(emptyData)); }
     render();
 }
@@ -568,7 +641,7 @@ function switchLang(l) {
 }
 
 function save() {
-    try { localStorage.setItem('personalDash', JSON.stringify(data)); } catch(e){}
+    try { localStorage.setItem('personalDashV2', JSON.stringify(data)); } catch(e){}
 }
 
 function t(k) {
@@ -578,22 +651,15 @@ function t(k) {
     return r;
 }
 
-function icon(name) {
-    return ICONS[name] || '';
-}
+function icon(name) { return ICONS[name] || ''; }
 
 function render() {
     const d = data[lang];
     const counts = [
-        d.jobs.length,
-        d.education.length,
+        d.jobs.length, d.education.length, d.publications.length,
         d.software.length + d.mgmtSkills.length + d.techSkills.length,
-        d.books.length,
-        d.podcasts.length,
-        d.sports.length,
-        d.projects.length,
-        d.certificates.length,
-        d.goals.length
+        d.books.length, d.podcasts.length,
+        d.projects.length, d.certificates.length, d.goals.length
     ];
     
     let html = `
@@ -620,40 +686,65 @@ function render() {
                 <button class="tab ${i===0?'active':''}" onclick="showTab(${i},this)">${n}</button>
             `).join('')}
         </div>
-        <div class="section active" id="s0">
-            <div class="section-card">
-                <div class="section-title">${t('tabs')[0]}</div>
-                <p class="welcome-text">
-                    ${lang==='fa'
-                        ?'به داشبورد شخصی خوش آمدید. از تب‌های بالا برای مدیریت حوزه‌های مختلف زندگی حرفه‌ای و شخصی خود استفاده کنید.'
-                        :'Welcome to your Personal Dashboard. Use the tabs above to manage different areas of your professional and personal life.'}
-                </p>
-            </div>
-        </div>
     `;
     
+    html += renderOverview(d);
     html += renderJobs(d);
     html += renderEducation(d);
+    html += renderPublications(d);
     html += renderSkills(d);
     html += renderBooks(d);
     html += renderPodcasts(d);
-    html += renderSports(d);
+    html += renderSportPlan(d);
+    html += renderMealPlan(d);
     html += renderProjects(d);
     html += renderCertificates(d);
     html += renderGoals(d);
-    html += renderPlan(d);
     
     document.getElementById('app').innerHTML = html;
+    
+    setTimeout(drawCharts, 300);
 }
 
-function renderItemCard(item, type, i, extra='') {
-    const iconKey = t('itemIcons')[type] || 'briefcase';
-    return `<div class="item">
-        <div class="item-actions">
-            <button class="btn btn-warning btn-sm" onclick="openModal('${type}',${i})">${t('edit')}</button>
-            <button class="btn btn-danger btn-sm" onclick="del('${type}',${i})">${t('delete')}</button>
+function renderOverview(d) {
+    const p = d.personal || {};
+    const fields = [
+        { key: 'name', label: t('labels').name },
+        { key: 'age', label: t('labels').age },
+        { key: 'gender', label: t('labels').gender },
+        { key: 'city', label: t('labels').city },
+        { key: 'phone', label: t('labels').phone },
+        { key: 'email', label: t('labels').email },
+        { key: 'linkedin', label: t('labels').linkedin },
+        { key: 'orcid', label: t('labels').orcid },
+        { key: 'university', label: t('labels').university },
+        { key: 'position', label: t('labels').position }
+    ];
+    
+    return `<div class="section active" id="s0">
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-title">${t('tabs')[0]} - ${t('personalTitle')}</div>
+                <button class="btn btn-primary" onclick="openModal('personal')">✏️ ${t('edit')}</button>
+            </div>
+            <div class="personal-grid">
+                ${fields.map(f=>`
+                    <div class="personal-item">
+                        <label>${f.label}</label>
+                        <div class="value ${p[f.key]?'':'empty'}">${p[f.key] || '—'}</div>
+                    </div>
+                `).join('')}
+            </div>
         </div>
-        ${extra}
+        <div class="section-card">
+            <div class="section-title" style="margin-bottom:15px;">${t('chartsTitle')}</div>
+            <div class="charts-grid">
+                <div class="chart-card"><h4>${lang==='fa'?'پیشرفت کلی':'Overall Progress'}</h4><div class="chart-wrap"><canvas id="chart1"></canvas></div></div>
+                <div class="chart-card"><h4>${lang==='fa'?'توزیع مهارت‌ها':'Skills Distribution'}</h4><div class="chart-wrap"><canvas id="chart2"></canvas></div></div>
+                <div class="chart-card"><h4>${lang==='fa'?'مقالات به تفکیک نوع':'Publications by Type'}</h4><div class="chart-wrap"><canvas id="chart3"></canvas></div></div>
+                <div class="chart-card"><h4>${lang==='fa'?'وضعیت اهداف':'Goals Status'}</h4><div class="chart-wrap"><canvas id="chart4"></canvas></div></div>
+            </div>
+        </div>
     </div>`;
 }
 
@@ -686,16 +777,33 @@ function renderEducation(d) {
                     <button class="btn btn-danger btn-sm" onclick="del('education',${i})">${t('delete')}</button>
                 </div>
                 <div class="item-title">${icon('education')} ${e.degree||''} - ${e.field||''}</div>
-                <div class="item-sub">${e.university||''} | ${t('labels').gpa}: ${e.gpa||''} | ${e.year||''}</div>
+                <div class="item-sub">${e.university||''} | ${t('labels').gpa}: ${e.gpa||''} | ${e.startYear||''} - ${e.endYear||''}</div>
+            </div>`).join('')}
+    </div></div>`;
+}
+
+function renderPublications(d) {
+    return `<div class="section" id="s3"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[3]}</div>
+        <button class="btn btn-primary" onclick="openModal('publications')">+ ${t('add')}</button></div>
+        ${d.publications.length===0?`<div class="empty">${t('empty')}</div>`:
+            d.publications.map((p,i)=>`<div class="item">
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('publications',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('publications',${i})">${t('delete')}</button>
+                </div>
+                <div class="item-title">${icon('article')} ${p.title||''}</div>
+                <div class="item-sub">${p.journal||''} | ${t('pubTypes')[p.pubType]||p.pubType} | ${t('languages')[p.lang]||p.lang}</div>
+                <div class="item-sub">${t('labels').submitDate}: ${p.submitDate||'-'} | ${t('labels').acceptDate}: ${p.acceptDate||'-'}</div>
+                ${p.eduPeriod?`<span class="badge badge-blue">${p.eduPeriod}</span>`:''}
             </div>`).join('')}
     </div></div>`;
 }
 
 function renderSkills(d) {
-    return `<div class="section" id="s3"><div class="section-card">
-        <div class="section-header"><div class="section-title">${t('tabs')[3]}</div>
-        <button class="btn btn-primary" onclick="openModal('software')">+ ${t('add')}</button></div>
-        <h4 class="subsection-title">${t('softwareTitle')}</h4>
+    return `<div class="section" id="s4"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[4]}</div></div>
+        <h4 class="subsection-title">${t('softwareTitle')} <button class="btn btn-primary btn-sm" onclick="openModal('software')" style="margin-right:10px;">+ ${t('add')}</button></h4>
         ${d.software.length===0?`<div class="empty">${t('empty')}</div>`:
             d.software.map((s,i)=>`<div class="item">
                 <div class="item-actions">
@@ -705,24 +813,30 @@ function renderSkills(d) {
                 <div class="item-title">${icon('skill')} ${s.name||''}</div>
                 <span class="badge badge-blue">${s.level||''}</span>
             </div>`).join('')}
-        <h4 class="subsection-title">${t('mgmtTitle')}</h4>
+        <h4 class="subsection-title">${t('mgmtTitle')} <button class="btn btn-primary btn-sm" onclick="openModal('mgmtSkills')" style="margin-right:10px;">+ ${t('add')}</button></h4>
         ${d.mgmtSkills.length===0?`<div class="empty">${t('empty')}</div>`:
             d.mgmtSkills.map((s,i)=>`<div class="item">
-                <div class="item-actions"><button class="btn btn-danger btn-sm" onclick="del('mgmtSkills',${i})">${t('delete')}</button></div>
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('mgmtSkills',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('mgmtSkills',${i})">${t('delete')}</button>
+                </div>
                 <div class="item-title">${icon('skill')} ${s.skill||''}</div>
             </div>`).join('')}
-        <h4 class="subsection-title">${t('techTitle')}</h4>
+        <h4 class="subsection-title">${t('techTitle')} <button class="btn btn-primary btn-sm" onclick="openModal('techSkills')" style="margin-right:10px;">+ ${t('add')}</button></h4>
         ${d.techSkills.length===0?`<div class="empty">${t('empty')}</div>`:
             d.techSkills.map((s,i)=>`<div class="item">
-                <div class="item-actions"><button class="btn btn-danger btn-sm" onclick="del('techSkills',${i})">${t('delete')}</button></div>
+                <div class="item-actions">
+                    <button class="btn btn-warning btn-sm" onclick="openModal('techSkills',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('techSkills',${i})">${t('delete')}</button>
+                </div>
                 <div class="item-title">${icon('skill')} ${s.skill||''}</div>
             </div>`).join('')}
     </div></div>`;
 }
 
 function renderBooks(d) {
-    return `<div class="section" id="s4"><div class="section-card">
-        <div class="section-header"><div class="section-title">${t('tabs')[4]}</div>
+    return `<div class="section" id="s5"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[5]}</div>
         <button class="btn btn-primary" onclick="openModal('books')">+ ${t('add')}</button></div>
         ${d.books.length===0?`<div class="empty">${t('empty')}</div>`:
             d.books.map((b,i)=>`<div class="item">
@@ -739,8 +853,8 @@ function renderBooks(d) {
 }
 
 function renderPodcasts(d) {
-    return `<div class="section" id="s5"><div class="section-card">
-        <div class="section-header"><div class="section-title">${t('tabs')[5]}</div>
+    return `<div class="section" id="s6"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[6]}</div>
         <button class="btn btn-primary" onclick="openModal('podcasts')">+ ${t('add')}</button></div>
         ${d.podcasts.length===0?`<div class="empty">${t('empty')}</div>`:
             d.podcasts.map((p,i)=>`<div class="item">
@@ -755,44 +869,150 @@ function renderPodcasts(d) {
     </div></div>`;
 }
 
-function renderSports(d) {
-    return `<div class="section" id="s6"><div class="section-card">
-        <div class="section-header"><div class="section-title">${t('tabs')[6]}</div>
-        <button class="btn btn-primary" onclick="openModal('sports')">+ ${t('add')}</button></div>
-        ${d.sports.length===0?`<div class="empty">${t('empty')}</div>`:
-            d.sports.map((s,i)=>`<div class="item">
-                <div class="item-actions">
-                    <button class="btn btn-warning btn-sm" onclick="openModal('sports',${i})">${t('edit')}</button>
-                    <button class="btn btn-danger btn-sm" onclick="del('sports',${i})">${t('delete')}</button>
-                </div>
-                <div class="item-title">${icon('sport')} ${s.name||''}</div>
-                <div class="item-sub">${s.frequency||''}</div>
-                ${s.notes?`<div class="item-desc">${s.notes}</div>`:''}
-            </div>`).join('')}
-    </div></div>`;
+function renderSportPlan(d) {
+    const plan = d.sportPlan || { weeks: [] };
+    const weeks = plan.weeks || [];
+    const weekIdx = currentWeek.sport;
+    const week = weeks[weekIdx];
+    
+    let html = `<div class="section" id="s7">
+        <div class="section-card">
+            <div class="section-header"><div class="section-title">${t('tabs')[7]}</div></div>
+            <div class="week-selector">
+                ${weeks.length===0?`<span style="color:var(--muted); font-size:13px;">${t('empty')}</span>`:
+                    weeks.map((w,i)=>`<button class="week-btn ${i===weekIdx?'active':''}" onclick="selectWeek('sport',${i})">${w.name||t('labels').weekLabel+' '+(i+1)}</button>`).join('')}
+            </div>
+            <button class="add-week-btn" onclick="addWeek('sport')">+ ${t('labels').addWeek}</button>
+            ${week?renderWeekTable(week, 'sport'):''}
+        </div>
+    </div>`;
+    return html;
+}
+
+function renderMealPlan(d) {
+    const plan = d.mealPlan || { weeks: [] };
+    const weeks = plan.weeks || [];
+    const weekIdx = currentWeek.meal;
+    const week = weeks[weekIdx];
+    
+    let html = `<div class="section" id="s8">
+        <div class="section-card">
+            <div class="section-header"><div class="section-title">${t('tabs')[8]}</div></div>
+            <div class="week-selector">
+                ${weeks.length===0?`<span style="color:var(--muted); font-size:13px;">${t('empty')}</span>`:
+                    weeks.map((w,i)=>`<button class="week-btn ${i===weekIdx?'active':''}" onclick="selectWeek('meal',${i})">${w.name||t('labels').weekLabel+' '+(i+1)}</button>`).join('')}
+            </div>
+            <button class="add-week-btn" onclick="addWeek('meal')">+ ${t('labels').addWeek}</button>
+            ${week?renderMealTable(week):''}
+        </div>
+    </div>`;
+    return html;
+}
+
+function renderWeekTable(week, type) {
+    const days = t('days');
+    return `<table class="plan-table">
+        <thead><tr><th>${t('labels').day}</th><th>${t('labels').exercise}</th><th>${t('labels').done}</th></tr></thead>
+        <tbody>
+            ${days.map((day,i)=>{
+                const d = week.days[i] || { exercise:'', done:false };
+                return `<tr>
+                    <td><strong>${day}</strong></td>
+                    <td><input type="text" value="${d.exercise||''}" onchange="updateWeekDay('${type}',${currentWeek[type]},${i},'exercise',this.value)" placeholder="${lang==='fa'?'ورزش...':'Exercise...'}"></td>
+                    <td class="done-check ${d.done?'checked':''}" onclick="toggleWeekDay('${type}',${currentWeek[type]},${i})">${d.done?'✓':'○'}</td>
+                </tr>`;
+            }).join('')}
+        </tbody>
+    </table>`;
+}
+
+function renderMealTable(week) {
+    const days = t('days');
+    return `<table class="plan-table">
+        <thead><tr><th>${t('labels').day}</th><th>${t('labels').breakfast}</th><th>${t('labels').lunch}</th><th>${t('labels').dinner}</th><th>${t('labels').done}</th></tr></thead>
+        <tbody>
+            ${days.map((day,i)=>{
+                const d = week.days[i] || { breakfast:'', lunch:'', dinner:'', done:false };
+                return `<tr>
+                    <td><strong>${day}</strong></td>
+                    <td><input type="text" value="${d.breakfast||''}" onchange="updateMealDay(${currentWeek.meal},${i},'breakfast',this.value)"></td>
+                    <td><input type="text" value="${d.lunch||''}" onchange="updateMealDay(${currentWeek.meal},${i},'lunch',this.value)"></td>
+                    <td><input type="text" value="${d.dinner||''}" onchange="updateMealDay(${currentWeek.meal},${i},'dinner',this.value)"></td>
+                    <td class="done-check ${d.done?'checked':''}" onclick="toggleMealDay(${currentWeek.meal},${i})">${d.done?'✓':'○'}</td>
+                </tr>`;
+            }).join('')}
+        </tbody>
+    </table>`;
+}
+
+function addWeek(type) {
+    const name = prompt(lang==='fa'?'نام هفته (مثلاً: هفته اول مهر):':'Week name (e.g., Week 1 October):');
+    if (!name) return;
+    const plan = type==='sport'?data[lang].sportPlan:data[lang].mealPlan;
+    if (!plan.weeks) plan.weeks = [];
+    plan.weeks.push({ name: name, days: [{},{},{},{},{},{},{}] });
+    if (type==='sport') currentWeek.sport = plan.weeks.length - 1;
+    else currentWeek.meal = plan.weeks.length - 1;
+    save(); render();
+}
+
+function selectWeek(type, idx) {
+    if (type==='sport') currentWeek.sport = idx;
+    else currentWeek.meal = idx;
+    render();
+}
+
+function updateWeekDay(type, weekIdx, dayIdx, field, value) {
+    const plan = type==='sport'?data[lang].sportPlan:data[lang].mealPlan;
+    if (!plan.weeks[weekIdx]) plan.weeks[weekIdx] = { days: [] };
+    if (!plan.weeks[weekIdx].days[dayIdx]) plan.weeks[weekIdx].days[dayIdx] = {};
+    plan.weeks[weekIdx].days[dayIdx][field] = value;
+    save();
+}
+
+function toggleWeekDay(type, weekIdx, dayIdx) {
+    const plan = type==='sport'?data[lang].sportPlan:data[lang].mealPlan;
+    if (!plan.weeks[weekIdx].days[dayIdx]) plan.weeks[weekIdx].days[dayIdx] = {};
+    plan.weeks[weekIdx].days[dayIdx].done = !plan.weeks[weekIdx].days[dayIdx].done;
+    save(); render();
+}
+
+function updateMealDay(weekIdx, dayIdx, field, value) {
+    const plan = data[lang].mealPlan;
+    if (!plan.weeks[weekIdx]) plan.weeks[weekIdx] = { days: [] };
+    if (!plan.weeks[weekIdx].days[dayIdx]) plan.weeks[weekIdx].days[dayIdx] = {};
+    plan.weeks[weekIdx].days[dayIdx][field] = value;
+    save();
+}
+
+function toggleMealDay(weekIdx, dayIdx) {
+    const plan = data[lang].mealPlan;
+    if (!plan.weeks[weekIdx].days[dayIdx]) plan.weeks[weekIdx].days[dayIdx] = {};
+    plan.weeks[weekIdx].days[dayIdx].done = !plan.weeks[weekIdx].days[dayIdx].done;
+    save(); render();
 }
 
 function renderProjects(d) {
-    return `<div class="section" id="s7"><div class="section-card">
-        <div class="section-header"><div class="section-title">${t('tabs')[7]}</div>
+    return `<div class="section" id="s9"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[9]}</div>
         <button class="btn btn-primary" onclick="openModal('projects')">+ ${t('add')}</button></div>
         ${d.projects.length===0?`<div class="empty">${t('empty')}</div>`:
-            d.projects.map((p,i)=>`<div class="item">
+            d.projects.filter(p=>p.title).map((p,i)=>`<div class="item">
                 <div class="item-actions">
-                    <button class="btn btn-warning btn-sm" onclick="openModal('projects',${i})">${t('edit')}</button>
-                    <button class="btn btn-danger btn-sm" onclick="del('projects',${i})">${t('delete')}</button>
+                    <button class="btn btn-warning btn-sm" onclick="openModal('projects',${d.projects.indexOf(p)})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('projects',${d.projects.indexOf(p)})">${t('delete')}</button>
                 </div>
                 <div class="item-title">${icon('project')} ${p.title||''}</div>
                 <div class="item-sub">${p.year||''} | ${p.category||''}</div>
-                <span class="badge badge-${p.status==='done'?'green':p.status==='progress'?'orange':'blue'}">${t('statuses')[p.status]||p.status}</span>
+                <div class="item-sub"><strong>${lang==='fa'?'وضعیت پروژه':'Project Status'}:</strong> <span class="badge badge-${p.status==='done'?'green':p.status==='progress'?'orange':'blue'}">${t('statuses')[p.status]||p.status||'-'}</span></div>
                 ${p.desc?`<div class="item-desc">${p.desc}</div>`:''}
             </div>`).join('')}
     </div></div>`;
 }
 
 function renderCertificates(d) {
-    return `<div class="section" id="s8"><div class="section-card">
-        <div class="section-header"><div class="section-title">${t('tabs')[8]}</div>
+    return `<div class="section" id="s10"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[10]}</div>
         <button class="btn btn-primary" onclick="openModal('certificates')">+ ${t('add')}</button></div>
         ${d.certificates.length===0?`<div class="empty">${t('empty')}</div>`:
             d.certificates.map((c,i)=>`<div class="item">
@@ -801,14 +1021,14 @@ function renderCertificates(d) {
                     <button class="btn btn-danger btn-sm" onclick="del('certificates',${i})">${t('delete')}</button>
                 </div>
                 <div class="item-title">${icon('certificate')} ${c.name||''}</div>
-                <div class="item-sub">${c.issuer||''} | ${c.year||''}</div>
+                <div class="item-sub">${c.issuer||''} | ${c.year||''} | ${t('labels').duration}: ${c.duration||''}</div>
             </div>`).join('')}
     </div></div>`;
 }
 
 function renderGoals(d) {
-    return `<div class="section" id="s9"><div class="section-card">
-        <div class="section-header"><div class="section-title">${t('tabs')[9]}</div>
+    return `<div class="section" id="s11"><div class="section-card">
+        <div class="section-header"><div class="section-title">${t('tabs')[11]}</div>
         <button class="btn btn-primary" onclick="openModal('goals')">+ ${t('add')}</button></div>
         ${d.goals.length===0?`<div class="empty">${t('empty')}</div>`:
             d.goals.map((g,i)=>`<div class="item">
@@ -823,22 +1043,88 @@ function renderGoals(d) {
     </div></div>`;
 }
 
-function renderPlan(d) {
-    return `<div class="section" id="s10"><div class="section-card">
-        <div class="section-header"><div class="section-title">${t('tabs')[10]}</div>
-        <button class="btn btn-primary" onclick="openModal('monthlyPlan')">+ ${t('add')}</button></div>
-        ${d.monthlyPlan.length===0?`<div class="empty">${t('empty')}</div>`:
-            d.monthlyPlan.map((p,i)=>`<div class="item">
-                <div class="item-actions">
-                    <button class="btn btn-warning btn-sm" onclick="openModal('monthlyPlan',${i})">${t('edit')}</button>
-                    <button class="btn btn-danger btn-sm" onclick="del('monthlyPlan',${i})">${t('delete')}</button>
-                </div>
-                <div class="item-title">${icon('plan')} ${p.title||''}</div>
-                <div class="item-sub">${p.category||''}</div>
-                <span class="badge badge-${p.status==='done'?'green':p.status==='progress'?'orange':'blue'}">${t('statuses')[p.status]||p.status}</span>
-                ${p.notes?`<div class="item-desc">${p.notes}</div>`:''}
-            </div>`).join('')}
-    </div></div>`;
+function drawCharts() {
+    Object.values(charts).forEach(c=>{if(c)c.destroy();});
+    charts = {};
+    const d = data[lang];
+    const colors = { primary:'#4a6fa5', dark:'#2d4a73', light:'#c8d8e8', success:'#48bb78', warning:'#f59e0b', muted:'#94a3b8' };
+    const font = lang==='fa'?'Vazirmatn, Tahoma':'Times New Roman, serif';
+    
+    // Chart 1: Overall Progress
+    const c1 = document.getElementById('chart1');
+    if (c1) {
+        charts.c1 = new Chart(c1, {
+            type: 'radar',
+            data: {
+                labels: t('stats'),
+                datasets: [{
+                    data: [
+                        Math.min(d.jobs.length*10,100),
+                        Math.min(d.education.length*20,100),
+                        Math.min(d.publications.length*10,100),
+                        Math.min((d.software.length+d.mgmtSkills.length+d.techSkills.length)*5,100),
+                        Math.min(d.books.length*5,100),
+                        Math.min(d.podcasts.length*10,100),
+                        Math.min(d.projects.length*10,100),
+                        Math.min(d.certificates.length*10,100),
+                        d.goals.length>0?d.goals.reduce((s,g)=>s+(parseInt(g.progress)||0),0)/d.goals.length:0
+                    ],
+                    backgroundColor: 'rgba(74,111,165,0.2)',
+                    borderColor: colors.primary,
+                    borderWidth: 2,
+                    pointBackgroundColor: colors.primary
+                }]
+            },
+            options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{font:{family:font,size:11}}}}, scales:{r:{beginAtZero:true,max:100,ticks:{font:{family:font,size:10}},pointLabels:{font:{family:font,size:11}}}}}
+        });
+    }
+    
+    // Chart 2: Skills Distribution
+    const c2 = document.getElementById('chart2');
+    if (c2) {
+        const adv = d.software.filter(s=>s.level===t('levels').advanced).length;
+        const mid = d.software.filter(s=>s.level===t('levels').intermediate).length;
+        const bas = d.software.filter(s=>s.level===t('levels').basic).length;
+        charts.c2 = new Chart(c2, {
+            type: 'doughnut',
+            data: {
+                labels: [t('levels').advanced, t('levels').intermediate, t('levels').basic],
+                datasets: [{ data:[adv,mid,bas], backgroundColor:[colors.success,colors.warning,colors.muted], borderWidth:0 }]
+            },
+            options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom',labels:{font:{family:font,size:11}}}}}
+        });
+    }
+    
+    // Chart 3: Publications by Type
+    const c3 = document.getElementById('chart3');
+    if (c3) {
+        const types = Object.keys(t('pubTypes'));
+        const counts = types.map(tp=>d.publications.filter(p=>p.pubType===tp).length);
+        charts.c3 = new Chart(c3, {
+            type: 'bar',
+            data: {
+                labels: types.map(tp=>t('pubTypes')[tp]),
+                datasets: [{ label:lang==='fa'?'تعداد':'Count', data:counts, backgroundColor:colors.primary, borderRadius:6 }]
+            },
+            options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{font:{family:font,size:11}}}}, scales:{x:{ticks:{font:{family:font,size:11}}},y:{beginAtZero:true,ticks:{stepSize:1,font:{family:font,size:11}}}}}
+        });
+    }
+    
+    // Chart 4: Goals Status
+    const c4 = document.getElementById('chart4');
+    if (c4) {
+        const done = d.goals.filter(g=>g.status==='done').length;
+        const progress = d.goals.filter(g=>g.status==='progress').length;
+        const planned = d.goals.filter(g=>g.status==='planned').length;
+        charts.c4 = new Chart(c4, {
+            type: 'pie',
+            data: {
+                labels: [t('statuses').done, t('statuses').progress, t('statuses').planned],
+                datasets: [{ data:[done,progress,planned], backgroundColor:[colors.success,colors.warning,colors.muted], borderWidth:0 }]
+            },
+            options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom',labels:{font:{family:font,size:11}}}}}
+        });
+    }
 }
 
 function showTab(i, btn) {
@@ -846,63 +1132,82 @@ function showTab(i, btn) {
     document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
     document.getElementById('s'+i).classList.add('active');
     btn.classList.add('active');
+    if (i===0) setTimeout(drawCharts, 100);
 }
 
 function openModal(type, idx) {
-    edit = { type: type, idx: (idx !== undefined ? idx : null) };
+    edit = { type: type, idx: (idx !== undefined && idx !== null ? idx : null) };
     const d = data[lang];
     const L = t('labels');
-    const item = (idx !== null && d[type] && d[type][idx]) ? d[type][idx] : {};
+    
+    // Safe item retrieval
+    let item = {};
+    if (edit.idx !== null && d[type] && Array.isArray(d[type]) && d[type][edit.idx]) {
+        item = d[type][edit.idx];
+    } else if (type === 'personal') {
+        item = d.personal || {};
+    }
     
     let title = '';
     let body = '';
     
-    const field = (id, label, type='text', val='') => `<div class="form-group"><label class="form-label">${label}</label><input class="form-input" type="${type}" id="f_${id}" value="${val||''}"></div>`;
+    const field = (id, label, type='text', val='') => `<div class="form-group"><label class="form-label">${label}</label><input class="form-input" type="${type}" id="f_${id}" value="${(val||'').toString().replace(/"/g,'&quot;')}"></div>`;
     const select = (id, label, opts, val='') => `<div class="form-group"><label class="form-label">${label}</label><select class="form-select" id="f_${id}">${opts.map(o=>`<option value="${o.v}" ${o.v===val?'selected':''}>${o.l}</option>`).join('')}</select></div>`;
-    const textarea = (id, label, val='') => `<div class="form-group"><label class="form-label">${label}</label><textarea class="form-textarea" id="f_${id}">${val||''}</textarea></div>`;
+    const textarea = (id, label, val='') => `<div class="form-group"><label class="form-label">${label}</label><textarea class="form-textarea" id="f_${id}">${(val||'').toString().replace(/</g,'&lt;')}</textarea></div>`;
     
-    if (type==='jobs') {
-        title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[1];
+    if (type==='personal') {
+        title = t('personalTitle');
+        body = `<div class="form-row">${field('name',L.name,item.name)}${field('age',L.age,'number',item.age)}</div>
+            <div class="form-row">${field('gender',L.gender,item.gender)}${field('city',L.city,item.city)}</div>
+            <div class="form-row">${field('phone',L.phone,item.phone)}${field('email',L.email,'email',item.email)}</div>
+            <div class="form-row">${field('linkedin',L.linkedin,item.linkedin)}${field('orcid',L.orcid,item.orcid)}</div>
+            <div class="form-row">${field('university',L.university,item.university)}${field('position',L.position,item.position)}</div>`;
+    } else if (type==='jobs') {
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[1];
         body = `<div class="form-row">${field('title',L.title,item.title)}${field('company',L.company,item.company)}</div>
             <div class="form-row">${field('period',L.period,item.period)}${field('duration',L.duration,item.duration)}</div>
             <div class="form-row">${field('location',L.location,item.location)}${select('type',L.type,[{v:'management',l:t('types').management},{v:'technical',l:t('types').technical}],item.type)}</div>
             ${textarea('desc',L.desc,item.desc)}`;
     } else if (type==='education') {
-        title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[2];
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[2];
         body = `<div class="form-row">${field('degree',L.degree,item.degree)}${field('field',L.field,item.field)}</div>
             <div class="form-row">${field('university',L.university,item.university)}${field('gpa',L.gpa,item.gpa)}</div>
-            ${field('year',L.year,item.year)}`;
+            <div class="form-row">${field('startYear',lang==='fa'?'سال شروع':'Start Year',item.startYear)}${field('endYear',lang==='fa'?'سال پایان':'End Year',item.endYear)}</div>`;
+    } else if (type==='publications') {
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[3];
+        body = `${field('title',L.title,item.title)}
+            <div class="form-row">${field('journal',L.journal,item.journal)}${select('pubType',L.pubType,Object.keys(t('pubTypes')).map(k=>({v:k,l:t('pubTypes')[k]})),item.pubType)}</div>
+            <div class="form-row">${select('lang',L.lang,Object.keys(t('languages')).map(k=>({v:k,l:t('languages')[k]})),item.lang)}${field('eduPeriod',L.eduPeriod,item.eduPeriod)}</div>
+            <div class="form-row">${field('submitDate',L.submitDate,'date',item.submitDate)}${field('acceptDate',L.acceptDate,'date',item.acceptDate)}</div>
+            ${textarea('desc',L.desc,item.desc)}`;
     } else if (type==='software') {
-        title = (idx!==null?t('edit'):t('add')) + ' - Software';
-        body = `<div class="form-row">${field('name',L.name,item.name)}${select('level',L.level,[{v:t('levels').advanced,l:t('levels').advanced},{v:t('levels').intermediate,l:t('levels').intermediate},{v:t('levels').basic,l:t('levels').basic}],item.level)}</div>`;
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - Software';
+        body = `<div class="form-row">${field('name',L.name2,item.name)}${select('level',L.level,[{v:t('levels').advanced,l:t('levels').advanced},{v:t('levels').intermediate,l:t('levels').intermediate},{v:t('levels').basic,l:t('levels').basic}],item.level)}</div>`;
+    } else if (type==='mgmtSkills' || type==='techSkills') {
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + (type==='mgmtSkills'?t('mgmtTitle'):t('techTitle'));
+        body = field('skill',t('labels').name2,item.skill);
     } else if (type==='books') {
-        title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[4];
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[5];
         body = `<div class="form-row">${field('title',L.title,item.title)}${field('author',L.author,item.author)}</div>
             <div class="form-row">${field('year',L.year,item.year)}${field('rating',L.rating,'number',item.rating)}</div>
             ${field('category',L.category,item.category)}${textarea('notes',L.notes,item.notes)}`;
     } else if (type==='podcasts') {
-        title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[5];
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[6];
         body = `${field('title',L.title,item.title)}${field('episode',L.episode,item.episode)}${textarea('notes',L.notes,item.notes)}`;
-    } else if (type==='sports') {
-        title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[6];
-        body = `<div class="form-row">${field('name',L.name,item.name)}${field('frequency',L.frequency,item.frequency)}</div>${textarea('notes',L.notes,item.notes)}`;
     } else if (type==='projects') {
-        title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[7];
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[9];
         body = `<div class="form-row">${field('title',L.title,item.title)}${field('year',L.year,item.year)}</div>
             ${field('category',L.category,item.category)}${select('status',L.status,[{v:'planned',l:t('statuses').planned},{v:'progress',l:t('statuses').progress},{v:'done',l:t('statuses').done}],item.status)}
             ${textarea('desc',L.desc,item.desc)}`;
     } else if (type==='certificates') {
-        title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[8];
-        body = `<div class="form-row">${field('name',L.name,item.name)}${field('issuer',L.issuer,item.issuer)}</div>${field('year',L.year,item.year)}`;
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[10];
+        body = `<div class="form-row">${field('name',L.name2,item.name)}${field('issuer',L.issuer,item.issuer)}</div>
+            <div class="form-row">${field('year',L.year,item.year)}${field('duration',L.duration,item.duration)}</div>`;
     } else if (type==='goals') {
-        title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[9];
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[11];
         body = `${field('target',L.target,item.target)}${field('category',L.category,item.category)}
-            <div class="form-row">${field('deadline',L.deadline,'date',item.deadline)}${select('priority',L.priority,[{v:'high',l:t('priorities').high},{v:'medium',l:t('priorities').medium},{v:'low',l:t('priorities').low}],item.priority)}</div>`;
-    } else if (type==='monthlyPlan') {
-        title = (idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[10];
-        body = `${field('title',L.title,item.title)}${field('category',L.category,item.category)}
-            ${select('status',L.status,[{v:'planned',l:t('statuses').planned},{v:'progress',l:t('statuses').progress},{v:'done',l:t('statuses').done}],item.status)}
-            ${textarea('notes',L.notes,item.notes)}`;
+            <div class="form-row">${field('deadline',L.deadline,'date',item.deadline)}${select('priority',L.priority,[{v:'high',l:t('priorities').high},{v:'medium',l:t('priorities').medium},{v:'low',l:t('priorities').low}],item.priority)}</div>
+            ${field('progress',L.progress,'number',item.progress||0)}`;
     }
     
     document.getElementById('modalTitle').textContent = title;
@@ -924,24 +1229,36 @@ function saveData() {
     };
     
     try {
-        let obj = {};
-        if (type==='jobs') obj = { title:get('title'), company:get('company'), period:get('period'), duration:get('duration'), location:get('location'), type:get('type'), desc:get('desc') };
-        else if (type==='education') obj = { degree:get('degree'), field:get('field'), university:get('university'), gpa:get('gpa'), year:get('year') };
-        else if (type==='software') obj = { name:get('name'), level:get('level') };
-        else if (type==='books') obj = { title:get('title'), author:get('author'), year:get('year'), rating:get('rating'), category:get('category'), notes:get('notes') };
-        else if (type==='podcasts') obj = { title:get('title'), episode:get('episode'), notes:get('notes') };
-        else if (type==='sports') obj = { name:get('name'), frequency:get('frequency'), notes:get('notes') };
-        else if (type==='projects') obj = { title:get('title'), year:get('year'), category:get('category'), status:get('status'), desc:get('desc') };
-        else if (type==='certificates') obj = { name:get('name'), issuer:get('issuer'), year:get('year') };
-        else if (type==='goals') obj = { target:get('target'), category:get('category'), deadline:get('deadline'), priority:get('priority') };
-        else if (type==='monthlyPlan') obj = { title:get('title'), category:get('category'), status:get('status'), notes:get('notes') };
+        if (type==='personal') {
+            d.personal = {
+                name: get('name'), age: get('age'), gender: get('gender'),
+                city: get('city'), phone: get('phone'), email: get('email'),
+                linkedin: get('linkedin'), orcid: get('orcid'),
+                university: get('university'), position: get('position')
+            };
+        } else {
+            let obj = {};
+            if (type==='jobs') obj = { title:get('title'), company:get('company'), period:get('period'), duration:get('duration'), location:get('location'), type:get('type'), desc:get('desc') };
+            else if (type==='education') obj = { degree:get('degree'), field:get('field'), university:get('university'), gpa:get('gpa'), startYear:get('startYear'), endYear:get('endYear') };
+            else if (type==='publications') obj = { title:get('title'), journal:get('journal'), pubType:get('pubType'), lang:get('lang'), eduPeriod:get('eduPeriod'), submitDate:get('submitDate'), acceptDate:get('acceptDate'), desc:get('desc') };
+            else if (type==='software') obj = { name:get('name'), level:get('level') };
+            else if (type==='mgmtSkills' || type==='techSkills') obj = { skill:get('skill') };
+            else if (type==='books') obj = { title:get('title'), author:get('author'), year:get('year'), rating:get('rating'), category:get('category'), notes:get('notes') };
+            else if (type==='podcasts') obj = { title:get('title'), episode:get('episode'), notes:get('notes') };
+            else if (type==='projects') obj = { title:get('title'), year:get('year'), category:get('category'), status:get('status'), desc:get('desc') };
+            else if (type==='certificates') obj = { name:get('name'), issuer:get('issuer'), year:get('year'), duration:get('duration') };
+            else if (type==='goals') obj = { target:get('target'), category:get('category'), deadline:get('deadline'), priority:get('priority'), progress:get('progress') };
+            
+            if (!d[type]) d[type] = [];
+            if (idx!==null) d[type][idx] = obj; else d[type].push(obj);
+        }
         
-        if (idx!==null) d[type][idx] = obj; else d[type].push(obj);
         save(); 
         render(); 
         closeModal();
     } catch(e) { 
         alert('Error: '+e.message); 
+        console.error(e);
     }
 }
 
