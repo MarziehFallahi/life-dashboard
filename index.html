@@ -311,10 +311,12 @@
             color: var(--primary);
             padding-right: 10px;
             border-right: 3px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         body.en .subsection-title { padding-right: 0; padding-left: 10px; border-right: none; border-left: 3px solid var(--primary); }
         
-        /* Personal Info Form */
         .personal-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -341,7 +343,6 @@
         }
         .personal-item .value.empty { color: var(--muted); font-style: italic; }
         
-        /* Charts */
         .charts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -362,7 +363,6 @@
         }
         .chart-wrap { position: relative; height: 220px; }
         
-        /* Week Selector */
         .week-selector {
             display: flex;
             flex-wrap: wrap;
@@ -371,6 +371,7 @@
             padding: 12px;
             background: var(--primary-lighter);
             border-radius: 10px;
+            align-items: center;
         }
         .week-btn {
             padding: 6px 14px;
@@ -381,10 +382,31 @@
             font-size: 12px;
             font-weight: 600;
             font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         .week-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .week-edit-btn {
+            padding: 3px 8px;
+            background: var(--primary-light);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-family: inherit;
+        }
+        .week-delete-btn {
+            padding: 3px 8px;
+            background: #e53e3e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-family: inherit;
+        }
         
-        /* Plan Table */
         .plan-table {
             width: 100%;
             border-collapse: collapse;
@@ -423,7 +445,6 @@
             font-weight: 600;
         }
         
-        /* PDF Button */
         .pdf-btn {
             position: fixed;
             bottom: 20px;
@@ -439,10 +460,10 @@
         
         @media print {
             body { background: white; padding: 0; }
-            .tabs, .btn, .item-actions, .pdf-btn, .modal, .lang-switch, .charts-grid, .week-selector, .add-week-btn { display: none !important; }
+            .tabs, .btn, .item-actions, .pdf-btn, .modal, .lang-switch, .charts-grid, .week-selector, .add-week-btn, .week-edit-btn, .week-delete-btn { display: none !important; }
             .section { display: block !important; page-break-inside: avoid; box-shadow: none; }
             .header { box-shadow: none; }
-            #mealPlanSection, #sportPlanSection { display: none !important; }
+            #s7, #s8 { display: none !important; }
         }
         
         @media (max-width: 768px) {
@@ -494,12 +515,13 @@ const T = {
         empty: 'هنوز موردی اضافه نشده است.',
         confirm: 'آیا مطمئن هستید؟',
         pdf: 'خروجی PDF',
-        tabs: ['نمای کلی','مشاغل','تحصیلات','مقالات و کتاب‌های من','مهارت‌ها','کتاب‌ها','پادکست‌ها','پلن ورزشی','پلن غذایی','پروژه‌ها','گواهینامه‌ها','اهداف'],
+        tabs: ['نمای کلی','مشاغل','تحصیلات','مقالات من','مهارت‌ها','پلن مطالعه کتاب‌ها','پلن شنیدن پادکست‌ها','پلن ورزشی','پلن غذایی','پروژه‌ها','گواهینامه‌ها','اهداف'],
         stats: ['مشاغل','تحصیلات','مقالات','مهارت‌ها','کتاب‌ها','پادکست‌ها','پروژه‌ها','گواهینامه‌ها','اهداف'],
         statIcons: ['briefcase','education','article','skill','book','podcast','project','certificate','goal'],
         itemIcons: {
             jobs: 'briefcase', education: 'education', publications: 'article',
-            software: 'skill', books: 'book', podcasts: 'podcast',
+            software: 'skill', mgmtSkills: 'skill', techSkills: 'skill',
+            books: 'book', podcasts: 'podcast',
             sports: 'sport', meal: 'meal', projects: 'project',
             certificates: 'certificate', goals: 'goal'
         },
@@ -517,12 +539,14 @@ const T = {
             acceptDate:'تاریخ اکسپت', eduPeriod:'دوره تحصیلی', pubType:'نوع',
             weekName:'نام هفته', day:'روز', breakfast:'صبحانه', lunch:'ناهار',
             dinner:'شام', exercise:'ورزش', done:'انجام شد', addWeek:'افزودن هفته جدید',
-            weekLabel:'هفته'
+            weekLabel:'هفته', status:'وضعیت', readStatus:'وضعیت خوانش',
+            plannedFor:'برنامه‌ریزی برای', weekOfMonth:'هفته ماه'
         },
         types: { management:'مدیریتی', technical:'فنی و مهندسی' },
         levels: { advanced:'پیشرفته', intermediate:'متوسط', basic:'مقدماتی' },
         priorities: { high:'بالا', medium:'متوسط', low:'پایین' },
         statuses: { done:'انجام شده', progress:'در حال انجام', planned:'برنامه‌ریزی شده' },
+        readStatuses: { read:'خوانده شده', planned:'برنامه‌ریزی شده' },
         pubTypes: { article:'مقاله', book:'کتاب', chapter:'فصل کتاب', conference:'کنفرانس' },
         languages: { fa:'فارسی', en:'انگلیسی', both:'دو زبانه' },
         days: ['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
@@ -531,7 +555,9 @@ const T = {
         techTitle: 'مهارت‌های فنی و مهندسی',
         personalTitle: 'مشخصات فردی',
         chartsTitle: 'نمودارهای وضعیت',
-        weekPlan: 'برنامه هفتگی'
+        weekPlan: 'برنامه هفتگی',
+        editWeek: 'ویرایش نام هفته',
+        deleteWeek: 'حذف هفته'
     },
     en: {
         title: 'Personal Dashboard',
@@ -539,12 +565,13 @@ const T = {
         empty: 'No items yet.',
         confirm: 'Are you sure?',
         pdf: 'Export PDF',
-        tabs: ['Overview','Jobs','Education','My Publications','Skills','Books','Podcasts','Sport Plan','Meal Plan','Projects','Certificates','Goals'],
-        stats: ['Jobs','Education','Publications','Skills','Books','Podcasts','Projects','Certificates','Goals'],
+        tabs: ['Overview','Jobs','Education','My Articles','Skills','Reading Plan','Podcast Plan','Sport Plan','Meal Plan','Projects','Certificates','Goals'],
+        stats: ['Jobs','Education','Articles','Skills','Books','Podcasts','Projects','Certificates','Goals'],
         statIcons: ['briefcase','education','article','skill','book','podcast','project','certificate','goal'],
         itemIcons: {
             jobs: 'briefcase', education: 'education', publications: 'article',
-            software: 'skill', books: 'book', podcasts: 'podcast',
+            software: 'skill', mgmtSkills: 'skill', techSkills: 'skill',
+            books: 'book', podcasts: 'podcast',
             sports: 'sport', meal: 'meal', projects: 'project',
             certificates: 'certificate', goals: 'goal'
         },
@@ -562,12 +589,14 @@ const T = {
             acceptDate:'Accept Date', eduPeriod:'Education Period', pubType:'Type',
             weekName:'Week Name', day:'Day', breakfast:'Breakfast', lunch:'Lunch',
             dinner:'Dinner', exercise:'Exercise', done:'Done', addWeek:'Add New Week',
-            weekLabel:'Week'
+            weekLabel:'Week', status:'Status', readStatus:'Reading Status',
+            plannedFor:'Planned for', weekOfMonth:'Week of Month'
         },
         types: { management:'Management', technical:'Technical & Engineering' },
         levels: { advanced:'Advanced', intermediate:'Intermediate', basic:'Basic' },
         priorities: { high:'High', medium:'Medium', low:'Low' },
         statuses: { done:'Done', progress:'In Progress', planned:'Planned' },
+        readStatuses: { read:'Read', planned:'Planned' },
         pubTypes: { article:'Article', book:'Book', chapter:'Book Chapter', conference:'Conference' },
         languages: { fa:'Persian', en:'English', both:'Bilingual' },
         days: ['Sat','Sun','Mon','Tue','Wed','Thu','Fri'],
@@ -576,7 +605,9 @@ const T = {
         techTitle: 'Technical & Engineering Skills',
         personalTitle: 'Personal Information',
         chartsTitle: 'Status Charts',
-        weekPlan: 'Weekly Plan'
+        weekPlan: 'Weekly Plan',
+        editWeek: 'Edit Week Name',
+        deleteWeek: 'Delete Week'
     }
 };
 
@@ -609,14 +640,13 @@ let charts = {};
 
 function init() {
     try {
-        const s = localStorage.getItem('personalDashV2');
+        const s = localStorage.getItem('personalDashV3');
         if (s) {
             const parsed = JSON.parse(s);
             data = {
                 fa: { ...JSON.parse(JSON.stringify(emptyData.fa)), ...(parsed.fa || {}) },
                 en: { ...JSON.parse(JSON.stringify(emptyData.en)), ...(parsed.en || {}) }
             };
-            // Ensure new fields exist
             if (!data.fa.personal) data.fa.personal = {};
             if (!data.en.personal) data.en.personal = {};
             if (!data.fa.publications) data.fa.publications = [];
@@ -625,6 +655,10 @@ function init() {
             if (!data.en.mealPlan) data.en.mealPlan = { weeks: [] };
             if (!data.fa.sportPlan) data.fa.sportPlan = { weeks: [] };
             if (!data.en.sportPlan) data.en.sportPlan = { weeks: [] };
+            if (!data.fa.books) data.fa.books = [];
+            if (!data.en.books) data.en.books = [];
+            if (!data.fa.podcasts) data.fa.podcasts = [];
+            if (!data.en.podcasts) data.en.podcasts = [];
         } else {
             data = JSON.parse(JSON.stringify(emptyData));
         }
@@ -641,17 +675,22 @@ function switchLang(l) {
 }
 
 function save() {
-    try { localStorage.setItem('personalDashV2', JSON.stringify(data)); } catch(e){}
+    try { localStorage.setItem('personalDashV3', JSON.stringify(data)); } catch(e){}
 }
 
 function t(k) {
     const ks = k.split('.');
     let r = T[lang];
-    for (const k of ks) r = r[k];
+    for (const key of ks) r = r[key];
     return r;
 }
 
 function icon(name) { return ICONS[name] || ''; }
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
 function render() {
     const d = data[lang];
@@ -758,10 +797,10 @@ function renderJobs(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('jobs',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('jobs',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('briefcase')} ${j.title||''}</div>
-                <div class="item-sub">${j.company||''} | ${j.period||''} | ${j.location||''}</div>
+                <div class="item-title">${icon('briefcase')} ${escapeHtml(j.title||'')}</div>
+                <div class="item-sub">${escapeHtml(j.company||'')} | ${escapeHtml(j.period||'')} | ${escapeHtml(j.location||'')}</div>
                 <span class="badge badge-${j.type==='management'?'green':'blue'}">${t('types')[j.type]||j.type}</span>
-                ${j.desc?`<div class="item-desc">${j.desc}</div>`:''}
+                ${j.desc?`<div class="item-desc">${escapeHtml(j.desc)}</div>`:''}
             </div>`).join('')}
     </div></div>`;
 }
@@ -776,8 +815,8 @@ function renderEducation(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('education',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('education',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('education')} ${e.degree||''} - ${e.field||''}</div>
-                <div class="item-sub">${e.university||''} | ${t('labels').gpa}: ${e.gpa||''} | ${e.startYear||''} - ${e.endYear||''}</div>
+                <div class="item-title">${icon('education')} ${escapeHtml(e.degree||'')} - ${escapeHtml(e.field||'')}</div>
+                <div class="item-sub">${escapeHtml(e.university||'')} | ${t('labels').gpa}: ${escapeHtml(e.gpa||'')} | ${escapeHtml(e.startYear||'')} - ${escapeHtml(e.endYear||'')}</div>
             </div>`).join('')}
     </div></div>`;
 }
@@ -792,10 +831,10 @@ function renderPublications(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('publications',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('publications',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('article')} ${p.title||''}</div>
-                <div class="item-sub">${p.journal||''} | ${t('pubTypes')[p.pubType]||p.pubType} | ${t('languages')[p.lang]||p.lang}</div>
+                <div class="item-title">${icon('article')} ${escapeHtml(p.title||'')}</div>
+                <div class="item-sub">${escapeHtml(p.journal||'')} | ${t('pubTypes')[p.pubType]||p.pubType||''} | ${t('languages')[p.lang]||p.lang||''}</div>
                 <div class="item-sub">${t('labels').submitDate}: ${p.submitDate||'-'} | ${t('labels').acceptDate}: ${p.acceptDate||'-'}</div>
-                ${p.eduPeriod?`<span class="badge badge-blue">${p.eduPeriod}</span>`:''}
+                ${p.eduPeriod?`<span class="badge badge-blue">${escapeHtml(p.eduPeriod)}</span>`:''}
             </div>`).join('')}
     </div></div>`;
 }
@@ -803,33 +842,33 @@ function renderPublications(d) {
 function renderSkills(d) {
     return `<div class="section" id="s4"><div class="section-card">
         <div class="section-header"><div class="section-title">${t('tabs')[4]}</div></div>
-        <h4 class="subsection-title">${t('softwareTitle')} <button class="btn btn-primary btn-sm" onclick="openModal('software')" style="margin-right:10px;">+ ${t('add')}</button></h4>
+        <h4 class="subsection-title">${t('softwareTitle')} <button class="btn btn-primary btn-sm" onclick="openModal('software')">+ ${t('add')}</button></h4>
         ${d.software.length===0?`<div class="empty">${t('empty')}</div>`:
             d.software.map((s,i)=>`<div class="item">
                 <div class="item-actions">
                     <button class="btn btn-warning btn-sm" onclick="openModal('software',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('software',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('skill')} ${s.name||''}</div>
-                <span class="badge badge-blue">${s.level||''}</span>
+                <div class="item-title">${icon('skill')} ${escapeHtml(s.name||'')}</div>
+                <span class="badge badge-blue">${escapeHtml(s.level||'')}</span>
             </div>`).join('')}
-        <h4 class="subsection-title">${t('mgmtTitle')} <button class="btn btn-primary btn-sm" onclick="openModal('mgmtSkills')" style="margin-right:10px;">+ ${t('add')}</button></h4>
+        <h4 class="subsection-title">${t('mgmtTitle')} <button class="btn btn-primary btn-sm" onclick="openModal('mgmtSkills')">+ ${t('add')}</button></h4>
         ${d.mgmtSkills.length===0?`<div class="empty">${t('empty')}</div>`:
             d.mgmtSkills.map((s,i)=>`<div class="item">
                 <div class="item-actions">
                     <button class="btn btn-warning btn-sm" onclick="openModal('mgmtSkills',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('mgmtSkills',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('skill')} ${s.skill||''}</div>
+                <div class="item-title">${icon('skill')} ${escapeHtml(s.skill||'')}</div>
             </div>`).join('')}
-        <h4 class="subsection-title">${t('techTitle')} <button class="btn btn-primary btn-sm" onclick="openModal('techSkills')" style="margin-right:10px;">+ ${t('add')}</button></h4>
+        <h4 class="subsection-title">${t('techTitle')} <button class="btn btn-primary btn-sm" onclick="openModal('techSkills')">+ ${t('add')}</button></h4>
         ${d.techSkills.length===0?`<div class="empty">${t('empty')}</div>`:
             d.techSkills.map((s,i)=>`<div class="item">
                 <div class="item-actions">
                     <button class="btn btn-warning btn-sm" onclick="openModal('techSkills',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('techSkills',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('skill')} ${s.skill||''}</div>
+                <div class="item-title">${icon('skill')} ${escapeHtml(s.skill||'')}</div>
             </div>`).join('')}
     </div></div>`;
 }
@@ -844,10 +883,11 @@ function renderBooks(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('books',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('books',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('book')} ${b.title||''}</div>
-                <div class="item-sub">${b.author||''} | ${b.year||''} | ${t('labels').rating}: ${b.rating||''}/5</div>
-                <span class="badge badge-blue">${b.category||''}</span>
-                ${b.notes?`<div class="item-desc">${b.notes}</div>`:''}
+                <div class="item-title">${icon('book')} ${escapeHtml(b.title||'')}</div>
+                <div class="item-sub">${escapeHtml(b.author||'')} | ${escapeHtml(b.year||'')}</div>
+                <span class="badge badge-${b.readStatus==='read'?'green':'blue'}">${t('readStatuses')[b.readStatus]||b.readStatus||'-'}</span>
+                ${b.plannedFor?`<div class="item-sub">${t('labels').plannedFor}: ${escapeHtml(b.plannedFor)}</div>`:''}
+                ${b.notes?`<div class="item-desc">${escapeHtml(b.notes)}</div>`:''}
             </div>`).join('')}
     </div></div>`;
 }
@@ -862,9 +902,11 @@ function renderPodcasts(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('podcasts',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('podcasts',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('podcast')} ${p.title||''}</div>
-                <div class="item-sub">${t('labels').episode}: ${p.episode||''}</div>
-                ${p.notes?`<div class="item-desc">${p.notes}</div>`:''}
+                <div class="item-title">${icon('podcast')} ${escapeHtml(p.title||'')}</div>
+                <div class="item-sub">${t('labels').episode}: ${escapeHtml(p.episode||'')}</div>
+                <span class="badge badge-${p.status==='done'?'green':p.status==='progress'?'orange':'blue'}">${t('statuses')[p.status]||p.status||'-'}</span>
+                ${p.plannedFor?`<div class="item-sub">${t('labels').plannedFor}: ${escapeHtml(p.plannedFor)}</div>`:''}
+                ${p.notes?`<div class="item-desc">${escapeHtml(p.notes)}</div>`:''}
             </div>`).join('')}
     </div></div>`;
 }
@@ -880,7 +922,13 @@ function renderSportPlan(d) {
             <div class="section-header"><div class="section-title">${t('tabs')[7]}</div></div>
             <div class="week-selector">
                 ${weeks.length===0?`<span style="color:var(--muted); font-size:13px;">${t('empty')}</span>`:
-                    weeks.map((w,i)=>`<button class="week-btn ${i===weekIdx?'active':''}" onclick="selectWeek('sport',${i})">${w.name||t('labels').weekLabel+' '+(i+1)}</button>`).join('')}
+                    weeks.map((w,i)=>`
+                        <button class="week-btn ${i===weekIdx?'active':''}" onclick="selectWeek('sport',${i})">
+                            ${escapeHtml(w.name||t('labels').weekLabel+' '+(i+1))}
+                            <button class="week-edit-btn" onclick="event.stopPropagation();editWeekName('sport',${i})" title="${t('editWeek')}">✏️</button>
+                            <button class="week-delete-btn" onclick="event.stopPropagation();deleteWeek('sport',${i})" title="${t('deleteWeek')">×</button>
+                        </button>
+                    `).join('')}
             </div>
             <button class="add-week-btn" onclick="addWeek('sport')">+ ${t('labels').addWeek}</button>
             ${week?renderWeekTable(week, 'sport'):''}
@@ -900,7 +948,13 @@ function renderMealPlan(d) {
             <div class="section-header"><div class="section-title">${t('tabs')[8]}</div></div>
             <div class="week-selector">
                 ${weeks.length===0?`<span style="color:var(--muted); font-size:13px;">${t('empty')}</span>`:
-                    weeks.map((w,i)=>`<button class="week-btn ${i===weekIdx?'active':''}" onclick="selectWeek('meal',${i})">${w.name||t('labels').weekLabel+' '+(i+1)}</button>`).join('')}
+                    weeks.map((w,i)=>`
+                        <button class="week-btn ${i===weekIdx?'active':''}" onclick="selectWeek('meal',${i})">
+                            ${escapeHtml(w.name||t('labels').weekLabel+' '+(i+1))}
+                            <button class="week-edit-btn" onclick="event.stopPropagation();editWeekName('meal',${i})" title="${t('editWeek')}">️</button>
+                            <button class="week-delete-btn" onclick="event.stopPropagation();deleteWeek('meal',${i})" title="${t('deleteWeek')">×</button>
+                        </button>
+                    `).join('')}
             </div>
             <button class="add-week-btn" onclick="addWeek('meal')">+ ${t('labels').addWeek}</button>
             ${week?renderMealTable(week):''}
@@ -915,10 +969,10 @@ function renderWeekTable(week, type) {
         <thead><tr><th>${t('labels').day}</th><th>${t('labels').exercise}</th><th>${t('labels').done}</th></tr></thead>
         <tbody>
             ${days.map((day,i)=>{
-                const d = week.days[i] || { exercise:'', done:false };
+                const d = week.days[i] || {};
                 return `<tr>
                     <td><strong>${day}</strong></td>
-                    <td><input type="text" value="${d.exercise||''}" onchange="updateWeekDay('${type}',${currentWeek[type]},${i},'exercise',this.value)" placeholder="${lang==='fa'?'ورزش...':'Exercise...'}"></td>
+                    <td><input type="text" value="${escapeHtml(d.exercise||'')}" onchange="updateWeekDay('${type}',${currentWeek[type]},${i},'exercise',this.value)" placeholder="${lang==='fa'?'ورزش...':'Exercise...'}"></td>
                     <td class="done-check ${d.done?'checked':''}" onclick="toggleWeekDay('${type}',${currentWeek[type]},${i})">${d.done?'✓':'○'}</td>
                 </tr>`;
             }).join('')}
@@ -932,12 +986,12 @@ function renderMealTable(week) {
         <thead><tr><th>${t('labels').day}</th><th>${t('labels').breakfast}</th><th>${t('labels').lunch}</th><th>${t('labels').dinner}</th><th>${t('labels').done}</th></tr></thead>
         <tbody>
             ${days.map((day,i)=>{
-                const d = week.days[i] || { breakfast:'', lunch:'', dinner:'', done:false };
+                const d = week.days[i] || {};
                 return `<tr>
                     <td><strong>${day}</strong></td>
-                    <td><input type="text" value="${d.breakfast||''}" onchange="updateMealDay(${currentWeek.meal},${i},'breakfast',this.value)"></td>
-                    <td><input type="text" value="${d.lunch||''}" onchange="updateMealDay(${currentWeek.meal},${i},'lunch',this.value)"></td>
-                    <td><input type="text" value="${d.dinner||''}" onchange="updateMealDay(${currentWeek.meal},${i},'dinner',this.value)"></td>
+                    <td><input type="text" value="${escapeHtml(d.breakfast||'')}" onchange="updateMealDay(${currentWeek.meal},${i},'breakfast',this.value)"></td>
+                    <td><input type="text" value="${escapeHtml(d.lunch||'')}" onchange="updateMealDay(${currentWeek.meal},${i},'lunch',this.value)"></td>
+                    <td><input type="text" value="${escapeHtml(d.dinner||'')}" onchange="updateMealDay(${currentWeek.meal},${i},'dinner',this.value)"></td>
                     <td class="done-check ${d.done?'checked':''}" onclick="toggleMealDay(${currentWeek.meal},${i})">${d.done?'✓':'○'}</td>
                 </tr>`;
             }).join('')}
@@ -953,6 +1007,28 @@ function addWeek(type) {
     plan.weeks.push({ name: name, days: [{},{},{},{},{},{},{}] });
     if (type==='sport') currentWeek.sport = plan.weeks.length - 1;
     else currentWeek.meal = plan.weeks.length - 1;
+    save(); render();
+}
+
+function editWeekName(type, idx) {
+    const plan = type==='sport'?data[lang].sportPlan:data[lang].mealPlan;
+    const currentName = plan.weeks[idx].name || '';
+    const newName = prompt(lang==='fa'?'نام جدید هفته:':'New week name:', currentName);
+    if (newName !== null && newName.trim() !== '') {
+        plan.weeks[idx].name = newName.trim();
+        save(); render();
+    }
+}
+
+function deleteWeek(type, idx) {
+    if (!confirm(t('confirm'))) return;
+    const plan = type==='sport'?data[lang].sportPlan:data[lang].mealPlan;
+    plan.weeks.splice(idx, 1);
+    if (type==='sport') {
+        if (currentWeek.sport >= plan.weeks.length) currentWeek.sport = Math.max(0, plan.weeks.length - 1);
+    } else {
+        if (currentWeek.meal >= plan.weeks.length) currentWeek.meal = Math.max(0, plan.weeks.length - 1);
+    }
     save(); render();
 }
 
@@ -997,15 +1073,15 @@ function renderProjects(d) {
         <div class="section-header"><div class="section-title">${t('tabs')[9]}</div>
         <button class="btn btn-primary" onclick="openModal('projects')">+ ${t('add')}</button></div>
         ${d.projects.length===0?`<div class="empty">${t('empty')}</div>`:
-            d.projects.filter(p=>p.title).map((p,i)=>`<div class="item">
+            d.projects.map((p,i)=>`<div class="item">
                 <div class="item-actions">
-                    <button class="btn btn-warning btn-sm" onclick="openModal('projects',${d.projects.indexOf(p)})">${t('edit')}</button>
-                    <button class="btn btn-danger btn-sm" onclick="del('projects',${d.projects.indexOf(p)})">${t('delete')}</button>
+                    <button class="btn btn-warning btn-sm" onclick="openModal('projects',${i})">${t('edit')}</button>
+                    <button class="btn btn-danger btn-sm" onclick="del('projects',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('project')} ${p.title||''}</div>
-                <div class="item-sub">${p.year||''} | ${p.category||''}</div>
-                <div class="item-sub"><strong>${lang==='fa'?'وضعیت پروژه':'Project Status'}:</strong> <span class="badge badge-${p.status==='done'?'green':p.status==='progress'?'orange':'blue'}">${t('statuses')[p.status]||p.status||'-'}</span></div>
-                ${p.desc?`<div class="item-desc">${p.desc}</div>`:''}
+                <div class="item-title">${icon('project')} ${escapeHtml(p.title||'')}</div>
+                <div class="item-sub">${escapeHtml(p.year||'')} | ${escapeHtml(p.category||'')}</div>
+                <div class="item-sub"><strong>${lang==='fa'?'وضعیت پروژه':'Project Status'}:</strong> <span class="badge badge-${p.status==='done'?'green':p.status==='progress'?'orange':'blue'}">${t('statuses')[p.status]||'-'}</span></div>
+                ${p.desc?`<div class="item-desc">${escapeHtml(p.desc)}</div>`:''}
             </div>`).join('')}
     </div></div>`;
 }
@@ -1020,8 +1096,8 @@ function renderCertificates(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('certificates',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('certificates',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('certificate')} ${c.name||''}</div>
-                <div class="item-sub">${c.issuer||''} | ${c.year||''} | ${t('labels').duration}: ${c.duration||''}</div>
+                <div class="item-title">${icon('certificate')} ${escapeHtml(c.name||'')}</div>
+                <div class="item-sub">${escapeHtml(c.issuer||'')} | ${escapeHtml(c.year||'')} | ${t('labels').duration}: ${escapeHtml(c.duration||'')}</div>
             </div>`).join('')}
     </div></div>`;
 }
@@ -1036,9 +1112,9 @@ function renderGoals(d) {
                     <button class="btn btn-warning btn-sm" onclick="openModal('goals',${i})">${t('edit')}</button>
                     <button class="btn btn-danger btn-sm" onclick="del('goals',${i})">${t('delete')}</button>
                 </div>
-                <div class="item-title">${icon('goal')} ${g.target||''}</div>
-                <div class="item-sub">${g.category||''} | ${g.deadline||''}</div>
-                <span class="badge badge-${g.priority==='high'?'orange':g.priority==='medium'?'blue':'green'}">${t('priorities')[g.priority]||g.priority}</span>
+                <div class="item-title">${icon('goal')} ${escapeHtml(g.target||'')}</div>
+                <div class="item-sub">${escapeHtml(g.category||'')} | ${escapeHtml(g.deadline||'')}</div>
+                <span class="badge badge-${g.priority==='high'?'orange':g.priority==='medium'?'blue':'green'}">${t('priorities')[g.priority]||g.priority||'-'}</span>
             </div>`).join('')}
     </div></div>`;
 }
@@ -1050,7 +1126,6 @@ function drawCharts() {
     const colors = { primary:'#4a6fa5', dark:'#2d4a73', light:'#c8d8e8', success:'#48bb78', warning:'#f59e0b', muted:'#94a3b8' };
     const font = lang==='fa'?'Vazirmatn, Tahoma':'Times New Roman, serif';
     
-    // Chart 1: Overall Progress
     const c1 = document.getElementById('chart1');
     if (c1) {
         charts.c1 = new Chart(c1, {
@@ -1058,6 +1133,7 @@ function drawCharts() {
             data: {
                 labels: t('stats'),
                 datasets: [{
+                    label: lang==='fa'?'پیشرفت':'Progress',
                     data: [
                         Math.min(d.jobs.length*10,100),
                         Math.min(d.education.length*20,100),
@@ -1075,11 +1151,10 @@ function drawCharts() {
                     pointBackgroundColor: colors.primary
                 }]
             },
-            options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{font:{family:font,size:11}}}}, scales:{r:{beginAtZero:true,max:100,ticks:{font:{family:font,size:10}},pointLabels:{font:{family:font,size:11}}}}}
+            options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false,labels:{font:{family:font,size:11}}}}, scales:{r:{beginAtZero:true,max:100,ticks:{font:{family:font,size:10}},pointLabels:{font:{family:font,size:11}}}}}
         });
     }
     
-    // Chart 2: Skills Distribution
     const c2 = document.getElementById('chart2');
     if (c2) {
         const adv = d.software.filter(s=>s.level===t('levels').advanced).length;
@@ -1095,7 +1170,6 @@ function drawCharts() {
         });
     }
     
-    // Chart 3: Publications by Type
     const c3 = document.getElementById('chart3');
     if (c3) {
         const types = Object.keys(t('pubTypes'));
@@ -1106,11 +1180,10 @@ function drawCharts() {
                 labels: types.map(tp=>t('pubTypes')[tp]),
                 datasets: [{ label:lang==='fa'?'تعداد':'Count', data:counts, backgroundColor:colors.primary, borderRadius:6 }]
             },
-            options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{font:{family:font,size:11}}}}, scales:{x:{ticks:{font:{family:font,size:11}}},y:{beginAtZero:true,ticks:{stepSize:1,font:{family:font,size:11}}}}}
+            options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false,labels:{font:{family:font,size:11}}}}, scales:{x:{ticks:{font:{family:font,size:11}}},y:{beginAtZero:true,ticks:{stepSize:1,font:{family:font,size:11}}}}}
         });
     }
     
-    // Chart 4: Goals Status
     const c4 = document.getElementById('chart4');
     if (c4) {
         const done = d.goals.filter(g=>g.status==='done').length;
@@ -1136,24 +1209,25 @@ function showTab(i, btn) {
 }
 
 function openModal(type, idx) {
+    // FIX: Use edit.idx consistently
     edit = { type: type, idx: (idx !== undefined && idx !== null ? idx : null) };
     const d = data[lang];
     const L = t('labels');
     
-    // Safe item retrieval
+    // FIX: Safe item retrieval using edit.idx
     let item = {};
-    if (edit.idx !== null && d[type] && Array.isArray(d[type]) && d[type][edit.idx]) {
-        item = d[type][edit.idx];
-    } else if (type === 'personal') {
+    if (type === 'personal') {
         item = d.personal || {};
+    } else if (edit.idx !== null && Array.isArray(d[type]) && d[type][edit.idx]) {
+        item = d[type][edit.idx];
     }
     
     let title = '';
     let body = '';
     
-    const field = (id, label, type='text', val='') => `<div class="form-group"><label class="form-label">${label}</label><input class="form-input" type="${type}" id="f_${id}" value="${(val||'').toString().replace(/"/g,'&quot;')}"></div>`;
+    const field = (id, label, type='text', val='') => `<div class="form-group"><label class="form-label">${label}</label><input class="form-input" type="${type}" id="f_${id}" value="${escapeHtml(val)}"></div>`;
     const select = (id, label, opts, val='') => `<div class="form-group"><label class="form-label">${label}</label><select class="form-select" id="f_${id}">${opts.map(o=>`<option value="${o.v}" ${o.v===val?'selected':''}>${o.l}</option>`).join('')}</select></div>`;
-    const textarea = (id, label, val='') => `<div class="form-group"><label class="form-label">${label}</label><textarea class="form-textarea" id="f_${id}">${(val||'').toString().replace(/</g,'&lt;')}</textarea></div>`;
+    const textarea = (id, label, val='') => `<div class="form-group"><label class="form-label">${label}</label><textarea class="form-textarea" id="f_${id}">${escapeHtml(val)}</textarea></div>`;
     
     if (type==='personal') {
         title = t('personalTitle');
@@ -1183,17 +1257,24 @@ function openModal(type, idx) {
     } else if (type==='software') {
         title = (edit.idx!==null?t('edit'):t('add')) + ' - Software';
         body = `<div class="form-row">${field('name',L.name2,item.name)}${select('level',L.level,[{v:t('levels').advanced,l:t('levels').advanced},{v:t('levels').intermediate,l:t('levels').intermediate},{v:t('levels').basic,l:t('levels').basic}],item.level)}</div>`;
-    } else if (type==='mgmtSkills' || type==='techSkills') {
-        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + (type==='mgmtSkills'?t('mgmtTitle'):t('techTitle'));
+    } else if (type==='mgmtSkills') {
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('mgmtTitle');
+        body = field('skill',t('labels').name2,item.skill);
+    } else if (type==='techSkills') {
+        title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('techTitle');
         body = field('skill',t('labels').name2,item.skill);
     } else if (type==='books') {
         title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[5];
         body = `<div class="form-row">${field('title',L.title,item.title)}${field('author',L.author,item.author)}</div>
-            <div class="form-row">${field('year',L.year,item.year)}${field('rating',L.rating,'number',item.rating)}</div>
-            ${field('category',L.category,item.category)}${textarea('notes',L.notes,item.notes)}`;
+            <div class="form-row">${field('year',L.year,item.year)}${select('readStatus',L.readStatus,[{v:'planned',l:t('readStatuses').planned},{v:'read',l:t('readStatuses').read}],item.readStatus)}</div>
+            ${field('plannedFor',L.plannedFor,item.plannedFor)}${field('category',L.category,item.category)}
+            ${textarea('notes',L.notes,item.notes)}`;
     } else if (type==='podcasts') {
         title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[6];
-        body = `${field('title',L.title,item.title)}${field('episode',L.episode,item.episode)}${textarea('notes',L.notes,item.notes)}`;
+        body = `${field('title',L.title,item.title)}${field('episode',L.episode,item.episode)}
+            ${select('status',L.status,[{v:'planned',l:t('statuses').planned},{v:'progress',l:t('statuses').progress},{v:'done',l:t('statuses').done}],item.status)}
+            ${field('plannedFor',L.plannedFor,item.plannedFor)}
+            ${textarea('notes',L.notes,item.notes)}`;
     } else if (type==='projects') {
         title = (edit.idx!==null?t('edit'):t('add')) + ' - ' + t('tabs')[9];
         body = `<div class="form-row">${field('title',L.title,item.title)}${field('year',L.year,item.year)}</div>
@@ -1243,14 +1324,18 @@ function saveData() {
             else if (type==='publications') obj = { title:get('title'), journal:get('journal'), pubType:get('pubType'), lang:get('lang'), eduPeriod:get('eduPeriod'), submitDate:get('submitDate'), acceptDate:get('acceptDate'), desc:get('desc') };
             else if (type==='software') obj = { name:get('name'), level:get('level') };
             else if (type==='mgmtSkills' || type==='techSkills') obj = { skill:get('skill') };
-            else if (type==='books') obj = { title:get('title'), author:get('author'), year:get('year'), rating:get('rating'), category:get('category'), notes:get('notes') };
-            else if (type==='podcasts') obj = { title:get('title'), episode:get('episode'), notes:get('notes') };
+            else if (type==='books') obj = { title:get('title'), author:get('author'), year:get('year'), readStatus:get('readStatus'), plannedFor:get('plannedFor'), category:get('category'), notes:get('notes') };
+            else if (type==='podcasts') obj = { title:get('title'), episode:get('episode'), status:get('status'), plannedFor:get('plannedFor'), notes:get('notes') };
             else if (type==='projects') obj = { title:get('title'), year:get('year'), category:get('category'), status:get('status'), desc:get('desc') };
             else if (type==='certificates') obj = { name:get('name'), issuer:get('issuer'), year:get('year'), duration:get('duration') };
             else if (type==='goals') obj = { target:get('target'), category:get('category'), deadline:get('deadline'), priority:get('priority'), progress:get('progress') };
             
             if (!d[type]) d[type] = [];
-            if (idx!==null) d[type][idx] = obj; else d[type].push(obj);
+            if (idx!==null && idx >= 0 && idx < d[type].length) {
+                d[type][idx] = obj;
+            } else {
+                d[type].push(obj);
+            }
         }
         
         save(); 
@@ -1264,6 +1349,7 @@ function saveData() {
 
 function del(type, idx) {
     if (!confirm(t('confirm'))) return;
+    if (!data[lang][type] || !Array.isArray(data[lang][type])) return;
     data[lang][type].splice(idx,1);
     save(); 
     render();
