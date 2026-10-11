@@ -97,20 +97,11 @@ body.en .pfb{left:auto;right:20px}
 .charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:20px}
 .chart-card{background:var(--pll);border:1px solid var(--bd);border-radius:12px;padding:20px}
 .chart-card h4{font-size:14px;color:var(--pd);margin-bottom:12px;font-weight:700}
-.bar-chart{display:flex;align-items:flex-end;gap:8px;height:180px;padding:10px 0}
-.bar{flex:1;background:var(--p);border-radius:4px 4px 0 0;min-height:4px;position:relative;transition:all .3s}
-.bar:hover{background:var(--pd)}
-.bar-label{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--mu);white-space:nowrap}
-.bar-value{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:var(--pd)}
-.donut{width:150px;height:150px;border-radius:50%;margin:0 auto;position:relative}
-.donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-.donut-center .num{font-size:24px;font-weight:800;color:var(--pd)}
-.donut-center .lbl{font-size:11px;color:var(--mu)}
+.progress-bar{width:100%;height:8px;background:var(--bd);border-radius:4px;overflow:hidden;margin-top:8px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--p),var(--ok));transition:width .3s}
 .legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:15px}
 .legend-item{display:flex;align-items:center;gap:5px;font-size:12px}
 .legend-color{width:12px;height:12px;border-radius:3px}
-.progress-bar{width:100%;height:8px;background:var(--bd);border-radius:4px;overflow:hidden;margin-top:8px}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--p),var(--ok));transition:width .3s}
 @media print{body{background:#fff;padding:0}.tbs,.btn,.ia,.pfb,.md,.ls,.ws,.aw,.we,.wd,.charts-grid{display:none!important}.sec{display:block!important;page-break-inside:avoid;box-shadow:none}.hdr{box-shadow:none}#s7,#s8{display:none!important}}
 @media(max-width:768px){.fr{grid-template-columns:1fr}.sts{grid-template-columns:repeat(2,1fr)}.hdr h1{font-size:20px}.pg{grid-template-columns:1fr}}
 </style>
@@ -120,7 +111,6 @@ body.en .pfb{left:auto;right:20px}
 <div class="md" id="md"><div class="mc"><div class="mh"><h3 id="mt"></h3><button class="cb" onclick="cm()">×</button></div><div id="mb"></div><div class="mf"><button class="btn bp" onclick="sd()">ذخیره</button><button class="btn bd" onclick="cm()">انصراف</button></div></div></div>
 <button class="btn pfb" onclick="window.print()">📥 خروجی PDF</button>
 <script>
-// SVG Icons
 const ICONS={
 briefcase:'<svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 0h-4V4h4v2z"/></svg>',
 education:'<svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>',
@@ -246,7 +236,7 @@ let currentWeek={meal:0,sport:0};
 
 function init(){
 try{
-const s=localStorage.getItem('pdV5');
+const s=localStorage.getItem('pdFinal');
 if(s){
 const parsed=JSON.parse(s);
 data={
@@ -283,7 +273,7 @@ render();
 }
 
 function save(){
-try{localStorage.setItem('pdV5',JSON.stringify(data))}catch(e){}
+try{localStorage.setItem('pdFinal',JSON.stringify(data))}catch(e){}
 }
 
 function t(k){
