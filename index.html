@@ -80,15 +80,52 @@ body.en .pt th,body.en .pt td{text-align:left}
 .pt input{width:100%;border:none;background:transparent;font-family:'Vazirmatn',sans-serif;font-size:12px;padding:3px}
 .dc{text-align:center;cursor:pointer;font-size:16px}
 .dc.ok{color:#48bb78}
+
+/* ===== نمودارها ===== */
+.charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px}
+.chart-card{background:linear-gradient(135deg,#f8fafc,#fff);border:1px solid #d4dde6;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.chart-card h4{font-size:14px;color:#2d4a73;margin-bottom:15px;font-weight:700;text-align:center;padding-bottom:8px;border-bottom:2px solid #e8f0f8}
+.chart-wrap{position:relative;height:200px;display:flex;align-items:center;justify-content:center}
+
+/* نمودار میله‌ای */
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:160px;padding:10px 0;border-bottom:2px solid #e8f0f8;width:100%}
+.bar{flex:1;background:linear-gradient(180deg,#4a6fa5,#2d4a73);border-radius:4px 4px 0 0;min-height:4px;position:relative;transition:all .3s;cursor:pointer}
+.bar:hover{opacity:.8;transform:scaleY(1.05)}
+.bar-label{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:9px;color:#718096;white-space:nowrap;max-width:60px;overflow:hidden;text-overflow:ellipsis}
+.bar-value{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:#2d4a73}
+
+/* نمودار دایره‌ای */
+.donut-container{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.donut{width:140px;height:140px;border-radius:50%;position:relative}
+.donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;background:#fff;width:80px;height:80px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.donut-center .num{font-size:22px;font-weight:800;color:#2d4a73}
+.donut-center .lbl{font-size:10px;color:#718096}
+.legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#2d3748}
+.legend-color{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+
+/* نوار پیشرفت */
+.progress-container{width:100%}
+.progress-item{margin-bottom:12px}
+.progress-header{display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px}
+.progress-label{font-weight:600;color:#2d3748}
+.progress-value{color:#4a6fa5;font-weight:700}
+.progress-bar{width:100%;height:10px;background:#e8f0f8;border-radius:5px;overflow:hidden}
+.progress-fill{height:100%;border-radius:5px;transition:width .5s ease}
+
+/* نمودار رادار ساده */
+.radar-container{position:relative;width:100%;height:200px}
+.radar-chart{width:100%;height:100%}
+
 @media print{
 body{background:#fff;padding:0}
-.tbs,.btn,.ia,.pfb,.md,.ls,.ws,.aw,.we,.wd{display:none!important}
+.tbs,.btn,.ia,.pfb,.md,.ls,.ws,.aw,.we,.wd,.charts-grid{display:none!important}
 .sec{display:block!important;page-break-inside:avoid;box-shadow:none}
 .hdr{box-shadow:none}
 #s6,#s7{display:none!important}
 }
 @media(max-width:1200px){.sts{grid-template-columns:repeat(5,1fr)}}
-@media(max-width:768px){.fr{grid-template-columns:1fr}.sts{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.fr{grid-template-columns:1fr}.sts{grid-template-columns:repeat(3,1fr)}.charts-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -111,7 +148,15 @@ pr:{hi:'بالا',me:'متوسط',lo:'پایین'},st2:{dn:'انجام',pr2:'د�
 rs2:{rd:'خوانده',pl2:'برنامه'},pt2:{ar:'مقاله',bk:'کتاب',ch:'فصل',cn:'کنفرانس'},
 ln2:{fa:'فارسی',en:'انگلیسی',bo:'دوزبانه'},
 dy:['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
-sw:'نرم‌افزارها',ms:'مهارت مدیریتی',ts:'مهارت فنی و مهندسی',pi:'مشخصات فردی',ac:'آکادمیک',sk:'مهارت‌ها و گواهینامه‌ها'},
+sw:'نرم‌افزارها',ms:'مهارت مدیریتی',ts:'مهارت فنی و مهندسی',pi:'مشخصات فردی',ac:'آکادمیک',sk:'مهارت‌ها و گواهینامه‌ها',
+chartsTitle:'📊 نمودارهای پیشرفت',
+totalItems:'کل آیتم‌ها',itemsRecorded:'مورد ثبت شده',
+completedGoals:'اهداف تکمیل شده',booksRead:'کتاب‌های خوانده شده',
+skillsDist:'توزیع مهارت‌ها',articlesByType:'مقالات به تفکیک نوع',
+goalsStatus:'وضعیت اهداف',progress:'پیشرفت',
+advanced:'پیشرفته',intermediate:'متوسط',basic:'مقدماتی',
+article:'مقاله',book:'کتاب',chapter:'فصل کتاب',conference:'کنفرانس',
+done:'انجام شده',inProgress:'در حال انجام',planned:'برنامه‌ریزی شده'},
 en:{t:'Personal Dashboard',a:'Add',e:'Edit',d:'Delete',em:'No items yet.',cf:'Sure?',
 sec:['Overview','Jobs','Academic','Skills & Certs','Reading Plan','Podcast Plan','Sport Plan','Meal Plan','Projects','Goals'],
 lb:{nm:'Name',ag:'Age',gd:'Gender',ct:'City',ph:'Phone',em2:'Email',li:'LinkedIn',or:'ORCID',un:'University',po:'Position',
@@ -125,7 +170,15 @@ pr:{hi:'High',me:'Medium',lo:'Low'},st2:{dn:'Done',pr2:'Progress',pl:'Planned'},
 rs2:{rd:'Read',pl2:'Planned'},pt2:{ar:'Article',bk:'Book',ch:'Chapter',cn:'Conference'},
 ln2:{fa:'Persian',en:'English',bo:'Bilingual'},
 dy:['Sat','Sun','Mon','Tue','Wed','Thu','Fri'],
-sw:'Software',ms:'Management Skills',ts:'Technical Skills',pi:'Personal Info',ac:'Academic',sk:'Skills & Certificates'}
+sw:'Software',ms:'Management Skills',ts:'Technical Skills',pi:'Personal Info',ac:'Academic',sk:'Skills & Certificates',
+chartsTitle:'📊 Progress Charts',
+totalItems:'Total Items',itemsRecorded:'items recorded',
+completedGoals:'Completed Goals',booksRead:'Books Read',
+skillsDist:'Skills Distribution',articlesByType:'Articles by Type',
+goalsStatus:'Goals Status',progress:'Progress',
+advanced:'Advanced',intermediate:'Intermediate',basic:'Basic',
+article:'Article',book:'Book',chapter:'Chapter',conference:'Conference',
+done:'Done',inProgress:'In Progress',planned:'Planned'}
 };
 
 const ED={fa:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],bk:[],pd:[],mp:{w:[]},sp:{w:[]},pj:[],gl:[]},
@@ -133,10 +186,10 @@ en:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],bk:[],pd:[],mp:{w:[]},sp:{w:
 
 let L='fa',D=null,ED2={t:null,i:null},CW={m:0,s:0};
 
-function init(){try{let s=localStorage.getItem('pdV9');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
+function init(){try{let s=localStorage.getItem('pdV10');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
 function mg(a,b){let r=JSON.parse(JSON.stringify(a));for(let k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k]))r[k]=mg(a[k]||{},b[k]);else r[k]=b[k]}return r}
 function sl(l){L=l;document.body.classList.toggle('en',l==='en');document.documentElement.lang=l;document.documentElement.dir=l==='fa'?'rtl':'ltr';r()}
-function sv(){try{localStorage.setItem('pdV9',JSON.stringify(D))}catch(e){}}
+function sv(){try{localStorage.setItem('pdV10',JSON.stringify(D))}catch(e){}}
 function t(k){return T[L][k]}
 function esc(s){if(!s)return'';return s.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
@@ -163,13 +216,65 @@ for(let i=0;i<t('sec').length;i++)h+='<button class="tb '+(i===0?'on':'')+'" onc
 h+='</div>';
 h+=rO(d);h+=rJ(d);h+=rA(d);h+=rSK(d);h+=rB(d);h+=rPd(d);h+=rSP(d);h+=rMP(d);h+=rPJ(d);h+=rG(d);
 document.getElementById('app').innerHTML=h;
+setTimeout(drawCharts,300);
 }
 
 function rO(d){
 let p=d.pe||{};
 let fs=[{k:'nm',l:t('lb').nm},{k:'ag',l:t('lb').ag},{k:'gd',l:t('lb').gd},{k:'ct',l:t('lb').ct},{k:'ph',l:t('lb').ph},{k:'em2',l:t('lb').em2},{k:'li',l:t('lb').li},{k:'or',l:t('lb').or},{k:'un',l:t('lb').un},{k:'po',l:t('lb').po}];
+let totalItems=d.jb.length+d.ed.length+d.pu.length+d.sw.length+d.ms.length+d.ts.length+d.ct.length+d.bk.length+d.pd.length+d.pj.length+d.gl.length;
+let completedGoals=d.gl.filter(g=>g.pr==='hi').length;
+let readBooks=d.bk.filter(b=>b.rs==='rd').length;
+
 let h='<div class="sec on" id="s0"><div class="scd"><div class="sh"><div class="st">'+t('sec')[0]+' - '+t('pi')+'</div><button class="btn bp" onclick="om(\'pe\')">✏️ '+t('e')+'</button></div><div class="pg">';
 for(let i=0;i<fs.length;i++){let f=fs[i];h+='<div class="pi"><label>'+f.l+'</label><div class="v '+(p[f.k]?'':'e')+'">'+(p[f.k]||'—')+'</div></div>'}
+h+='</div></div>';
+
+// بخش نمودارها
+h+='<div class="scd"><div class="st" style="margin-bottom:15px">'+t('chartsTitle')+'</div><div class="charts-grid">';
+
+// نمودار ۱: کل آیتم‌ها
+h+='<div class="chart-card"><h4>'+t('totalItems')+'</h4><div class="chart-wrap"><div style="text-align:center"><div style="font-size:48px;font-weight:800;color:#4a6fa5">'+totalItems+'</div><div style="font-size:13px;color:#718096;margin-top:8px">'+t('itemsRecorded')+'</div></div></div></div>';
+
+// نمودار ۲: اهداف تکمیل شده
+let goalsPercent=d.gl.length>0?Math.round((completedGoals/d.gl.length)*100):0;
+h+='<div class="chart-card"><h4>'+t('completedGoals')+'</h4><div class="chart-wrap"><div class="progress-container"><div style="text-align:center;margin-bottom:10px"><span style="font-size:32px;font-weight:800;color:#48bb78">'+completedGoals+'</span><span style="font-size:16px;color:#718096"> / '+d.gl.length+'</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+goalsPercent+'%;background:linear-gradient(90deg,#48bb78,#38a169)"></div></div><div style="text-align:center;margin-top:6px;font-size:13px;font-weight:700;color:#48bb78">'+goalsPercent+'%</div></div></div></div>';
+
+// نمودار ۳: کتاب‌های خوانده شده
+let booksPercent=d.bk.length>0?Math.round((readBooks/d.bk.length)*100):0;
+h+='<div class="chart-card"><h4>'+t('booksRead')+'</h4><div class="chart-wrap"><div class="progress-container"><div style="text-align:center;margin-bottom:10px"><span style="font-size:32px;font-weight:800;color:#f59e0b">'+readBooks+'</span><span style="font-size:16px;color:#718096"> / '+d.bk.length+'</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+booksPercent+'%;background:linear-gradient(90deg,#f59e0b,#d97706)"></div></div><div style="text-align:center;margin-top:6px;font-size:13px;font-weight:700;color:#f59e0b">'+booksPercent+'%</div></div></div></div>';
+
+// نمودار ۴: توزیع مهارت‌ها
+let advCount=d.sw.filter(s=>s.lv==='ad').length;
+let midCount=d.sw.filter(s=>s.lv==='in').length;
+let basCount=d.sw.filter(s=>s.lv==='ba').length;
+let totalSkills=advCount+midCount+basCount;
+h+='<div class="chart-card"><h4>'+t('skillsDist')+'</h4><div class="chart-wrap"><div class="donut-container"><div class="donut" style="background:conic-gradient(#48bb78 0% '+(totalSkills>0?(advCount/totalSkills*100):0)+'%, #f59e0b '+(totalSkills>0?(advCount/totalSkills*100):0)+'% '+(totalSkills>0?((advCount+midCount)/totalSkills*100):0)+'%, #a0aec0 '+(totalSkills>0?((advCount+midCount)/totalSkills*100):0)+'% 100%)"><div class="donut-center"><div class="num">'+totalSkills+'</div><div class="lbl">'+t('sw')+'</div></div></div><div class="legend"><div class="legend-item"><div class="legend-color" style="background:#48bb78"></div>'+t('advanced')+': '+advCount+'</div><div class="legend-item"><div class="legend-color" style="background:#f59e0b"></div>'+t('intermediate')+': '+midCount+'</div><div class="legend-item"><div class="legend-color" style="background:#a0aec0"></div>'+t('basic')+': '+basCount+'</div></div></div></div></div>';
+
+// نمودار ۵: مقالات به تفکیک نوع
+let artCount=d.pu.filter(p=>p.pt==='ar').length;
+let bkCount=d.pu.filter(p=>p.pt==='bk').length;
+let chCount=d.pu.filter(p=>p.pt==='ch').length;
+let cnCount=d.pu.filter(p=>p.pt==='cn').length;
+let maxPub=Math.max(artCount,bkCount,chCount,cnCount,1);
+h+='<div class="chart-card"><h4>'+t('articlesByType')+'</h4><div class="chart-wrap"><div class="bar-chart" style="align-items:flex-end;padding-bottom:25px">';
+if(artCount>0||bkCount>0||chCount>0||cnCount>0){
+h+='<div class="bar" style="height:'+(artCount/maxPub*100)+'%"><div class="bar-value">'+artCount+'</div><div class="bar-label">'+t('article')+'</div></div>';
+h+='<div class="bar" style="height:'+(bkCount/maxPub*100)+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+bkCount+'</div><div class="bar-label">'+t('book')+'</div></div>';
+h+='<div class="bar" style="height:'+(chCount/maxPub*100)+'%;background:linear-gradient(180deg,#f59e0b,#d97706)"><div class="bar-value">'+chCount+'</div><div class="bar-label">'+t('chapter')+'</div></div>';
+h+='<div class="bar" style="height:'+(cnCount/maxPub*100)+'%;background:linear-gradient(180deg,#e53e3e,#c53030)"><div class="bar-value">'+cnCount+'</div><div class="bar-label">'+t('conference')+'</div></div>';
+}else{
+h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';
+}
+h+='</div></div></div>';
+
+// نمودار ۶: وضعیت اهداف
+let hiGoals=d.gl.filter(g=>g.pr==='hi').length;
+let meGoals=d.gl.filter(g=>g.pr==='me').length;
+let loGoals=d.gl.filter(g=>g.pr==='lo').length;
+let totalGoals=hiGoals+meGoals+loGoals;
+h+='<div class="chart-card"><h4>'+t('goalsStatus')+'</h4><div class="chart-wrap"><div class="donut-container"><div class="donut" style="background:conic-gradient(#e53e3e 0% '+(totalGoals>0?(hiGoals/totalGoals*100):0)+'%, #f59e0b '+(totalGoals>0?(hiGoals/totalGoals*100):0)+'% '+(totalGoals>0?((hiGoals+meGoals)/totalGoals*100):0)+'%, #48bb78 '+(totalGoals>0?((hiGoals+meGoals)/totalGoals*100):0)+'% 100%)"><div class="donut-center"><div class="num">'+totalGoals+'</div><div class="lbl">'+t('sec')[9]+'</div></div></div><div class="legend"><div class="legend-item"><div class="legend-color" style="background:#e53e3e"></div>'+t('pr').hi+': '+hiGoals+'</div><div class="legend-item"><div class="legend-color" style="background:#f59e0b"></div>'+t('pr').me+': '+meGoals+'</div><div class="legend-item"><div class="legend-color" style="background:#48bb78"></div>'+t('pr').lo+': '+loGoals+'</div></div></div></div></div>';
+
 h+='</div></div></div>';
 return h;
 }
@@ -189,7 +294,7 @@ if(hasEdu){
 h+='<div class="sst">🎓 تحصیلات</div>';
 sortByDate(d.ed,'sy').forEach((e)=>{
 let oi=d.ed.indexOf(e);
-h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ed\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ed\','+oi+')">'+t('d')+'</button></div><div class="it">🎓 '+esc(e.dg||'')+' - '+esc(e.fi||'')+'</div><div class="is">'+esc(e.un||'')+' | '+t('lb').gp+': '+esc(e.gp||'')+' | '+esc(e.sy||'')+' - '+esc(e.ey||'')+'</div></div>';
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ed\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ed\','+oi+')">'+t('d')+'</button></div><div class="it"> '+esc(e.dg||'')+' - '+esc(e.fi||'')+'</div><div class="is">'+esc(e.un||'')+' | '+t('lb').gp+': '+esc(e.gp||'')+' | '+esc(e.sy||'')+' - '+esc(e.ey||'')+'</div></div>';
 });
 }
 if(hasPu){
@@ -206,7 +311,7 @@ function rSK(d){
 let h='<div class="sec" id="s3"><div class="scd"><div class="sh"><div class="st">'+t('sec')[3]+'</div></div>';
 h+='<div class="sst">'+t('sw')+' <button class="btn bp bs" onclick="om(\'sw\')">+ '+t('a')+'</button></div>';
 if(d.sw.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.sw.length;i++){let s=d.sw[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'sw\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'sw\','+i+')">'+t('d')+'</button></div><div class="it">️ '+esc(s.nm||'')+'</div><span class="bg bgb">'+esc(s.lv||'')+'</span></div>'}
+else for(let i=0;i<d.sw.length;i++){let s=d.sw[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'sw\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'sw\','+i+')">'+t('d')+'</button></div><div class="it">🛠️ '+esc(s.nm||'')+'</div><span class="bg bgb">'+esc(s.lv||'')+'</span></div>'}
 h+='<div class="sst">'+t('ms')+' <button class="btn bp bs" onclick="om(\'ms\')">+ '+t('a')+'</button></div>';
 if(d.ms.length===0)h+='<div class="em">'+t('em')+'</div>';
 else for(let i=0;i<d.ms.length;i++){let s=d.ms[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ms\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ms\','+i+')">'+t('d')+'</button></div><div class="it">️ '+esc(s.sk||'')+'</div></div>'}
@@ -217,7 +322,7 @@ h+='<div class="sst">📜 گواهینامه‌ها <button class="btn bp bs" on
 if(d.ct.length===0)h+='<div class="em">'+t('em')+'</div>';
 else sortByDate(d.ct,'yr').forEach((c)=>{
 let oi=d.ct.indexOf(c);
-h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ct\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ct\','+oi+')">'+t('d')+'</button></div><div class="it">📜 '+esc(c.nm||'')+'</div><div class="is">'+esc(c.is2||'')+' | '+esc(c.yr||'')+' | '+t('lb').du+': '+esc(c.du||'')+'</div></div>';
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ct\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ct\','+oi+')">'+t('d')+'</button></div><div class="it"> '+esc(c.nm||'')+'</div><div class="is">'+esc(c.is2||'')+' | '+esc(c.yr||'')+' | '+t('lb').du+': '+esc(c.du||'')+'</div></div>';
 });
 h+='</div></div>';return h;
 }
@@ -239,7 +344,7 @@ if(planned.length>0){
 h+='<div class="sst">📅 برنامه‌ریزی شده</div>';
 planned.forEach((b)=>{
 let oi=d.bk.indexOf(b);
-h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div><div class="it"> '+esc(b.ti||'')+'</div><div class="is">'+esc(b.au||'')+'</div><span class="bg bgb">'+t('rs2')[b.rs]+'</span>'+(b.pf?'<div class="is">'+t('lb').pf+': '+esc(b.pf)+'</div>':'')+(b.nt?'<div class="id">'+esc(b.nt)+'</div>':'')+'</div>';
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div><div class="it">📚 '+esc(b.ti||'')+'</div><div class="is">'+esc(b.au||'')+'</div><span class="bg bgb">'+t('rs2')[b.rs]+'</span>'+(b.pf?'<div class="is">'+t('lb').pf+': '+esc(b.pf)+'</div>':'')+(b.nt?'<div class="id">'+esc(b.nt)+'</div>':'')+'</div>';
 });
 }
 }
@@ -329,7 +434,7 @@ h+='</div></div>';return h;
 function rG(d){
 let h='<div class="sec" id="s9"><div class="scd"><div class="sh"><div class="st">'+t('sec')[9]+'</div><button class="btn bp" onclick="om(\'gl\')">+ '+t('a')+'</button></div>';
 if(d.gl.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.gl.length;i++){let g=d.gl[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'gl\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+i+')">'+t('d')+'</button></div><div class="it"> '+esc(g.tg||'')+'</div><div class="is">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div><span class="bg '+(g.pr==='hi'?'bgo':g.pr==='me'?'bgb':'bgg')+'">'+t('pr')[g.pr]+'</span></div>'}
+else for(let i=0;i<d.gl.length;i++){let g=d.gl[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'gl\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+i+')">'+t('d')+'</button></div><div class="it">🎯 '+esc(g.tg||'')+'</div><div class="is">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div><span class="bg '+(g.pr==='hi'?'bgo':g.pr==='me'?'bgb':'bgg')+'">'+t('pr')[g.pr]+'</span></div>'}
 h+='</div></div>';return h;
 }
 
@@ -388,6 +493,11 @@ sv();r();cm();
 }
 
 function dl(tp,idx){if(!confirm(t('cf')))return;if(!D[L][tp]||!Array.isArray(D[L][tp]))return;D[L][tp].splice(idx,1);sv();r()}
+
+function drawCharts(){
+// نمودارها با CSS خالص ساخته می‌شوند - نیازی به JavaScript اضافی نیست
+// همه نمودارها در renderOverview ساخته شده‌اند
+}
 
 init();
 </script>
