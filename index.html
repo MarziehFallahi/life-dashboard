@@ -16,7 +16,7 @@ body.en{direction:ltr;text-align:left}
 .ls{display:flex;gap:8px}
 .lb{padding:8px 16px;border:1px solid #d4dde6;background:#fff;color:#4a6fa5;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif}
 .lb.on{background:#4a6fa5;color:#fff}
-.sts{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-bottom:20px}
+.sts{display:grid;grid-template-columns:repeat(9,1fr);gap:8px;margin-bottom:20px}
 .sc{background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);border-top:3px solid #4a6fa5}
 .sv{font-size:20px;font-weight:800;color:#2d4a73}
 .sl{font-size:10px;color:#718096;margin-top:4px;font-weight:600}
@@ -80,15 +80,21 @@ body.en .pt th,body.en .pt td{text-align:left}
 .pt input{width:100%;border:none;background:transparent;font-family:'Vazirmatn',sans-serif;font-size:12px;padding:3px}
 .dc{text-align:center;cursor:pointer;font-size:16px}
 .dc.ok{color:#48bb78}
-@media print{.tbs,.btn,.ia,.pfb,.md,.ls,.ws,.aw,.we,.wd{display:none!important}.sec{display:block!important}}
+@media print{
+body{background:#fff;padding:0}
+.tbs,.btn,.ia,.pfb,.md,.ls,.ws,.aw,.we,.wd{display:none!important}
+.sec{display:block!important;page-break-inside:avoid;box-shadow:none}
+.hdr{box-shadow:none}
+#s6,#s7{display:none!important}
+}
 @media(max-width:1200px){.sts{grid-template-columns:repeat(5,1fr)}}
-@media(max-width:768px){.fr{grid-template-columns:1fr}.sts{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.fr{grid-template-columns:1fr}.sts{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
 <div class="ctn" id="app"></div>
 <div class="md" id="md"><div class="mc"><div class="mh"><h3 id="mt"></h3><button class="cb" onclick="cm()">×</button></div><div id="mb"></div><div class="mf"><button class="btn bp" onclick="sd()">ذخیره</button><button class="btn bd" onclick="cm()">انصراف</button></div></div></div>
-<button class="btn pfb" onclick="window.print()"> PDF</button>
+<button class="btn pfb" onclick="window.print()">📥 PDF</button>
 
 <script>
 const T={
@@ -99,13 +105,13 @@ ti:'عنوان',co:'شرکت',pe:'دوره',du:'مدت',lo:'مکان',ty:'نوع
 yr:'سال',nm2:'نام',lv:'سطح',hr:'ساعت',au:'نویسنده',rt:'امتیاز',nt:'یادداشت',ep:'اپیزود',is2:'صادرکننده',ca:'دسته',
 tg:'هدف',dl:'مهلت',pr:'اولویت',pg:'پیشرفت',jn:'ژورنال',ln:'زبان',sd2:'سابمیت',ad:'اکسپت',ed:'دوره تحصیلی',pt:'نوع',
 wn:'نام هفته',dy:'روز',br:'صبحانه',lu:'ناهار',di:'شام',ex:'ورزش',dn:'انجام',aw2:'هفته جدید',wl:'هفته',st:'وضعیت',
-rs:'وضعیت خوانش',pf:'برنامه برای',ps:'وضعیت پروژه',sy:'سال شروع',ey:'سال پایان'},
+rs:'وضعیت خوانش',pf:'برنامه برای',ps:'وضعیت پروژه',sy:'سال شروع',ey:'سال پایان',wk:'هفته'},
 tp:{mg:'مدیریتی',tc:'فنی و مهندسی'},lv:{ad:'پیشرفته',in:'متوسط',ba:'مقدماتی'},
 pr:{hi:'بالا',me:'متوسط',lo:'پایین'},st2:{dn:'انجام',pr2:'در حال',pl:'برنامه'},
 rs2:{rd:'خوانده',pl2:'برنامه'},pt2:{ar:'مقاله',bk:'کتاب',ch:'فصل',cn:'کنفرانس'},
 ln2:{fa:'فارسی',en:'انگلیسی',bo:'دوزبانه'},
 dy:['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
-sw:'نرم‌افزارها',ms:'مهارت مدیریتی',ts:'مهارت فنی و مهندسی',pi:'مشخصات فردی',ct2:'نمودارها',ac:'آکادمیک',sk:'مهارت‌ها و گواهینامه‌ها'},
+sw:'نرم‌افزارها',ms:'مهارت مدیریتی',ts:'مهارت فنی و مهندسی',pi:'مشخصات فردی',ac:'آکادمیک',sk:'مهارت‌ها و گواهینامه‌ها'},
 en:{t:'Personal Dashboard',a:'Add',e:'Edit',d:'Delete',em:'No items yet.',cf:'Sure?',
 sec:['Overview','Jobs','Academic','Skills & Certs','Reading Plan','Podcast Plan','Sport Plan','Meal Plan','Projects','Goals'],
 lb:{nm:'Name',ag:'Age',gd:'Gender',ct:'City',ph:'Phone',em2:'Email',li:'LinkedIn',or:'ORCID',un:'University',po:'Position',
@@ -113,13 +119,13 @@ ti:'Title',co:'Company',pe:'Period',du:'Duration',lo:'Location',ty:'Type',de:'De
 yr:'Year',nm2:'Name',lv:'Level',hr:'Hours',au:'Author',rt:'Rating',nt:'Notes',ep:'Episode',is2:'Issuer',ca:'Category',
 tg:'Goal',dl:'Deadline',pr:'Priority',pg:'Progress',jn:'Journal',ln:'Language',sd2:'Submit',ad:'Accept',ed:'Edu Period',pt:'Type',
 wn:'Week Name',dy:'Day',br:'Breakfast',lu:'Lunch',di:'Dinner',ex:'Exercise',dn:'Done',aw2:'New Week',wl:'Week',st:'Status',
-rs:'Read Status',pf:'Planned for',ps:'Project Status',sy:'Start Year',ey:'End Year'},
+rs:'Read Status',pf:'Planned for',ps:'Project Status',sy:'Start Year',ey:'End Year',wk:'Weeks'},
 tp:{mg:'Management',tc:'Technical'},lv:{ad:'Advanced',in:'Intermediate',ba:'Basic'},
 pr:{hi:'High',me:'Medium',lo:'Low'},st2:{dn:'Done',pr2:'Progress',pl:'Planned'},
 rs2:{rd:'Read',pl2:'Planned'},pt2:{ar:'Article',bk:'Book',ch:'Chapter',cn:'Conference'},
 ln2:{fa:'Persian',en:'English',bo:'Bilingual'},
 dy:['Sat','Sun','Mon','Tue','Wed','Thu','Fri'],
-sw:'Software',ms:'Management Skills',ts:'Technical Skills',pi:'Personal Info',ct2:'Charts',ac:'Academic',sk:'Skills & Certificates'}
+sw:'Software',ms:'Management Skills',ts:'Technical Skills',pi:'Personal Info',ac:'Academic',sk:'Skills & Certificates'}
 };
 
 const ED={fa:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],bk:[],pd:[],mp:{w:[]},sp:{w:[]},pj:[],gl:[]},
@@ -127,10 +133,10 @@ en:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],bk:[],pd:[],mp:{w:[]},sp:{w:
 
 let L='fa',D=null,ED2={t:null,i:null},CW={m:0,s:0};
 
-function init(){try{let s=localStorage.getItem('pdV7');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
+function init(){try{let s=localStorage.getItem('pdV9');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
 function mg(a,b){let r=JSON.parse(JSON.stringify(a));for(let k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k]))r[k]=mg(a[k]||{},b[k]);else r[k]=b[k]}return r}
 function sl(l){L=l;document.body.classList.toggle('en',l==='en');document.documentElement.lang=l;document.documentElement.dir=l==='fa'?'rtl':'ltr';r()}
-function sv(){try{localStorage.setItem('pdV7',JSON.stringify(D))}catch(e){}}
+function sv(){try{localStorage.setItem('pdV9',JSON.stringify(D))}catch(e){}}
 function t(k){return T[L][k]}
 function esc(s){if(!s)return'';return s.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
@@ -147,11 +153,10 @@ return da.localeCompare(db);
 
 function r(){
 let d=D[L];
-let c=[d.jb.length,d.ed.length+d.pu.length,d.sw.length+d.ms.length+d.ts.length+d.ct.length,d.bk.length,d.pd.length,d.pj.length,d.gl.length];
+let c=[d.jb.length,d.ed.length+d.pu.length,d.sw.length+d.ms.length+d.ts.length+d.ct.length,d.bk.length,d.pd.length,d.sp.w.length,d.mp.w.length,d.pj.length,d.gl.length];
 let h='<div class="hdr"><div class="hdr-top"><h1>'+t('t')+'</h1><div class="ls"><button class="lb '+(L==='fa'?'on':'')+'" onclick="sl(\'fa\')">فارسی</button><button class="lb '+(L==='en'?'on':'')+'" onclick="sl(\'en\')">English</button></div></div></div>';
 h+='<div class="sts">';
-let icons=['','🎓','🛠️','📚','','🔬',''];
-let labels=[t('sec')[1],t('ac'),t('sk'),t('sec')[4],t('sec')[5],t('sec')[8],t('sec')[9]];
+let labels=[t('sec')[1],t('ac'),t('sk'),t('sec')[4],t('sec')[5],t('lb').wk+' ورزش',t('lb').wk+' غذا',t('sec')[8],t('sec')[9]];
 for(let i=0;i<c.length;i++)h+='<div class="sc"><div class="sv">'+c[i]+'</div><div class="sl">'+labels[i]+'</div></div>';
 h+='</div><div class="tbs">';
 for(let i=0;i<t('sec').length;i++)h+='<button class="tb '+(i===0?'on':'')+'" onclick="st('+i+',this)">'+t('sec')[i]+'</button>';
@@ -172,7 +177,7 @@ return h;
 function rJ(d){
 let h='<div class="sec" id="s1"><div class="scd"><div class="sh"><div class="st">'+t('sec')[1]+'</div><button class="btn bp" onclick="om(\'jb\')">+ '+t('a')+'</button></div>';
 if(d.jb.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.jb.length;i++){let j=d.jb[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'jb\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'jb\','+i+')">'+t('d')+'</button></div><div class="it"> '+esc(j.ti||'')+'</div><div class="is">'+esc(j.co||'')+' | '+esc(j.pe||'')+' | '+esc(j.lo||'')+'</div><span class="bg '+(j.ty==='mg'?'bgg':'bgb')+'">'+t('tp')[j.ty]+'</span>'+(j.de?'<div class="id">'+esc(j.de)+'</div>':'')+'</div>'}
+else for(let i=0;i<d.jb.length;i++){let j=d.jb[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'jb\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'jb\','+i+')">'+t('d')+'</button></div><div class="it">💼 '+esc(j.ti||'')+'</div><div class="is">'+esc(j.co||'')+' | '+esc(j.pe||'')+' | '+esc(j.lo||'')+'</div><span class="bg '+(j.ty==='mg'?'bgg':'bgb')+'">'+t('tp')[j.ty]+'</span>'+(j.de?'<div class="id">'+esc(j.de)+'</div>':'')+'</div>'}
 h+='</div></div>';return h;
 }
 
@@ -182,16 +187,16 @@ let hasEdu=d.ed.length>0,hasPu=d.pu.length>0;
 if(!hasEdu&&!hasPu)h+='<div class="em">'+t('em')+'</div>';
 if(hasEdu){
 h+='<div class="sst">🎓 تحصیلات</div>';
-sortByDate(d.ed,'sy').forEach((e,i)=>{
+sortByDate(d.ed,'sy').forEach((e)=>{
 let oi=d.ed.indexOf(e);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ed\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ed\','+oi+')">'+t('d')+'</button></div><div class="it">🎓 '+esc(e.dg||'')+' - '+esc(e.fi||'')+'</div><div class="is">'+esc(e.un||'')+' | '+t('lb').gp+': '+esc(e.gp||'')+' | '+esc(e.sy||'')+' - '+esc(e.ey||'')+'</div></div>';
 });
 }
 if(hasPu){
-h+='<div class="sst">📄 مقالات</div>';
-sortByDate(d.pu,'sd').forEach((p,i)=>{
+h+='<div class="sst"> مقالات</div>';
+sortByDate(d.pu,'sd').forEach((p)=>{
 let oi=d.pu.indexOf(p);
-h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pu\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pu\','+oi+')">'+t('d')+'</button></div><div class="it">📄 '+esc(p.ti||'')+'</div><div class="is">'+esc(p.jn||'')+' | '+t('pt2')[p.pt]+' | '+t('ln2')[p.ln]+'</div><div class="is">'+t('lb').sd2+': '+(p.sd||'-')+' | '+t('lb').ad+': '+(p.ad||'-')+'</div>'+(p.ed?'<span class="bg bgb">'+esc(p.ed)+'</span>':'')+'</div>';
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pu\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pu\','+oi+')">'+t('d')+'</button></div><div class="it"> '+esc(p.ti||'')+'</div><div class="is">'+esc(p.jn||'')+' | '+t('pt2')[p.pt]+' | '+t('ln2')[p.ln]+'</div><div class="is">'+t('lb').sd2+': '+(p.sd||'-')+' | '+t('lb').ad+': '+(p.ad||'-')+'</div>'+(p.ed?'<span class="bg bgb">'+esc(p.ed)+'</span>':'')+'</div>';
 });
 }
 h+='</div></div>';return h;
@@ -210,7 +215,7 @@ if(d.ts.length===0)h+='<div class="em">'+t('em')+'</div>';
 else for(let i=0;i<d.ts.length;i++){let s=d.ts[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ts\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ts\','+i+')">'+t('d')+'</button></div><div class="it">️ '+esc(s.sk||'')+'</div></div>'}
 h+='<div class="sst">📜 گواهینامه‌ها <button class="btn bp bs" onclick="om(\'ct\')">+ '+t('a')+'</button></div>';
 if(d.ct.length===0)h+='<div class="em">'+t('em')+'</div>';
-else sortByDate(d.ct,'yr').forEach((c,i)=>{
+else sortByDate(d.ct,'yr').forEach((c)=>{
 let oi=d.ct.indexOf(c);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ct\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ct\','+oi+')">'+t('d')+'</button></div><div class="it">📜 '+esc(c.nm||'')+'</div><div class="is">'+esc(c.is2||'')+' | '+esc(c.yr||'')+' | '+t('lb').du+': '+esc(c.du||'')+'</div></div>';
 });
@@ -225,14 +230,14 @@ let read=sortByDate(d.bk.filter(b=>b.rs==='rd'),'yr');
 let planned=sortByDate(d.bk.filter(b=>b.rs!=='rd'),'pf');
 if(read.length>0){
 h+='<div class="sst">✅ خوانده شده</div>';
-read.forEach((b,i)=>{
+read.forEach((b)=>{
 let oi=d.bk.indexOf(b);
-h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div><div class="it">📚 '+esc(b.ti||'')+'</div><div class="is">'+esc(b.au||'')+' | '+esc(b.yr||'')+'</div><span class="bg bgg">'+t('rs2')[b.rs]+'</span>'+(b.nt?'<div class="id">'+esc(b.nt)+'</div>':'')+'</div>';
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div><div class="it"> '+esc(b.ti||'')+'</div><div class="is">'+esc(b.au||'')+' | '+esc(b.yr||'')+'</div><span class="bg bgg">'+t('rs2')[b.rs]+'</span>'+(b.nt?'<div class="id">'+esc(b.nt)+'</div>':'')+'</div>';
 });
 }
 if(planned.length>0){
 h+='<div class="sst">📅 برنامه‌ریزی شده</div>';
-planned.forEach((b,i)=>{
+planned.forEach((b)=>{
 let oi=d.bk.indexOf(b);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div><div class="it"> '+esc(b.ti||'')+'</div><div class="is">'+esc(b.au||'')+'</div><span class="bg bgb">'+t('rs2')[b.rs]+'</span>'+(b.pf?'<div class="is">'+t('lb').pf+': '+esc(b.pf)+'</div>':'')+(b.nt?'<div class="id">'+esc(b.nt)+'</div>':'')+'</div>';
 });
@@ -250,21 +255,21 @@ let progress=d.pd.filter(p=>p.st==='pr2');
 let planned=sortByDate(d.pd.filter(p=>p.st==='pl'),'pf');
 if(done.length>0){
 h+='<div class="sst">✅ انجام شده</div>';
-done.forEach((p,i)=>{
+done.forEach((p)=>{
 let oi=d.pd.indexOf(p);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div><div class="it">🎧 '+esc(p.ti||'')+'</div><div class="is">'+t('lb').ep+': '+esc(p.ep||'')+'</div><span class="bg bgg">'+t('st2')[p.st]+'</span>'+(p.nt?'<div class="id">'+esc(p.nt)+'</div>':'')+'</div>';
 });
 }
 if(progress.length>0){
 h+='<div class="sst">🔄 در حال انجام</div>';
-progress.forEach((p,i)=>{
+progress.forEach((p)=>{
 let oi=d.pd.indexOf(p);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div><div class="it"> '+esc(p.ti||'')+'</div><div class="is">'+t('lb').ep+': '+esc(p.ep||'')+'</div><span class="bg bgo">'+t('st2')[p.st]+'</span>'+(p.nt?'<div class="id">'+esc(p.nt)+'</div>':'')+'</div>';
 });
 }
 if(planned.length>0){
 h+='<div class="sst">📅 برنامه‌ریزی شده</div>';
-planned.forEach((p,i)=>{
+planned.forEach((p)=>{
 let oi=d.pd.indexOf(p);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div><div class="it">🎧 '+esc(p.ti||'')+'</div><div class="is">'+t('lb').ep+': '+esc(p.ep||'')+'</div><span class="bg bgb">'+t('st2')[p.st]+'</span>'+(p.pf?'<div class="is">'+t('lb').pf+': '+esc(p.pf)+'</div>':'')+(p.nt?'<div class="id">'+esc(p.nt)+'</div>':'')+'</div>';
 });
@@ -324,7 +329,7 @@ h+='</div></div>';return h;
 function rG(d){
 let h='<div class="sec" id="s9"><div class="scd"><div class="sh"><div class="st">'+t('sec')[9]+'</div><button class="btn bp" onclick="om(\'gl\')">+ '+t('a')+'</button></div>';
 if(d.gl.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.gl.length;i++){let g=d.gl[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'gl\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+i+')">'+t('d')+'</button></div><div class="it">🎯 '+esc(g.tg||'')+'</div><div class="is">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div><span class="bg '+(g.pr==='hi'?'bgo':g.pr==='me'?'bgb':'bgg')+'">'+t('pr')[g.pr]+'</span></div>'}
+else for(let i=0;i<d.gl.length;i++){let g=d.gl[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'gl\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+i+')">'+t('d')+'</button></div><div class="it"> '+esc(g.tg||'')+'</div><div class="is">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div><span class="bg '+(g.pr==='hi'?'bgo':g.pr==='me'?'bgb':'bgg')+'">'+t('pr')[g.pr]+'</span></div>'}
 h+='</div></div>';return h;
 }
 
