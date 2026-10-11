@@ -4,30 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>داشبورد شخصی</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Tahoma,sans-serif;background:#f0f4f8;padding:20px;color:#2d3748;min-height:100vh}
+body{font-family:'Vazirmatn',Tahoma,sans-serif;background:#f0f4f8;padding:20px;color:#2d3748;min-height:100vh}
 body.en{direction:ltr;text-align:left}
-.ctn{max-width:1200px;margin:0 auto}
+.ctn{max-width:1400px;margin:0 auto}
 .hdr{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.1);border-top:3px solid #4a6fa5}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
-.hdr h1{color:#4a6fa5;font-size:24px}
+.hdr h1{color:#2d4a73;font-size:24px;font-weight:800}
 .ls{display:flex;gap:8px}
-.lb{padding:8px 16px;border:1px solid #d4dde6;background:#fff;color:#4a6fa5;border-radius:6px;cursor:pointer;font-weight:600;font-family:inherit}
+.lb{padding:8px 16px;border:1px solid #d4dde6;background:#fff;color:#4a6fa5;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif}
 .lb.on{background:#4a6fa5;color:#fff}
-.sts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:20px}
-.sc{background:#fff;border-radius:10px;padding:15px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);border-top:3px solid #4a6fa5}
-.sv{font-size:24px;font-weight:800;color:#4a6fa5}
-.sl{font-size:11px;color:#718096;margin-top:4px}
-.tbs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;background:#fff;padding:10px;border-radius:10px}
-.tb{padding:8px 16px;background:#f8fafc;border:1px solid #d4dde6;border-radius:6px;cursor:pointer;font-weight:600;font-family:inherit}
+.sts{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-bottom:20px}
+.sc{background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);border-top:3px solid #4a6fa5}
+.sv{font-size:20px;font-weight:800;color:#2d4a73}
+.sl{font-size:10px;color:#718096;margin-top:4px;font-weight:600}
+.tbs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;background:#fff;padding:10px;border-radius:10px}
+.tb{padding:6px 12px;background:#f8fafc;border:1px solid #d4dde6;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif;font-size:12px}
 .tb.on{background:#4a6fa5;color:#fff;border-color:#4a6fa5}
 .sec{display:none}
 .sec.on{display:block}
 .scd{background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1);margin-bottom:16px}
 .sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid #e8f0f8}
-.st{font-size:18px;font-weight:700;color:#2d4a73}
-.btn{padding:8px 14px;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-family:inherit;margin:3px}
+.st{font-size:18px;font-weight:800;color:#2d4a73}
+.btn{padding:8px 14px;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif;margin:3px}
 .bp{background:#4a6fa5;color:#fff}
 .bd{background:#e53e3e;color:#fff}
 .bw{background:#f59e0b;color:#fff}
@@ -47,11 +48,11 @@ body.en .ia{left:auto;right:8px}
 .md.on{display:flex}
 .mc{background:#fff;padding:25px;border-radius:12px;max-width:500px;width:90%;max-height:85vh;overflow-y:auto}
 .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #e8f0f8}
-.mh h3{font-size:16px;color:#2d4a73}
+.mh h3{font-size:16px;color:#2d4a73;font-weight:800}
 .cb{background:none;border:none;font-size:20px;cursor:pointer;color:#718096}
 .fg{margin-bottom:12px}
-.fl{display:block;margin-bottom:5px;font-size:12px;font-weight:600;color:#2d4a73}
-.fi,.ft,.fs{width:100%;padding:8px;border:1px solid #d4dde6;border-radius:6px;font-family:inherit;font-size:13px}
+.fl{display:block;margin-bottom:5px;font-size:12px;font-weight:700;color:#2d4a73}
+.fi,.ft,.fs{width:100%;padding:8px;border:1px solid #d4dde6;border-radius:6px;font-family:'Vazirmatn',sans-serif;font-size:13px}
 .ft{min-height:60px;resize:vertical}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .mf{display:flex;gap:8px;justify-content:flex-end;margin-top:15px;padding-top:12px;border-top:1px solid #e8f0f8}
@@ -66,82 +67,96 @@ body.en .sst{padding-right:0;padding-left:8px;border-right:none;border-left:3px 
 .pfb{position:fixed;bottom:20px;left:20px;z-index:100;background:#4a6fa5;color:#fff;padding:10px 20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
 body.en .pfb{left:auto;right:20px}
 .ws{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;padding:10px;background:#f8fafc;border-radius:8px}
-.wb{padding:5px 10px;border:1px solid #d4dde6;background:#fff;border-radius:6px;cursor:pointer;font-size:11px;font-family:inherit}
+.wb{padding:5px 10px;border:1px solid #d4dde6;background:#fff;border-radius:6px;cursor:pointer;font-size:11px;font-family:'Vazirmatn',sans-serif}
 .wb.on{background:#4a6fa5;color:#fff}
 .we,.wd{padding:2px 6px;border:none;border-radius:4px;cursor:pointer;font-size:10px;margin-right:4px}
 .we{background:#f59e0b;color:#fff}
 .wd{background:#e53e3e;color:#fff}
-.aw{margin-top:8px;padding:6px 12px;background:#4a6fa5;color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:inherit}
+.aw{margin-top:8px;padding:6px 12px;background:#4a6fa5;color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:'Vazirmatn',sans-serif}
 .pt{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px}
 .pt th,.pt td{border:1px solid #d4dde6;padding:6px;text-align:right}
 body.en .pt th,body.en .pt td{text-align:left}
 .pt th{background:#4a6fa5;color:#fff}
-.pt input{width:100%;border:none;background:transparent;font-family:inherit;font-size:12px;padding:3px}
+.pt input{width:100%;border:none;background:transparent;font-family:'Vazirmatn',sans-serif;font-size:12px;padding:3px}
 .dc{text-align:center;cursor:pointer;font-size:16px}
 .dc.ok{color:#48bb78}
 @media print{.tbs,.btn,.ia,.pfb,.md,.ls,.ws,.aw,.we,.wd{display:none!important}.sec{display:block!important}}
+@media(max-width:1200px){.sts{grid-template-columns:repeat(5,1fr)}}
 @media(max-width:768px){.fr{grid-template-columns:1fr}.sts{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <div class="ctn" id="app"></div>
 <div class="md" id="md"><div class="mc"><div class="mh"><h3 id="mt"></h3><button class="cb" onclick="cm()">×</button></div><div id="mb"></div><div class="mf"><button class="btn bp" onclick="sd()">ذخیره</button><button class="btn bd" onclick="cm()">انصراف</button></div></div></div>
-<button class="btn pfb" onclick="window.print()">📥 PDF</button>
+<button class="btn pfb" onclick="window.print()"> PDF</button>
 
 <script>
 const T={
 fa:{t:'داشبورد شخصی',a:'افزودن',e:'ویرایش',d:'حذف',em:'هنوز موردی نیست.',cf:'مطمئنید؟',
-sec:['نمای کلی','مشاغل','تحصیلات','مقالات من','مهارت‌ها','پلن مطالعه کتاب‌ها','پلن شنیدن پادکست‌ها','پلن ورزشی','پلن غذایی','پروژه‌ها','گواهینامه‌ها','اهداف'],
+sec:['نمای کلی','مشاغل','آکادمیک','مهارت‌ها و گواهینامه‌ها','پلن مطالعه کتاب‌ها','پلن شنیدن پادکست‌ها','پلن ورزشی','پلن غذایی','پروژه‌ها','اهداف'],
 lb:{nm:'نام',ag:'سن',gd:'جنسیت',ct:'شهر',ph:'تلفن',em2:'ایمیل',li:'لینکدین',or:'ORCID',un:'دانشگاه',po:'پست سازمانی',
 ti:'عنوان',co:'شرکت',pe:'دوره',du:'مدت',lo:'مکان',ty:'نوع',de:'توضیحات',dt:'تاریخ',dg:'مقطع',fi:'رشته',gp:'معدل',
 yr:'سال',nm2:'نام',lv:'سطح',hr:'ساعت',au:'نویسنده',rt:'امتیاز',nt:'یادداشت',ep:'اپیزود',is2:'صادرکننده',ca:'دسته',
 tg:'هدف',dl:'مهلت',pr:'اولویت',pg:'پیشرفت',jn:'ژورنال',ln:'زبان',sd2:'سابمیت',ad:'اکسپت',ed:'دوره تحصیلی',pt:'نوع',
 wn:'نام هفته',dy:'روز',br:'صبحانه',lu:'ناهار',di:'شام',ex:'ورزش',dn:'انجام',aw2:'هفته جدید',wl:'هفته',st:'وضعیت',
-rs:'وضعیت خوانش',pf:'برنامه برای',ps:'وضعیت پروژه'},
+rs:'وضعیت خوانش',pf:'برنامه برای',ps:'وضعیت پروژه',sy:'سال شروع',ey:'سال پایان'},
 tp:{mg:'مدیریتی',tc:'فنی و مهندسی'},lv:{ad:'پیشرفته',in:'متوسط',ba:'مقدماتی'},
 pr:{hi:'بالا',me:'متوسط',lo:'پایین'},st2:{dn:'انجام',pr2:'در حال',pl:'برنامه'},
 rs2:{rd:'خوانده',pl2:'برنامه'},pt2:{ar:'مقاله',bk:'کتاب',ch:'فصل',cn:'کنفرانس'},
 ln2:{fa:'فارسی',en:'انگلیسی',bo:'دوزبانه'},
 dy:['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
-sw:'نرم‌افزارها',ms:'مهارت مدیریتی',ts:'مهارت فنی و مهندسی',pi:'مشخصات فردی',ct2:'نمودارها'},
+sw:'نرم‌افزارها',ms:'مهارت مدیریتی',ts:'مهارت فنی و مهندسی',pi:'مشخصات فردی',ct2:'نمودارها',ac:'آکادمیک',sk:'مهارت‌ها و گواهینامه‌ها'},
 en:{t:'Personal Dashboard',a:'Add',e:'Edit',d:'Delete',em:'No items yet.',cf:'Sure?',
-sec:['Overview','Jobs','Education','My Articles','Skills','Reading Plan','Podcast Plan','Sport Plan','Meal Plan','Projects','Certificates','Goals'],
+sec:['Overview','Jobs','Academic','Skills & Certs','Reading Plan','Podcast Plan','Sport Plan','Meal Plan','Projects','Goals'],
 lb:{nm:'Name',ag:'Age',gd:'Gender',ct:'City',ph:'Phone',em2:'Email',li:'LinkedIn',or:'ORCID',un:'University',po:'Position',
 ti:'Title',co:'Company',pe:'Period',du:'Duration',lo:'Location',ty:'Type',de:'Description',dt:'Date',dg:'Degree',fi:'Field',gp:'GPA',
 yr:'Year',nm2:'Name',lv:'Level',hr:'Hours',au:'Author',rt:'Rating',nt:'Notes',ep:'Episode',is2:'Issuer',ca:'Category',
 tg:'Goal',dl:'Deadline',pr:'Priority',pg:'Progress',jn:'Journal',ln:'Language',sd2:'Submit',ad:'Accept',ed:'Edu Period',pt:'Type',
 wn:'Week Name',dy:'Day',br:'Breakfast',lu:'Lunch',di:'Dinner',ex:'Exercise',dn:'Done',aw2:'New Week',wl:'Week',st:'Status',
-rs:'Read Status',pf:'Planned for',ps:'Project Status'},
+rs:'Read Status',pf:'Planned for',ps:'Project Status',sy:'Start Year',ey:'End Year'},
 tp:{mg:'Management',tc:'Technical'},lv:{ad:'Advanced',in:'Intermediate',ba:'Basic'},
 pr:{hi:'High',me:'Medium',lo:'Low'},st2:{dn:'Done',pr2:'Progress',pl:'Planned'},
 rs2:{rd:'Read',pl2:'Planned'},pt2:{ar:'Article',bk:'Book',ch:'Chapter',cn:'Conference'},
 ln2:{fa:'Persian',en:'English',bo:'Bilingual'},
 dy:['Sat','Sun','Mon','Tue','Wed','Thu','Fri'],
-sw:'Software',ms:'Management Skills',ts:'Technical Skills',pi:'Personal Info',ct2:'Charts'}
+sw:'Software',ms:'Management Skills',ts:'Technical Skills',pi:'Personal Info',ct2:'Charts',ac:'Academic',sk:'Skills & Certificates'}
 };
 
-const ED={fa:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],bk:[],pd:[],mp:{w:[]},sp:{w:[]},pj:[],ct:[],gl:[]},
-en:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],bk:[],pd:[],mp:{w:[]},sp:{w:[]},pj:[],ct:[],gl:[]}};
+const ED={fa:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],bk:[],pd:[],mp:{w:[]},sp:{w:[]},pj:[],gl:[]},
+en:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],bk:[],pd:[],mp:{w:[]},sp:{w:[]},pj:[],gl:[]}};
 
 let L='fa',D=null,ED2={t:null,i:null},CW={m:0,s:0};
 
-function init(){try{let s=localStorage.getItem('pdV6');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
+function init(){try{let s=localStorage.getItem('pdV7');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
 function mg(a,b){let r=JSON.parse(JSON.stringify(a));for(let k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k]))r[k]=mg(a[k]||{},b[k]);else r[k]=b[k]}return r}
 function sl(l){L=l;document.body.classList.toggle('en',l==='en');document.documentElement.lang=l;document.documentElement.dir=l==='fa'?'rtl':'ltr';r()}
-function sv(){try{localStorage.setItem('pdV6',JSON.stringify(D))}catch(e){}}
+function sv(){try{localStorage.setItem('pdV7',JSON.stringify(D))}catch(e){}}
 function t(k){return T[L][k]}
 function esc(s){if(!s)return'';return s.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
+function sortByDate(arr,field){
+if(!arr||arr.length===0)return[];
+return arr.slice().sort((a,b)=>{
+let da=a[field]||'',db=b[field]||'';
+if(!da&&!db)return 0;
+if(!da)return 1;
+if(!db)return -1;
+return da.localeCompare(db);
+});
+}
+
 function r(){
-let d=D[L],c=[d.jb.length,d.ed.length,d.pu.length,d.sw.length+d.ms.length+d.ts.length,d.bk.length,d.pd.length,d.pj.length,d.ct.length,d.gl.length];
+let d=D[L];
+let c=[d.jb.length,d.ed.length+d.pu.length,d.sw.length+d.ms.length+d.ts.length+d.ct.length,d.bk.length,d.pd.length,d.pj.length,d.gl.length];
 let h='<div class="hdr"><div class="hdr-top"><h1>'+t('t')+'</h1><div class="ls"><button class="lb '+(L==='fa'?'on':'')+'" onclick="sl(\'fa\')">فارسی</button><button class="lb '+(L==='en'?'on':'')+'" onclick="sl(\'en\')">English</button></div></div></div>';
 h+='<div class="sts">';
-let sn=['💼','🎓','','🛠️','📚','','🏃','','🔬','📜',''];
-for(let i=0;i<c.length;i++)h+='<div class="sc"><div class="sv">'+c[i]+'</div><div class="sl">'+t('sec')[i+1]+'</div></div>';
+let icons=['','🎓','🛠️','📚','','🔬',''];
+let labels=[t('sec')[1],t('ac'),t('sk'),t('sec')[4],t('sec')[5],t('sec')[8],t('sec')[9]];
+for(let i=0;i<c.length;i++)h+='<div class="sc"><div class="sv">'+c[i]+'</div><div class="sl">'+labels[i]+'</div></div>';
 h+='</div><div class="tbs">';
 for(let i=0;i<t('sec').length;i++)h+='<button class="tb '+(i===0?'on':'')+'" onclick="st('+i+',this)">'+t('sec')[i]+'</button>';
 h+='</div>';
-h+=rO(d);h+=rJ(d);h+=rE(d);h+=rP(d);h+=rS(d);h+=rB(d);h+=rPd(d);h+=rSP(d);h+=rMP(d);h+=rPJ(d);h+=rC(d);h+=rG(d);
+h+=rO(d);h+=rJ(d);h+=rA(d);h+=rSK(d);h+=rB(d);h+=rPd(d);h+=rSP(d);h+=rMP(d);h+=rPJ(d);h+=rG(d);
 document.getElementById('app').innerHTML=h;
 }
 
@@ -157,55 +172,110 @@ return h;
 function rJ(d){
 let h='<div class="sec" id="s1"><div class="scd"><div class="sh"><div class="st">'+t('sec')[1]+'</div><button class="btn bp" onclick="om(\'jb\')">+ '+t('a')+'</button></div>';
 if(d.jb.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.jb.length;i++){let j=d.jb[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'jb\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'jb\','+i+')">'+t('d')+'</button></div><div class="it">💼 '+esc(j.ti||'')+'</div><div class="is">'+esc(j.co||'')+' | '+esc(j.pe||'')+' | '+esc(j.lo||'')+'</div><span class="bg '+(j.ty==='mg'?'bgg':'bgb')+'">'+t('tp')[j.ty]+'</span>'+(j.de?'<div class="id">'+esc(j.de)+'</div>':'')+'</div>'}
+else for(let i=0;i<d.jb.length;i++){let j=d.jb[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'jb\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'jb\','+i+')">'+t('d')+'</button></div><div class="it"> '+esc(j.ti||'')+'</div><div class="is">'+esc(j.co||'')+' | '+esc(j.pe||'')+' | '+esc(j.lo||'')+'</div><span class="bg '+(j.ty==='mg'?'bgg':'bgb')+'">'+t('tp')[j.ty]+'</span>'+(j.de?'<div class="id">'+esc(j.de)+'</div>':'')+'</div>'}
 h+='</div></div>';return h;
 }
 
-function rE(d){
-let h='<div class="sec" id="s2"><div class="scd"><div class="sh"><div class="st">'+t('sec')[2]+'</div><button class="btn bp" onclick="om(\'ed\')">+ '+t('a')+'</button></div>';
-if(d.ed.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.ed.length;i++){let e=d.ed[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ed\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ed\','+i+')">'+t('d')+'</button></div><div class="it">🎓 '+esc(e.dg||'')+' - '+esc(e.fi||'')+'</div><div class="is">'+esc(e.un||'')+' | '+t('lb').gp+': '+esc(e.gp||'')+' | '+esc(e.sy||'')+' - '+esc(e.ey||'')+'</div></div>'}
+function rA(d){
+let h='<div class="sec" id="s2"><div class="scd"><div class="sh"><div class="st">'+t('sec')[2]+'</div><button class="btn bp" onclick="om(\'ed\')">+ '+t('a')+' تحصیل</button> <button class="btn bp" onclick="om(\'pu\')">+ '+t('a')+' مقاله</button></div>';
+let hasEdu=d.ed.length>0,hasPu=d.pu.length>0;
+if(!hasEdu&&!hasPu)h+='<div class="em">'+t('em')+'</div>';
+if(hasEdu){
+h+='<div class="sst">🎓 تحصیلات</div>';
+sortByDate(d.ed,'sy').forEach((e,i)=>{
+let oi=d.ed.indexOf(e);
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ed\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ed\','+oi+')">'+t('d')+'</button></div><div class="it">🎓 '+esc(e.dg||'')+' - '+esc(e.fi||'')+'</div><div class="is">'+esc(e.un||'')+' | '+t('lb').gp+': '+esc(e.gp||'')+' | '+esc(e.sy||'')+' - '+esc(e.ey||'')+'</div></div>';
+});
+}
+if(hasPu){
+h+='<div class="sst">📄 مقالات</div>';
+sortByDate(d.pu,'sd').forEach((p,i)=>{
+let oi=d.pu.indexOf(p);
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pu\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pu\','+oi+')">'+t('d')+'</button></div><div class="it">📄 '+esc(p.ti||'')+'</div><div class="is">'+esc(p.jn||'')+' | '+t('pt2')[p.pt]+' | '+t('ln2')[p.ln]+'</div><div class="is">'+t('lb').sd2+': '+(p.sd||'-')+' | '+t('lb').ad+': '+(p.ad||'-')+'</div>'+(p.ed?'<span class="bg bgb">'+esc(p.ed)+'</span>':'')+'</div>';
+});
+}
 h+='</div></div>';return h;
 }
 
-function rP(d){
-let h='<div class="sec" id="s3"><div class="scd"><div class="sh"><div class="st">'+t('sec')[3]+'</div><button class="btn bp" onclick="om(\'pu\')">+ '+t('a')+'</button></div>';
-if(d.pu.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.pu.length;i++){let p=d.pu[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pu\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pu\','+i+')">'+t('d')+'</button></div><div class="it">📄 '+esc(p.ti||'')+'</div><div class="is">'+esc(p.jn||'')+' | '+t('pt2')[p.pt]+' | '+t('ln2')[p.ln]+'</div><div class="is">'+t('lb').sd2+': '+(p.sd||'-')+' | '+t('lb').ad+': '+(p.ad||'-')+'</div>'+(p.ed?'<span class="bg bgb">'+esc(p.ed)+'</span>':'')+'</div>'}
-h+='</div></div>';return h;
-}
-
-function rS(d){
-let h='<div class="sec" id="s4"><div class="scd"><div class="sh"><div class="st">'+t('sec')[4]+'</div></div>';
+function rSK(d){
+let h='<div class="sec" id="s3"><div class="scd"><div class="sh"><div class="st">'+t('sec')[3]+'</div></div>';
 h+='<div class="sst">'+t('sw')+' <button class="btn bp bs" onclick="om(\'sw\')">+ '+t('a')+'</button></div>';
 if(d.sw.length===0)h+='<div class="em">'+t('em')+'</div>';
 else for(let i=0;i<d.sw.length;i++){let s=d.sw[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'sw\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'sw\','+i+')">'+t('d')+'</button></div><div class="it">️ '+esc(s.nm||'')+'</div><span class="bg bgb">'+esc(s.lv||'')+'</span></div>'}
 h+='<div class="sst">'+t('ms')+' <button class="btn bp bs" onclick="om(\'ms\')">+ '+t('a')+'</button></div>';
 if(d.ms.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.ms.length;i++){let s=d.ms[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ms\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ms\','+i+')">'+t('d')+'</button></div><div class="it">🛠️ '+esc(s.sk||'')+'</div></div>'}
+else for(let i=0;i<d.ms.length;i++){let s=d.ms[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ms\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ms\','+i+')">'+t('d')+'</button></div><div class="it">️ '+esc(s.sk||'')+'</div></div>'}
 h+='<div class="sst">'+t('ts')+' <button class="btn bp bs" onclick="om(\'ts\')">+ '+t('a')+'</button></div>';
 if(d.ts.length===0)h+='<div class="em">'+t('em')+'</div>';
 else for(let i=0;i<d.ts.length;i++){let s=d.ts[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ts\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ts\','+i+')">'+t('d')+'</button></div><div class="it">️ '+esc(s.sk||'')+'</div></div>'}
+h+='<div class="sst">📜 گواهینامه‌ها <button class="btn bp bs" onclick="om(\'ct\')">+ '+t('a')+'</button></div>';
+if(d.ct.length===0)h+='<div class="em">'+t('em')+'</div>';
+else sortByDate(d.ct,'yr').forEach((c,i)=>{
+let oi=d.ct.indexOf(c);
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ct\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ct\','+oi+')">'+t('d')+'</button></div><div class="it">📜 '+esc(c.nm||'')+'</div><div class="is">'+esc(c.is2||'')+' | '+esc(c.yr||'')+' | '+t('lb').du+': '+esc(c.du||'')+'</div></div>';
+});
 h+='</div></div>';return h;
 }
 
 function rB(d){
-let h='<div class="sec" id="s5"><div class="scd"><div class="sh"><div class="st">'+t('sec')[5]+'</div><button class="btn bp" onclick="om(\'bk\')">+ '+t('a')+'</button></div>';
+let h='<div class="sec" id="s4"><div class="scd"><div class="sh"><div class="st">'+t('sec')[4]+'</div><button class="btn bp" onclick="om(\'bk\')">+ '+t('a')+'</button></div>';
 if(d.bk.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.bk.length;i++){let b=d.bk[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'bk\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+i+')">'+t('d')+'</button></div><div class="it"> '+esc(b.ti||'')+'</div><div class="is">'+esc(b.au||'')+' | '+esc(b.yr||'')+'</div><span class="bg '+(b.rs==='rd'?'bgg':'bgb')+'">'+t('rs2')[b.rs]+'</span>'+(b.pf?'<div class="is">'+t('lb').pf+': '+esc(b.pf)+'</div>':'')+(b.nt?'<div class="id">'+esc(b.nt)+'</div>':'')+'</div>'}
+else{
+let read=sortByDate(d.bk.filter(b=>b.rs==='rd'),'yr');
+let planned=sortByDate(d.bk.filter(b=>b.rs!=='rd'),'pf');
+if(read.length>0){
+h+='<div class="sst">✅ خوانده شده</div>';
+read.forEach((b,i)=>{
+let oi=d.bk.indexOf(b);
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div><div class="it">📚 '+esc(b.ti||'')+'</div><div class="is">'+esc(b.au||'')+' | '+esc(b.yr||'')+'</div><span class="bg bgg">'+t('rs2')[b.rs]+'</span>'+(b.nt?'<div class="id">'+esc(b.nt)+'</div>':'')+'</div>';
+});
+}
+if(planned.length>0){
+h+='<div class="sst">📅 برنامه‌ریزی شده</div>';
+planned.forEach((b,i)=>{
+let oi=d.bk.indexOf(b);
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div><div class="it"> '+esc(b.ti||'')+'</div><div class="is">'+esc(b.au||'')+'</div><span class="bg bgb">'+t('rs2')[b.rs]+'</span>'+(b.pf?'<div class="is">'+t('lb').pf+': '+esc(b.pf)+'</div>':'')+(b.nt?'<div class="id">'+esc(b.nt)+'</div>':'')+'</div>';
+});
+}
+}
 h+='</div></div>';return h;
 }
 
 function rPd(d){
-let h='<div class="sec" id="s6"><div class="scd"><div class="sh"><div class="st">'+t('sec')[6]+'</div><button class="btn bp" onclick="om(\'pd\')">+ '+t('a')+'</button></div>';
+let h='<div class="sec" id="s5"><div class="scd"><div class="sh"><div class="st">'+t('sec')[5]+'</div><button class="btn bp" onclick="om(\'pd\')">+ '+t('a')+'</button></div>';
 if(d.pd.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.pd.length;i++){let p=d.pd[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pd\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+i+')">'+t('d')+'</button></div><div class="it"> '+esc(p.ti||'')+'</div><div class="is">'+t('lb').ep+': '+esc(p.ep||'')+'</div><span class="bg '+(p.st==='dn'?'bgg':p.st==='pr2'?'bgo':'bgb')+'">'+t('st2')[p.st]+'</span>'+(p.pf?'<div class="is">'+t('lb').pf+': '+esc(p.pf)+'</div>':'')+(p.nt?'<div class="id">'+esc(p.nt)+'</div>':'')+'</div>'}
+else{
+let done=sortByDate(d.pd.filter(p=>p.st==='dn'),'dt');
+let progress=d.pd.filter(p=>p.st==='pr2');
+let planned=sortByDate(d.pd.filter(p=>p.st==='pl'),'pf');
+if(done.length>0){
+h+='<div class="sst">✅ انجام شده</div>';
+done.forEach((p,i)=>{
+let oi=d.pd.indexOf(p);
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div><div class="it">🎧 '+esc(p.ti||'')+'</div><div class="is">'+t('lb').ep+': '+esc(p.ep||'')+'</div><span class="bg bgg">'+t('st2')[p.st]+'</span>'+(p.nt?'<div class="id">'+esc(p.nt)+'</div>':'')+'</div>';
+});
+}
+if(progress.length>0){
+h+='<div class="sst">🔄 در حال انجام</div>';
+progress.forEach((p,i)=>{
+let oi=d.pd.indexOf(p);
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div><div class="it"> '+esc(p.ti||'')+'</div><div class="is">'+t('lb').ep+': '+esc(p.ep||'')+'</div><span class="bg bgo">'+t('st2')[p.st]+'</span>'+(p.nt?'<div class="id">'+esc(p.nt)+'</div>':'')+'</div>';
+});
+}
+if(planned.length>0){
+h+='<div class="sst">📅 برنامه‌ریزی شده</div>';
+planned.forEach((p,i)=>{
+let oi=d.pd.indexOf(p);
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div><div class="it">🎧 '+esc(p.ti||'')+'</div><div class="is">'+t('lb').ep+': '+esc(p.ep||'')+'</div><span class="bg bgb">'+t('st2')[p.st]+'</span>'+(p.pf?'<div class="is">'+t('lb').pf+': '+esc(p.pf)+'</div>':'')+(p.nt?'<div class="id">'+esc(p.nt)+'</div>':'')+'</div>';
+});
+}
+}
 h+='</div></div>';return h;
 }
 
 function rSP(d){
 let pl=d.sp||{w:[]},ws=pl.w||[],wi=CW.s,w=ws[wi];
-let h='<div class="sec" id="s7"><div class="scd"><div class="sh"><div class="st">'+t('sec')[7]+'</div></div><div class="ws">';
+let h='<div class="sec" id="s6"><div class="scd"><div class="sh"><div class="st">'+t('sec')[6]+'</div></div><div class="ws">';
 if(ws.length===0)h+='<span style="color:#718096;font-size:12px">'+t('em')+'</span>';
 else for(let i=0;i<ws.length;i++){let wn=ws[i].nm||t('lb').wl+' '+(i+1);h+='<button class="wb '+(i===wi?'on':'')+'" onclick="sw2(\'s\','+i+')">'+esc(wn)+' <button class="we" onclick="event.stopPropagation();ewn(\'s\','+i+')">✏️</button><button class="wd" onclick="event.stopPropagation();dwn(\'s\','+i+')">×</button></button>'}
 h+='</div><button class="aw" onclick="aw2(\'s\')">+ '+t('lb').aw2+'</button>';
@@ -215,7 +285,7 @@ h+='</div></div>';return h;
 
 function rMP(d){
 let pl=d.mp||{w:[]},ws=pl.w||[],wi=CW.m,w=ws[wi];
-let h='<div class="sec" id="s8"><div class="scd"><div class="sh"><div class="st">'+t('sec')[8]+'</div></div><div class="ws">';
+let h='<div class="sec" id="s7"><div class="scd"><div class="sh"><div class="st">'+t('sec')[7]+'</div></div><div class="ws">';
 if(ws.length===0)h+='<span style="color:#718096;font-size:12px">'+t('em')+'</span>';
 else for(let i=0;i<ws.length;i++){let wn=ws[i].nm||t('lb').wl+' '+(i+1);h+='<button class="wb '+(i===wi?'on':'')+'" onclick="sw2(\'m\','+i+')">'+esc(wn)+' <button class="we" onclick="event.stopPropagation();ewn(\'m\','+i+')">✏️</button><button class="wd" onclick="event.stopPropagation();dwn(\'m\','+i+')">×</button></button>'}
 h+='</div><button class="aw" onclick="aw2(\'m\')">+ '+t('lb').aw2+'</button>';
@@ -245,21 +315,14 @@ function umd(wi,di,f,v){let pl=D[L].mp;if(!pl.w[wi])pl.w[wi]={dy:[]};if(!pl.w[wi
 function tmd(wi,di){let pl=D[L].mp;if(!pl.w[wi].dy[di])pl.w[wi].dy[di]={};pl.w[wi].dy[di].dn=!pl.w[wi].dy[di].dn;sv();r()}
 
 function rPJ(d){
-let h='<div class="sec" id="s9"><div class="scd"><div class="sh"><div class="st">'+t('sec')[9]+'</div><button class="btn bp" onclick="om(\'pj\')">+ '+t('a')+'</button></div>';
+let h='<div class="sec" id="s8"><div class="scd"><div class="sh"><div class="st">'+t('sec')[8]+'</div><button class="btn bp" onclick="om(\'pj\')">+ '+t('a')+'</button></div>';
 if(d.pj.length===0)h+='<div class="em">'+t('em')+'</div>';
 else for(let i=0;i<d.pj.length;i++){let p=d.pj[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pj\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+i+')">'+t('d')+'</button></div><div class="it">🔬 '+esc(p.ti||'')+'</div><div class="is">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div><div class="is"><strong>'+t('lb').ps+':</strong> <span class="bg '+(p.st==='dn'?'bgg':p.st==='pr2'?'bgo':'bgb')+'">'+t('st2')[p.st]+'</span></div>'+(p.de?'<div class="id">'+esc(p.de)+'</div>':'')+'</div>'}
 h+='</div></div>';return h;
 }
 
-function rC(d){
-let h='<div class="sec" id="s10"><div class="scd"><div class="sh"><div class="st">'+t('sec')[10]+'</div><button class="btn bp" onclick="om(\'ct\')">+ '+t('a')+'</button></div>';
-if(d.ct.length===0)h+='<div class="em">'+t('em')+'</div>';
-else for(let i=0;i<d.ct.length;i++){let c=d.ct[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ct\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ct\','+i+')">'+t('d')+'</button></div><div class="it">📜 '+esc(c.nm||'')+'</div><div class="is">'+esc(c.is2||'')+' | '+esc(c.yr||'')+' | '+t('lb').du+': '+esc(c.du||'')+'</div></div>'}
-h+='</div></div>';return h;
-}
-
 function rG(d){
-let h='<div class="sec" id="s11"><div class="scd"><div class="sh"><div class="st">'+t('sec')[11]+'</div><button class="btn bp" onclick="om(\'gl\')">+ '+t('a')+'</button></div>';
+let h='<div class="sec" id="s9"><div class="scd"><div class="sh"><div class="st">'+t('sec')[9]+'</div><button class="btn bp" onclick="om(\'gl\')">+ '+t('a')+'</button></div>';
 if(d.gl.length===0)h+='<div class="em">'+t('em')+'</div>';
 else for(let i=0;i<d.gl.length;i++){let g=d.gl[i];h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'gl\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+i+')">'+t('d')+'</button></div><div class="it">🎯 '+esc(g.tg||'')+'</div><div class="is">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div><span class="bg '+(g.pr==='hi'?'bgo':g.pr==='me'?'bgb':'bgg')+'">'+t('pr')[g.pr]+'</span></div>'}
 h+='</div></div>';return h;
@@ -279,16 +342,16 @@ let TA=function(id,lb,v){return'<div class="fg"><label class="fl">'+lb+'</label>
 
 if(tp==='pe'){ti=t('pi');bd='<div class="fr">'+F('nm',t('lb').nm,it.nm)+F('ag',t('lb').ag,'number',it.ag)+'</div><div class="fr">'+F('gd',t('lb').gd,it.gd)+F('ct',t('lb').ct,it.ct)+'</div><div class="fr">'+F('ph',t('lb').ph,it.ph)+F('em2',t('lb').em2,'email',it.em2)+'</div><div class="fr">'+F('li',t('lb').li,it.li)+F('or',t('lb').or,it.or)+'</div><div class="fr">'+F('un',t('lb').un,it.un)+F('po',t('lb').po,it.po)+'</div>'}
 else if(tp==='jb'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[1];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('co',t('lb').co,it.co)+'</div><div class="fr">'+F('pe',t('lb').pe,it.pe)+F('du',t('lb').du,it.du)+'</div><div class="fr">'+F('lo',t('lb').lo,it.lo)+S('ty',t('lb').ty,[{v:'mg',l:t('tp').mg},{v:'tc',l:t('tp').tc}],it.ty)+'</div>'+TA('de',t('lb').de,it.de)}
-else if(tp==='ed'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[2];bd='<div class="fr">'+F('dg',t('lb').dg,it.dg)+F('fi',t('lb').fi,it.fi)+'</div><div class="fr">'+F('un',t('lb').un,it.un)+F('gp',t('lb').gp,it.gp)+'</div><div class="fr">'+F('sy',L==='fa'?'سال شروع':'Start Year',it.sy)+F('ey',L==='fa'?'سال پایان':'End Year',it.ey)+'</div>'}
-else if(tp==='pu'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[3];bd=F('ti',t('lb').ti,it.ti)+'<div class="fr">'+F('jn',t('lb').jn,it.jn)+S('pt',t('lb').pt,[{v:'ar',l:t('pt2').ar},{v:'bk',l:t('pt2').bk},{v:'ch',l:t('pt2').ch},{v:'cn',l:t('pt2').cn}],it.pt)+'</div><div class="fr">'+S('ln',t('lb').ln,[{v:'fa',l:t('ln2').fa},{v:'en',l:t('ln2').en},{v:'bo',l:t('ln2').bo}],it.ln)+F('ed',t('lb').ed,it.ed)+'</div><div class="fr">'+F('sd',t('lb').sd2,'date',it.sd)+F('ad',t('lb').ad,'date',it.ad)+'</div>'+TA('de',t('lb').de,it.de)}
+else if(tp==='ed'){ti=(ED2.i!==null?t('e'):t('a'))+' - تحصیل';bd='<div class="fr">'+F('dg',t('lb').dg,it.dg)+F('fi',t('lb').fi,it.fi)+'</div><div class="fr">'+F('un',t('lb').un,it.un)+F('gp',t('lb').gp,it.gp)+'</div><div class="fr">'+F('sy',t('lb').sy,it.sy)+F('ey',t('lb').ey,it.ey)+'</div>'}
+else if(tp==='pu'){ti=(ED2.i!==null?t('e'):t('a'))+' - مقاله';bd=F('ti',t('lb').ti,it.ti)+'<div class="fr">'+F('jn',t('lb').jn,it.jn)+S('pt',t('lb').pt,[{v:'ar',l:t('pt2').ar},{v:'bk',l:t('pt2').bk},{v:'ch',l:t('pt2').ch},{v:'cn',l:t('pt2').cn}],it.pt)+'</div><div class="fr">'+S('ln',t('lb').ln,[{v:'fa',l:t('ln2').fa},{v:'en',l:t('ln2').en},{v:'bo',l:t('ln2').bo}],it.ln)+F('ed',t('lb').ed,it.ed)+'</div><div class="fr">'+F('sd',t('lb').sd2,'date',it.sd)+F('ad',t('lb').ad,'date',it.ad)+'</div>'+TA('de',t('lb').de,it.de)}
 else if(tp==='sw'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sw');bd='<div class="fr">'+F('nm',t('lb').nm2,it.nm)+S('lv',t('lb').lv,[{v:'ad',l:t('lv').ad},{v:'in',l:t('lv').in},{v:'ba',l:t('lv').ba}],it.lv)+'</div>'}
 else if(tp==='ms'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('ms');bd=F('sk',t('lb').nm2,it.sk)}
 else if(tp==='ts'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('ts');bd=F('sk',t('lb').nm2,it.sk)}
-else if(tp==='bk'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[5];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('au',t('lb').au,it.au)+'</div><div class="fr">'+F('yr',t('lb').yr,it.yr)+S('rs',t('lb').rs,[{v:'pl2',l:t('rs2').pl2},{v:'rd',l:t('rs2').rd}],it.rs)+'</div>'+F('pf',t('lb').pf,it.pf)+F('ca',t('lb').ca,it.ca)+TA('nt',t('lb').nt,it.nt)}
-else if(tp==='pd'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[6];bd=F('ti',t('lb').ti,it.ti)+F('ep',t('lb').ep,it.ep)+S('st',t('lb').st,[{v:'pl',l:t('st2').pl},{v:'pr2',l:t('st2').pr2},{v:'dn',l:t('st2').dn}],it.st)+F('pf',t('lb').pf,it.pf)+TA('nt',t('lb').nt,it.nt)}
-else if(tp==='pj'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[9];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('yr',t('lb').yr,it.yr)+'</div>'+F('ca',t('lb').ca,it.ca)+S('st',t('lb').st,[{v:'pl',l:t('st2').pl},{v:'pr2',l:t('st2').pr2},{v:'dn',l:t('st2').dn}],it.st)+TA('de',t('lb').de,it.de)}
-else if(tp==='ct'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[10];bd='<div class="fr">'+F('nm',t('lb').nm2,it.nm)+F('is2',t('lb').is2,it.is2)+'</div><div class="fr">'+F('yr',t('lb').yr,it.yr)+F('du',t('lb').du,it.du)+'</div>'}
-else if(tp==='gl'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[11];bd=F('tg',t('lb').tg,it.tg)+F('ca',t('lb').ca,it.ca)+'<div class="fr">'+F('dl',t('lb').dl,'date',it.dl)+S('pr',t('lb').pr,[{v:'hi',l:t('pr').hi},{v:'me',l:t('pr').me},{v:'lo',l:t('pr').lo}],it.pr)+'</div>'+F('pg',t('lb').pg,'number',it.pg||0)}
+else if(tp==='ct'){ti=(ED2.i!==null?t('e'):t('a'))+' - گواهینامه';bd='<div class="fr">'+F('nm',t('lb').nm2,it.nm)+F('is2',t('lb').is2,it.is2)+'</div><div class="fr">'+F('yr',t('lb').yr,it.yr)+F('du',t('lb').du,it.du)+'</div>'}
+else if(tp==='bk'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[4];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('au',t('lb').au,it.au)+'</div><div class="fr">'+F('yr',t('lb').yr,it.yr)+S('rs',t('lb').rs,[{v:'pl2',l:t('rs2').pl2},{v:'rd',l:t('rs2').rd}],it.rs)+'</div>'+F('pf',t('lb').pf,it.pf)+F('ca',t('lb').ca,it.ca)+TA('nt',t('lb').nt,it.nt)}
+else if(tp==='pd'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[5];bd=F('ti',t('lb').ti,it.ti)+F('ep',t('lb').ep,it.ep)+S('st',t('lb').st,[{v:'pl',l:t('st2').pl},{v:'pr2',l:t('st2').pr2},{v:'dn',l:t('st2').dn}],it.st)+F('pf',t('lb').pf,it.pf)+TA('nt',t('lb').nt,it.nt)}
+else if(tp==='pj'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[8];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('yr',t('lb').yr,it.yr)+'</div>'+F('ca',t('lb').ca,it.ca)+S('st',t('lb').st,[{v:'pl',l:t('st2').pl},{v:'pr2',l:t('st2').pr2},{v:'dn',l:t('st2').dn}],it.st)+TA('de',t('lb').de,it.de)}
+else if(tp==='gl'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[9];bd=F('tg',t('lb').tg,it.tg)+F('ca',t('lb').ca,it.ca)+'<div class="fr">'+F('dl',t('lb').dl,'date',it.dl)+S('pr',t('lb').pr,[{v:'hi',l:t('pr').hi},{v:'me',l:t('pr').me},{v:'lo',l:t('pr').lo}],it.pr)+'</div>'+F('pg',t('lb').pg,'number',it.pg||0)}
 
 document.getElementById('mt').textContent=ti;
 document.getElementById('mb').innerHTML=bd;
@@ -308,10 +371,10 @@ else if(tp==='ed')o={dg:g('dg'),fi:g('fi'),un:g('un'),gp:g('gp'),sy:g('sy'),ey:g
 else if(tp==='pu')o={ti:g('ti'),jn:g('jn'),pt:g('pt'),ln:g('ln'),ed:g('ed'),sd:g('sd'),ad:g('ad'),de:g('de')};
 else if(tp==='sw')o={nm:g('nm'),lv:g('lv')};
 else if(tp==='ms'||tp==='ts')o={sk:g('sk')};
+else if(tp==='ct')o={nm:g('nm'),is2:g('is2'),yr:g('yr'),du:g('du')};
 else if(tp==='bk')o={ti:g('ti'),au:g('au'),yr:g('yr'),rs:g('rs'),pf:g('pf'),ca:g('ca'),nt:g('nt')};
 else if(tp==='pd')o={ti:g('ti'),ep:g('ep'),st:g('st'),pf:g('pf'),nt:g('nt')};
 else if(tp==='pj')o={ti:g('ti'),yr:g('yr'),ca:g('ca'),st:g('st'),de:g('de')};
-else if(tp==='ct')o={nm:g('nm'),is2:g('is2'),yr:g('yr'),du:g('du')};
 else if(tp==='gl')o={tg:g('tg'),ca:g('ca'),dl:g('dl'),pr:g('pr'),pg:g('pg')};
 if(!d[tp])d[tp]=[];
 if(idx!==null&&idx>=0&&idx<d[tp].length)d[tp][idx]=o;else d[tp].push(o)}
