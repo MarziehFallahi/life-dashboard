@@ -34,8 +34,6 @@ body.en{direction:ltr;text-align:left}
 .bw{background:#f59e0b;color:#fff}
 .bs{padding:4px 8px;font-size:11px}
 .bf{background:#48bb78;color:#fff}
-
-/* ✅ مربع‌های کوچک برای مهارت‌ها، گواهینامه‌ها، کتاب‌ها، پادکست‌ها */
 .tag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px}
 .tag-item{background:#f8fafc;border:1px solid #d4dde6;border-radius:8px;padding:10px;position:relative;transition:all .2s;display:flex;flex-direction:column;gap:4px}
 .tag-item:hover{border-color:#4a6fa5;box-shadow:0 2px 8px rgba(74,111,165,.12);transform:translateY(-2px)}
@@ -46,8 +44,6 @@ body.en{direction:ltr;text-align:left}
 body.en .tag-actions{left:auto;right:4px}
 .tag-check{position:absolute;top:4px;right:4px;width:20px;height:20px;cursor:pointer;accent-color:#48bb78}
 body.en .tag-check{right:auto;left:4px}
-
-/* آیتم‌های بلند برای مشاغل و تحصیلات */
 .itm{background:#f8fafc;padding:12px;margin-bottom:8px;border-radius:8px;border-right:3px solid #4a6fa5;position:relative}
 body.en .itm{border-right:none;border-left:3px solid #4a6fa5}
 .it{font-weight:700;font-size:14px;margin-bottom:4px}
@@ -66,7 +62,6 @@ body.en .ia{left:auto;right:8px}
 .bgg{background:#d4e8d4;color:#2d5a2d}
 .bgo{background:#f0e4d4;color:#8b6f47}
 .bgr{background:#fed7d7;color:#c53030}
-
 .md{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .md.on{display:flex}
 .mc{background:#fff;padding:25px;border-radius:12px;max-width:600px;width:90%;max-height:85vh;overflow-y:auto}
@@ -96,8 +91,6 @@ body.en .pfb{left:auto;right:20px}
 .we{background:#f59e0b;color:#fff}
 .wd{background:#e53e3e;color:#fff}
 .aw{margin-top:8px;padding:6px 12px;background:#4a6fa5;color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:'Vazirmatn',sans-serif}
-
-/* ✅ جداول جمع‌وجور */
 .pt{width:100%;border-collapse:collapse;margin-top:8px;font-size:11px}
 .pt th,.pt td{border:1px solid #d4dde6;padding:4px 6px;text-align:right}
 body.en .pt th,body.en .pt td{text-align:left}
@@ -105,27 +98,24 @@ body.en .pt th,body.en .pt td{text-align:left}
 .pt input{width:100%;border:none;background:transparent;font-family:'Vazirmatn',sans-serif;font-size:11px;padding:2px}
 .dc{text-align:center;cursor:pointer;font-size:14px}
 .dc.ok{color:#48bb78}
-
-/* فایل‌ها */
 .file-list{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
 .file-item{background:#e8f0f8;padding:4px 8px;border-radius:6px;font-size:11px;display:flex;align-items:center;gap:6px}
 .file-item a{color:#4a6fa5;text-decoration:none;font-weight:600}
 .file-item a:hover{text-decoration:underline}
 .file-remove{color:#e53e3e;cursor:pointer;font-weight:bold}
-.file-upload{margin-top:8px}
-.file-upload input[type=file]{font-size:12px}
-
-/* نمودارها */
+.file-upload-box{background:#f0f9ff;border:2px dashed #4a6fa5;border-radius:8px;padding:12px;margin-top:10px;text-align:center}
+.file-upload-box label{display:block;cursor:pointer;color:#4a6fa5;font-weight:600;font-size:13px}
+.file-upload-box input{display:none}
+.file-upload-box .hint{font-size:11px;color:#718096;margin-top:4px}
 .charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px}
 .chart-card{background:linear-gradient(135deg,#f8fafc,#fff);border:1px solid #d4dde6;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
 .chart-card h4{font-size:14px;color:#2d4a73;margin-bottom:15px;font-weight:700;text-align:center;padding-bottom:8px;border-bottom:2px solid #e8f0f8}
 .chart-wrap{position:relative;height:200px;display:flex;align-items:center;justify-content:center}
 .bar-chart{display:flex;align-items:flex-end;gap:10px;height:160px;padding:10px 0 25px 0;border-bottom:2px solid #e8f0f8;width:100%}
-.bar{flex:1;background:linear-gradient(180deg,#4a6fa5,#2d4a73);border-radius:4px 4px 0 0;min-height:4px;position:relative;transition:all .3s;cursor:pointer;display:flex;flex-direction:column;align-items:center}
+.bar{flex:1;background:linear-gradient(180deg,#4a6fa5,#2d4a73);border-radius:4px 4px 0 0;min-height:4px;position:relative;transition:all .3s;cursor:pointer}
 .bar:hover{opacity:.8;transform:scaleY(1.05)}
 .bar-label{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:9px;color:#718096;white-space:nowrap;max-width:70px;overflow:hidden;text-overflow:ellipsis;text-align:center}
 .bar-value{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:#2d4a73}
-
 .resp-list{margin-top:8px}
 .resp-item{display:flex;gap:6px;margin-bottom:8px;align-items:center}
 .resp-item input{flex:1;padding:8px;border:1px solid #d4dde6;border-radius:6px;font-family:'Vazirmatn',sans-serif;font-size:13px}
@@ -133,14 +123,7 @@ body.en .pt th,body.en .pt td{text-align:left}
 .resp-add{background:#48bb78;color:#fff;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-family:'Vazirmatn',sans-serif;font-size:12px;font-weight:600;margin-top:4px}
 .resp-add:hover{background:#38a169}
 .resp-remove{background:#e53e3e;color:#fff;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:bold}
-
-@media print{
-body{background:#fff;padding:0}
-.tbs,.btn,.ia,.pfb,.md,.ls,.ws,.aw,.we,.wd,.charts-grid,.tag-check,.file-upload{display:none!important}
-.sec{display:block!important;page-break-inside:avoid;box-shadow:none}
-.hdr{box-shadow:none}
-#s6,#s7{display:none!important}
-}
+@media print{body{background:#fff;padding:0}.tbs,.btn,.ia,.pfb,.md,.ls,.ws,.aw,.we,.wd,.charts-grid,.tag-check{display:none!important}.sec{display:block!important;page-break-inside:avoid;box-shadow:none}.hdr{box-shadow:none}#s6,#s7{display:none!important}}
 @media(max-width:1200px){.sts{grid-template-columns:repeat(5,1fr)}}
 @media(max-width:768px){.fr{grid-template-columns:1fr}.sts{grid-template-columns:repeat(3,1fr)}.charts-grid{grid-template-columns:1fr}.tag-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}}
 </style>
@@ -161,7 +144,7 @@ tg:'هدف',dl:'مهلت',pr:'اولویت',pg:'پیشرفت',jn:'ژورنال',
 wn:'نام هفته',dy:'روز',br:'صبحانه',lu:'ناهار',di:'شام',ex:'ورزش',dn:'انجام',aw2:'هفته جدید',wl:'هفته',st:'وضعیت',
 rs:'وضعیت خوانش',pf:'برنامه برای',ps:'وضعیت پروژه',sy:'سال شروع',ey:'سال پایان',wk:'هفته',
 addResp:'➕ افزودن مسئولیت',resp:'مسئولیت‌ها و دستاوردها',
-addFile:'📎 افزودن فایل',files:'فایل‌ها',
+addFile:'📎 پیوست فایل',files:'فایل‌های پیوست',fileHint:'حداکثر 2 مگابایت - PDF, تصویر, ویدئو',
 markDone:'✓ انجام شد',markUnDone:'↺ برگرداندن',
 read:'خوانده',unread:'نخوانده',listened:'شنیده',unlistened:'نشنیده',
 completed:'تکمیل شده',incomplete:'تکمیل نشده'},
@@ -171,10 +154,10 @@ rs2:{rd:'خوانده',pl2:'برنامه'},pt2:{ar:'مقاله',bk:'کتاب',ch
 ln2:{fa:'فارسی',en:'انگلیسی',bo:'دوزبانه'},
 dy:['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
 sw:'نرم‌افزارها',ms:'مهارت مدیریتی',ts:'مهارت فنی و مهندسی',pi:'مشخصات فردی',ac:'آکادمیک',sk:'مهارت‌ها و گواهینامه‌ها',
-chartsTitle:'📊 نمودارهای پیشرفت',
+chartsTitle:' نمودارهای پیشرفت',
 completedGoals:'اهداف تکمیل شده',booksRead:'کتاب‌های خوانده شده',
 skillsDist:'توزیع مهارت‌ها',articlesByType:'مقالات به تفکیک نوع',
-goalsStatus:'وضعیت اهداف',podcastStatus:'وضعیت پادکست‌ها',
+goalsStatus:'وضعیت پروژه‌ها',podcastStatus:'وضعیت پادکست‌ها',
 advanced:'پیشرفته',intermediate:'متوسط',basic:'مقدماتی',
 article:'مقاله',book:'کتاب',chapter:'فصل',conference:'کنفرانس',
 done:'انجام شده',inProgress:'در حال انجام',planned:'برنامه‌ریزی'},
@@ -187,7 +170,7 @@ tg:'Goal',dl:'Deadline',pr:'Priority',pg:'Progress',jn:'Journal',ln:'Language',s
 wn:'Week Name',dy:'Day',br:'Breakfast',lu:'Lunch',di:'Dinner',ex:'Exercise',dn:'Done',aw2:'New Week',wl:'Week',st:'Status',
 rs:'Read Status',pf:'Planned for',ps:'Project Status',sy:'Start Year',ey:'End Year',wk:'Weeks',
 addResp:' Add Responsibility',resp:'Responsibilities',
-addFile:'📎 Add File',files:'Files',
+addFile:'📎 Attach File',files:'Attached Files',fileHint:'Max 2MB - PDF, Image, Video',
 markDone:'✓ Done',markUnDone:'↺ Undo',
 read:'Read',unread:'Unread',listened:'Listened',unlistened:'Unlistened',
 completed:'Completed',incomplete:'Incomplete'},
@@ -200,7 +183,7 @@ sw:'Software',ms:'Management Skills',ts:'Technical Skills',pi:'Personal Info',ac
 chartsTitle:'📊 Progress Charts',
 completedGoals:'Completed Goals',booksRead:'Books Read',
 skillsDist:'Skills Distribution',articlesByType:'Articles by Type',
-goalsStatus:'Goals Status',podcastStatus:'Podcasts Status',
+goalsStatus:'Projects Status',podcastStatus:'Podcasts Status',
 advanced:'Advanced',intermediate:'Intermediate',basic:'Basic',
 article:'Article',book:'Book',chapter:'Chapter',conference:'Conference',
 done:'Done',inProgress:'In Progress',planned:'Planned'}
@@ -209,12 +192,12 @@ done:'Done',inProgress:'In Progress',planned:'Planned'}
 const ED={fa:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],bk:[],pd:[],mp:{w:[]},sp:{w:[]},pj:[],gl:[]},
 en:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],bk:[],pd:[],mp:{w:[]},sp:{w:[]},pj:[],gl:[]}};
 
-let L='fa',D=null,ED2={t:null,i:null},CW={m:0,s:0};
+let L='fa',D=null,ED2={t:null,i:null},CW={m:0,s:0},pendingFiles=[];
 
-function init(){try{let s=localStorage.getItem('pdV13');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
+function init(){try{let s=localStorage.getItem('pdV14');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
 function mg(a,b){let r=JSON.parse(JSON.stringify(a));for(let k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k]))r[k]=mg(a[k]||{},b[k]);else r[k]=b[k]}return r}
 function sl(l){L=l;document.body.classList.toggle('en',l==='en');document.documentElement.lang=l;document.documentElement.dir=l==='fa'?'rtl':'ltr';r()}
-function sv(){try{localStorage.setItem('pdV13',JSON.stringify(D))}catch(e){alert('حافظه پر است! فایل‌های بزرگ را حذف کنید.')}}
+function sv(){try{localStorage.setItem('pdV14',JSON.stringify(D))}catch(e){alert('حافظه پر است! فایل‌های بزرگ را حذف کنید.')}}
 function t(k){return T[L][k]}
 function esc(s){if(!s)return'';return s.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
@@ -225,7 +208,6 @@ if(typeof de==='string')return de.split('\n').filter(x=>x&&x.trim());
 return[];
 }
 
-// ✅ مرتب‌سازی جدید به قدیم
 function sortByNewest(arr,field){
 if(!arr||arr.length===0)return[];
 return arr.slice().sort((a,b)=>{
@@ -233,7 +215,7 @@ let da=a[field]||'',db=b[field]||'';
 if(!da&&!db)return 0;
 if(!da)return 1;
 if(!db)return -1;
-return db.localeCompare(da); // برعکس: جدید اول
+return db.localeCompare(da);
 });
 }
 
@@ -263,37 +245,32 @@ let h='<div class="sec on" id="s0"><div class="scd"><div class="sh"><div class="
 for(let i=0;i<fs.length;i++){let f=fs[i];h+='<div class="pi"><label>'+f.l+'</label><div class="v '+(p[f.k]?'':'e')+'">'+(p[f.k]||'—')+'</div></div>'}
 h+='</div></div>';
 
-// ✅ نمودارهای میله‌ای (بدون کل آیتم‌ها)
 h+='<div class="scd"><div class="st" style="margin-bottom:15px">'+t('chartsTitle')+'</div><div class="charts-grid">';
 
-// نمودار ۱: اهداف
 let goalsPercent=d.gl.length>0?Math.round((completedGoals/d.gl.length)*100):0;
 h+='<div class="chart-card"><h4>'+t('completedGoals')+'</h4><div class="chart-wrap"><div class="bar-chart">';
 if(d.gl.length>0){
-h+='<div class="bar" style="height:'+goalsPercent+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+completedGoals+'</div><div class="bar-label">'+t('done')+'</div></div>';
-h+='<div class="bar" style="height:'+(100-goalsPercent)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.gl.length-completedGoals)+'</div><div class="bar-label">'+t('incomplete')+'</div></div>';
+h+='<div class="bar" style="height:'+Math.max(goalsPercent,5)+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+completedGoals+'</div><div class="bar-label">'+t('done')+'</div></div>';
+h+='<div class="bar" style="height:'+Math.max(100-goalsPercent,5)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.gl.length-completedGoals)+'</div><div class="bar-label">'+t('incomplete')+'</div></div>';
 }else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
 h+='</div></div></div>';
 
-// نمودار ۲: کتاب‌ها
 let booksPercent=d.bk.length>0?Math.round((readBooks/d.bk.length)*100):0;
 h+='<div class="chart-card"><h4>'+t('booksRead')+'</h4><div class="chart-wrap"><div class="bar-chart">';
 if(d.bk.length>0){
-h+='<div class="bar" style="height:'+booksPercent+'%;background:linear-gradient(180deg,#f59e0b,#d97706)"><div class="bar-value">'+readBooks+'</div><div class="bar-label">'+t('read')+'</div></div>';
-h+='<div class="bar" style="height:'+(100-booksPercent)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.bk.length-readBooks)+'</div><div class="bar-label">'+t('unread')+'</div></div>';
+h+='<div class="bar" style="height:'+Math.max(booksPercent,5)+'%;background:linear-gradient(180deg,#f59e0b,#d97706)"><div class="bar-value">'+readBooks+'</div><div class="bar-label">'+t('read')+'</div></div>';
+h+='<div class="bar" style="height:'+Math.max(100-booksPercent,5)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.bk.length-readBooks)+'</div><div class="bar-label">'+t('unread')+'</div></div>';
 }else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
 h+='</div></div></div>';
 
-// نمودار ۳: پادکست‌ها
 let podPercent=d.pd.length>0?Math.round((donePodcasts/d.pd.length)*100):0;
 h+='<div class="chart-card"><h4>'+t('podcastStatus')+'</h4><div class="chart-wrap"><div class="bar-chart">';
 if(d.pd.length>0){
-h+='<div class="bar" style="height:'+podPercent+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+donePodcasts+'</div><div class="bar-label">'+t('done')+'</div></div>';
-h+='<div class="bar" style="height:'+(100-podPercent)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.pd.length-donePodcasts)+'</div><div class="bar-label">'+t('incomplete')+'</div></div>';
+h+='<div class="bar" style="height:'+Math.max(podPercent,5)+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+donePodcasts+'</div><div class="bar-label">'+t('done')+'</div></div>';
+h+='<div class="bar" style="height:'+Math.max(100-podPercent,5)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.pd.length-donePodcasts)+'</div><div class="bar-label">'+t('incomplete')+'</div></div>';
 }else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
 h+='</div></div></div>';
 
-// نمودار ۴: مهارت‌ها
 let advCount=d.sw.filter(s=>s.lv==='ad').length;
 let midCount=d.sw.filter(s=>s.lv==='in').length;
 let basCount=d.sw.filter(s=>s.lv==='ba').length;
@@ -306,7 +283,6 @@ h+='<div class="bar" style="height:'+(basCount/totalSkills*100)+'%;background:li
 }else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
 h+='</div></div></div>';
 
-// نمودار ۵: مقالات
 let artCount=d.pu.filter(p=>p.pt==='ar').length;
 let bkCount=d.pu.filter(p=>p.pt==='bk').length;
 let chCount=d.pu.filter(p=>p.pt==='ch').length;
@@ -321,12 +297,11 @@ h+='<div class="bar" style="height:'+(cnCount/maxPub*100)+'%;background:linear-g
 }else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
 h+='</div></div></div>';
 
-// نمودار ۶: پروژه‌ها
 let projPercent=d.pj.length>0?Math.round((doneProjects/d.pj.length)*100):0;
 h+='<div class="chart-card"><h4>'+t('goalsStatus')+'</h4><div class="chart-wrap"><div class="bar-chart">';
 if(d.pj.length>0){
-h+='<div class="bar" style="height:'+projPercent+'%;background:linear-gradient(180deg,#4a6fa5,#2d4a73)"><div class="bar-value">'+doneProjects+'</div><div class="bar-label">'+t('done')+'</div></div>';
-h+='<div class="bar" style="height:'+(100-projPercent)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.pj.length-doneProjects)+'</div><div class="bar-label">'+t('incomplete')+'</div></div>';
+h+='<div class="bar" style="height:'+Math.max(projPercent,5)+'%;background:linear-gradient(180deg,#4a6fa5,#2d4a73)"><div class="bar-value">'+doneProjects+'</div><div class="bar-label">'+t('done')+'</div></div>';
+h+='<div class="bar" style="height:'+Math.max(100-projPercent,5)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.pj.length-doneProjects)+'</div><div class="bar-label">'+t('incomplete')+'</div></div>';
 }else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
 h+='</div></div></div>';
 
@@ -334,8 +309,18 @@ h+='</div></div></div>';
 return h;
 }
 
+function renderFiles(files,itemType,itemIdx){
+if(!files||files.length===0)return'';
+let h='<div class="file-list">';
+files.forEach((f,fi)=>{
+h+='<div class="file-item">📎 <a href="'+f.data+'" download="'+esc(f.name)+'">'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\''+itemType+'\','+itemIdx+','+fi+')">×</span></div>';
+});
+h+='</div>';
+return h;
+}
+
 function rJ(d){
-let h='<div class="sec" id="s1"><div class="scd"><div class="sh"><div class="st">'+t('sec')[1]+'</div><div><button class="btn bp" onclick="om(\'jb\')">+ '+t('a')+'</button><button class="btn bf" onclick="document.getElementById(\'jb-file\').click()">'+t('lb').addFile+'</button><input type="file" id="jb-file" style="display:none" onchange="handleFile(\'jb\',this)"></div></div>';
+let h='<div class="sec" id="s1"><div class="scd"><div class="sh"><div class="st">'+t('sec')[1]+'</div><button class="btn bp" onclick="om(\'jb\')">+ '+t('a')+'</button></div>';
 if(d.jb.length===0)h+='<div class="em">'+t('em')+'</div>';
 else for(let i=0;i<d.jb.length;i++){
 let j=d.jb[i];
@@ -344,16 +329,8 @@ h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'jb\
 h+='<div class="it">💼 '+esc(j.ti||'')+'</div>';
 h+='<div class="is">'+esc(j.co||'')+' | '+esc(j.pe||'')+' | '+esc(j.lo||'')+'</div>';
 h+='<span class="bg '+(j.ty==='mg'?'bgg':'bgb')+'">'+t('tp')[j.ty]+'</span>';
-if(resps.length>0){
-h+='<div class="id"><ul>';
-for(let r=0;r<resps.length;r++)h+='<li>'+esc(resps[r])+'</li>';
-h+='</ul></div>';
-}
-if(j.files&&j.files.length>0){
-h+='<div class="file-list">';
-j.files.forEach((f,fi)=>{h+='<div class="file-item">📎 <a href="'+f.data+'" download="'+esc(f.name)+'">'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'jb\','+i+','+fi+')">×</span></div>';});
-h+='</div>';
-}
+if(resps.length>0){h+='<div class="id"><ul>';for(let r=0;r<resps.length;r++)h+='<li>'+esc(resps[r])+'</li>';h+='</ul></div>';}
+h+=renderFiles(j.files,'jb',i);
 h+='</div>';
 }
 h+='</div></div>';return h;
@@ -368,10 +345,11 @@ h+='<div class="sst">🎓 تحصیلات</div><div class="tag-grid">';
 sortByNewest(d.ed,'sy').forEach((e)=>{
 let oi=d.ed.indexOf(e);
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'ed\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ed\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">🎓 '+esc(e.dg||'')+'</div>';
+h+='<div class="tag-title"> '+esc(e.dg||'')+'</div>';
 h+='<div class="tag-sub">'+esc(e.fi||'')+'</div>';
 h+='<div class="tag-sub">'+esc(e.un||'')+'</div>';
 h+='<div class="tag-sub">'+esc(e.sy||'')+' - '+esc(e.ey||'')+'</div>';
+h+=renderFiles(e.files,'ed',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -381,10 +359,11 @@ h+='<div class="sst">📄 مقالات</div><div class="tag-grid">';
 sortByNewest(d.pu,'sd').forEach((p)=>{
 let oi=d.pu.indexOf(p);
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'pu\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pu\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">📄 '+esc(p.ti||'')+'</div>';
+h+='<div class="tag-title"> '+esc(p.ti||'')+'</div>';
 h+='<div class="tag-sub">'+esc(p.jn||'')+'</div>';
 h+='<span class="tag-badge bgb">'+t('pt2')[p.pt]+'</span>';
 h+='<span class="tag-badge bgb">'+t('ln2')[p.ln]+'</span>';
+h+=renderFiles(p.files,'pu',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -392,7 +371,6 @@ h+='</div>';
 h+='</div></div>';return h;
 }
 
-// ✅ مهارت‌ها و گواهینامه‌ها: مربعی
 function rSK(d){
 let h='<div class="sec" id="s3"><div class="scd"><div class="sh"><div class="st">'+t('sec')[3]+'</div></div>';
 h+='<div class="sst">'+t('sw')+' <button class="btn bp bs" onclick="om(\'sw\')">+ '+t('a')+'</button></div>';
@@ -402,6 +380,7 @@ d.sw.forEach((s,i)=>{
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'sw\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'sw\','+i+')">'+t('d')+'</button></div>';
 h+='<div class="tag-title">️ '+esc(s.nm||'')+'</div>';
 h+='<span class="tag-badge '+(s.lv==='ad'?'bgg':s.lv==='in'?'bgo':'bgb')+'">'+t('lv')[s.lv]+'</span>';
+h+=renderFiles(s.files,'sw',i);
 h+='</div>';
 });
 h+='</div>';}
@@ -411,6 +390,7 @@ else{h+='<div class="tag-grid">';
 d.ms.forEach((s,i)=>{
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'ms\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ms\','+i+')">'+t('d')+'</button></div>';
 h+='<div class="tag-title">📊 '+esc(s.sk||'')+'</div>';
+h+=renderFiles(s.files,'ms',i);
 h+='</div>';
 });
 h+='</div>';}
@@ -420,10 +400,11 @@ else{h+='<div class="tag-grid">';
 d.ts.forEach((s,i)=>{
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'ts\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ts\','+i+')">'+t('d')+'</button></div>';
 h+='<div class="tag-title">⚙️ '+esc(s.sk||'')+'</div>';
+h+=renderFiles(s.files,'ts',i);
 h+='</div>';
 });
 h+='</div>';}
-h+='<div class="sst">📜 گواهینامه‌ها <button class="btn bp bs" onclick="om(\'ct\')">+ '+t('a')+'</button></div>';
+h+='<div class="sst"> گواهینامه‌ها <button class="btn bp bs" onclick="om(\'ct\')">+ '+t('a')+'</button></div>';
 if(d.ct.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{h+='<div class="tag-grid">';
 sortByNewest(d.ct,'yr').forEach((c)=>{
@@ -432,15 +413,15 @@ h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onc
 h+='<div class="tag-title">📜 '+esc(c.nm||'')+'</div>';
 h+='<div class="tag-sub">'+esc(c.is2||'')+'</div>';
 h+='<div class="tag-sub">'+esc(c.yr||'')+' | '+esc(c.du||'')+'</div>';
+h+=renderFiles(c.files,'ct',oi);
 h+='</div>';
 });
 h+='</div>';}
 h+='</div></div>';return h;
 }
 
-// ✅ کتاب‌ها: مربعی + چک‌باکس
 function rB(d){
-let h='<div class="sec" id="s4"><div class="scd"><div class="sh"><div class="st">'+t('sec')[4]+'</div><div><button class="btn bp" onclick="om(\'bk\')">+ '+t('a')+'</button><button class="btn bf" onclick="document.getElementById(\'bk-file\').click()">'+t('lb').addFile+'</button><input type="file" id="bk-file" style="display:none" onchange="handleFile(\'bk\',this)"></div></div>';
+let h='<div class="sec" id="s4"><div class="scd"><div class="sh"><div class="st">'+t('sec')[4]+'</div><button class="btn bp" onclick="om(\'bk\')">+ '+t('a')+'</button></div>';
 if(d.bk.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{
 let read=sortByNewest(d.bk.filter(b=>b.rs==='rd'),'yr');
@@ -453,7 +434,7 @@ h+='<div class="tag-item"><input type="checkbox" class="tag-check" checked oncha
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div>';
 h+='<div class="tag-title">📚 '+esc(b.ti||'')+'</div>';
 h+='<div class="tag-sub">'+esc(b.au||'')+' | '+esc(b.yr||'')+'</div>';
-if(b.files&&b.files.length>0){h+='<div class="file-list">';b.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">📎'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'bk\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(b.files,'bk',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -467,7 +448,7 @@ h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'bk\','+oi+'
 h+='<div class="tag-title">📖 '+esc(b.ti||'')+'</div>';
 h+='<div class="tag-sub">'+esc(b.au||'')+'</div>';
 h+='<div class="tag-sub">'+t('lb').pf+': '+esc(b.pf||'-')+'</div>';
-if(b.files&&b.files.length>0){h+='<div class="file-list">';b.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">📎'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'bk\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(b.files,'bk',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -476,9 +457,8 @@ h+='</div>';
 h+='</div></div>';return h;
 }
 
-// ✅ پادکست‌ها: مربعی + چک‌باکس
 function rPd(d){
-let h='<div class="sec" id="s5"><div class="scd"><div class="sh"><div class="st">'+t('sec')[5]+'</div><div><button class="btn bp" onclick="om(\'pd\')">+ '+t('a')+'</button><button class="btn bf" onclick="document.getElementById(\'pd-file\').click()">'+t('lb').addFile+'</button><input type="file" id="pd-file" style="display:none" onchange="handleFile(\'pd\',this)"></div></div>';
+let h='<div class="sec" id="s5"><div class="scd"><div class="sh"><div class="st">'+t('sec')[5]+'</div><button class="btn bp" onclick="om(\'pd\')">+ '+t('a')+'</button></div>';
 if(d.pd.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{
 let done=sortByNewest(d.pd.filter(p=>p.st==='dn'),'dt');
@@ -492,7 +472,7 @@ h+='<div class="tag-item"><input type="checkbox" class="tag-check" checked oncha
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div>';
 h+='<div class="tag-title"> '+esc(p.ti||'')+'</div>';
 h+='<div class="tag-sub">'+t('lb').ep+': '+esc(p.ep||'')+'</div>';
-if(p.files&&p.files.length>0){h+='<div class="file-list">';p.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">📎'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'pd\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(p.files,'pd',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -503,9 +483,9 @@ progress.forEach((p)=>{
 let oi=d.pd.indexOf(p);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="togglePodcast('+oi+')" title="'+t('markDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">🎙️ '+esc(p.ti||'')+'</div>';
+h+='<div class="tag-title">️ '+esc(p.ti||'')+'</div>';
 h+='<div class="tag-sub">'+t('lb').ep+': '+esc(p.ep||'')+'</div>';
-if(p.files&&p.files.length>0){h+='<div class="file-list">';p.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">📎'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'pd\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(p.files,'pd',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -516,10 +496,10 @@ planned.forEach((p)=>{
 let oi=d.pd.indexOf(p);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="togglePodcast('+oi+')" title="'+t('markDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(p.ti||'')+'</div>';
+h+='<div class="tag-title">🎧 '+esc(p.ti||'')+'</div>';
 h+='<div class="tag-sub">'+t('lb').ep+': '+esc(p.ep||'')+'</div>';
 h+='<div class="tag-sub">'+t('lb').pf+': '+esc(p.pf||'-')+'</div>';
-if(p.files&&p.files.length>0){h+='<div class="file-list">';p.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">📎'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'pd\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(p.files,'pd',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -532,7 +512,7 @@ function rSP(d){
 let pl=d.sp||{w:[]},ws=pl.w||[],wi=CW.s,w=ws[wi];
 let h='<div class="sec" id="s6"><div class="scd"><div class="sh"><div class="st">'+t('sec')[6]+'</div></div><div class="ws">';
 if(ws.length===0)h+='<span style="color:#718096;font-size:12px">'+t('em')+'</span>';
-else for(let i=0;i<ws.length;i++){let wn=ws[i].nm||t('lb').wl+' '+(i+1);h+='<button class="wb '+(i===wi?'on':'')+'" onclick="sw2(\'s\','+i+')">'+esc(wn)+' <button class="we" onclick="event.stopPropagation();ewn(\'s\','+i+')">✏️</button><button class="wd" onclick="event.stopPropagation();dwn(\'s\','+i+')">×</button></button>'}
+else for(let i=0;i<ws.length;i++){let wn=ws[i].nm||t('lb').wl+' '+(i+1);h+='<button class="wb '+(i===wi?'on':'')+'" onclick="sw2(\'s\','+i+')">'+esc(wn)+' <button class="we" onclick="event.stopPropagation();ewn(\'s\','+i+')">️</button><button class="wd" onclick="event.stopPropagation();dwn(\'s\','+i+')">×</button></button>'}
 h+='</div><button class="aw" onclick="aw2(\'s\')">+ '+t('lb').aw2+'</button>';
 if(w)h+=rWT(w,'s');
 h+='</div></div>';return h;
@@ -569,9 +549,8 @@ function twd(tp,wi,di){let pl=tp==='s'?D[L].sp:D[L].mp;if(!pl.w[wi].dy[di])pl.w[
 function umd(wi,di,f,v){let pl=D[L].mp;if(!pl.w[wi])pl.w[wi]={dy:[]};if(!pl.w[wi].dy[di])pl.w[wi].dy[di]={};pl.w[wi].dy[di][f]=v;sv()}
 function tmd(wi,di){let pl=D[L].mp;if(!pl.w[wi].dy[di])pl.w[wi].dy[di]={};pl.w[wi].dy[di].dn=!pl.w[wi].dy[di].dn;sv();r()}
 
-// ✅ پروژه‌ها: مربعی + چک‌باکس
 function rPJ(d){
-let h='<div class="sec" id="s8"><div class="scd"><div class="sh"><div class="st">'+t('sec')[8]+'</div><div><button class="btn bp" onclick="om(\'pj\')">+ '+t('a')+'</button><button class="btn bf" onclick="document.getElementById(\'pj-file\').click()">'+t('lb').addFile+'</button><input type="file" id="pj-file" style="display:none" onchange="handleFile(\'pj\',this)"></div></div>';
+let h='<div class="sec" id="s8"><div class="scd"><div class="sh"><div class="st">'+t('sec')[8]+'</div><button class="btn bp" onclick="om(\'pj\')">+ '+t('a')+'</button></div>';
 if(d.pj.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{
 let done=sortByNewest(d.pj.filter(p=>p.st==='dn'),'yr');
@@ -583,22 +562,22 @@ done.forEach((p)=>{
 let oi=d.pj.indexOf(p);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" checked onchange="toggleProject('+oi+')" title="'+t('markUnDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(p.ti||'')+'</div>';
+h+='<div class="tag-title">🔬 '+esc(p.ti||'')+'</div>';
 h+='<div class="tag-sub">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
-if(p.files&&p.files.length>0){h+='<div class="file-list">';p.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">📎'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'pj\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(p.files,'pj',oi);
 h+='</div>';
 });
 h+='</div>';
 }
 if(progress.length>0){
-h+='<div class="sst"> '+t('inProgress')+' ('+progress.length+')</div><div class="tag-grid">';
+h+='<div class="sst">🔄 '+t('inProgress')+' ('+progress.length+')</div><div class="tag-grid">';
 progress.forEach((p)=>{
 let oi=d.pj.indexOf(p);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="toggleProject('+oi+')" title="'+t('markDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
 h+='<div class="tag-title">🔬 '+esc(p.ti||'')+'</div>';
 h+='<div class="tag-sub">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
-if(p.files&&p.files.length>0){h+='<div class="file-list">';p.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">📎'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'pj\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(p.files,'pj',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -611,7 +590,7 @@ h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="tog
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
 h+='<div class="tag-title">🔬 '+esc(p.ti||'')+'</div>';
 h+='<div class="tag-sub">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
-if(p.files&&p.files.length>0){h+='<div class="file-list">';p.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">📎'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'pj\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(p.files,'pj',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -620,9 +599,8 @@ h+='</div>';
 h+='</div></div>';return h;
 }
 
-// ✅ اهداف: مربعی + چک‌باکس
 function rG(d){
-let h='<div class="sec" id="s9"><div class="scd"><div class="sh"><div class="st">'+t('sec')[9]+'</div><div><button class="btn bp" onclick="om(\'gl\')">+ '+t('a')+'</button><button class="btn bf" onclick="document.getElementById(\'gl-file\').click()">'+t('lb').addFile+'</button><input type="file" id="gl-file" style="display:none" onchange="handleFile(\'gl\',this)"></div></div>';
+let h='<div class="sec" id="s9"><div class="scd"><div class="sh"><div class="st">'+t('sec')[9]+'</div><button class="btn bp" onclick="om(\'gl\')">+ '+t('a')+'</button></div>';
 if(d.gl.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{
 let done=sortByNewest(d.gl.filter(g=>g.st==='dn'),'dl');
@@ -633,10 +611,10 @@ done.forEach((g)=>{
 let oi=d.gl.indexOf(g);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" checked onchange="toggleGoal('+oi+')" title="'+t('markUnDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'gl\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">🎯 '+esc(g.tg||'')+'</div>';
+h+='<div class="tag-title"> '+esc(g.tg||'')+'</div>';
 h+='<div class="tag-sub">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div>';
 h+='<span class="tag-badge '+(g.pr==='hi'?'bgr':g.pr==='me'?'bgo':'bgg')+'">'+t('pr')[g.pr]+'</span>';
-if(g.files&&g.files.length>0){h+='<div class="file-list">';g.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'gl\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(g.files,'gl',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -647,10 +625,10 @@ others.forEach((g)=>{
 let oi=d.gl.indexOf(g);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="toggleGoal('+oi+')" title="'+t('markDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'gl\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(g.tg||'')+'</div>';
+h+='<div class="tag-title">🎯 '+esc(g.tg||'')+'</div>';
 h+='<div class="tag-sub">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div>';
 h+='<span class="tag-badge '+(g.pr==='hi'?'bgr':g.pr==='me'?'bgo':'bgg')+'">'+t('pr')[g.pr]+'</span>';
-if(g.files&&g.files.length>0){h+='<div class="file-list">';g.files.forEach((f,fi)=>{h+='<div class="file-item"><a href="'+f.data+'" download="'+esc(f.name)+'">📎'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'gl\','+oi+','+fi+')">×</span></div>';});h+='</div>';}
+h+=renderFiles(g.files,'gl',oi);
 h+='</div>';
 });
 h+='</div>';
@@ -661,71 +639,63 @@ h+='</div></div>';return h;
 
 function st(i,b){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));document.querySelectorAll('.tb').forEach(b2=>b2.classList.remove('on'));document.getElementById('s'+i).classList.add('on');b.classList.add('on')}
 
-// ✅ چک‌باکس‌های انتقال
-function toggleBook(idx){
-D[L].bk[idx].rs=D[L].bk[idx].rs==='rd'?'pl2':'rd';
-sv();r();
-}
-function togglePodcast(idx){
-let cur=D[L].pd[idx].st;
-if(cur==='pl')D[L].pd[idx].st='pr2';
-else if(cur==='pr2')D[L].pd[idx].st='dn';
-else D[L].pd[idx].st='pl';
-sv();r();
-}
-function toggleProject(idx){
-let cur=D[L].pj[idx].st;
-if(cur==='pl')D[L].pj[idx].st='pr2';
-else if(cur==='pr2')D[L].pj[idx].st='dn';
-else D[L].pj[idx].st='pl';
-sv();r();
-}
-function toggleGoal(idx){
-D[L].gl[idx].st=D[L].gl[idx].st==='dn'?'pr2':'dn';
+function toggleBook(idx){D[L].bk[idx].rs=D[L].bk[idx].rs==='rd'?'pl2':'rd';sv();r()}
+function togglePodcast(idx){let cur=D[L].pd[idx].st;if(cur==='pl')D[L].pd[idx].st='pr2';else if(cur==='pr2')D[L].pd[idx].st='dn';else D[L].pd[idx].st='pl';sv();r()}
+function toggleProject(idx){let cur=D[L].pj[idx].st;if(cur==='pl')D[L].pj[idx].st='pr2';else if(cur==='pr2')D[L].pj[idx].st='dn';else D[L].pj[idx].st='pl';sv();r()}
+function toggleGoal(idx){D[L].gl[idx].st=D[L].gl[idx].st==='dn'?'pr2':'dn';sv();r()}
+
+function removeFile(type,itemIdx,fileIdx){
+if(!confirm(t('cf')))return;
+if(!D[L][type][itemIdx].files)return;
+D[L][type][itemIdx].files.splice(fileIdx,1);
 sv();r();
 }
 
-// ✅ مدیریت فایل‌ها
-function handleFile(type,input){
+function handleModalFile(input){
 if(!input.files||input.files.length===0)return;
 let file=input.files[0];
-if(file.size>2*1024*1024){alert('فایل بیش از 2 مگابایت است!');return;}
+if(file.size>2*1024*1024){alert('فایل بیش از 2 مگابایت است!');input.value='';return;}
 let reader=new FileReader();
 reader.onload=function(e){
 let fileData={name:file.name,type:file.type,data:e.target.result};
-if(!D[L][type])D[L][type]=[];
-if(type==='jb'&&D[L][type].length===0){
-// اگر شغلی نیست، یکی بساز
-alert('ابتدا یک شغل اضافه کنید، سپس فایل را پیوست کنید.');
-return;
-}
-// به آخرین آیتم اضافه کن
-let lastIdx=D[L][type].length-1;
-if(!D[L][type][lastIdx].files)D[L][type][lastIdx].files=[];
-D[L][type][lastIdx].files.push(fileData);
-sv();r();
+pendingFiles.push(fileData);
+renderFilePreview();
 };
 reader.readAsDataURL(file);
 input.value='';
 }
 
-function removeFile(type,itemIdx,fileIdx){
-if(!confirm(t('cf')))return;
-D[L][type][itemIdx].files.splice(fileIdx,1);
-sv();r();
+function renderFilePreview(){
+let container=document.getElementById('file-preview');
+if(!container)return;
+if(pendingFiles.length===0){container.innerHTML='';return;}
+let h='<div class="file-list">';
+pendingFiles.forEach((f,i)=>{
+h+='<div class="file-item">📎 <a href="'+f.data+'" download="'+esc(f.name)+'">'+esc(f.name)+'</a><span class="file-remove" onclick="removePendingFile('+i+')">×</span></div>';
+});
+h+='</div>';
+container.innerHTML=h;
+}
+
+function removePendingFile(idx){
+pendingFiles.splice(idx,1);
+renderFilePreview();
 }
 
 function om(tp,idx){
 ED2={t:tp,i:(idx!==undefined&&idx!==null?idx:null)};
+pendingFiles=[];
 let d=D[L],it={};
 if(tp==='pe')it=d.pe||{};
 else if(ED2.i!==null&&Array.isArray(d[tp])&&d[tp][ED2.i])it=d[tp][ED2.i];
+if(it.files)pendingFiles=JSON.parse(JSON.stringify(it.files));
 let ti='',bd='';
 let F=function(id,lb,ty,v){return'<div class="fg"><label class="fl">'+lb+'</label><input class="fi" type="'+(ty||'text')+'" id="f_'+id+'" value="'+esc(v||'')+'"></div>'};
 let S=function(id,lb,opts,v){let h='<div class="fg"><label class="fl">'+lb+'</label><select class="fs" id="f_'+id+'">';for(let k=0;k<opts.length;k++)h+='<option value="'+opts[k].v+'" '+(opts[k].v===v?'selected':'')+'>'+opts[k].l+'</option>';h+='</select></div>';return h};
 let TA=function(id,lb,v){return'<div class="fg"><label class="fl">'+lb+'</label><textarea class="ft" id="f_'+id+'">'+esc(v||'')+'</textarea></div>'};
+let fileUpload='<div class="file-upload-box"><label for="modal-file-input">'+t('lb').addFile+'</label><input type="file" id="modal-file-input" onchange="handleModalFile(this)"><div class="hint">'+t('lb').fileHint+'</div></div><div id="file-preview"></div>';
 
-if(tp==='pe'){ti=t('pi');bd='<div class="fr">'+F('nm',t('lb').nm,it.nm)+F('ag',t('lb').ag,'number',it.ag)+'</div><div class="fr">'+F('gd',t('lb').gd,it.gd)+F('ct',t('lb').ct,it.ct)+'</div><div class="fr">'+F('ph',t('lb').ph,it.ph)+F('em2',t('lb').em2,'email',it.em2)+'</div><div class="fr">'+F('li',t('lb').li,it.li)+F('or',t('lb').or,it.or)+'</div><div class="fr">'+F('un',t('lb').un,it.un)+F('po',t('lb').po,it.po)+'</div>'}
+if(tp==='pe'){ti=t('pi');bd='<div class="fr">'+F('nm',t('lb').nm,it.nm)+F('ag',t('lb').ag,'number',it.ag)+'</div><div class="fr">'+F('gd',t('lb').gd,it.gd)+F('ct',t('lb').ct,it.ct)+'</div><div class="fr">'+F('ph',t('lb').ph,it.ph)+F('em2',t('lb').em2,'email',it.em2)+'</div><div class="fr">'+F('li',t('lb').li,it.li)+F('or',t('lb').or,it.or)+'</div><div class="fr">'+F('un',t('lb').un,it.un)+F('po',t('lb').po,it.po)+'</div>'+fileUpload}
 else if(tp==='jb'){
 ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[1];
 let resps=toRespArray(it.de);
@@ -738,27 +708,23 @@ respInputs='<div class="resp-item"><input type="text" class="resp-input" value="
 }
 bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('co',t('lb').co,it.co)+'</div><div class="fr">'+F('pe',t('lb').pe,it.pe)+F('du',t('lb').du,it.du)+'</div><div class="fr">'+F('lo',t('lb').lo,it.lo)+S('ty',t('lb').ty,[{v:'mg',l:t('tp').mg},{v:'tc',l:t('tp').tc}],it.ty)+'</div>';
 bd+='<div class="fg"><label class="fl">'+t('lb').resp+'</label><div class="resp-list" id="resp-list">'+respInputs+'</div><button type="button" class="resp-add" onclick="addRespItem()">'+t('lb').addResp+'</button></div>';
-// نمایش فایل‌های موجود
-if(it.files&&it.files.length>0){
-bd+='<div class="fg"><label class="fl">'+t('lb').files+'</label><div class="file-list">';
-it.files.forEach((f,fi)=>{bd+='<div class="file-item">📎 <a href="'+f.data+'" download="'+esc(f.name)+'">'+esc(f.name)+'</a><span class="file-remove" onclick="removeFile(\'jb\','+ED2.i+','+fi+')">×</span></div>';});
-bd+='</div></div>';
+bd+=fileUpload;
 }
-}
-else if(tp==='ed'){ti=(ED2.i!==null?t('e'):t('a'))+' - تحصیل';bd='<div class="fr">'+F('dg',t('lb').dg,it.dg)+F('fi',t('lb').fi,it.fi)+'</div><div class="fr">'+F('un',t('lb').un,it.un)+F('gp',t('lb').gp,it.gp)+'</div><div class="fr">'+F('sy',t('lb').sy,it.sy)+F('ey',t('lb').ey,it.ey)+'</div>'}
-else if(tp==='pu'){ti=(ED2.i!==null?t('e'):t('a'))+' - مقاله';bd=F('ti',t('lb').ti,it.ti)+'<div class="fr">'+F('jn',t('lb').jn,it.jn)+S('pt',t('lb').pt,[{v:'ar',l:t('pt2').ar},{v:'bk',l:t('pt2').bk},{v:'ch',l:t('pt2').ch},{v:'cn',l:t('pt2').cn}],it.pt)+'</div><div class="fr">'+S('ln',t('lb').ln,[{v:'fa',l:t('ln2').fa},{v:'en',l:t('ln2').en},{v:'bo',l:t('ln2').bo}],it.ln)+F('ed',t('lb').ed,it.ed)+'</div><div class="fr">'+F('sd',t('lb').sd2,'date',it.sd)+F('ad',t('lb').ad,'date',it.ad)+'</div>'+TA('de',t('lb').de,it.de)}
-else if(tp==='sw'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sw');bd='<div class="fr">'+F('nm',t('lb').nm2,it.nm)+S('lv',t('lb').lv,[{v:'ad',l:t('lv').ad},{v:'in',l:t('lv').in},{v:'ba',l:t('lv').ba}],it.lv)+'</div>'}
-else if(tp==='ms'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('ms');bd=F('sk',t('lb').nm2,it.sk)}
-else if(tp==='ts'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('ts');bd=F('sk',t('lb').nm2,it.sk)}
-else if(tp==='ct'){ti=(ED2.i!==null?t('e'):t('a'))+' - گواهینامه';bd='<div class="fr">'+F('nm',t('lb').nm2,it.nm)+F('is2',t('lb').is2,it.is2)+'</div><div class="fr">'+F('yr',t('lb').yr,it.yr)+F('du',t('lb').du,it.du)+'</div>'}
-else if(tp==='bk'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[4];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('au',t('lb').au,it.au)+'</div><div class="fr">'+F('yr',t('lb').yr,it.yr)+S('rs',t('lb').rs,[{v:'pl2',l:t('rs2').pl2},{v:'rd',l:t('rs2').rd}],it.rs)+'</div>'+F('pf',t('lb').pf,it.pf)+F('ca',t('lb').ca,it.ca)+TA('nt',t('lb').nt,it.nt)}
-else if(tp==='pd'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[5];bd=F('ti',t('lb').ti,it.ti)+F('ep',t('lb').ep,it.ep)+S('st',t('lb').st,[{v:'pl',l:t('st2').pl},{v:'pr2',l:t('st2').pr2},{v:'dn',l:t('st2').dn}],it.st)+F('pf',t('lb').pf,it.pf)+TA('nt',t('lb').nt,it.nt)}
-else if(tp==='pj'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[8];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('yr',t('lb').yr,it.yr)+'</div>'+F('ca',t('lb').ca,it.ca)+S('st',t('lb').st,[{v:'pl',l:t('st2').pl},{v:'pr2',l:t('st2').pr2},{v:'dn',l:t('st2').dn}],it.st)+TA('de',t('lb').de,it.de)}
-else if(tp==='gl'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[9];bd=F('tg',t('lb').tg,it.tg)+F('ca',t('lb').ca,it.ca)+'<div class="fr">'+F('dl',t('lb').dl,'date',it.dl)+S('pr',t('lb').pr,[{v:'hi',l:t('pr').hi},{v:'me',l:t('pr').me},{v:'lo',l:t('pr').lo}],it.pr)+'</div>'+F('pg',t('lb').pg,'number',it.pg||0)}
+else if(tp==='ed'){ti=(ED2.i!==null?t('e'):t('a'))+' - تحصیل';bd='<div class="fr">'+F('dg',t('lb').dg,it.dg)+F('fi',t('lb').fi,it.fi)+'</div><div class="fr">'+F('un',t('lb').un,it.un)+F('gp',t('lb').gp,it.gp)+'</div><div class="fr">'+F('sy',t('lb').sy,it.sy)+F('ey',t('lb').ey,it.ey)+'</div>'+fileUpload}
+else if(tp==='pu'){ti=(ED2.i!==null?t('e'):t('a'))+' - مقاله';bd=F('ti',t('lb').ti,it.ti)+'<div class="fr">'+F('jn',t('lb').jn,it.jn)+S('pt',t('lb').pt,[{v:'ar',l:t('pt2').ar},{v:'bk',l:t('pt2').bk},{v:'ch',l:t('pt2').ch},{v:'cn',l:t('pt2').cn}],it.pt)+'</div><div class="fr">'+S('ln',t('lb').ln,[{v:'fa',l:t('ln2').fa},{v:'en',l:t('ln2').en},{v:'bo',l:t('ln2').bo}],it.ln)+F('ed',t('lb').ed,it.ed)+'</div><div class="fr">'+F('sd',t('lb').sd2,'date',it.sd)+F('ad',t('lb').ad,'date',it.ad)+'</div>'+TA('de',t('lb').de,it.de)+fileUpload}
+else if(tp==='sw'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sw');bd='<div class="fr">'+F('nm',t('lb').nm2,it.nm)+S('lv',t('lb').lv,[{v:'ad',l:t('lv').ad},{v:'in',l:t('lv').in},{v:'ba',l:t('lv').ba}],it.lv)+'</div>'+fileUpload}
+else if(tp==='ms'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('ms');bd=F('sk',t('lb').nm2,it.sk)+fileUpload}
+else if(tp==='ts'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('ts');bd=F('sk',t('lb').nm2,it.sk)+fileUpload}
+else if(tp==='ct'){ti=(ED2.i!==null?t('e'):t('a'))+' - گواهینامه';bd='<div class="fr">'+F('nm',t('lb').nm2,it.nm)+F('is2',t('lb').is2,it.is2)+'</div><div class="fr">'+F('yr',t('lb').yr,it.yr)+F('du',t('lb').du,it.du)+'</div>'+fileUpload}
+else if(tp==='bk'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[4];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('au',t('lb').au,it.au)+'</div><div class="fr">'+F('yr',t('lb').yr,it.yr)+S('rs',t('lb').rs,[{v:'pl2',l:t('rs2').pl2},{v:'rd',l:t('rs2').rd}],it.rs)+'</div>'+F('pf',t('lb').pf,it.pf)+F('ca',t('lb').ca,it.ca)+TA('nt',t('lb').nt,it.nt)+fileUpload}
+else if(tp==='pd'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[5];bd=F('ti',t('lb').ti,it.ti)+F('ep',t('lb').ep,it.ep)+S('st',t('lb').st,[{v:'pl',l:t('st2').pl},{v:'pr2',l:t('st2').pr2},{v:'dn',l:t('st2').dn}],it.st)+F('pf',t('lb').pf,it.pf)+TA('nt',t('lb').nt,it.nt)+fileUpload}
+else if(tp==='pj'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[8];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('yr',t('lb').yr,it.yr)+'</div>'+F('ca',t('lb').ca,it.ca)+S('st',t('lb').st,[{v:'pl',l:t('st2').pl},{v:'pr2',l:t('st2').pr2},{v:'dn',l:t('st2').dn}],it.st)+TA('de',t('lb').de,it.de)+fileUpload}
+else if(tp==='gl'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[9];bd=F('tg',t('lb').tg,it.tg)+F('ca',t('lb').ca,it.ca)+'<div class="fr">'+F('dl',t('lb').dl,'date',it.dl)+S('pr',t('lb').pr,[{v:'hi',l:t('pr').hi},{v:'me',l:t('pr').me},{v:'lo',l:t('pr').lo}],it.pr)+'</div>'+F('pg',t('lb').pg,'number',it.pg||0)+fileUpload}
 
 document.getElementById('mt').textContent=ti;
 document.getElementById('mb').innerHTML=bd;
 document.getElementById('md').classList.add('on');
+setTimeout(renderFilePreview,50);
 }
 
 function addRespItem(){
@@ -771,32 +737,31 @@ list.appendChild(div);
 div.querySelector('input').focus();
 }
 
-function cm(){document.getElementById('md').classList.remove('on')}
+function cm(){document.getElementById('md').classList.remove('on');pendingFiles=[]}
 
 function sd(){
 let tp=ED2.t,idx=ED2.i,d=D[L];
 let g=function(id){let el=document.getElementById('f_'+id);return el?el.value:''};
 try{
-if(tp==='pe'){d.pe={nm:g('nm'),ag:g('ag'),gd:g('gd'),ct:g('ct'),ph:g('ph'),em2:g('em2'),li:g('li'),or:g('or'),un:g('un'),po:g('po')}}
+if(tp==='pe'){d.pe={nm:g('nm'),ag:g('ag'),gd:g('gd'),ct:g('ct'),ph:g('ph'),em2:g('em2'),li:g('li'),or:g('or'),un:g('un'),po:g('po'),files:pendingFiles.slice()}}
 else if(tp==='jb'){
 let respInputs=document.querySelectorAll('.resp-input');
 let resps=[];
 respInputs.forEach(function(inp){let v=inp.value.trim();if(v)resps.push(v);});
-let o={ti:g('ti'),co:g('co'),pe:g('pe'),du:g('du'),lo:g('lo'),ty:g('ty'),de:resps};
+let o={ti:g('ti'),co:g('co'),pe:g('pe'),du:g('du'),lo:g('lo'),ty:g('ty'),de:resps,files:pendingFiles.slice()};
 if(!d.jb)d.jb=[];
-if(idx!==null&&idx>=0&&idx<d.jb.length){o.files=d.jb[idx].files||[];d.jb[idx]=o;}
-else d.jb.unshift(o); // ✅ جدید اول
+if(idx!==null&&idx>=0&&idx<d.jb.length)d.jb[idx]=o;else d.jb.unshift(o);
 }
-else if(tp==='ed'){let o={dg:g('dg'),fi:g('fi'),un:g('un'),gp:g('gp'),sy:g('sy'),ey:g('ey')};if(!d.ed)d.ed=[];if(idx!==null&&idx>=0&&idx<d.ed.length)d.ed[idx]=o;else d.ed.unshift(o)}
-else if(tp==='pu'){let o={ti:g('ti'),jn:g('jn'),pt:g('pt'),ln:g('ln'),ed:g('ed'),sd:g('sd'),ad:g('ad'),de:g('de')};if(!d.pu)d.pu=[];if(idx!==null&&idx>=0&&idx<d.pu.length)d.pu[idx]=o;else d.pu.unshift(o)}
-else if(tp==='sw'){let o={nm:g('nm'),lv:g('lv')};if(!d.sw)d.sw=[];if(idx!==null&&idx>=0&&idx<d.sw.length)d.sw[idx]=o;else d.sw.unshift(o)}
-else if(tp==='ms'){let o={sk:g('sk')};if(!d.ms)d.ms=[];if(idx!==null&&idx>=0&&idx<d.ms.length)d.ms[idx]=o;else d.ms.unshift(o)}
-else if(tp==='ts'){let o={sk:g('sk')};if(!d.ts)d.ts=[];if(idx!==null&&idx>=0&&idx<d.ts.length)d.ts[idx]=o;else d.ts.unshift(o)}
-else if(tp==='ct'){let o={nm:g('nm'),is2:g('is2'),yr:g('yr'),du:g('du')};if(!d.ct)d.ct=[];if(idx!==null&&idx>=0&&idx<d.ct.length)d.ct[idx]=o;else d.ct.unshift(o)}
-else if(tp==='bk'){let o={ti:g('ti'),au:g('au'),yr:g('yr'),rs:g('rs'),pf:g('pf'),ca:g('ca'),nt:g('nt')};if(!d.bk)d.bk=[];if(idx!==null&&idx>=0&&idx<d.bk.length){o.files=d.bk[idx].files||[];d.bk[idx]=o;}else d.bk.unshift(o)}
-else if(tp==='pd'){let o={ti:g('ti'),ep:g('ep'),st:g('st'),pf:g('pf'),nt:g('nt')};if(!d.pd)d.pd=[];if(idx!==null&&idx>=0&&idx<d.pd.length){o.files=d.pd[idx].files||[];d.pd[idx]=o;}else d.pd.unshift(o)}
-else if(tp==='pj'){let o={ti:g('ti'),yr:g('yr'),ca:g('ca'),st:g('st'),de:g('de')};if(!d.pj)d.pj=[];if(idx!==null&&idx>=0&&idx<d.pj.length){o.files=d.pj[idx].files||[];d.pj[idx]=o;}else d.pj.unshift(o)}
-else if(tp==='gl'){let o={tg:g('tg'),ca:g('ca'),dl:g('dl'),pr:g('pr'),pg:g('pg')};if(!d.gl)d.gl=[];if(idx!==null&&idx>=0&&idx<d.gl.length){o.files=d.gl[idx].files||[];d.gl[idx]=o;}else d.gl.unshift(o)}
+else if(tp==='ed'){let o={dg:g('dg'),fi:g('fi'),un:g('un'),gp:g('gp'),sy:g('sy'),ey:g('ey'),files:pendingFiles.slice()};if(!d.ed)d.ed=[];if(idx!==null&&idx>=0&&idx<d.ed.length)d.ed[idx]=o;else d.ed.unshift(o)}
+else if(tp==='pu'){let o={ti:g('ti'),jn:g('jn'),pt:g('pt'),ln:g('ln'),ed:g('ed'),sd:g('sd'),ad:g('ad'),de:g('de'),files:pendingFiles.slice()};if(!d.pu)d.pu=[];if(idx!==null&&idx>=0&&idx<d.pu.length)d.pu[idx]=o;else d.pu.unshift(o)}
+else if(tp==='sw'){let o={nm:g('nm'),lv:g('lv'),files:pendingFiles.slice()};if(!d.sw)d.sw=[];if(idx!==null&&idx>=0&&idx<d.sw.length)d.sw[idx]=o;else d.sw.unshift(o)}
+else if(tp==='ms'){let o={sk:g('sk'),files:pendingFiles.slice()};if(!d.ms)d.ms=[];if(idx!==null&&idx>=0&&idx<d.ms.length)d.ms[idx]=o;else d.ms.unshift(o)}
+else if(tp==='ts'){let o={sk:g('sk'),files:pendingFiles.slice()};if(!d.ts)d.ts=[];if(idx!==null&&idx>=0&&idx<d.ts.length)d.ts[idx]=o;else d.ts.unshift(o)}
+else if(tp==='ct'){let o={nm:g('nm'),is2:g('is2'),yr:g('yr'),du:g('du'),files:pendingFiles.slice()};if(!d.ct)d.ct=[];if(idx!==null&&idx>=0&&idx<d.ct.length)d.ct[idx]=o;else d.ct.unshift(o)}
+else if(tp==='bk'){let o={ti:g('ti'),au:g('au'),yr:g('yr'),rs:g('rs'),pf:g('pf'),ca:g('ca'),nt:g('nt'),files:pendingFiles.slice()};if(!d.bk)d.bk=[];if(idx!==null&&idx>=0&&idx<d.bk.length)d.bk[idx]=o;else d.bk.unshift(o)}
+else if(tp==='pd'){let o={ti:g('ti'),ep:g('ep'),st:g('st'),pf:g('pf'),nt:g('nt'),files:pendingFiles.slice()};if(!d.pd)d.pd=[];if(idx!==null&&idx>=0&&idx<d.pd.length)d.pd[idx]=o;else d.pd.unshift(o)}
+else if(tp==='pj'){let o={ti:g('ti'),yr:g('yr'),ca:g('ca'),st:g('st'),de:g('de'),files:pendingFiles.slice()};if(!d.pj)d.pj=[];if(idx!==null&&idx>=0&&idx<d.pj.length)d.pj[idx]=o;else d.pj.unshift(o)}
+else if(tp==='gl'){let o={tg:g('tg'),ca:g('ca'),dl:g('dl'),pr:g('pr'),pg:g('pg'),files:pendingFiles.slice()};if(!d.gl)d.gl=[];if(idx!==null&&idx>=0&&idx<d.gl.length)d.gl[idx]=o;else d.gl.unshift(o)}
 sv();r();cm();
 }catch(e){alert('Error: '+e.message);console.error(e)}
 }
