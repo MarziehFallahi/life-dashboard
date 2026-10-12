@@ -34,16 +34,6 @@ body.en{direction:ltr;text-align:left}
 .bw{background:#f59e0b;color:#fff}
 .bs{padding:4px 8px;font-size:11px}
 .bf{background:#48bb78;color:#fff}
-.tag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px}
-.tag-item{background:#f8fafc;border:1px solid #d4dde6;border-radius:8px;padding:10px;position:relative;transition:all .2s;display:flex;flex-direction:column;gap:4px}
-.tag-item:hover{border-color:#4a6fa5;box-shadow:0 2px 8px rgba(74,111,165,.12);transform:translateY(-2px)}
-.tag-title{font-weight:700;font-size:13px;color:#2d3748;line-height:1.4;word-break:break-word}
-.tag-sub{font-size:11px;color:#718096}
-.tag-badge{font-size:10px;font-weight:600;padding:2px 6px;border-radius:8px;display:inline-block;width:fit-content}
-.tag-actions{position:absolute;top:4px;left:4px;display:flex;gap:2px}
-body.en .tag-actions{left:auto;right:4px}
-.tag-check{position:absolute;top:4px;right:4px;width:20px;height:20px;cursor:pointer;accent-color:#48bb78}
-body.en .tag-check{right:auto;left:4px}
 .itm{background:#f8fafc;padding:12px;margin-bottom:8px;border-radius:8px;border-right:3px solid #4a6fa5;position:relative}
 body.en .itm{border-right:none;border-left:3px solid #4a6fa5}
 .it{font-weight:700;font-size:14px;margin-bottom:4px}
@@ -57,6 +47,16 @@ body.en .id ul li{padding:8px 0 8px 28px}
 body.en .id ul li::before{right:auto;left:8px}
 .ia{position:absolute;top:8px;left:8px;display:flex;gap:4px}
 body.en .ia{left:auto;right:8px}
+.tag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px}
+.tag-item{background:#f8fafc;border:1px solid #d4dde6;border-radius:8px;padding:10px;position:relative;transition:all .2s;display:flex;flex-direction:column;gap:4px}
+.tag-item:hover{border-color:#4a6fa5;box-shadow:0 2px 8px rgba(74,111,165,.12);transform:translateY(-2px)}
+.tag-title{font-weight:700;font-size:13px;color:#2d3748;line-height:1.4;word-break:break-word}
+.tag-sub{font-size:11px;color:#718096}
+.tag-badge{font-size:10px;font-weight:600;padding:2px 6px;border-radius:8px;display:inline-block;width:fit-content}
+.tag-actions{position:absolute;top:4px;left:4px;display:flex;gap:2px}
+body.en .tag-actions{left:auto;right:4px}
+.tag-check{position:absolute;top:4px;right:4px;width:20px;height:20px;cursor:pointer;accent-color:#48bb78}
+body.en .tag-check{right:auto;left:4px}
 .bg{display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:600;margin:2px}
 .bgb{background:#e8f0f8;color:#2d4a73}
 .bgg{background:#d4e8d4;color:#2d5a2d}
@@ -84,20 +84,15 @@ body.en .ia{left:auto;right:8px}
 body.en .sst{padding-right:0;padding-left:8px;border-right:none;border-left:3px solid #4a6fa5}
 .pfb{position:fixed;bottom:20px;left:20px;z-index:100;background:#4a6fa5;color:#fff;padding:10px 20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
 body.en .pfb{left:auto;right:20px}
-
-/* ✅ چیدمان ۴ هفته در یک ردیف */
 .weeks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:15px}
 @media(max-width:1200px){.weeks-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.weeks-grid{grid-template-columns:1fr}}
-
 .week-card{background:#f8fafc;border:1px solid #d4dde6;border-radius:10px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06)}
 .week-header{background:linear-gradient(135deg,#4a6fa5,#2d4a73);color:#fff;padding:8px 10px;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
 .week-header .week-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .week-header button{background:rgba(255,255,255,.2);border:none;color:#fff;padding:2px 6px;border-radius:4px;cursor:pointer;font-size:10px;margin-right:3px}
 .week-header button:hover{background:rgba(255,255,255,.3)}
 .week-header .wd{background:#e53e3e}
-
-/* ✅ جدول فشرده */
 .pt{width:100%;border-collapse:collapse;font-size:10px}
 .pt th,.pt td{border:1px solid #e2e8f0;padding:3px 4px;text-align:right}
 body.en .pt th,body.en .pt td{text-align:left}
@@ -107,9 +102,7 @@ body.en .pt th,body.en .pt td{text-align:left}
 .pt input:focus{outline:1px solid #4a6fa5;background:#f0f4f8}
 .dc{text-align:center;cursor:pointer;font-size:12px}
 .dc.ok{color:#48bb78}
-
 .add-weeks-bar{margin-top:15px;padding:12px;background:#f8fafc;border:1px dashed #4a6fa5;border-radius:8px;text-align:center}
-
 .file-list{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
 .file-item{background:#e8f0f8;padding:4px 8px;border-radius:6px;font-size:11px;display:flex;align-items:center;gap:6px}
 .file-item a{color:#4a6fa5;text-decoration:none;font-weight:600}
@@ -135,7 +128,50 @@ body.en .pt th,body.en .pt td{text-align:left}
 .resp-add{background:#48bb78;color:#fff;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-family:'Vazirmatn',sans-serif;font-size:12px;font-weight:600;margin-top:4px}
 .resp-add:hover{background:#38a169}
 .resp-remove{background:#e53e3e;color:#fff;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:bold}
-@media print{body{background:#fff;padding:0}.tbs,.btn,.ia,.pfb,.md,.ls,.weeks-grid,.add-weeks-bar,.tag-check{display:none!important}.sec{display:block!important;page-break-inside:avoid;box-shadow:none}.hdr{box-shadow:none}#s6,#s7{display:none!important}}
+
+@media print {
+  @page { size: A4; margin: 10mm 8mm; }
+  body { background: #fff !important; padding: 0 !important; font-size: 9px !important; line-height: 1.3 !important; color: #2d3748 !important; }
+  .tbs, .btn, .ia, .pfb, .md, .ls, .weeks-grid, .add-weeks-bar, .tag-check, .file-upload-box, .resp-add, .resp-remove, .week-header button, .tag-actions, .file-remove { display: none !important; }
+  .sec { display: block !important; box-shadow: none !important; margin-bottom: 6px !important; padding: 0 !important; page-break-inside: auto !important; }
+  .scd { box-shadow: none !important; border: none !important; padding: 4px 0 !important; margin-bottom: 4px !important; page-break-inside: auto !important; }
+  .hdr { box-shadow: none !important; padding: 6px 0 !important; margin-bottom: 6px !important; }
+  .hdr h1 { font-size: 16px !important; margin-bottom: 3px !important; }
+  .sts { display: grid !important; grid-template-columns: repeat(9, 1fr) !important; gap: 3px !important; margin-bottom: 6px !important; }
+  .sc { padding: 4px 3px !important; border-top: 2px solid #4a6fa5 !important; }
+  .sv { font-size: 12px !important; }
+  .sl { font-size: 7px !important; }
+  .charts-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 6px !important; margin-top: 6px !important; }
+  .chart-card { padding: 6px !important; border: 1px solid #e2e8f0 !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+  .chart-card h4 { font-size: 9px !important; margin-bottom: 4px !important; }
+  .chart-wrap { height: 100px !important; }
+  .bar-chart { height: 80px !important; }
+  .bar-label { font-size: 6px !important; }
+  .bar-value { font-size: 8px !important; }
+  .pg { display: grid !important; grid-template-columns: repeat(5, 1fr) !important; gap: 3px !important; }
+  .pi { padding: 3px 5px !important; }
+  .pi label { font-size: 7px !important; }
+  .pi .v { font-size: 9px !important; }
+  .st { font-size: 11px !important; margin-bottom: 4px !important; }
+  .sh { margin-bottom: 4px !important; padding-bottom: 3px !important; }
+  .itm { padding: 4px 6px !important; margin-bottom: 3px !important; border-right: 2px solid #4a6fa5 !important; page-break-inside: avoid !important; }
+  .it { font-size: 10px !important; margin-bottom: 1px !important; }
+  .is { font-size: 8px !important; }
+  .id { font-size: 8px !important; margin-top: 2px !important; }
+  .id ul li { padding: 1px 18px 1px 0 !important; font-size: 8px !important; line-height: 1.3 !important; }
+  .id ul li::before { font-size: 12px !important; right: 3px !important; top: 1px !important; }
+  .bg { font-size: 7px !important; padding: 1px 4px !important; }
+  .tag-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 3px !important; }
+  .tag-item { padding: 4px 5px !important; border: 1px solid #e2e8f0 !important; page-break-inside: avoid !important; }
+  .tag-title { font-size: 9px !important; }
+  .tag-sub { font-size: 7px !important; }
+  .tag-badge { font-size: 6px !important; padding: 1px 3px !important; }
+  .sst { font-size: 10px !important; margin: 6px 0 3px 0 !important; padding: 1px 0 1px 5px !important; }
+  .file-list { margin-top: 2px !important; gap: 2px !important; }
+  .file-item { font-size: 7px !important; padding: 1px 4px !important; }
+  #s6, #s7 { display: none !important; }
+}
+
 @media(max-width:1200px){.sts{grid-template-columns:repeat(5,1fr)}}
 @media(max-width:768px){.fr{grid-template-columns:1fr}.sts{grid-template-columns:repeat(3,1fr)}.charts-grid{grid-template-columns:1fr}.tag-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}}
 </style>
@@ -156,12 +192,12 @@ tg:'هدف',dl:'مهلت',pr:'اولویت',pg:'پیشرفت',jn:'ژورنال',
 wn:'نام هفته',dy:'روز',br:'صبحانه',lu:'ناهار',di:'شام',ex:'ورزش',dn:'انجام',aw2:'هفته جدید',wl:'هفته',st:'وضعیت',
 rs:'وضعیت خوانش',pf:'برنامه برای',ps:'وضعیت پروژه',sy:'سال شروع',ey:'سال پایان',wk:'هفته',
 addResp:'➕ افزودن مسئولیت',resp:'مسئولیت‌ها و دستاوردها',
-addFile:'📎 پیوست فایل',files:'فایل‌های پیوست',fileHint:'حداکثر 2 مگابایت - PDF, تصویر, ویدئو',
+addFile:' پیوست فایل',files:'فایل‌های پیوست',fileHint:'حداکثر 2 مگابایت - PDF, تصویر, ویدئو',
 markDone:'✓ انجام شد',markUnDone:'↺ برگرداندن',
-read:'خوانده',unread:'نخوانده',listened:'شنیده',unlistened:'نشنیده',
-completed:'تکمیل شده',incomplete:'تکمیل نشده',
 weekLabel:'هفته',editWeek:'ویرایش',deleteWeek:'حذف',
-sportPlan:'پلن ورزشی',mealPlan:'پلن غذایی'},
+sportPlan:'پلن ورزشی',mealPlan:'پلن غذایی',
+read:'خوانده',unread:'نخوانده',listened:'شنیده',unlistened:'نشنیده',
+completed:'تکمیل شده',incomplete:'تکمیل نشده'},
 tp:{mg:'مدیریتی',tc:'فنی و مهندسی'},lv:{ad:'پیشرفته',in:'متوسط',ba:'مقدماتی'},
 pr:{hi:'بالا',me:'متوسط',lo:'پایین'},st2:{dn:'انجام',pr2:'در حال',pl:'برنامه'},
 rs2:{rd:'خوانده',pl2:'برنامه'},pt2:{ar:'مقاله',bk:'کتاب',ch:'فصل',cn:'کنفرانس'},
@@ -169,9 +205,9 @@ ln2:{fa:'فارسی',en:'انگلیسی',bo:'دوزبانه'},
 dy:['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
 sw:'نرم‌افزارها',ms:'مهارت مدیریتی',ts:'مهارت فنی و مهندسی',pi:'مشخصات فردی',ac:'آکادمیک',sk:'مهارت‌ها و گواهینامه‌ها',
 chartsTitle:'📊 نمودارهای پیشرفت',
-completedGoals:'اهداف تکمیل شده',booksRead:'کتاب‌های خوانده شده',
+booksRead:'کتاب‌های خوانده شده',podcastStatus:'وضعیت پادکست‌ها',
 skillsDist:'توزیع مهارت‌ها',articlesByType:'مقالات به تفکیک نوع',
-goalsStatus:'وضعیت پروژه‌ها',podcastStatus:'وضعیت پادکست‌ها',
+goalsStatus:'وضعیت پروژه‌ها',
 advanced:'پیشرفته',intermediate:'متوسط',basic:'مقدماتی',
 article:'مقاله',book:'کتاب',chapter:'فصل',conference:'کنفرانس',
 done:'انجام شده',inProgress:'در حال انجام',planned:'برنامه‌ریزی'},
@@ -183,23 +219,23 @@ yr:'Year',nm2:'Name',lv:'Level',hr:'Hours',au:'Author',rt:'Rating',nt:'Notes',ep
 tg:'Goal',dl:'Deadline',pr:'Priority',pg:'Progress',jn:'Journal',ln:'Language',sd2:'Submit',ad:'Accept',ed:'Edu Period',pt:'Type',
 wn:'Week Name',dy:'Day',br:'Breakfast',lu:'Lunch',di:'Dinner',ex:'Exercise',dn:'Done',aw2:'New Week',wl:'Week',st:'Status',
 rs:'Read Status',pf:'Planned for',ps:'Project Status',sy:'Start Year',ey:'End Year',wk:'Weeks',
-addResp:' Add Responsibility',resp:'Responsibilities',
+addResp:'➕ Add Responsibility',resp:'Responsibilities',
 addFile:'📎 Attach File',files:'Attached Files',fileHint:'Max 2MB - PDF, Image, Video',
 markDone:'✓ Done',markUnDone:'↺ Undo',
-read:'Read',unread:'Unread',listened:'Listened',unlistened:'Unlistened',
-completed:'Completed',incomplete:'Incomplete',
 weekLabel:'Week',editWeek:'Edit',deleteWeek:'Delete',
-sportPlan:'Sport Plan',mealPlan:'Meal Plan'},
+sportPlan:'Sport Plan',mealPlan:'Meal Plan',
+read:'Read',unread:'Unread',listened:'Listened',unlistened:'Unlistened',
+completed:'Completed',incomplete:'Incomplete'},
 tp:{mg:'Management',tc:'Technical'},lv:{ad:'Advanced',in:'Intermediate',ba:'Basic'},
 pr:{hi:'High',me:'Medium',lo:'Low'},st2:{dn:'Done',pr2:'Progress',pl:'Planned'},
 rs2:{rd:'Read',pl2:'Planned'},pt2:{ar:'Article',bk:'Book',ch:'Chapter',cn:'Conference'},
 ln2:{fa:'Persian',en:'English',bo:'Bilingual'},
 dy:['Sat','Sun','Mon','Tue','Wed','Thu','Fri'],
 sw:'Software',ms:'Management Skills',ts:'Technical Skills',pi:'Personal Info',ac:'Academic',sk:'Skills & Certificates',
-chartsTitle:'📊 Progress Charts',
-completedGoals:'Completed Goals',booksRead:'Books Read',
+chartsTitle:' Progress Charts',
+booksRead:'Books Read',podcastStatus:'Podcasts Status',
 skillsDist:'Skills Distribution',articlesByType:'Articles by Type',
-goalsStatus:'Projects Status',podcastStatus:'Podcasts Status',
+goalsStatus:'Projects Status',
 advanced:'Advanced',intermediate:'Intermediate',basic:'Basic',
 article:'Article',book:'Book',chapter:'Chapter',conference:'Conference',
 done:'Done',inProgress:'In Progress',planned:'Planned'}
@@ -210,13 +246,12 @@ en:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],bk:[],pd:[],mp:{w:[]},sp:{w:
 
 let L='fa',D=null,ED2={t:null,i:null},CW={m:0,s:0},pendingFiles=[];
 
-function init(){try{let s=localStorage.getItem('pdV15');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
+function init(){try{let s=localStorage.getItem('pdV18');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa),en:mg(ED.en,p.en)}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
 function mg(a,b){let r=JSON.parse(JSON.stringify(a));for(let k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k]))r[k]=mg(a[k]||{},b[k]);else r[k]=b[k]}return r}
 function sl(l){L=l;document.body.classList.toggle('en',l==='en');document.documentElement.lang=l;document.documentElement.dir=l==='fa'?'rtl':'ltr';r()}
-function sv(){try{localStorage.setItem('pdV15',JSON.stringify(D))}catch(e){alert('حافظه پر است! فایل‌های بزرگ را حذف کنید.')}}
+function sv(){try{localStorage.setItem('pdV18',JSON.stringify(D))}catch(e){alert('حافظه پر است! فایل‌های بزرگ را حذف کنید.')}}
 function t(k){return T[L][k]}
 function esc(s){if(!s)return'';return s.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-
 function toRespArray(de){if(!de)return[];if(Array.isArray(de))return de.filter(x=>x&&x.trim());if(typeof de==='string')return de.split('\n').filter(x=>x&&x.trim());return[]}
 function sortByNewest(arr,field){if(!arr||arr.length===0)return[];return arr.slice().sort((a,b)=>{let da=a[field]||'',db=b[field]||'';if(!da&&!db)return 0;if(!da)return 1;if(!db)return -1;return db.localeCompare(da)})}
 
@@ -237,7 +272,6 @@ document.getElementById('app').innerHTML=h;
 function rO(d){
 let p=d.pe||{};
 let fs=[{k:'nm',l:t('lb').nm},{k:'ag',l:t('lb').ag},{k:'gd',l:t('lb').gd},{k:'ct',l:t('lb').ct},{k:'ph',l:t('lb').ph},{k:'em2',l:t('lb').em2},{k:'li',l:t('lb').li},{k:'or',l:t('lb').or},{k:'un',l:t('lb').un},{k:'po',l:t('lb').po}];
-let completedGoals=d.gl.filter(g=>g.st==='dn').length;
 let readBooks=d.bk.filter(b=>b.rs==='rd').length;
 let donePodcasts=d.pd.filter(p=>p.st==='dn').length;
 let doneProjects=d.pj.filter(p=>p.st==='dn').length;
@@ -248,22 +282,13 @@ h+='</div></div>';
 
 h+='<div class="scd"><div class="st" style="margin-bottom:15px">'+t('chartsTitle')+'</div><div class="charts-grid">';
 
-let goalsPercent=d.gl.length>0?Math.round((completedGoals/d.gl.length)*100):0;
-h+='<div class="chart-card"><h4>'+t('completedGoals')+'</h4><div class="chart-wrap"><div class="bar-chart">';
-if(d.gl.length>0){h+='<div class="bar" style="height:'+Math.max(goalsPercent,5)+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+completedGoals+'</div><div class="bar-label">'+t('done')+'</div></div>';h+='<div class="bar" style="height:'+Math.max(100-goalsPercent,5)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.gl.length-completedGoals)+'</div><div class="bar-label">'+t('incomplete')+'</div></div>';}
-else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
-h+='</div></div></div>';
-
 let booksPercent=d.bk.length>0?Math.round((readBooks/d.bk.length)*100):0;
-h+='<div class="chart-card"><h4>'+t('booksRead')+'</h4><div class="chart-wrap"><div class="bar-chart">';
-if(d.bk.length>0){h+='<div class="bar" style="height:'+Math.max(booksPercent,5)+'%;background:linear-gradient(180deg,#f59e0b,#d97706)"><div class="bar-value">'+readBooks+'</div><div class="bar-label">'+t('read')+'</div></div>';h+='<div class="bar" style="height:'+Math.max(100-booksPercent,5)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.bk.length-readBooks)+'</div><div class="bar-label">'+t('unread')+'</div></div>';}
-else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
-h+='</div></div></div>';
-
 let podPercent=d.pd.length>0?Math.round((donePodcasts/d.pd.length)*100):0;
-h+='<div class="chart-card"><h4>'+t('podcastStatus')+'</h4><div class="chart-wrap"><div class="bar-chart">';
-if(d.pd.length>0){h+='<div class="bar" style="height:'+Math.max(podPercent,5)+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+donePodcasts+'</div><div class="bar-label">'+t('done')+'</div></div>';h+='<div class="bar" style="height:'+Math.max(100-podPercent,5)+'%;background:linear-gradient(180deg,#a0aec0,#718096)"><div class="bar-value">'+(d.pd.length-donePodcasts)+'</div><div class="bar-label">'+t('incomplete')+'</div></div>';}
-else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
+h+='<div class="chart-card"><h4>'+t('booksRead')+' و '+t('podcastStatus')+'</h4><div class="chart-wrap"><div class="bar-chart">';
+if(d.bk.length>0||d.pd.length>0){
+if(d.bk.length>0){h+='<div class="bar" style="height:'+Math.max(booksPercent,5)+'%;background:linear-gradient(180deg,#f59e0b,#d97706)"><div class="bar-value">'+readBooks+'/'+d.bk.length+'</div><div class="bar-label">'+t('read')+'</div></div>';}
+if(d.pd.length>0){h+='<div class="bar" style="height:'+Math.max(podPercent,5)+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+donePodcasts+'/'+d.pd.length+'</div><div class="bar-label">'+t('done')+'</div></div>';}
+}else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
 h+='</div></div></div>';
 
 let advCount=d.sw.filter(s=>s.lv==='ad').length;
@@ -319,15 +344,16 @@ function rA(d){
 let h='<div class="sec" id="s2"><div class="scd"><div class="sh"><div class="st">'+t('sec')[2]+'</div><div><button class="btn bp" onclick="om(\'ed\')">+ تحصیل</button><button class="btn bp" onclick="om(\'pu\')">+ مقاله</button></div></div>';
 let hasEdu=d.ed.length>0,hasPu=d.pu.length>0;
 if(!hasEdu&&!hasPu)h+='<div class="em">'+t('em')+'</div>';
-if(hasEdu){h+='<div class="sst">🎓 تحصیلات</div><div class="tag-grid">';
+if(hasEdu){h+='<div class="sst"> تحصیلات</div>';
 sortByNewest(d.ed,'sy').forEach((e)=>{let oi=d.ed.indexOf(e);
-h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'ed\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ed\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">🎓 '+esc(e.dg||'')+'</div><div class="tag-sub">'+esc(e.fi||'')+'</div><div class="tag-sub">'+esc(e.un||'')+'</div><div class="tag-sub">'+esc(e.sy||'')+' - '+esc(e.ey||'')+'</div>';
-h+=renderFiles(e.files,'ed',oi);h+='</div>';});h+='</div>';}
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ed\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ed\','+oi+')">'+t('d')+'</button></div>';
+h+='<div class="it"> '+esc(e.dg||'')+' - '+esc(e.fi||'')+'</div>';
+h+='<div class="is">'+esc(e.un||'')+' | '+t('lb').gp+': '+esc(e.gp||'')+' | '+esc(e.sy||'')+' - '+esc(e.ey||'')+'</div>';
+h+=renderFiles(e.files,'ed',oi);h+='</div>';});}
 if(hasPu){h+='<div class="sst">📄 مقالات</div><div class="tag-grid">';
 sortByNewest(d.pu,'sd').forEach((p)=>{let oi=d.pu.indexOf(p);
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'pu\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pu\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">📄 '+esc(p.ti||'')+'</div><div class="tag-sub">'+esc(p.jn||'')+'</div>';
+h+='<div class="tag-title"> '+esc(p.ti||'')+'</div><div class="tag-sub">'+esc(p.jn||'')+'</div>';
 h+='<span class="tag-badge bgb">'+t('pt2')[p.pt]+'</span><span class="tag-badge bgb">'+t('ln2')[p.ln]+'</span>';
 h+=renderFiles(p.files,'pu',oi);h+='</div>';});h+='</div>';}
 h+='</div></div>';return h;
@@ -339,23 +365,23 @@ h+='<div class="sst">'+t('sw')+' <button class="btn bp bs" onclick="om(\'sw\')">
 if(d.sw.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{h+='<div class="tag-grid">';d.sw.forEach((s,i)=>{
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'sw\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'sw\','+i+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">️ '+esc(s.nm||'')+'</div><span class="tag-badge '+(s.lv==='ad'?'bgg':s.lv==='in'?'bgo':'bgb')+'">'+t('lv')[s.lv]+'</span>';
+h+='<div class="tag-title">🛠️ '+esc(s.nm||'')+'</div><span class="tag-badge '+(s.lv==='ad'?'bgg':s.lv==='in'?'bgo':'bgb')+'">'+t('lv')[s.lv]+'</span>';
 h+=renderFiles(s.files,'sw',i);h+='</div>';});h+='</div>';}
 h+='<div class="sst">'+t('ms')+' <button class="btn bp bs" onclick="om(\'ms\')">+ '+t('a')+'</button></div>';
 if(d.ms.length===0)h+='<div class="em">'+t('em')+'</div>';
-else{h+='<div class="tag-grid">';d.ms.forEach((s,i)=>{
-h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'ms\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ms\','+i+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(s.sk||'')+'</div>';h+=renderFiles(s.files,'ms',i);h+='</div>';});h+='</div>';}
+else{d.ms.forEach((s,i)=>{
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ms\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ms\','+i+')">'+t('d')+'</button></div>';
+h+='<div class="it">📊 '+esc(s.sk||'')+'</div>';h+=renderFiles(s.files,'ms',i);h+='</div>';});}
 h+='<div class="sst">'+t('ts')+' <button class="btn bp bs" onclick="om(\'ts\')">+ '+t('a')+'</button></div>';
 if(d.ts.length===0)h+='<div class="em">'+t('em')+'</div>';
-else{h+='<div class="tag-grid">';d.ts.forEach((s,i)=>{
-h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'ts\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ts\','+i+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">⚙️ '+esc(s.sk||'')+'</div>';h+=renderFiles(s.files,'ts',i);h+='</div>';});h+='</div>';}
+else{d.ts.forEach((s,i)=>{
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ts\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ts\','+i+')">'+t('d')+'</button></div>';
+h+='<div class="it">️ '+esc(s.sk||'')+'</div>';h+=renderFiles(s.files,'ts',i);h+='</div>';});}
 h+='<div class="sst">📜 گواهینامه‌ها <button class="btn bp bs" onclick="om(\'ct\')">+ '+t('a')+'</button></div>';
 if(d.ct.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{h+='<div class="tag-grid">';sortByNewest(d.ct,'yr').forEach((c)=>{let oi=d.ct.indexOf(c);
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'ct\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ct\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(c.nm||'')+'</div><div class="tag-sub">'+esc(c.is2||'')+'</div><div class="tag-sub">'+esc(c.yr||'')+' | '+esc(c.du||'')+'</div>';
+h+='<div class="tag-title">📜 '+esc(c.nm||'')+'</div><div class="tag-sub">'+esc(c.is2||'')+'</div><div class="tag-sub">'+esc(c.yr||'')+' | '+esc(c.du||'')+'</div>';
 h+=renderFiles(c.files,'ct',oi);h+='</div>';});h+='</div>';}
 h+='</div></div>';return h;
 }
@@ -370,9 +396,9 @@ if(read.length>0){h+='<div class="sst">✅ '+t('read')+' ('+read.length+')</div>
 read.forEach((b)=>{let oi=d.bk.indexOf(b);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" checked onchange="toggleBook('+oi+')" title="'+t('markUnDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(b.ti||'')+'</div><div class="tag-sub">'+esc(b.au||'')+' | '+esc(b.yr||'')+'</div>';
+h+='<div class="tag-title">📚 '+esc(b.ti||'')+'</div><div class="tag-sub">'+esc(b.au||'')+' | '+esc(b.yr||'')+'</div>';
 h+=renderFiles(b.files,'bk',oi);h+='</div>';});h+='</div>';}
-if(planned.length>0){h+='<div class="sst"> '+t('planned')+' ('+planned.length+')</div><div class="tag-grid">';
+if(planned.length>0){h+='<div class="sst">📅 '+t('planned')+' ('+planned.length+')</div><div class="tag-grid">';
 planned.forEach((b)=>{let oi=d.bk.indexOf(b);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="toggleBook('+oi+')" title="'+t('markDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'bk\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'bk\','+oi+')">'+t('d')+'</button></div>';
@@ -393,13 +419,13 @@ if(done.length>0){h+='<div class="sst">✅ '+t('done')+' ('+done.length+')</div>
 done.forEach((p)=>{let oi=d.pd.indexOf(p);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" checked onchange="togglePodcast('+oi+')" title="'+t('markUnDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">🎧 '+esc(p.ti||'')+'</div><div class="tag-sub">'+t('lb').ep+': '+esc(p.ep||'')+'</div>';
+h+='<div class="tag-title"> '+esc(p.ti||'')+'</div><div class="tag-sub">'+t('lb').ep+': '+esc(p.ep||'')+'</div>';
 h+=renderFiles(p.files,'pd',oi);h+='</div>';});h+='</div>';}
 if(progress.length>0){h+='<div class="sst">🔄 '+t('inProgress')+' ('+progress.length+')</div><div class="tag-grid">';
 progress.forEach((p)=>{let oi=d.pd.indexOf(p);
 h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="togglePodcast('+oi+')" title="'+t('markDone')+'">';
 h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pd\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pd\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">️ '+esc(p.ti||'')+'</div><div class="tag-sub">'+t('lb').ep+': '+esc(p.ep||'')+'</div>';
+h+='<div class="tag-title">🎙️ '+esc(p.ti||'')+'</div><div class="tag-sub">'+t('lb').ep+': '+esc(p.ep||'')+'</div>';
 h+=renderFiles(p.files,'pd',oi);h+='</div>';});h+='</div>';}
 if(planned.length>0){h+='<div class="sst">📅 '+t('planned')+' ('+planned.length+')</div><div class="tag-grid">';
 planned.forEach((p)=>{let oi=d.pd.indexOf(p);
@@ -411,52 +437,32 @@ h+=renderFiles(p.files,'pd',oi);h+='</div>';});h+='</div>';}
 h+='</div></div>';return h;
 }
 
-// ✅ پلن ورزشی - ۴ هفته در یک ردیف
 function rSP(d){
 let pl=d.sp||{w:[]},ws=pl.w||[];
 let h='<div class="sec" id="s6"><div class="scd"><div class="sh"><div class="st">'+t('sec')[6]+'</div></div>';
-if(ws.length===0){
-h+='<div class="em">'+t('em')+'</div>';
-}else{
-h+='<div class="weeks-grid">';
-for(let i=0;i<ws.length;i++){
-let w=ws[i];
-let wn=w.nm||t('lb').wl+' '+(i+1);
-h+='<div class="week-card">';
-h+='<div class="week-header"><span class="week-name">'+esc(wn)+'</span>';
+if(ws.length===0){h+='<div class="em">'+t('em')+'</div>';}
+else{h+='<div class="weeks-grid">';
+for(let i=0;i<ws.length;i++){let w=ws[i];let wn=w.nm||t('lb').wl+' '+(i+1);
+h+='<div class="week-card"><div class="week-header"><span class="week-name">'+esc(wn)+'</span>';
 h+='<button onclick="ewn(\'s\','+i+')" title="'+t('lb').editWeek+'">✏️</button>';
-h+='<button class="wd" onclick="dwn(\'s\','+i+')" title="'+t('lb').deleteWeek+'">×</button>';
-h+='</div>';
-h+=rWT(w,'s',i);
-h+='</div>';
-}
-h+='</div>';
-}
+h+='<button class="wd" onclick="dwn(\'s\','+i+')" title="'+t('lb').deleteWeek+'">×</button></div>';
+h+=rWT(w,'s',i);h+='</div>';}
+h+='</div>';}
 h+='<div class="add-weeks-bar"><button class="btn bp" onclick="aw2(\'s\')">+ '+t('lb').aw2+'</button></div>';
 h+='</div></div>';return h;
 }
 
-// ✅ پلن غذایی - ۴ هفته در یک ردیف
 function rMP(d){
 let pl=d.mp||{w:[]},ws=pl.w||[];
 let h='<div class="sec" id="s7"><div class="scd"><div class="sh"><div class="st">'+t('sec')[7]+'</div></div>';
-if(ws.length===0){
-h+='<div class="em">'+t('em')+'</div>';
-}else{
-h+='<div class="weeks-grid">';
-for(let i=0;i<ws.length;i++){
-let w=ws[i];
-let wn=w.nm||t('lb').wl+' '+(i+1);
-h+='<div class="week-card">';
-h+='<div class="week-header"><span class="week-name">'+esc(wn)+'</span>';
+if(ws.length===0){h+='<div class="em">'+t('em')+'</div>';}
+else{h+='<div class="weeks-grid">';
+for(let i=0;i<ws.length;i++){let w=ws[i];let wn=w.nm||t('lb').wl+' '+(i+1);
+h+='<div class="week-card"><div class="week-header"><span class="week-name">'+esc(wn)+'</span>';
 h+='<button onclick="ewn(\'m\','+i+')" title="'+t('lb').editWeek+'">✏️</button>';
-h+='<button class="wd" onclick="dwn(\'m\','+i+')" title="'+t('lb').deleteWeek+'">×</button>';
-h+='</div>';
-h+=rMT(w,i);
-h+='</div>';
-}
-h+='</div>';
-}
+h+='<button class="wd" onclick="dwn(\'m\','+i+')" title="'+t('lb').deleteWeek+'">×</button></div>';
+h+=rMT(w,i);h+='</div>';}
+h+='</div>';}
 h+='<div class="add-weeks-bar"><button class="btn bp" onclick="aw2(\'m\')">+ '+t('lb').aw2+'</button></div>';
 h+='</div></div>';return h;
 }
@@ -464,29 +470,23 @@ h+='</div></div>';return h;
 function rWT(w,tp,weekIdx){
 let dys=t('dy');
 let h='<table class="pt"><thead><tr><th>'+t('lb').dy+'</th><th>'+t('lb').ex+'</th><th>'+t('lb').dn+'</th></tr></thead><tbody>';
-for(let i=0;i<dys.length;i++){
-let d=w.dy[i]||{};
+for(let i=0;i<dys.length;i++){let d=w.dy[i]||{};
 h+='<tr><td><strong>'+dys[i]+'</strong></td>';
 h+='<td><input type="text" value="'+esc(d.ex||'')+'" onchange="uwd(\''+tp+'\','+weekIdx+','+i+',\'ex\',this.value)"></td>';
-h+='<td class="dc '+(d.dn?'ok':'')+'" onclick="twd(\''+tp+'\','+weekIdx+','+i+')">'+(d.dn?'✓':'○')+'</td></tr>';
-}
-h+='</tbody></table>';
-return h;
+h+='<td class="dc '+(d.dn?'ok':'')+'" onclick="twd(\''+tp+'\','+weekIdx+','+i+')">'+(d.dn?'✓':'○')+'</td></tr>';}
+h+='</tbody></table>';return h;
 }
 
 function rMT(w,weekIdx){
 let dys=t('dy');
 let h='<table class="pt"><thead><tr><th>'+t('lb').dy+'</th><th>'+t('lb').br+'</th><th>'+t('lb').lu+'</th><th>'+t('lb').di+'</th><th>'+t('lb').dn+'</th></tr></thead><tbody>';
-for(let i=0;i<dys.length;i++){
-let d=w.dy[i]||{};
+for(let i=0;i<dys.length;i++){let d=w.dy[i]||{};
 h+='<tr><td><strong>'+dys[i]+'</strong></td>';
 h+='<td><input type="text" value="'+esc(d.br||'')+'" onchange="umd('+weekIdx+','+i+',\'br\',this.value)"></td>';
 h+='<td><input type="text" value="'+esc(d.lu||'')+'" onchange="umd('+weekIdx+','+i+',\'lu\',this.value)"></td>';
 h+='<td><input type="text" value="'+esc(d.di||'')+'" onchange="umd('+weekIdx+','+i+',\'di\',this.value)"></td>';
-h+='<td class="dc '+(d.dn?'ok':'')+'" onclick="tmd('+weekIdx+','+i+')">'+(d.dn?'✓':'○')+'</td></tr>';
-}
-h+='</tbody></table>';
-return h;
+h+='<td class="dc '+(d.dn?'ok':'')+'" onclick="tmd('+weekIdx+','+i+')">'+(d.dn?'✓':'○')+'</td></tr>';}
+h+='</tbody></table>';return h;
 }
 
 function aw2(tp){let nm=prompt(L==='fa'?'نام هفته (مثلاً: هفته اول مهر):':'Week name (e.g., Week 1 October):');if(!nm)return;let pl=tp==='s'?D[L].sp:D[L].mp;if(!pl.w)pl.w=[];pl.w.push({nm:nm,dy:[{},{},{},{},{},{},{}]});sv();r()}
@@ -504,24 +504,24 @@ else{
 let done=sortByNewest(d.pj.filter(p=>p.st==='dn'),'yr');
 let progress=d.pj.filter(p=>p.st==='pr2');
 let planned=sortByNewest(d.pj.filter(p=>p.st==='pl'),'yr');
-if(done.length>0){h+='<div class="sst">✅ '+t('done')+' ('+done.length+')</div><div class="tag-grid">';
+if(done.length>0){h+='<div class="sst">✅ '+t('done')+' ('+done.length+')</div>';
 done.forEach((p)=>{let oi=d.pj.indexOf(p);
-h+='<div class="tag-item"><input type="checkbox" class="tag-check" checked onchange="toggleProject('+oi+')" title="'+t('markUnDone')+'">';
-h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">🔬 '+esc(p.ti||'')+'</div><div class="tag-sub">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
-h+=renderFiles(p.files,'pj',oi);h+='</div>';});h+='</div>';}
-if(progress.length>0){h+='<div class="sst">🔄 '+t('inProgress')+' ('+progress.length+')</div><div class="tag-grid">';
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
+h+='<div class="it">🔬 '+esc(p.ti||'')+'</div><div class="is">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
+h+='<span class="bg bgg">'+t('done')+'</span>';
+h+=renderFiles(p.files,'pj',oi);h+='</div>';});}
+if(progress.length>0){h+='<div class="sst">🔄 '+t('inProgress')+' ('+progress.length+')</div>';
 progress.forEach((p)=>{let oi=d.pj.indexOf(p);
-h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="toggleProject('+oi+')" title="'+t('markDone')+'">';
-h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(p.ti||'')+'</div><div class="tag-sub">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
-h+=renderFiles(p.files,'pj',oi);h+='</div>';});h+='</div>';}
-if(planned.length>0){h+='<div class="sst">📅 '+t('planned')+' ('+planned.length+')</div><div class="tag-grid">';
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
+h+='<div class="it">🔬 '+esc(p.ti||'')+'</div><div class="is">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
+h+='<span class="bg bgo">'+t('inProgress')+'</span>';
+h+=renderFiles(p.files,'pj',oi);h+='</div>';});}
+if(planned.length>0){h+='<div class="sst">📅 '+t('planned')+' ('+planned.length+')</div>';
 planned.forEach((p)=>{let oi=d.pj.indexOf(p);
-h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="toggleProject('+oi+')" title="'+t('markDone')+'">';
-h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">🔬 '+esc(p.ti||'')+'</div><div class="tag-sub">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
-h+=renderFiles(p.files,'pj',oi);h+='</div>';});h+='</div>';}
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
+h+='<div class="it">🔬 '+esc(p.ti||'')+'</div><div class="is">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
+h+='<span class="bg bgb">'+t('planned')+'</span>';
+h+=renderFiles(p.files,'pj',oi);h+='</div>';});}
 }
 h+='</div></div>';return h;
 }
@@ -532,20 +532,18 @@ if(d.gl.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{
 let done=sortByNewest(d.gl.filter(g=>g.st==='dn'),'dl');
 let others=sortByNewest(d.gl.filter(g=>g.st!=='dn'),'dl');
-if(done.length>0){h+='<div class="sst">✅ '+t('completed')+' ('+done.length+')</div><div class="tag-grid">';
+if(done.length>0){h+='<div class="sst">✅ '+t('completed')+' ('+done.length+')</div>';
 done.forEach((g)=>{let oi=d.gl.indexOf(g);
-h+='<div class="tag-item"><input type="checkbox" class="tag-check" checked onchange="toggleGoal('+oi+')" title="'+t('markUnDone')+'">';
-h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'gl\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(g.tg||'')+'</div><div class="tag-sub">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div>';
-h+='<span class="tag-badge '+(g.pr==='hi'?'bgr':g.pr==='me'?'bgo':'bgg')+'">'+t('pr')[g.pr]+'</span>';
-h+=renderFiles(g.files,'gl',oi);h+='</div>';});h+='</div>';}
-if(others.length>0){h+='<div class="sst">📅 '+t('incomplete')+' ('+others.length+')</div><div class="tag-grid">';
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'gl\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+oi+')">'+t('d')+'</button></div>';
+h+='<div class="it"> '+esc(g.tg||'')+'</div><div class="is">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div>';
+h+='<span class="bg bgg">'+t('completed')+'</span>';
+h+=renderFiles(g.files,'gl',oi);h+='</div>';});}
+if(others.length>0){h+='<div class="sst">📅 '+t('incomplete')+' ('+others.length+')</div>';
 others.forEach((g)=>{let oi=d.gl.indexOf(g);
-h+='<div class="tag-item"><input type="checkbox" class="tag-check" onchange="toggleGoal('+oi+')" title="'+t('markDone')+'">';
-h+='<div class="tag-actions"><button class="btn bw bs" onclick="om(\'gl\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">🎯 '+esc(g.tg||'')+'</div><div class="tag-sub">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div>';
-h+='<span class="tag-badge '+(g.pr==='hi'?'bgr':g.pr==='me'?'bgo':'bgg')+'">'+t('pr')[g.pr]+'</span>';
-h+=renderFiles(g.files,'gl',oi);h+='</div>';});h+='</div>';}
+h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'gl\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'gl\','+oi+')">'+t('d')+'</button></div>';
+h+='<div class="it">🎯 '+esc(g.tg||'')+'</div><div class="is">'+esc(g.ca||'')+' | '+esc(g.dl||'')+'</div>';
+h+='<span class="bg '+(g.pr==='hi'?'bgr':g.pr==='me'?'bgo':'bgg')+'">'+t('pr')[g.pr]+'</span>';
+h+=renderFiles(g.files,'gl',oi);h+='</div>';});}
 }
 h+='</div></div>';return h;
 }
@@ -560,7 +558,7 @@ function toggleGoal(idx){D[L].gl[idx].st=D[L].gl[idx].st==='dn'?'pr2':'dn';sv();
 function removeFile(type,itemIdx,fileIdx){if(!confirm(t('cf')))return;if(!D[L][type][itemIdx].files)return;D[L][type][itemIdx].files.splice(fileIdx,1);sv();r()}
 
 function handleModalFile(input){if(!input.files||input.files.length===0)return;let file=input.files[0];if(file.size>2*1024*1024){alert('فایل بیش از 2 مگابایت است!');input.value='';return;}let reader=new FileReader();reader.onload=function(e){let fileData={name:file.name,type:file.type,data:e.target.result};pendingFiles.push(fileData);renderFilePreview()};reader.readAsDataURL(file);input.value=''}
-function renderFilePreview(){let container=document.getElementById('file-preview');if(!container)return;if(pendingFiles.length===0){container.innerHTML='';return;}let h='<div class="file-list">';pendingFiles.forEach((f,i)=>{h+='<div class="file-item">📎 <a href="'+f.data+'" download="'+esc(f.name)+'">'+esc(f.name)+'</a><span class="file-remove" onclick="removePendingFile('+i+')">×</span></div>'});h+='</div>';container.innerHTML=h}
+function renderFilePreview(){let container=document.getElementById('file-preview');if(!container)return;if(pendingFiles.length===0){container.innerHTML='';return;}let h='<div class="file-list">';pendingFiles.forEach((f,i)=>{h+='<div class="file-item"> <a href="'+f.data+'" download="'+esc(f.name)+'">'+esc(f.name)+'</a><span class="file-remove" onclick="removePendingFile('+i+')">×</span></div>'});h+='</div>';container.innerHTML=h}
 function removePendingFile(idx){pendingFiles.splice(idx,1);renderFilePreview()}
 
 function om(tp,idx){
