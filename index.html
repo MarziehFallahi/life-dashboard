@@ -13,49 +13,52 @@ body.en{direction:ltr;text-align:left}
 .hdr{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.1);border-top:3px solid #4a6fa5}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
 .hdr h1{color:#2d4a73;font-size:24px;font-weight:800}
-.ls{display:flex;gap:8px}
-.lb{padding:8px 16px;border:1px solid #d4dde6;background:#fff;color:#4a6fa5;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif;text-decoration:none}
+.ls{display:flex;gap:8px;align-items:center}
+.lb{padding:8px 16px;border:1px solid #d4dde6;background:#fff;color:#4a6fa5;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif;text-decoration:none;font-size:13px}
 .lb.on{background:#4a6fa5;color:#fff}
-.sts{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:20px}
-.sc{background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);border-top:3px solid #4a6fa5}
-.sv{font-size:20px;font-weight:800;color:#2d4a73}
-.sl{font-size:10px;color:#718096;margin-top:4px;font-weight:600}
+.sts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.sc{background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);border-top:3px solid #4a6fa5;transition:all .2s}
+.sc:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(74,111,165,.15)}
+.sc-icon{font-size:28px;margin-bottom:6px}
+.sv{font-size:22px;font-weight:800;color:#2d4a73}
+.sl{font-size:11px;color:#718096;margin-top:4px;font-weight:600}
 .tbs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;background:#fff;padding:10px;border-radius:10px}
-.tb{padding:6px 12px;background:#f8fafc;border:1px solid #d4dde6;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif;font-size:12px}
+.tb{padding:8px 14px;background:#f8fafc;border:1px solid #d4dde6;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif;font-size:13px}
 .tb.on{background:#4a6fa5;color:#fff;border-color:#4a6fa5}
 .sec{display:none}
 .sec.on{display:block}
 .scd{background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1);margin-bottom:16px}
 .sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid #e8f0f8}
-.st{font-size:18px;font-weight:800;color:#2d4a73}
-.btn{padding:8px 14px;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif;margin:3px;text-decoration:none;display:inline-block}
+.st-title{font-size:18px;font-weight:800;color:#2d4a73}
+.btn{padding:8px 14px;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-family:'Vazirmatn',sans-serif;margin:3px;text-decoration:none;display:inline-block;font-size:13px}
 .bp{background:#4a6fa5;color:#fff}
 .bd{background:#e53e3e;color:#fff}
 .bw{background:#f59e0b;color:#fff}
 .bs{padding:4px 8px;font-size:11px}
 .bf{background:#48bb78;color:#fff}
-.itm{background:#f8fafc;padding:12px;margin-bottom:8px;border-radius:8px;border-right:3px solid #4a6fa5;position:relative}
+.itm{background:#f8fafc;padding:14px;margin-bottom:10px;border-radius:8px;border-right:3px solid #4a6fa5;position:relative}
 body.en .itm{border-right:none;border-left:3px solid #4a6fa5}
-.it{font-weight:700;font-size:14px;margin-bottom:4px}
+.it{font-weight:700;font-size:14px;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.it-icon{font-size:16px}
 .is{font-size:12px;color:#718096}
-.id{font-size:13px;color:#2d3748;margin-top:6px;line-height:1.5}
+.id{font-size:13px;color:#2d3748;margin-top:6px;line-height:1.6}
 .id ul{list-style:none;padding:0;margin:10px 0 0 0}
-.id ul li{padding:8px 28px 8px 0;position:relative;line-height:1.8;border-bottom:1px dashed #e8f0f8}
+.id ul li{padding:6px 24px 6px 0;position:relative;line-height:1.7;border-bottom:1px dashed #e8f0f8}
 .id ul li:last-child{border-bottom:none}
-.id ul li::before{content:'•';position:absolute;right:8px;top:8px;color:#4a6fa5;font-weight:bold;font-size:20px}
-body.en .id ul li{padding:8px 0 8px 28px}
-body.en .id ul li::before{right:auto;left:8px}
-.ia{position:absolute;top:8px;left:8px;display:flex;gap:4px}
-body.en .ia{left:auto;right:8px}
-.tag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px}
-.tag-item{background:#f8fafc;border:1px solid #d4dde6;border-radius:8px;padding:10px;position:relative;transition:all .2s;display:flex;flex-direction:column;gap:4px}
+.id ul li::before{content:'•';position:absolute;right:6px;top:6px;color:#4a6fa5;font-weight:bold;font-size:18px}
+body.en .id ul li{padding:6px 0 6px 24px}
+body.en .id ul li::before{right:auto;left:6px}
+.ia{position:absolute;top:10px;left:10px;display:flex;gap:4px}
+body.en .ia{left:auto;right:10px}
+.tag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:10px}
+.tag-item{background:#f8fafc;border:1px solid #d4dde6;border-radius:8px;padding:12px;position:relative;transition:all .2s;display:flex;flex-direction:column;gap:4px}
 .tag-item:hover{border-color:#4a6fa5;box-shadow:0 2px 8px rgba(74,111,165,.12);transform:translateY(-2px)}
-.tag-title{font-weight:700;font-size:13px;color:#2d3748;line-height:1.4;word-break:break-word}
+.tag-title{font-weight:700;font-size:13px;color:#2d3748;line-height:1.4}
 .tag-sub{font-size:11px;color:#718096}
-.tag-badge{font-size:10px;font-weight:600;padding:2px 6px;border-radius:8px;display:inline-block;width:fit-content}
-.tag-actions{position:absolute;top:4px;left:4px;display:flex;gap:2px}
-body.en .tag-actions{left:auto;right:4px}
-.bg{display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:600;margin:2px}
+.tag-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:8px;display:inline-block;width:fit-content}
+.tag-actions{position:absolute;top:6px;left:6px;display:flex;gap:3px}
+body.en .tag-actions{left:auto;right:6px}
+.bg{display:inline-block;padding:3px 10px;border-radius:10px;font-size:10px;font-weight:600;margin:2px}
 .bgb{background:#e8f0f8;color:#2d4a73}
 .bgg{background:#d4e8d4;color:#2d5a2d}
 .bgo{background:#f0e4d4;color:#8b6f47}
@@ -65,99 +68,68 @@ body.en .tag-actions{left:auto;right:4px}
 .mc{background:#fff;padding:25px;border-radius:12px;max-width:600px;width:90%;max-height:85vh;overflow-y:auto}
 .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #e8f0f8}
 .mh h3{font-size:16px;color:#2d4a73;font-weight:800}
-.cb{background:none;border:none;font-size:20px;cursor:pointer;color:#718096}
+.cb{background:none;border:none;font-size:22px;cursor:pointer;color:#718096}
 .fg{margin-bottom:12px}
 .fl{display:block;margin-bottom:5px;font-size:12px;font-weight:700;color:#2d4a73}
-.fi,.ft,.fs{width:100%;padding:8px;border:1px solid #d4dde6;border-radius:6px;font-family:'Vazirmatn',sans-serif;font-size:13px}
-.ft{min-height:60px;resize:vertical}
+.fi,.ft,.fs{width:100%;padding:10px;border:1px solid #d4dde6;border-radius:6px;font-family:'Vazirmatn',sans-serif;font-size:13px}
+.ft{min-height:70px;resize:vertical}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .mf{display:flex;gap:8px;justify-content:flex-end;margin-top:15px;padding-top:12px;border-top:1px solid #e8f0f8}
 .em{text-align:center;padding:30px;color:#718096}
-.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
-.pi{background:#f8fafc;padding:10px;border-radius:6px}
-.pi label{font-size:10px;color:#718096;font-weight:600;display:block}
-.pi .v{font-size:13px;font-weight:600;color:#2d3748;margin-top:3px}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px}
+.pi{background:#f8fafc;padding:12px;border-radius:8px}
+.pi label{font-size:11px;color:#718096;font-weight:600;display:block}
+.pi .v{font-size:14px;font-weight:600;color:#2d3748;margin-top:4px}
 .pi .v.e{color:#718096;font-style:italic}
-.sst{margin:15px 0 10px;font-size:14px;font-weight:700;color:#4a6fa5;padding-right:8px;border-right:3px solid #4a6fa5;display:flex;justify-content:space-between;align-items:center}
-body.en .sst{padding-right:0;padding-left:8px;border-right:none;border-left:3px solid #4a6fa5}
-.pfb{position:fixed;bottom:20px;left:20px;z-index:100;background:#4a6fa5;color:#fff;padding:10px 20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.sst{margin:18px 0 12px;font-size:14px;font-weight:700;color:#4a6fa5;padding-right:10px;border-right:3px solid #4a6fa5;display:flex;justify-content:space-between;align-items:center}
+body.en .sst{padding-right:0;padding-left:10px;border-right:none;border-left:3px solid #4a6fa5}
+.pfb{position:fixed;bottom:20px;left:20px;z-index:100;background:#4a6fa5;color:#fff;padding:10px 20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.2);text-decoration:none}
 body.en .pfb{left:auto;right:20px}
 .file-list{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
 .file-item{background:#e8f0f8;padding:4px 8px;border-radius:6px;font-size:11px;display:flex;align-items:center;gap:6px}
 .file-item a{color:#4a6fa5;text-decoration:none;font-weight:600}
-.file-item a:hover{text-decoration:underline}
 .file-remove{color:#e53e3e;cursor:pointer;font-weight:bold}
 .file-upload-box{background:#f0f9ff;border:2px dashed #4a6fa5;border-radius:8px;padding:12px;margin-top:10px;text-align:center}
 .file-upload-box label{display:block;cursor:pointer;color:#4a6fa5;font-weight:600;font-size:13px}
 .file-upload-box input{display:none}
 .file-upload-box .hint{font-size:11px;color:#718096;margin-top:4px}
-.charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:20px}
+.charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px}
 .chart-card{background:linear-gradient(135deg,#f8fafc,#fff);border:1px solid #d4dde6;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
 .chart-card h4{font-size:14px;color:#2d4a73;margin-bottom:15px;font-weight:700;text-align:center;padding-bottom:8px;border-bottom:2px solid #e8f0f8}
 .chart-wrap{position:relative;height:200px;display:flex;align-items:center;justify-content:center}
-.bar-chart{display:flex;align-items:flex-end;gap:10px;height:160px;padding:10px 0 25px 0;border-bottom:2px solid #e8f0f8;width:100%}
-.bar{flex:1;background:linear-gradient(180deg,#4a6fa5,#2d4a73);border-radius:4px 4px 0 0;min-height:4px;position:relative;transition:all .3s;cursor:pointer}
-.bar:hover{opacity:.8;transform:scaleY(1.05)}
-.bar-label{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:9px;color:#718096;white-space:nowrap;max-width:70px;overflow:hidden;text-overflow:ellipsis;text-align:center}
-.bar-value{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:#2d4a73}
+.bar-chart{display:flex;align-items:flex-end;gap:12px;height:160px;padding:10px 0 25px 0;border-bottom:2px solid #e8f0f8;width:100%}
+.bar{flex:1;background:linear-gradient(180deg,#4a6fa5,#2d4a73);border-radius:4px 4px 0 0;min-height:4px;position:relative;transition:all .3s}
+.bar:hover{opacity:.8}
+.bar-label{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:9px;color:#718096;white-space:nowrap;max-width:80px;overflow:hidden;text-overflow:ellipsis;text-align:center}
+.bar-value{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:700;color:#2d4a73}
+.line-chart{width:100%;height:180px;position:relative}
+.line-chart svg{width:100%;height:100%}
 .resp-list{margin-top:8px}
 .resp-item{display:flex;gap:6px;margin-bottom:8px;align-items:center}
 .resp-item input{flex:1;padding:8px;border:1px solid #d4dde6;border-radius:6px;font-family:'Vazirmatn',sans-serif;font-size:13px}
-.resp-item input:focus{outline:none;border-color:#4a6fa5}
 .resp-add{background:#48bb78;color:#fff;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-family:'Vazirmatn',sans-serif;font-size:12px;font-weight:600;margin-top:4px}
-.resp-add:hover{background:#38a169}
 .resp-remove{background:#e53e3e;color:#fff;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:bold}
 
 @media print {
   @page { size: A4; margin: 10mm 8mm; }
-  body { background: #fff !important; padding: 0 !important; font-size: 9px !important; line-height: 1.3 !important; color: #2d3748 !important; }
+  body { background: #fff !important; padding: 0 !important; font-size: 9px !important; }
   .tbs, .btn, .ia, .pfb, .md, .ls, .file-upload-box, .resp-add, .resp-remove, .tag-actions, .file-remove { display: none !important; }
-  .sec { display: block !important; box-shadow: none !important; margin-bottom: 6px !important; padding: 0 !important; page-break-inside: auto !important; }
-  .scd { box-shadow: none !important; border: none !important; padding: 4px 0 !important; margin-bottom: 4px !important; page-break-inside: auto !important; }
+  .sec { display: block !important; box-shadow: none !important; margin-bottom: 6px !important; padding: 0 !important; }
+  .scd { box-shadow: none !important; border: none !important; padding: 4px 0 !important; margin-bottom: 4px !important; }
   .hdr { box-shadow: none !important; padding: 6px 0 !important; margin-bottom: 6px !important; }
-  .hdr h1 { font-size: 16px !important; margin-bottom: 3px !important; }
-  .sts { display: grid !important; grid-template-columns: repeat(6, 1fr) !important; gap: 3px !important; margin-bottom: 6px !important; }
-  .sc { padding: 4px 3px !important; border-top: 2px solid #4a6fa5 !important; }
-  .sv { font-size: 12px !important; }
-  .sl { font-size: 7px !important; }
-  .charts-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; margin-top: 6px !important; }
-  .chart-card { padding: 6px !important; border: 1px solid #e2e8f0 !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-  .chart-card h4 { font-size: 9px !important; margin-bottom: 4px !important; }
-  .chart-wrap { height: 100px !important; }
-  .bar-chart { height: 80px !important; }
-  .bar-label { font-size: 6px !important; }
-  .bar-value { font-size: 8px !important; }
-  .pg { display: grid !important; grid-template-columns: repeat(5, 1fr) !important; gap: 3px !important; }
-  .pi { padding: 3px 5px !important; }
-  .pi label { font-size: 7px !important; }
-  .pi .v { font-size: 9px !important; }
-  .st { font-size: 11px !important; margin-bottom: 4px !important; }
-  .sh { margin-bottom: 4px !important; padding-bottom: 3px !important; }
-  .itm { padding: 4px 6px !important; margin-bottom: 3px !important; border-right: 2px solid #4a6fa5 !important; page-break-inside: avoid !important; }
-  .it { font-size: 10px !important; margin-bottom: 1px !important; }
-  .is { font-size: 8px !important; }
-  .id { font-size: 8px !important; margin-top: 2px !important; }
-  .id ul li { padding: 1px 18px 1px 0 !important; font-size: 8px !important; line-height: 1.3 !important; }
-  .id ul li::before { font-size: 12px !important; right: 3px !important; top: 1px !important; }
-  .bg { font-size: 7px !important; padding: 1px 4px !important; }
-  .tag-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 3px !important; }
-  .tag-item { padding: 4px 5px !important; border: 1px solid #e2e8f0 !important; page-break-inside: avoid !important; }
-  .tag-title { font-size: 9px !important; }
-  .tag-sub { font-size: 7px !important; }
-  .tag-badge { font-size: 6px !important; padding: 1px 3px !important; }
-  .sst { font-size: 10px !important; margin: 6px 0 3px 0 !important; padding: 1px 0 1px 5px !important; }
-  .file-list { margin-top: 2px !important; gap: 2px !important; }
-  .file-item { font-size: 7px !important; padding: 1px 4px !important; }
+  .sts { grid-template-columns: repeat(4, 1fr) !important; }
+  .charts-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .tag-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .itm, .tag-item { page-break-inside: avoid !important; }
 }
 
-@media(max-width:1200px){.sts{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:768px){.fr{grid-template-columns:1fr}.sts{grid-template-columns:repeat(2,1fr)}.charts-grid{grid-template-columns:1fr}.tag-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}}
+@media(max-width:768px){.sts{grid-template-columns:repeat(2,1fr)}.fr{grid-template-columns:1fr}.charts-grid{grid-template-columns:1fr}.tag-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <div class="ctn" id="app"></div>
 <div class="md" id="md"><div class="mc"><div class="mh"><h3 id="mt"></h3><button class="cb" onclick="cm()">×</button></div><div id="mb"></div><div class="mf"><button class="btn bp" onclick="sd()">ذخیره</button><button class="btn bd" onclick="cm()">انصراف</button></div></div></div>
-<button class="btn pfb" onclick="window.print()">📥 PDF</button>
+<a class="btn pfb" href="plan.html">📋 برنامه‌ریزی</a>
 
 <script>
 const T={
@@ -166,70 +138,90 @@ sec:['نمای کلی','مشاغل','آکادمیک','مهارت‌ها و گو�
 lb:{nm:'نام',ag:'سن',gd:'جنسیت',ct:'شهر',ph:'تلفن',em2:'ایمیل',li:'لینکدین',or:'ORCID',un:'دانشگاه',po:'پست سازمانی',
 ti:'عنوان',co:'شرکت',pe:'دوره',du:'مدت',lo:'مکان',ty:'نوع',de:'توضیحات',dt:'تاریخ',dg:'مقطع',fi:'رشته',gp:'معدل',
 yr:'سال',nm2:'نام',lv:'سطح',hr:'ساعت',au:'نویسنده',rt:'امتیاز',nt:'یادداشت',ep:'اپیزود',is2:'صادرکننده',ca:'دسته',
-tg:'هدف',dl:'مهلت',pr:'اولویت',pg:'پیشرفت',jn:'ژورنال',ln:'زبان',sd2:'سابمیت',ad:'اکسپت',ed:'دوره تحصیلی',pt:'نوع',
-sy:'سال شروع',ey:'سال پایان',
+tg:'هدف',dl:'مهلت',pr:'اولویت',pg:'پیشرفت',jn:'ژورنال',ln:'زبان',sd2:'تاریخ شروع',ad:'تاریخ پایان',ed:'دوره تحصیلی',pt:'نوع',
+sy:'سال شروع',ey:'سال پایان',startDate:'تاریخ شروع',endDate:'تاریخ پایان',
 addResp:'➕ افزودن مسئولیت',resp:'مسئولیت‌ها و دستاوردها',
-addFile:'📎 پیوست فایل',files:'فایل‌های پیوست',fileHint:'حداکثر 2 مگابایت - PDF, تصویر, ویدئو'},
+addFile:'📎 پیوست فایل',fileHint:'حداکثر 2 مگابایت'},
 tp:{mg:'مدیریتی',tc:'فنی و مهندسی'},lv:{ad:'پیشرفته',in:'متوسط',ba:'مقدماتی'},
 pr:{hi:'بالا',me:'متوسط',lo:'پایین'},
-pt2:{ar:'مقاله',bk:'کتاب',ch:'فصل',cn:'کنفرانس'},
+pt2:{ar:'مقاله',bk:'کتاب',cn:'کنفرانس'},
 ln2:{fa:'فارسی',en:'انگلیسی',bo:'دوزبانه'},
 sw:'نرم‌افزارها',ms:'مهارت مدیریتی',ts:'مهارت فنی و مهندسی',pi:'مشخصات فردی',ac:'آکادمیک',sk:'مهارت‌ها و گواهینامه‌ها',
-chartsTitle:'📊 نمودارهای پیشرفت',
+chartsTitle:' نمودارهای پیشرفت',
 skillsDist:'توزیع مهارت‌ها',articlesByType:'مقالات به تفکیک نوع',
-projStatus:'وضعیت پروژه‌ها',overallProgress:'پیشرفت کلی',
+projStatus:'وضعیت پروژه‌ها',growthChart:'روند رشد در طول زمان',
 advanced:'پیشرفته',intermediate:'متوسط',basic:'مقدماتی',
-article:'مقاله',book:'کتاب',chapter:'فصل',conference:'کنفرانس',
+article:'مقاله',book:'کتاب',conference:'کنفرانس',
 done:'انجام شده',inProgress:'در حال انجام',planned:'برنامه‌ریزی',
 completed:'تکمیل شده',incomplete:'تکمیل نشده',
-planLink:'📋 برنامه‌ریزی'},
+planLink:' برنامه‌ریزی',
+draftArticles:'مقالات در دست نگارش',publishedArticles:'مقالات منتشر شده'},
 en:{t:'Personal Dashboard',a:'Add',e:'Edit',d:'Delete',em:'No items yet.',cf:'Sure?',
 sec:['Overview','Jobs','Academic','Skills & Certs','Projects'],
 lb:{nm:'Name',ag:'Age',gd:'Gender',ct:'City',ph:'Phone',em2:'Email',li:'LinkedIn',or:'ORCID',un:'University',po:'Position',
 ti:'Title',co:'Company',pe:'Period',du:'Duration',lo:'Location',ty:'Type',de:'Description',dt:'Date',dg:'Degree',fi:'Field',gp:'GPA',
 yr:'Year',nm2:'Name',lv:'Level',hr:'Hours',au:'Author',rt:'Rating',nt:'Notes',ep:'Episode',is2:'Issuer',ca:'Category',
-tg:'Goal',dl:'Deadline',pr:'Priority',pg:'Progress',jn:'Journal',ln:'Language',sd2:'Submit',ad:'Accept',ed:'Edu Period',pt:'Type',
-sy:'Start Year',ey:'End Year',
-addResp:'➕ Add Responsibility',resp:'Responsibilities',
-addFile:' Attach File',files:'Attached Files',fileHint:'Max 2MB - PDF, Image, Video'},
+tg:'Goal',dl:'Deadline',pr:'Priority',pg:'Progress',jn:'Journal',ln:'Language',sd2:'Start Date',ad:'End Date',ed:'Edu Period',pt:'Type',
+sy:'Start Year',ey:'End Year',startDate:'Start Date',endDate:'End Date',
+addResp:' Add Responsibility',resp:'Responsibilities',
+addFile:'📎 Attach File',fileHint:'Max 2MB'},
 tp:{mg:'Management',tc:'Technical'},lv:{ad:'Advanced',in:'Intermediate',ba:'Basic'},
 pr:{hi:'High',me:'Medium',lo:'Low'},
-pt2:{ar:'Article',bk:'Book',ch:'Chapter',cn:'Conference'},
+pt2:{ar:'Article',bk:'Book',cn:'Conference'},
 ln2:{fa:'Persian',en:'English',bo:'Bilingual'},
 sw:'Software',ms:'Management Skills',ts:'Technical Skills',pi:'Personal Info',ac:'Academic',sk:'Skills & Certificates',
 chartsTitle:'📊 Progress Charts',
 skillsDist:'Skills Distribution',articlesByType:'Articles by Type',
-projStatus:'Projects Status',overallProgress:'Overall Progress',
+projStatus:'Projects Status',growthChart:'Growth Over Time',
 advanced:'Advanced',intermediate:'Intermediate',basic:'Basic',
-article:'Article',book:'Book',chapter:'Chapter',conference:'Conference',
+article:'Article',book:'Book',conference:'Conference',
 done:'Done',inProgress:'In Progress',planned:'Planned',
 completed:'Completed',incomplete:'Incomplete',
-planLink:'📋 Planning'}
+planLink:'📋 Planning',
+draftArticles:'Draft Articles',publishedArticles:'Published Articles'}
 };
 
-const ED={fa:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],pj:[]},
-en:{pe:{},jb:[],ed:[],pu:[],sw:[],ms:[],ts:[],ct:[],pj:[]}};
+const ED={fa:{pe:{},jb:[],ed:[],pu:[],puDraft:[],sw:[],ms:[],ts:[],ct:[],pj:[]},
+en:{pe:{},jb:[],ed:[],pu:[],puDraft:[],sw:[],ms:[],ts:[],ct:[],pj:[]}};
 
 let L='fa',D=null,ED2={t:null,i:null},pendingFiles=[];
 
-function init(){try{let s=localStorage.getItem('dashMain');if(s){let p=JSON.parse(s);D={fa:mg(ED.fa,p.fa||{}),en:mg(ED.en,p.en||{})}}else{D=JSON.parse(JSON.stringify(ED))}}catch(e){D=JSON.parse(JSON.stringify(ED))}r()}
+function init(){
+try{
+let s=localStorage.getItem('dashMainV2');
+if(s){
+let p=JSON.parse(s);
+D={fa:mg(ED.fa,p.fa||{}),en:mg(ED.en,p.en||{})};
+// مهاجرت داده‌های قدیمی
+if(!D.fa.puDraft)D.fa.puDraft=[];
+if(!D.en.puDraft)D.en.puDraft=[];
+}else{D=JSON.parse(JSON.stringify(ED))}
+}catch(e){D=JSON.parse(JSON.stringify(ED))}
+r();
+}
+
 function mg(a,b){let r=JSON.parse(JSON.stringify(a));for(let k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k]))r[k]=mg(a[k]||{},b[k]);else r[k]=b[k]}return r}
 function sl(l){L=l;document.body.classList.toggle('en',l==='en');document.documentElement.lang=l;document.documentElement.dir=l==='fa'?'rtl':'ltr';r()}
-function sv(){try{localStorage.setItem('dashMain',JSON.stringify(D))}catch(e){alert('حافظه پر است!')}}
-function t(k){return T[L][k]}
+function sv(){try{localStorage.setItem('dashMainV2',JSON.stringify(D))}catch(e){alert('حافظه پر است!')}}
+function t(k){
+const keys=k.split('.');
+let r=T[L];
+for(const key of keys)r=r[key];
+return r||k;
+}
 function esc(s){if(!s)return'';return s.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function toRespArray(de){if(!de)return[];if(Array.isArray(de))return de.filter(x=>x&&x.trim());if(typeof de==='string')return de.split('\n').filter(x=>x&&x.trim());return[]}
 function sortByNewest(arr,field){if(!arr||arr.length===0)return[];return arr.slice().sort((a,b)=>{let da=a[field]||'',db=b[field]||'';if(!da&&!db)return 0;if(!da)return 1;if(!db)return -1;return db.localeCompare(da)})}
+function sortByOldest(arr,field){if(!arr||arr.length===0)return[];return arr.slice().sort((a,b)=>{let da=a[field]||'',db=b[field]||'';if(!da&&!db)return 0;if(!da)return -1;if(!db)return 1;return da.localeCompare(db)})}
 
 function r(){
 let d=D[L];
-let c=[d.jb.length,d.ed.length+d.pu.length,d.sw.length+d.ms.length+d.ts.length+d.ct.length,d.pj.length];
-let planUrl='plan.html';
-let h='<div class="hdr"><div class="hdr-top"><h1>'+t('t')+'</h1><div class="ls"><a href="'+planUrl+'" class="lb">'+t('planLink')+'</a><button class="lb '+(L==='fa'?'on':'')+'" onclick="sl(\'fa\')">فارسی</button><button class="lb '+(L==='en'?'on':'')+'" onclick="sl(\'en\')">English</button></div></div></div>';
+let c=[d.jb.length,d.ed.length+d.pu.length+d.puDraft.length,d.sw.length+d.ms.length+d.ts.length+d.ct.length,d.pj.length];
+let h='<div class="hdr"><div class="hdr-top"><h1>'+t('t')+'</h1><div class="ls"><a href="plan.html" class="lb">'+t('planLink')+'</a><button class="lb '+(L==='fa'?'on':'')+'" onclick="sl(\'fa\')">فارسی</button><button class="lb '+(L==='en'?'on':'')+'" onclick="sl(\'en\')">English</button></div></div></div>';
 h+='<div class="sts">';
+let icons=['💼','🎓','🛠️',''];
 let labels=[t('sec')[1],t('ac'),t('sk'),t('sec')[4]];
-let icons=['💼','','🛠️','🔬'];
-for(let i=0;i<c.length;i++)h+='<div class="sc"><div class="sv">'+icons[i]+' '+c[i]+'</div><div class="sl">'+labels[i]+'</div></div>';
+for(let i=0;i<c.length;i++)h+='<div class="sc"><div class="sc-icon">'+icons[i]+'</div><div class="sv">'+c[i]+'</div><div class="sl">'+labels[i]+'</div></div>';
 h+='</div><div class="tbs">';
 for(let i=0;i<t('sec').length;i++)h+='<button class="tb '+(i===0?'on':'')+'" onclick="st('+i+',this)">'+t('sec')[i]+'</button>';
 h+='</div>';
@@ -242,15 +234,24 @@ let p=d.pe||{};
 let fs=[{k:'nm',l:t('lb').nm},{k:'ag',l:t('lb').ag},{k:'gd',l:t('lb').gd},{k:'ct',l:t('lb').ct},{k:'ph',l:t('lb').ph},{k:'em2',l:t('lb').em2},{k:'li',l:t('lb').li},{k:'or',l:t('lb').or},{k:'un',l:t('lb').un},{k:'po',l:t('lb').po}];
 let doneProjects=d.pj.filter(p=>p.st==='dn').length;
 
-let h='<div class="sec on" id="s0"><div class="scd"><div class="sh"><div class="st">'+t('sec')[0]+' - '+t('pi')+'</div><button class="btn bp" onclick="om(\'pe\')">✏️ '+t('e')+'</button></div><div class="pg">';
+let h='<div class="sec on" id="s0"><div class="scd"><div class="sh"><div class="st-title">'+t('sec')[0]+' - '+t('pi')+'</div><button class="btn bp" onclick="om(\'pe\')">✏️ '+t('e')+'</button></div><div class="pg">';
 for(let i=0;i<fs.length;i++){let f=fs[i];h+='<div class="pi"><label>'+f.l+'</label><div class="v '+(p[f.k]?'':'e')+'">'+(p[f.k]||'—')+'</div></div>'}
 h+='</div></div>';
 
-h+='<div class="scd"><div class="st" style="margin-bottom:15px">'+t('chartsTitle')+'</div><div class="charts-grid">';
+h+='<div class="scd"><div class="st-title" style="margin-bottom:15px">'+t('chartsTitle')+'</div><div class="charts-grid">';
 
-// نمودار ۱: پیشرفت کلی (رادار ساده با میله)
-let totalItems=d.jb.length+d.ed.length+d.pu.length+d.sw.length+d.ms.length+d.ts.length+d.ct.length+d.pj.length;
-h+='<div class="chart-card"><h4>'+t('overallProgress')+'</h4><div class="chart-wrap"><div style="text-align:center"><div style="font-size:48px;font-weight:800;color:#4a6fa5">'+totalItems+'</div><div style="font-size:13px;color:#718096;margin-top:8px">'+(L==='fa'?'مورد ثبت شده':'items recorded')+'</div></div></div></div>';
+// نمودار ۱: روند رشد در طول زمان (بر اساس تاریخ آیتم‌ها)
+let allItems=[];
+d.jb.forEach(j=>{if(j.dt)allItems.push({date:j.dt,type:'job'})});
+d.ed.forEach(e=>{if(e.sy)allItems.push({date:e.sy,type:'edu'})});
+d.pu.forEach(p=>{if(p.sd)allItems.push({date:p.sd,type:'pub'})});
+d.puDraft.forEach(p=>{if(p.sd)allItems.push({date:p.sd,type:'draft'})});
+d.pj.forEach(p=>{if(p.startDate)allItems.push({date:p.startDate,type:'proj'})});
+d.sw.forEach(s=>{if(s.dt)allItems.push({date:s.dt,type:'skill'})});
+d.ct.forEach(c=>{if(c.yr)allItems.push({date:c.yr,type:'cert'})});
+
+let growthData=buildGrowthData(allItems);
+h+='<div class="chart-card"><h4>'+t('growthChart')+'</h4><div class="chart-wrap">'+renderLineChart(growthData)+'</div></div>';
 
 // نمودار ۲: توزیع مهارت‌ها
 let advCount=d.sw.filter(s=>s.lv==='ad').length;
@@ -268,15 +269,15 @@ h+='</div></div></div>';
 // نمودار ۳: مقالات
 let artCount=d.pu.filter(p=>p.pt==='ar').length;
 let bkCount=d.pu.filter(p=>p.pt==='bk').length;
-let chCount=d.pu.filter(p=>p.pt==='ch').length;
 let cnCount=d.pu.filter(p=>p.pt==='cn').length;
-let maxPub=Math.max(artCount,bkCount,chCount,cnCount,1);
+let draftCount=d.puDraft.length;
+let maxPub=Math.max(artCount,bkCount,cnCount,draftCount,1);
 h+='<div class="chart-card"><h4>'+t('articlesByType')+'</h4><div class="chart-wrap"><div class="bar-chart">';
-if(artCount>0||bkCount>0||chCount>0||cnCount>0){
-h+='<div class="bar" style="height:'+(artCount/maxPub*100)+'%"><div class="bar-value">'+artCount+'</div><div class="bar-label">'+t('article')+'</div></div>';
-h+='<div class="bar" style="height:'+(bkCount/maxPub*100)+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+bkCount+'</div><div class="bar-label">'+t('book')+'</div></div>';
-h+='<div class="bar" style="height:'+(chCount/maxPub*100)+'%;background:linear-gradient(180deg,#f59e0b,#d97706)"><div class="bar-value">'+chCount+'</div><div class="bar-label">'+t('chapter')+'</div></div>';
-h+='<div class="bar" style="height:'+(cnCount/maxPub*100)+'%;background:linear-gradient(180deg,#e53e3e,#c53030)"><div class="bar-value">'+cnCount+'</div><div class="bar-label">'+t('conference')+'</div></div>';
+if(artCount>0||bkCount>0||cnCount>0||draftCount>0){
+if(artCount>0)h+='<div class="bar" style="height:'+(artCount/maxPub*100)+'%"><div class="bar-value">'+artCount+'</div><div class="bar-label">'+t('article')+'</div></div>';
+if(bkCount>0)h+='<div class="bar" style="height:'+(bkCount/maxPub*100)+'%;background:linear-gradient(180deg,#48bb78,#38a169)"><div class="bar-value">'+bkCount+'</div><div class="bar-label">'+t('book')+'</div></div>';
+if(cnCount>0)h+='<div class="bar" style="height:'+(cnCount/maxPub*100)+'%;background:linear-gradient(180deg,#e53e3e,#c53030)"><div class="bar-value">'+cnCount+'</div><div class="bar-label">'+t('conference')+'</div></div>';
+if(draftCount>0)h+='<div class="bar" style="height:'+(draftCount/maxPub*100)+'%;background:linear-gradient(180deg,#f59e0b,#d97706)"><div class="bar-value">'+draftCount+'</div><div class="bar-label">'+(L==='fa'?'در دست نگارش':'Draft')+'</div></div>';
 }else{h+='<div style="color:#718096;font-size:13px">'+t('em')+'</div>';}
 h+='</div></div></div>';
 
@@ -293,6 +294,47 @@ h+='</div></div></div>';
 return h;
 }
 
+function buildGrowthData(items){
+if(items.length===0)return{labels:[],values:[],max:1};
+let dates=items.map(i=>i.date).filter(d=>d).sort();
+if(dates.length===0)return{labels:[],values:[],max:1};
+let uniqueDates=[...new Set(dates)];
+let cumulative=0;
+let values=[];
+uniqueDates.forEach(date=>{
+cumulative+=items.filter(i=>i.date===date).length;
+values.push(cumulative);
+});
+return{labels:uniqueDates,values:values,max:Math.max(...values,1)};
+}
+
+function renderLineChart(data){
+if(data.labels.length===0)return'<div style="color:#718096;font-size:13px">'+t('em')+'</div>';
+let w=400,h=180,pad=30;
+let maxVal=data.max;
+let points=data.values.map((v,i)=>{
+let x=pad+(i/(data.labels.length-1||1))*(w-2*pad);
+let y=h-pad-(v/maxVal)*(h-2*pad);
+return{x,y,v};
+});
+let pathD=points.map((p,i)=>(i===0?'M':'L')+p.x+','+p.y).join(' ');
+let areaD=pathD+' L'+points[points.length-1].x+','+(h-pad)+' L'+points[0].x+','+(h-pad)+' Z';
+let svg='<svg viewBox="0 0 '+w+' '+h+'" style="width:100%;height:100%">';
+svg+='<defs><linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4a6fa5" stop-opacity="0.3"/><stop offset="100%" stop-color="#4a6fa5" stop-opacity="0.05"/></linearGradient></defs>';
+svg+='<path d="'+areaD+'" fill="url(#grad1)"/>';
+svg+='<path d="'+pathD+'" fill="none" stroke="#4a6fa5" stroke-width="2.5"/>';
+points.forEach(p=>{svg+='<circle cx="'+p.x+'" cy="'+p.y+'" r="4" fill="#4a6fa5"/>';svg+='<text x="'+p.x+'" y="'+(p.y-8)+'" text-anchor="middle" font-size="10" fill="#2d4a73" font-weight="bold">'+p.v+'</text>'});
+let labelStep=Math.max(1,Math.floor(data.labels.length/5));
+data.labels.forEach((label,i)=>{
+if(i%labelStep===0||i===data.labels.length-1){
+let x=pad+(i/(data.labels.length-1||1))*(w-2*pad);
+svg+='<text x="'+x+'" y="'+(h-5)+'" text-anchor="middle" font-size="8" fill="#718096">'+label.substring(0,7)+'</text>';
+}
+});
+svg+='</svg>';
+return svg;
+}
+
 function renderFiles(files,itemType,itemIdx){
 if(!files||files.length===0)return'';
 let h='<div class="file-list">';
@@ -302,11 +344,11 @@ return h;
 }
 
 function rJ(d){
-let h='<div class="sec" id="s1"><div class="scd"><div class="sh"><div class="st">'+t('sec')[1]+'</div><button class="btn bp" onclick="om(\'jb\')">+ '+t('a')+'</button></div>';
+let h='<div class="sec" id="s1"><div class="scd"><div class="sh"><div class="st-title">'+t('sec')[1]+'</div><button class="btn bp" onclick="om(\'jb\')">+ '+t('a')+'</button></div>';
 if(d.jb.length===0)h+='<div class="em">'+t('em')+'</div>';
 else for(let i=0;i<d.jb.length;i++){let j=d.jb[i];let resps=toRespArray(j.de);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'jb\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'jb\','+i+')">'+t('d')+'</button></div>';
-h+='<div class="it">💼 '+esc(j.ti||'')+'</div><div class="is">'+esc(j.co||'')+' | '+esc(j.pe||'')+' | '+esc(j.lo||'')+'</div>';
+h+='<div class="it"><span class="it-icon">💼</span>'+esc(j.ti||'')+'</div><div class="is">'+esc(j.co||'')+' | '+esc(j.pe||'')+' | '+esc(j.lo||'')+'</div>';
 h+='<span class="bg '+(j.ty==='mg'?'bgg':'bgb')+'">'+t('tp')[j.ty]+'</span>';
 if(resps.length>0){h+='<div class="id"><ul>';for(let r=0;r<resps.length;r++)h+='<li>'+esc(resps[r])+'</li>';h+='</ul></div>';}
 h+=renderFiles(j.files,'jb',i);h+='</div>';}
@@ -314,74 +356,86 @@ h+='</div></div>';return h;
 }
 
 function rA(d){
-let h='<div class="sec" id="s2"><div class="scd"><div class="sh"><div class="st">'+t('sec')[2]+'</div><div><button class="btn bp" onclick="om(\'ed\')">+ تحصیل</button><button class="btn bp" onclick="om(\'pu\')">+ مقاله</button></div></div>';
-let hasEdu=d.ed.length>0,hasPu=d.pu.length>0;
-if(!hasEdu&&!hasPu)h+='<div class="em">'+t('em')+'</div>';
+let h='<div class="sec" id="s2"><div class="scd"><div class="sh"><div class="st-title">'+t('sec')[2]+'</div><div><button class="btn bp" onclick="om(\'ed\')">+ تحصیل</button><button class="btn bp" onclick="om(\'pu\')">+ مقاله</button><button class="btn bf" onclick="om(\'puDraft\')">+ مقاله در دست نگارش</button></div></div>';
+let hasEdu=d.ed.length>0,hasPu=d.pu.length>0,hasDraft=d.puDraft.length>0;
+if(!hasEdu&&!hasPu&&!hasDraft)h+='<div class="em">'+t('em')+'</div>';
 if(hasEdu){h+='<div class="sst">🎓 تحصیلات</div>';
 sortByNewest(d.ed,'sy').forEach((e)=>{let oi=d.ed.indexOf(e);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ed\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ed\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="it">🎓 '+esc(e.dg||'')+' - '+esc(e.fi||'')+'</div>';
+h+='<div class="it"><span class="it-icon"></span>'+esc(e.dg||'')+' - '+esc(e.fi||'')+'</div>';
 h+='<div class="is">'+esc(e.un||'')+' | '+t('lb').gp+': '+esc(e.gp||'')+' | '+esc(e.sy||'')+' - '+esc(e.ey||'')+'</div>';
 h+=renderFiles(e.files,'ed',oi);h+='</div>';});}
-if(hasPu){h+='<div class="sst">📄 مقالات</div><div class="tag-grid">';
+if(hasPu){h+='<div class="sst">📄 '+t('publishedArticles')+'</div><div class="tag-grid">';
 sortByNewest(d.pu,'sd').forEach((p)=>{let oi=d.pu.indexOf(p);
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'pu\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pu\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(p.ti||'')+'</div><div class="tag-sub">'+esc(p.jn||'')+'</div>';
+h+='<div class="tag-title"><span class="it-icon">📄</span> '+esc(p.ti||'')+'</div><div class="tag-sub">'+esc(p.jn||'')+'</div>';
 h+='<span class="tag-badge bgb">'+t('pt2')[p.pt]+'</span><span class="tag-badge bgb">'+t('ln2')[p.ln]+'</span>';
+if(p.sd)h+='<div class="tag-sub">📅 '+p.sd+' → '+(p.ad||'...')+'</div>';
 h+=renderFiles(p.files,'pu',oi);h+='</div>';});h+='</div>';}
+if(hasDraft){h+='<div class="sst">📝 '+t('draftArticles')+'</div><div class="tag-grid">';
+sortByNewest(d.puDraft,'sd').forEach((p)=>{let oi=d.puDraft.indexOf(p);
+h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'puDraft\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'puDraft\','+oi+')">'+t('d')+'</button></div>';
+h+='<div class="tag-title"><span class="it-icon"></span> '+esc(p.ti||'')+'</div><div class="tag-sub">'+esc(p.jn||'')+'</div>';
+h+='<span class="tag-badge bgo">'+(L==='fa'?'در دست نگارش':'Draft')+'</span>';
+if(p.sd)h+='<div class="tag-sub">📅 شروع: '+p.sd+'</div>';
+if(p.deadline)h+='<div class="tag-sub">⏰ ددلاین: '+p.deadline+'</div>';
+h+=renderFiles(p.files,'puDraft',oi);h+='</div>';});h+='</div>';}
 h+='</div></div>';return h;
 }
 
 function rSK(d){
-let h='<div class="sec" id="s3"><div class="scd"><div class="sh"><div class="st">'+t('sec')[3]+'</div></div>';
+let h='<div class="sec" id="s3"><div class="scd"><div class="sh"><div class="st-title">'+t('sec')[3]+'</div></div>';
 h+='<div class="sst">'+t('sw')+' <button class="btn bp bs" onclick="om(\'sw\')">+ '+t('a')+'</button></div>';
 if(d.sw.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{h+='<div class="tag-grid">';d.sw.forEach((s,i)=>{
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'sw\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'sw\','+i+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title">️ '+esc(s.nm||'')+'</div><span class="tag-badge '+(s.lv==='ad'?'bgg':s.lv==='in'?'bgo':'bgb')+'">'+t('lv')[s.lv]+'</span>';
+h+='<div class="tag-title"><span class="it-icon">️</span> '+esc(s.nm||'')+'</div><span class="tag-badge '+(s.lv==='ad'?'bgg':s.lv==='in'?'bgo':'bgb')+'">'+t('lv')[s.lv]+'</span>';
 h+=renderFiles(s.files,'sw',i);h+='</div>';});h+='</div>';}
 h+='<div class="sst">'+t('ms')+' <button class="btn bp bs" onclick="om(\'ms\')">+ '+t('a')+'</button></div>';
 if(d.ms.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{d.ms.forEach((s,i)=>{
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ms\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ms\','+i+')">'+t('d')+'</button></div>';
-h+='<div class="it">📊 '+esc(s.sk||'')+'</div>';h+=renderFiles(s.files,'ms',i);h+='</div>';});}
+h+='<div class="it"><span class="it-icon"></span> '+esc(s.sk||'')+'</div>';h+=renderFiles(s.files,'ms',i);h+='</div>';});}
 h+='<div class="sst">'+t('ts')+' <button class="btn bp bs" onclick="om(\'ts\')">+ '+t('a')+'</button></div>';
 if(d.ts.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{d.ts.forEach((s,i)=>{
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'ts\','+i+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ts\','+i+')">'+t('d')+'</button></div>';
-h+='<div class="it">⚙️ '+esc(s.sk||'')+'</div>';h+=renderFiles(s.files,'ts',i);h+='</div>';});}
+h+='<div class="it"><span class="it-icon">️</span> '+esc(s.sk||'')+'</div>';h+=renderFiles(s.files,'ts',i);h+='</div>';});}
 h+='<div class="sst">📜 گواهینامه‌ها <button class="btn bp bs" onclick="om(\'ct\')">+ '+t('a')+'</button></div>';
 if(d.ct.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{h+='<div class="tag-grid">';sortByNewest(d.ct,'yr').forEach((c)=>{let oi=d.ct.indexOf(c);
 h+='<div class="tag-item"><div class="tag-actions"><button class="btn bw bs" onclick="om(\'ct\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'ct\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="tag-title"> '+esc(c.nm||'')+'</div><div class="tag-sub">'+esc(c.is2||'')+'</div><div class="tag-sub">'+esc(c.yr||'')+' | '+esc(c.du||'')+'</div>';
+h+='<div class="tag-title"><span class="it-icon">📜</span> '+esc(c.nm||'')+'</div><div class="tag-sub">'+esc(c.is2||'')+'</div><div class="tag-sub">'+esc(c.yr||'')+' | '+esc(c.du||'')+'</div>';
 h+=renderFiles(c.files,'ct',oi);h+='</div>';});h+='</div>';}
 h+='</div></div>';return h;
 }
 
 function rPJ(d){
-let h='<div class="sec" id="s4"><div class="scd"><div class="sh"><div class="st">'+t('sec')[4]+'</div><button class="btn bp" onclick="om(\'pj\')">+ '+t('a')+'</button></div>';
+let h='<div class="sec" id="s4"><div class="scd"><div class="sh"><div class="st-title">'+t('sec')[4]+'</div><button class="btn bp" onclick="om(\'pj\')">+ '+t('a')+'</button></div>';
 if(d.pj.length===0)h+='<div class="em">'+t('em')+'</div>';
 else{
-let done=sortByNewest(d.pj.filter(p=>p.st==='dn'),'yr');
+let done=sortByNewest(d.pj.filter(p=>p.st==='dn'),'startDate');
 let progress=d.pj.filter(p=>p.st==='pr2');
-let planned=sortByNewest(d.pj.filter(p=>p.st==='pl'),'yr');
+let planned=sortByNewest(d.pj.filter(p=>p.st==='pl'),'startDate');
 if(done.length>0){h+='<div class="sst">✅ '+t('done')+' ('+done.length+')</div>';
 done.forEach((p)=>{let oi=d.pj.indexOf(p);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="it">🔬 '+esc(p.ti||'')+'</div><div class="is">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
+h+='<div class="it"><span class="it-icon">🔬</span> '+esc(p.ti||'')+'</div><div class="is">'+esc(p.ca||'')+'</div>';
+if(p.startDate)h+='<div class="is">📅 '+p.startDate+(p.endDate?' → '+p.endDate:'')+'</div>';
 h+='<span class="bg bgg">'+t('done')+'</span>';
 h+=renderFiles(p.files,'pj',oi);h+='</div>';});}
 if(progress.length>0){h+='<div class="sst">🔄 '+t('inProgress')+' ('+progress.length+')</div>';
 progress.forEach((p)=>{let oi=d.pj.indexOf(p);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="it"> '+esc(p.ti||'')+'</div><div class="is">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
+h+='<div class="it"><span class="it-icon">🔬</span> '+esc(p.ti||'')+'</div><div class="is">'+esc(p.ca||'')+'</div>';
+if(p.startDate)h+='<div class="is">📅 '+p.startDate+(p.endDate?' → '+p.endDate:'')+'</div>';
 h+='<span class="bg bgo">'+t('inProgress')+'</span>';
 h+=renderFiles(p.files,'pj',oi);h+='</div>';});}
 if(planned.length>0){h+='<div class="sst">📅 '+t('planned')+' ('+planned.length+')</div>';
 planned.forEach((p)=>{let oi=d.pj.indexOf(p);
 h+='<div class="itm"><div class="ia"><button class="btn bw bs" onclick="om(\'pj\','+oi+')">'+t('e')+'</button><button class="btn bd bs" onclick="dl(\'pj\','+oi+')">'+t('d')+'</button></div>';
-h+='<div class="it">🔬 '+esc(p.ti||'')+'</div><div class="is">'+esc(p.yr||'')+' | '+esc(p.ca||'')+'</div>';
+h+='<div class="it"><span class="it-icon">🔬</span> '+esc(p.ti||'')+'</div><div class="is">'+esc(p.ca||'')+'</div>';
+if(p.startDate)h+='<div class="is">📅 '+p.startDate+(p.endDate?' → '+p.endDate:'')+'</div>';
 h+='<span class="bg bgb">'+t('planned')+'</span>';
 h+=renderFiles(p.files,'pj',oi);h+='</div>';});}
 }
@@ -418,12 +472,17 @@ bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('co',t('lb').co,it.co)+'</div><
 bd+='<div class="fg"><label class="fl">'+t('lb').resp+'</label><div class="resp-list" id="resp-list">'+respInputs+'</div><button type="button" class="resp-add" onclick="addRespItem()">'+t('lb').addResp+'</button></div>';
 bd+=fileUpload;}
 else if(tp==='ed'){ti=(ED2.i!==null?t('e'):t('a'))+' - تحصیل';bd='<div class="fr">'+F('dg',t('lb').dg,it.dg)+F('fi',t('lb').fi,it.fi)+'</div><div class="fr">'+F('un',t('lb').un,it.un)+F('gp',t('lb').gp,it.gp)+'</div><div class="fr">'+F('sy',t('lb').sy,it.sy)+F('ey',t('lb').ey,it.ey)+'</div>'+fileUpload}
-else if(tp==='pu'){ti=(ED2.i!==null?t('e'):t('a'))+' - مقاله';bd=F('ti',t('lb').ti,it.ti)+'<div class="fr">'+F('jn',t('lb').jn,it.jn)+S('pt',t('lb').pt,[{v:'ar',l:t('pt2').ar},{v:'bk',l:t('pt2').bk},{v:'ch',l:t('pt2').ch},{v:'cn',l:t('pt2').cn}],it.pt)+'</div><div class="fr">'+S('ln',t('lb').ln,[{v:'fa',l:t('ln2').fa},{v:'en',l:t('ln2').en},{v:'bo',l:t('ln2').bo}],it.ln)+F('ed',t('lb').ed,it.ed)+'</div><div class="fr">'+F('sd',t('lb').sd2,'date',it.sd)+F('ad',t('lb').ad,'date',it.ad)+'</div>'+TA('de',t('lb').de,it.de)+fileUpload}
+else if(tp==='pu'){ti=(ED2.i!==null?t('e'):t('a'))+' - مقاله';bd=F('ti',t('lb').ti,it.ti)+'<div class="fr">'+F('jn',t('lb').jn,it.jn)+S('pt',t('lb').pt,[{v:'ar',l:t('pt2').ar},{v:'bk',l:t('pt2').bk},{v:'cn',l:t('pt2').cn}],it.pt)+'</div><div class="fr">'+S('ln',t('lb').ln,[{v:'fa',l:t('ln2').fa},{v:'en',l:t('ln2').en},{v:'bo',l:t('ln2').bo}],it.ln)+F('ed',t('lb').ed,it.ed)+'</div><div class="fr">'+F('sd',t('lb').sd2,'date',it.sd)+F('ad',t('lb').ad,'date',it.ad)+'</div>'+TA('de',t('lb').de,it.de)+fileUpload}
+else if(tp==='puDraft'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+(L==='fa'?'مقاله در دست نگارش':'Draft Article');bd=F('ti',t('lb').ti,it.ti)+'<div class="fr">'+F('jn',t('lb').jn,it.jn)+S('pt',t('lb').pt,[{v:'ar',l:t('pt2').ar},{v:'bk',l:t('pt2').bk},{v:'cn',l:t('pt2').cn}],it.pt)+'</div><div class="fr">'+F('sd',t('lb').startDate,'date',it.sd)+F('deadline',(L==='fa'?'ددلاین':'Deadline'),'date',it.deadline)+'</div>'+TA('de',t('lb').de,it.de)+TA('nt',(L==='fa'?'یادداشت و پیشرفت':'Notes & Progress'),it.nt)+fileUpload}
 else if(tp==='sw'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sw');bd='<div class="fr">'+F('nm',t('lb').nm2,it.nm)+S('lv',t('lb').lv,[{v:'ad',l:t('lv').ad},{v:'in',l:t('lv').in},{v:'ba',l:t('lv').ba}],it.lv)+'</div>'+fileUpload}
 else if(tp==='ms'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('ms');bd=F('sk',t('lb').nm2,it.sk)+fileUpload}
 else if(tp==='ts'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('ts');bd=F('sk',t('lb').nm2,it.sk)+fileUpload}
 else if(tp==='ct'){ti=(ED2.i!==null?t('e'):t('a'))+' - گواهینامه';bd='<div class="fr">'+F('nm',t('lb').nm2,it.nm)+F('is2',t('lb').is2,it.is2)+'</div><div class="fr">'+F('yr',t('lb').yr,it.yr)+F('du',t('lb').du,it.du)+'</div>'+fileUpload}
-else if(tp==='pj'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[4];bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('yr',t('lb').yr,it.yr)+'</div>'+F('ca',t('lb').ca,it.ca)+S('st',t('lb').st,[{v:'pl',l:t('planned')},{v:'pr2',l:t('inProgress')},{v:'dn',l:t('done')}],it.st)+TA('de',t('lb').de,it.de)+fileUpload}
+else if(tp==='pj'){ti=(ED2.i!==null?t('e'):t('a'))+' - '+t('sec')[4];
+bd='<div class="fr">'+F('ti',t('lb').ti,it.ti)+F('ca',t('lb').ca,it.ca)+'</div>'
++'<div class="fr">'+F('startDate',t('lb').startDate,'date',it.startDate)+F('endDate',t('lb').endDate,'date',it.endDate)+'</div>'
++'<div class="fr">'+F('yr',t('lb').yr,it.yr)+S('st',t('lb').st,[{v:'pl',l:t('planned')},{v:'pr2',l:t('inProgress')},{v:'dn',l:t('done')}],it.st)+'</div>'
++TA('de',t('lb').de,it.de)+fileUpload}
 
 document.getElementById('mt').textContent=ti;
 document.getElementById('mb').innerHTML=bd;
@@ -442,11 +501,12 @@ if(tp==='pe'){d.pe={nm:g('nm'),ag:g('ag'),gd:g('gd'),ct:g('ct'),ph:g('ph'),em2:g
 else if(tp==='jb'){let respInputs=document.querySelectorAll('.resp-input');let resps=[];respInputs.forEach(function(inp){let v=inp.value.trim();if(v)resps.push(v)});let o={ti:g('ti'),co:g('co'),pe:g('pe'),du:g('du'),lo:g('lo'),ty:g('ty'),de:resps,files:pendingFiles.slice()};if(!d.jb)d.jb=[];if(idx!==null&&idx>=0&&idx<d.jb.length)d.jb[idx]=o;else d.jb.unshift(o)}
 else if(tp==='ed'){let o={dg:g('dg'),fi:g('fi'),un:g('un'),gp:g('gp'),sy:g('sy'),ey:g('ey'),files:pendingFiles.slice()};if(!d.ed)d.ed=[];if(idx!==null&&idx>=0&&idx<d.ed.length)d.ed[idx]=o;else d.ed.unshift(o)}
 else if(tp==='pu'){let o={ti:g('ti'),jn:g('jn'),pt:g('pt'),ln:g('ln'),ed:g('ed'),sd:g('sd'),ad:g('ad'),de:g('de'),files:pendingFiles.slice()};if(!d.pu)d.pu=[];if(idx!==null&&idx>=0&&idx<d.pu.length)d.pu[idx]=o;else d.pu.unshift(o)}
+else if(tp==='puDraft'){let o={ti:g('ti'),jn:g('jn'),pt:g('pt'),sd:g('sd'),deadline:g('deadline'),de:g('de'),nt:g('nt'),files:pendingFiles.slice()};if(!d.puDraft)d.puDraft=[];if(idx!==null&&idx>=0&&idx<d.puDraft.length)d.puDraft[idx]=o;else d.puDraft.unshift(o)}
 else if(tp==='sw'){let o={nm:g('nm'),lv:g('lv'),files:pendingFiles.slice()};if(!d.sw)d.sw=[];if(idx!==null&&idx>=0&&idx<d.sw.length)d.sw[idx]=o;else d.sw.unshift(o)}
 else if(tp==='ms'){let o={sk:g('sk'),files:pendingFiles.slice()};if(!d.ms)d.ms=[];if(idx!==null&&idx>=0&&idx<d.ms.length)d.ms[idx]=o;else d.ms.unshift(o)}
 else if(tp==='ts'){let o={sk:g('sk'),files:pendingFiles.slice()};if(!d.ts)d.ts=[];if(idx!==null&&idx>=0&&idx<d.ts.length)d.ts[idx]=o;else d.ts.unshift(o)}
 else if(tp==='ct'){let o={nm:g('nm'),is2:g('is2'),yr:g('yr'),du:g('du'),files:pendingFiles.slice()};if(!d.ct)d.ct=[];if(idx!==null&&idx>=0&&idx<d.ct.length)d.ct[idx]=o;else d.ct.unshift(o)}
-else if(tp==='pj'){let o={ti:g('ti'),yr:g('yr'),ca:g('ca'),st:g('st'),de:g('de'),files:pendingFiles.slice()};if(!d.pj)d.pj=[];if(idx!==null&&idx>=0&&idx<d.pj.length)d.pj[idx]=o;else d.pj.unshift(o)}
+else if(tp==='pj'){let o={ti:g('ti'),ca:g('ca'),startDate:g('startDate'),endDate:g('endDate'),yr:g('yr'),st:g('st'),de:g('de'),files:pendingFiles.slice()};if(!d.pj)d.pj=[];if(idx!==null&&idx>=0&&idx<d.pj.length)d.pj[idx]=o;else d.pj.unshift(o)}
 sv();r();cm();
 }catch(e){alert('Error: '+e.message);console.error(e)}
 }
